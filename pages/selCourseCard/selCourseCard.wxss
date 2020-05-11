@@ -160,7 +160,7 @@ van-tag{
   margin-bottom: 30rpx;
 }
 .cardNumber .rt{
-  font-size: 24rpx;
+  font-size: 27rpx;
   color: #707070;
 }
 .noData{

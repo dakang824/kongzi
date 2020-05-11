@@ -70,7 +70,7 @@
 					<view class="footer between">
 						<view class="lf">
 							<view class="txt">选课日期：{{filter.spot(filter.slice(item.select_time,10))}}</view>
-							<view wx:if='{{item.status==2}}'>首次上课：{{filter.spot(filter.slice(item.arrive_time,16))}}</view>
+							<view wx:if='{{item.status==2}}'>首次上课：{{filter.spot(filter.slice(item.arrive_time,10))}}</view>
 						</view>
 						<van-button round type="info" color='#FF2D58' custom-class='bg' wx:if='{{item.status==2}}'>已上课</van-button>
 						<van-button round type="info" color='#FF2D58' plain wx:if='{{item.status==1}}' bind:click='showTime' data-courseId="{{item.course_id}}" data-cardId="{{item.card_id}}">标记上课</van-button>
@@ -91,5 +91,5 @@
 </view>
 
 <van-popup show="{{ show }}" bind:close="onClose" position="bottom">
-	<van-datetime-picker type="datetime" value="{{ currentDate }}" min-date="{{ minDate }}" bind:confirm='markCourse' title='选择上课时间' bind:cancel='cancel' />
+	<van-datetime-picker type="date" value="{{ currentDate }}" min-date="{{ minDate }}" bind:confirm='markCourse' title='选择上课日期' bind:cancel='cancel' />
 </van-popup>

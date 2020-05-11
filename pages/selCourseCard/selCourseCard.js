@@ -9,7 +9,7 @@ Page({
     show: false,
     minHour: 10,
     maxHour: 20,
-    minDate: new Date().getTime()-1000*60*60*24*90,
+    minDate: new Date().getTime()-1000*60*60*24*360,
     currentDate: new Date().getTime()
   },
   onLoad(e) {

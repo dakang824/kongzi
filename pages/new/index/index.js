@@ -338,8 +338,7 @@ Page({
           my_count: d.my_count,
           isNewUser: d.isNewUser,
           holiday: 'notify' in d,
-          getLoginMoney:false,
-          // d.get_bonus.get_bonus == 0
+          getLoginMoney:d.get_bonus.get_bonus == 0,
         })
         if (d.status == 5) {
           APP.globalData.disableTab = false;

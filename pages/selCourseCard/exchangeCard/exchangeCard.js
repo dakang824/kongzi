@@ -20,8 +20,11 @@ Page({
         duration:2000
       })
       setTimeout(()=>{
-        wx.redirectTo({
-          url: `/pages/selCourseCard/submitFrom/submitFrom?card_code=${card_code}`,
+        // wx.redirectTo({
+        //   url: `/pages/selCourseCard/submitFrom/submitFrom?card_code=${card_code}`,
+        // })
+        wx.navigateBack({
+          delta: 1
         })
       },2000)
     })

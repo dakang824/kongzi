@@ -82,9 +82,9 @@
 				},
 				{
 					"id": 3,
-					"name": "pages/selCourseCard/exchangeCard/exchangeCard",
-					"pathName": "pages/selCourseCard/exchangeCard/exchangeCard",
-					"query": "",
+					"name": "pages/new/index/index",
+					"pathName": "pages/new/index/index",
+					"query": "tabs=6",
 					"scene": null
 				},
 				{

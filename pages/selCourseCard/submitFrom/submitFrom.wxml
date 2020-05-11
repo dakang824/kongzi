@@ -1,15 +1,16 @@
+<van-dialog id="van-dialog" />
 <view class="from">
-	<navigator class="top between">
+	<view class="top between" bindtap="needMore">
 		<view class="lf">
-			您已选过 <text>{{cards.select_count}}</text> 个课程,还可最多选择 <text>{{cards.left_count}}</text> 个
+			您已选过 <text>{{cards.select_count}}</text> 个课程，还可最多选择 <text>{{cards.left_count}}</text> 个
 		</view>
 		<view class="rt">需要更多
 			<van-icon name="arrow" />
 		</view>
-	</navigator>
+	</view>
 	<view class="box">
 		<van-cell-group>
-			<van-field value="{{ username }}" clearable label="孩子姓名：" placeholder="请填写孩子姓名" bind:input='OnInput' data-i='name'/>
+			<van-field value="{{ postData.name }}" clearable label="孩子姓名：" placeholder="请填写孩子姓名" bind:input='OnInput' data-i='name'/>
 			<view class="flex row van-hairline--bottom">
 				<view class="txt">孩子性别：</view>
 				<van-radio-group value="{{postData.gender}}" bind:change="onChange">
@@ -25,7 +26,7 @@
 					</view>
 				</view>
 			</view>
-			<van-field value="{{ username }}" type='number' clearable label="联系电话：" placeholder="请填写联系电话"  data-i='mobile' bind:input='OnInput'/>
+			<van-field value="{{ postData.mobile }}" type='number' clearable label="联系电话：" placeholder="请填写联系电话"  data-i='mobile' bind:input='OnInput'/>
 		</van-cell-group>
 	</view>
 	<view class="sumit">
