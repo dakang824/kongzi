@@ -1,0 +1,171 @@
+<wxs module="filter" src="../utils/filter.wxs"></wxs>
+<template name='activeList'>
+  <van-transition duration="{{ { enter: 1000 } }}" name='fade-up'>
+    <navigator url='{{course_type!=4?"/pages/bargain/active/bargain?act_no="+no+"&inst_id="+inst_id+"&ope_id="+ope_id+"&from_id=0&source=31":"/pages/bargain/bargain?act_no="+no+"&inst_id="+inst_id+"&ope_id="+ope_id+"&from_id=0&source=31"}}' wx:if='{{status!=3&&status!=0}}'>
+      <view class='li'>
+        <view class='list_lf'>
+          <image src='{{list_pic?imgUrl+list_pic:"/imgs/wuzhaop.png" }}' lazy-load binderror='errorImg' data-i='{{index}}'></image>
+          <block wx:if='{{course_type==1||course_type==2||course_type==3||course_type==4}}'>
+            <view class="sanjiao"></view>
+            <van-tag custom-class='label_bg' mark color="#4DA5FC">{{course_type==2?"短课包":course_type==3?"正式课":course_type==4?"联合课包":course_type==1?"体验课":""}}</van-tag>
+          </block>
+        </view>
+        <view class='list_rt'>
+          <!-- <view class='actName van-ellipsis'>{{title}}</view> -->
+          <view class='actName' style="display:flex;justify-content:space-between">
+            <view class="van-ellipsis" style="width:330rpx;">{{title}}</view>
+            <view class='price'>
+              <view style="color:#999;font-size:26rpx;" wx:if='{{ori_price&&ori_price!=act_price}}'>
+                <text style='text-decoration:line-through'>{{course_type==4?filter.fixed(ori_price/100,2):filter.fixed(ori_price,2)}}</text>元</view>
+              <view style="color:#FF5A90;font-size:26rpx;">{{course_type==4?filter.fixed(act_price/100,2):filter.fixed(act_price,2)}}元{{course_type==1||course_type==2?'起':''}}</view>
+            </view>
+          </view>
+
+          <view class='union_tag'>
+            <text class='van-tag'>{{age_from}}~{{age_to}}岁</text>
+            <text class='van-tag' style='color:#FF5A90' wx:if='{{pay_back}}'>上课全返</text>
+            <!-- <text class='van-tag red' wx:if='{{course_type==4||isUnionMem==1}}'>孔紫联盟成员</text> -->
+            <text class='van-tag' style="color:#4DA5FC" wx:if='{{course_type==4||isUnionMem==1}}'>平台补贴</text>
+          </view>
+          <view class='vCenter min_height'>
+            <view class='vCenter' wx:if='{{course_type==4}}'>
+              <text class='van-tag' wx:for='{{category}}' wx:if='{{(index==0&&item.label)||(index==1&&item.label)||(index==2&&item.label)}}'>{{item.label}}</text>
+              <text class='van-tag' wx:if='{{category.length>2}}'>......</text>
+            </view>
+            <text class='van-tag' wx:else>{{category}}</text>
+          </view>
+          <view class='list_fter'>
+            <view style='display:flex;align-items:center;'>
+              <text>k</text>
+              <text>{{name}}</text>
+            </view>
+            <view class='vCenter' style="align-items:baseline">
+              <van-icon name="location-o" custom-class='location-o' /> {{minDis}}~{{maxDis}}km</view>
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </van-transition>
+</template>
+<template name='myJoin'>
+  <navigator url='{{type!==4?"/pages/bargain/active/bargain?act_no="+act_no+"&inst_id="+inst_id+"&ope_id="+ope_id+"&from_id=0&source=31":"/pages/bargain/bargain?act_no="+act_no+"&inst_id="+inst_id+"&ope_id="+ope_id+"&from_id=0&source=31"}}' wx:if='{{status!=3&&status!=0}}'>
+    <view class='li'>
+      <view class='list_lf'>
+        <image src="{{imgUrl+pic_path}}" lazy-load></image>
+        <view class='label'>
+          <view class='arg'></view>
+          {{type==1?"砍价":type==2?"拼团":type==3?"试听":type==4?"联盟活动":type==5?"限时":type==6?"限量":""}}
+        </view>
+      </view>
+      <view class='list_rt'>
+        <view class='actName van-ellipsis'>{{filter.decode(title)}}</view>
+        <view class='status'>
+          <block wx:if="{{status==1}}">
+            <view class='vCenter'>
+              <image src='../../imgs/Hourglass.png' class='startImg'></image>
+              <text class='star' style='color:#4DA5FC'>即将开始</text>
+            </view>
+            <view class='act_time'>活动开始时间：{{start_time}}</view>
+          </block>
+          <block wx:elif="{{status==2&&time.dd>=2}}">
+            <view class='vCenter'>
+              <image src='../../imgs/hot.png' class='doingImg'></image>
+              <text class='star' style='color:#FFA740'>进行中</text>
+            </view>
+            <view class='act_time'>活动结束时间：{{end_time}}</view>
+          </block>
+          <block wx:else>
+            <view class='vCenter'>
+              <image src='../../imgs/lightning.png' class='lightningImg'></image>
+              <text class='star' style='color:#FB2323'>即将结束</text>
+            </view>
+            <view class='act_time'>距活动结束还剩:
+              <text>{{time.dd?time.dd:0}}</text>天
+              <text>{{time.hh?time.hh:0}}</text>时
+              <text>{{time.mm?time.mm:0}}</text>分</view>
+          </block>
+        </view>
+        <view class='list_fter'>
+          <view class='vCenter'>
+            <text>k</text>
+            <text>{{inst_name}}</text>
+          </view>
+          <view>
+            <view wx:if="{{id==1}}" class='jl'>
+              <van-icon name="location-o" custom-class='tag' />{{distance}}km</view>
+          </view>
+          <view wx:if="{{id==2}}" class='del' catchtap='delect' data-act_no='{{act_no}}' data-inst_id='{{inst_id}}'>
+            <van-icon name="delete" />
+            <text>删除</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </navigator>
+</template>
+<template name='nearby'>
+  <navigator url='{{type!==4?"/pages/bargain/active/bargain?act_no="+no+"&inst_id="+inst_id+"&ope_id="+ope_id+"&from_id=0&source=31":"/pages/bargain/bargain?act_no="+no+"&inst_id="+inst_id+"&ope_id="+ope_id+"&from_id=0&source=31"}}' wx:if='{{status!=3&&status!=0}}'>
+    <view class='li'>
+      <view class='list_lf'>
+        <image src="{{imgUrl+list_pic}}" lazy-load></image>
+        <!-- <view class='label'>
+          <view class='arg'></view>
+          {{type==1?"砍价":type==2?"拼团":type==3?"试听":type==4?"联合课包":type==5?"常规课程":type==6?"限时":""}}
+        </view> -->
+      </view>
+      <view class='list_rt'>
+        <view class='actName van-multi-ellipsis--l2'>{{title}}</view>
+        <view class='status'>
+          <block wx:if="{{status==1}}">
+            <view class='vCenter'>
+              <image src='../../imgs/Hourglass.png' class='startImg'></image>
+              <text class='star' style='color:#4DA5FC'>即将开始</text>
+            </view>
+            <view class='act_time'>活动开始时间：{{start_time}}</view>
+          </block>
+          <block wx:elif="{{status==2&&time.dd>=2}}">
+            <view class='vCenter'>
+              <image src='../../imgs/hot.png' class='doingImg'></image>
+              <text class='star' style='color:#FFA740'>进行中</text>
+            </view>
+            <view class='act_time' wx:if='{{type!=5}}'>活动结束时间：{{end_time}}</view>
+          </block>
+          <block wx:else>
+            <view class='vCenter'>
+              <image src='../../imgs/lightning.png' class='lightningImg'></image>
+              <text class='star' style='color:#FB2323'>即将结束</text>
+            </view>
+            <view class='act_time'>距活动结束还剩:
+              <text>{{time.dd?time.dd:0}}</text>天
+              <text>{{time.hh?time.hh:0}}</text>时
+              <text>{{time.mm?time.mm:0}}</text>分</view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </navigator>
+</template>
+<template name='detailBottom'>
+  <van-col span="12">
+    <van-row>
+      <val-col span="8">
+        <van-button type="default" size="small" custom-class="smallBtn" bindtap='goHome'>
+          <image src='/imgs/home_inne.png' class='fixedHome'></image>
+          <view class='fixedtxt'>首页</view>
+        </van-button>
+      </val-col>
+      <val-col span="8">
+        <van-button type="default" size="small" custom-class="smallBtn" bindtap='calling'>
+          <image src='/imgs/phone.png' class='fixedHome'></image>
+          <view class='fixedtxt'>电话</view>
+        </van-button>
+      </val-col>
+      <val-col span="8">
+        <van-button type="default" size="small" custom-class="smallBtn" bindtap='collec'>
+          <image src='{{collec?"/imgs/collection_active.png":"/imgs/collection.png"}}' class='fixedHome'></image>
+          <view class='fixedtxt'>收藏</view>
+        </van-button>
+      </val-col>
+    </van-row>
+  </van-col>
+</template>

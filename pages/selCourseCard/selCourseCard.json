@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-datetime-picker": "../../dist/datetime-picker/index"
+  },
+  "navigationBarTitleText": "选课卡",
+  "enablePullDownRefresh": true
+}

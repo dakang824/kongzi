@@ -1,0 +1,355 @@
+.row .van-cell{
+  padding: 10px 0;
+}
+.row van-radio-group{
+  width: 100%;
+}
+.gift_txt{
+  font-size: 24rpx;
+  color: #999;
+  margin: 20rpx;
+}
+.more {
+  font-size: 22rpx;
+  color: #999;
+}
+.child .van-cell::after{
+  left: 0;
+}
+.van-radio__control{
+  top: 20rpx;
+}
+van-cell-group{
+  width: 100%;
+}
+van-radio-group{
+  display: flex;
+}
+.gender van-radio{
+  margin-right: 30rpx;
+}
+.layerT .title {
+  text-align: center;
+  font-size: 36rpx;
+  font-weight: bold;
+  padding: 33rpx 0;
+  position: relative;
+}
+
+.switch_s {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ce .van-cell{
+  align-items: flex-start;
+}
+.switch_s .switch {
+  border: 1rpx solid #4da5fc;
+  border-radius: 50rpx;
+  font-size: 24rpx;
+  width: 260rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  overflow: hidden;
+}
+.switch_s .switch.disable{
+  opacity: .6;
+}
+.placeholder{
+  min-height:0!important;
+}
+.switch_s .switch .online, .switch_s .switch .downline {
+  width: 50%;
+  text-align: center;
+  display: inline-block;
+  color: #4da5fc;
+}
+.switch_s .switch .active{
+  background: #4da5fc;
+  color: #fff;
+  border-radius:25rpx;
+}
+
+.layerT .title .close {
+  position: absolute;
+  right: 40rpx;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: block;
+  width: 50rpx;
+  height: 50rpx;
+  color: #d8d8d8;
+}
+
+.layerT .row {
+  display: flex;
+  justify-content: space-between;
+  padding: 33rpx;
+  align-items: center;
+}
+
+.layerT .row .lf {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.layerT .row .rt {
+  font-size: 28rpx;
+}
+
+.layer {
+  width: 550rpx;
+  border-radius: 10rpx;
+  text-align: center;
+}
+
+.layer .close {
+  position: absolute;
+  right: 26rpx;
+  top: 28rpx;
+  color: #ccc;
+}
+
+.picker .txt {
+  display: inline-block;
+  margin-right: 60rpx;
+}
+
+.layer .circle {
+  font-size: 80rpx;
+  width: 120rpx;
+  height: 120rpx;
+  margin: auto;
+  background: linear-gradient(90deg, rgba(77, 179, 252, 1), rgba(96, 136, 253, 1));
+  border-radius: 40px;
+  line-height: 114rp x;
+  text-align: center;
+  color: #fff;
+  margin-top: 88rpx;
+}
+
+.layer .success_txt {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: rgba(77, 164, 251, 1);
+  background: linear-gradient(0deg, rgba(77, 180, 252, 1) 1.025390625%, rgba(98, 134, 253, 1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 40rpx auto 50rpx;
+}
+
+.layerT .btn {
+  width: 600rpx;
+  height: 80rpx;
+  background: linear-gradient(90deg, rgba(61, 127, 218, 1), rgba(77, 165, 252, 1));
+  font-size: 32rpx;
+  color: #fff;
+  line-height: 80rpx;
+}
+
+.layer .btn {
+  width: 400rpx;
+  height: 80rpx;
+  line-height: 80rpx !important;
+  background: linear-gradient(90deg, rgba(61, 127, 218, 1), rgba(77, 165, 252, 1));
+  font-size: 32rpx;
+  color: #fff;
+  margin-bottom: 25rpx;
+}
+
+.layer .btn1 {
+  background: transparent;
+  border-color: #4da5fc;
+  color: #4da5fc;
+}
+
+.headInfo {
+  width: 750rpx;
+  height: 260rpx;
+  background: rgba(243, 243, 243, 0.5);
+}
+
+.headInfo .bg {
+  width: 750rpx;
+  height: 210rpx;
+  background: #FA2335;
+}
+
+.van-cell__value {
+  flex: inherit !important;
+}
+
+.van-field__input {
+  width: 650rpx !important;
+}
+
+.headTit {
+  background: #fff;
+  border-radius: 10rpx;
+  position: relative;
+  top: 30rpx;
+  left: 30rpx;
+  right: 30rpx;
+  width: 630rpx;
+  display: flex;
+  padding: 25rpx;
+}
+
+.headTit image {
+  max-width: 160rpx;
+  height: 160rpx;
+  border-radius: 5px;
+}
+
+.headTit .right {
+  margin-left: 25rpx;
+}
+
+.van-button--disabled {
+  opacity: 1 !important;
+  margin-bottom: 30rpx;
+}
+
+.headTit .tit {
+  font-size: 28rpx;
+  height: 75rpx;
+}
+
+.headTit .tit text {
+  font-size: 20rpx;
+  border: 1px solid #4da5fc;
+  padding: 1rpx 6rpx;
+  border-radius: 5rpx;
+  color: #4da5fc;
+  margin-right: 10rpx;
+}
+
+.headTit .money {
+  color: #999;
+  font-size: 24rpx;
+  padding: 10rpx 0;
+}
+
+.headTit .time {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.from {
+  padding: 0 30rpx;
+}
+
+.layerT .from1 {
+  font-size: 24rpx;
+  color: #4da5fc;
+}
+
+.detail-btn {
+  text-align: center;
+  margin-top: 150rpx;
+  margin-bottom:100rpx;
+}
+
+.layerT .footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 50rpx 30rpx;
+  align-items: center;
+}
+
+.layerT .footer .lf {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.layerT .layer_btn {
+  width: 200rpx;
+  height: 75rpx !important;
+  line-height: 75rpx !important;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 44, 86, 1);
+  background: linear-gradient(90deg, rgba(255, 90, 144, 1), rgba(255, 44, 86, 1));
+  border-color: #ff2c56 !important;
+}
+.layerT .cancel {
+  color: #ff2c56 !important;
+  background: transparent !important;
+}
+.layerT .money {
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: rgba(255, 44, 86, 1);
+  line-height: 44rpx;
+}
+.layerT .pay {
+  padding: 30rpx;
+}
+
+.layerT .btns van-button {
+  margin-left: 20rpx;
+}
+.layerT .pay .vCenter {
+  font-size: 14px;
+}
+.layerT .footer .rt {
+  font-size: 44rpx;
+  font-weight: bold;
+}
+
+.picker {
+  font-size: 14px;
+  color: #333;
+  padding: 20rpx 30rpx;
+  margin-left: 0;
+  padding-left: 15rpx;
+  display:flex;
+}
+
+.clear_hair_top .van-hairline--top-bottom {
+  position: inherit !important;
+}
+
+.picker .txt {
+  display: inline-block;
+}
+
+.sumit {
+  margin-top: 60rpx;
+  height: 82rpx !important;
+  line-height: 82rpx !important;
+  margin-bottom: 40rpx;
+}
+
+.from .disabled {
+  color: #ccc;
+  background: #eee;
+}
+
+.from .ok {
+  color: #fff;
+  background: linear-gradient(90deg, rgba(61, 127, 218, 1), rgba(77, 165, 252, 1));
+}
+
+.yearBtn {
+  width: 120rpx;
+  height: 50rpx;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(238, 238, 238, 1);
+  border-radius: 50px;
+  text-align: center;
+  line-height: 50rpx;
+  float: left;
+  font-size: 26rpx;
+  margin: 0 17rpx 30rpx 0;
+}
+
+.age .yearBtn:nth-child(5n) {
+  margin-right: 0;
+}
+
+.age .active {
+  color: #4da5fc;
+  border-color: #4da5fc;
+}

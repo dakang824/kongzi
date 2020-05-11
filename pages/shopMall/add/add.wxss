@@ -1,0 +1,43 @@
+.flex{
+  display: flex;
+}
+
+.van-cell{
+  padding: 20px 0 !important;
+}
+.van-cell__title{
+  color:#111 !important;
+}
+.form{
+  background:#fff;
+  border-radius:20rpx;
+  overflow:hidden;
+  padding:35rpx 30rpx;
+}
+.set{
+  width: 690rpx;
+  justify-content: space-between;
+  margin: 0 auto;
+  align-items: center;
+}
+.set .left{
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+}
+.subit{
+  width:750rpx;
+  height:98rpx;
+  background:rgba(238,238,238,1);
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  line-height: 98rpx;
+  text-align: center;
+  color: #fff;
+  font-size:32rpx;
+}
+.active{
+  background:rgba(255,44,86,1);
+}

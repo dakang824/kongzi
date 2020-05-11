@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "van-field": "../../../dist/field/index",
+    "van-checkbox": "../../../dist/checkbox/index",
+    "van-checkbox-group": "../../../dist/checkbox-group/index",
+    "van-popup": "../../../dist/popup/index",
+    "van-picker": "../../../dist/picker/index",
+    "van-radio": "../../../dist/radio/index",
+    "van-radio-group": "../../../dist/radio-group/index",
+    "van-area": "../../../dist/area/index"
+  },
+  "navigationBarTitleText": "报名信息"
+}

@@ -1,0 +1,205 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"enhance": false,
+		"postcss": true,
+		"preloadBackgroundData": false,
+		"minified": true,
+		"newFeature": true,
+		"nodeModules": true,
+		"autoAudits": true,
+		"showShadowRootInWxmlPanel": false,
+		"scopeDataCheck": false,
+		"uglifyFileName": true,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"bundle": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.10.3",
+	"appid": "wxe5236886ca6a4905",
+	"projectname": "%E5%AD%94%E7%B4%AB%E5%AE%B6%E9%95%BF%E7%A4%BE%E5%8C%BA2.0-%E5%BC%80%E5%8F%91%E7%89%88",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "pages/selCourseCard/CourseList/CourseList",
+					"pathName": "pages/selCourseCard/CourseList/CourseList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "pages/selCourseCard/selCourseCard",
+					"pathName": "pages/selCourseCard/selCourseCard",
+					"query": "card_code=105565039256",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "pages/selCourseCard/selCourseCard",
+					"pathName": "pages/selCourseCard/selCourseCard",
+					"query": "card_code=163863095916",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "pages/selCourseCard/exchangeCard/exchangeCard",
+					"pathName": "pages/selCourseCard/exchangeCard/exchangeCard",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 24,
+					"name": "意见反馈",
+					"pathName": "pages/taskPage/taskPage",
+					"query": "award_id=83&tickets=1&draw_id=145",
+					"scene": null
+				},
+				{
+					"id": 25,
+					"name": "签到看广告",
+					"pathName": "pages/new/sharePage/sharePage",
+					"query": "from_id=46454&task_type=9",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "pages/video/video",
+					"pathName": "pages/video/video",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "pages/video/collect/collect",
+					"pathName": "pages/video/collect/collect",
+					"query": "b={\"video_id\":7,\"name\":\"手动阀\",\"video_url\":\"http%3A%2F%2Fkongzivideo2.oss-cn-shanghai.aliyuncs.com%2Fvideo2%2F1580983037607.mp4%3FExpires%3D1581133235%26OSSAccessKeyId%3DLTAIN4tg4L9HltkI%26Signature%3DpG1gMz548hfUcZkNtecnWT7Njxo%253D\",\"list_pic\":\"data/plat/video2/cover1580983037607.jpg\",\"source_no\":4,\"size\":0,\"length\":7,\"view_count\":244,\"like_count\":1,\"dislike_count\":0,\"share_count\":0,\"comment_count\":0,\"collect_count\":0,\"source_name\":\"qq小视频\",\"logo_path\":\"data/plat/video2/videoSources/1580957712754.png\",\"collected\":0,\"liked\":1,\"disliked\":0,\"my_view_count\":\"\"}",
+					"scene": null
+				},
+				{
+					"id": 31,
+					"name": "商品详情",
+					"pathName": "pages/shopMall/detail/detail",
+					"query": "id=34",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "确认订单",
+					"pathName": "pages/shopMall/sureOrder/sureOrder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新增收货人",
+					"pathName": "pages/shopMall/add/add",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "选择收货人",
+					"pathName": "pages/shopMall/chooseAdd/chooseAdd",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "优惠卡券",
+					"pathName": "pages/shopMall/card/card",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 36,
+					"name": "优惠券详情",
+					"pathName": "pages/shopMall/cardDetail/cardDetail",
+					"query": "id=78",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "选择优惠券",
+					"pathName": "pages/shopMall/chooseCard/chooseCard",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "本地玩乐",
+					"pathName": "pages/shopMall/local/local",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 39,
+					"name": "我的卡券",
+					"pathName": "pages/user/cardTicket/cardTicket",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 40,
+					"name": "卡券转赠",
+					"pathName": "pages/shopMall/cash/cash",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 19,
+					"name": "代言费提现",
+					"pathName": "pages/new/index/index",
+					"query": "tabs=1",
+					"scene": null
+				},
+				{
+					"id": 20,
+					"name": "代言费提现",
+					"pathName": "pages/shopMall/shareGoods/main/main",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

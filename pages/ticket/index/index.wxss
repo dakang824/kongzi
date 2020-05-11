@@ -1,0 +1,199 @@
+@import "/pages/index/index.wxss";
+.flex {
+  display: flex;
+}
+
+van-icon {
+  display: flex;
+  align-items: center;
+}
+
+.loading {
+  text-align: center;
+  font-size: 28rpx;
+  color: #999;
+  padding: 30rpx 0;
+}
+
+.van-cell {
+  background: #f5f5f5 !important;
+}
+
+.ticketbox .ticketitem {
+  align-items: center;
+  margin: 0 auto;
+  border-bottom: 1rpx solid #eee;
+  padding: 30rpx 30rpx;
+}
+
+.ticketbox .ticketitem .left {
+  width: 200rpx;
+  height: 200rpx;
+  background: rgba(250, 205, 137, 1);
+  border: 1px solid rgba(238, 238, 238, 1);
+  border-radius: 10rpx;
+}
+
+.ticketbox .ticketitem .right {
+  height: 200rpx;
+  margin-left: 20rpx;
+  width: 460rpx;
+}
+
+.ticketbox .ticketitem .right .title {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: rgba(17, 17, 17, 1);
+}
+
+.ticketbox .ticketitem .right .row {
+  align-items: center;
+}
+
+.ticketbox .ticketitem .right .rowicon {
+  width: 24rpx;
+  height: 24rpx;
+  background: rgba(229, 229, 229, 1);
+  border-radius: 50%;
+}
+
+.ticketbox .ticketitem .right .school {
+  font-size: 22rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 44rpx;
+  margin-left: 10rpx;
+}
+
+.ticketbox .ticketitem .right .row .old {
+  background: rgba(248, 248, 248, 1);
+  border-radius: 8rpx;
+  width: 100rpx;
+  height: 32rpx;
+  background: rgba(248, 248, 248, 1);
+  font-size: 20rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 32rpx;
+  text-align: center;
+}
+
+.ticketbox .ticketitem .right .pricebox {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.ticketbox .ticketitem .right .pricebox .price {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #ff2c56;
+  line-height: 54rpx;
+}
+
+.ticketbox .ticketitem .right .pricebox .distancebox {
+  font-size: 22rpx;
+  font-weight: 400;
+  color: #999;
+  line-height: 44rpx;
+  align-items: center;
+}
+
+.ticketbox .ticketitem .right .pricebox .distancebox .distance {
+  margin-left: 11rpx;
+}
+
+.popup {
+  top: 200rpx !important;
+}
+
+.popup .title {
+  font-size: 28rpx;
+  margin: 70rpx 0 49rpx 0;
+  font-weight: bold;
+}
+
+.custom-button {
+  width: 30rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  background: #ff2c56;
+  border-radius: 50px;
+  text-align: center;
+  position: relative;
+}
+
+.custom-button .white {
+  width: 15rpx;
+  height: 15rpx;
+  border-radius: 50px;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  display: block;
+}
+
+.custom-button .txt {
+  position: absolute;
+  left: -32rpx;
+  bottom: -39rpx;
+  font-size: 24rpx;
+  width: 100rpx;
+  /* color:#FF2C56; */
+}
+
+.block .li {
+  width: 155rpx;
+  border: 1px solid #ccc;
+  font-size: 24rpx;
+  float: left;
+  margin-right: 12rpx;
+  border-radius: 25px;
+  padding: 15rpx 0;
+  text-align: center;
+  margin-bottom: 35rpx;
+}
+
+.block .li.active {
+  border: 1px solid #ff2c56;
+  color: #ff2c56;
+}
+.headTopNav {
+  height: 200rpx;
+  z-index: 999999;
+}
+.screen {
+  font-size: 24rpx;
+  color: #fff;
+  padding: 0 15rpx 0 15rpx;
+  z-index: 9;
+}
+
+.van-slider__bar {
+  background-color: #ff2c56 !important;
+}
+
+.ticketli {
+  width: 120rpx !important;
+  margin-left: 40rpx;
+}
+
+.ticketli:nth-of-type(1) {
+  margin-left: 0rpx;
+}
+
+.nomore {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 44rpx;
+  text-align: center;
+}

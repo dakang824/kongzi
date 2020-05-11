@@ -1,0 +1,49 @@
+<pagePublic/>
+<block wx:if="{{noData}}">
+  <view class="box flex">
+    <view class="top">
+      <!-- <view class="row1">签到看广告</view> -->
+      <view class="row2">每看完两个广告即可获得1张抽奖券</view>
+      <view class="row3 flex">
+        <image src="/imgs/new/advert.png" style="width:26rpx;height:21rpx" />
+        <view class="tip">观看广告过程中会有3秒弹窗，点击即可领券</view>
+      </view>
+    </view>
+    <view class="btn"></view>
+  </view>
+  <view class="content">
+    <swiper class="imageContainer" bindchange="handleChange" previous-margin="100rpx" next-margin="90rpx" circular current="{{indexCurrent}}" interval="10000">
+      <block wx:for="{{dataList}}" wx:key="{{index}}">
+        <swiper-item class="item">
+          <view class="adverbox">
+            <video id="video{{index}}" wx:if="{{currentIndex==index}}" poster="{{url+item.cover_path}}" data-id="{{index}}" direction="0" class="itemVideo {{currentIndex==index?'active':''}}" src="{{url+item.video_path}}" object-fit="fill" data-index="{{index}}" bindended="bindended" bindfullscreenchange="bindfullscreenchange" show-play-btn="{{true}}" vslide-gesture-in-fullscreen="{{false}}" play-btn-position="center" enable-progress-gesture="{{false}}" show-progress="{{false}}" show-fullscreen-btn="{{false}}" show-center-play-btn="{{false}}" controls="{{false}}" custom-cache="{{false}}" initial-time='0.01'>
+              <cover-image class="coverView" wx:if="{{show}}" src="/imgs/new/adverticon.png" bindtap="getTickets" style="left:{{left}}rpx;top:{{top}}rpx"></cover-image>
+              <cover-view class="covertime" wx:if="{{show}}" bindtap="getTickets" style="left:{{left+110}}rpx;top:{{top+20}}rpx">{{ seconds}}秒</cover-view>
+              <cover-view class="covertitle" wx:if="{{show}}" bindtap="getTickets" style="left:{{left+30}}rpx;top:{{top+60}}rpx">点击领取抽奖券</cover-view>
+              <block wx:if="{{showFull}}">
+                <view class="daojishi">{{daojishi}}s</view>
+                <view class="coverback1" bindtap="backFull">
+                  <image class="i" src="/imgs/new/left.png"></image>
+                  <view class="v">返回</view>
+                </view>
+              </block>
+            </video>
+            <image class="itemImg {{currentIndex==index?'active2':''}}" src="{{url+item.pic_path}}" bindtap="call" data-i="{{item}}" bindlongpress="longPress" show-menu-by-longpress/>
+            <view class="itemPrize {{currentIndex==index?'active3':''}}" wx:if="{{item.get_tickets==0}}">未领取</view>
+            <view class="itemPrize itemPrize1 {{currentIndex==index?'active3':''}}" wx:if="{{item.get_tickets!=0}}">已领半张券</view>
+            <image class="playImg" wx:if="{{showPlayIcom}}" src="/imgs/new/play.png" bindtap="clickPlay" data-index="{{index}}" />
+            <image class="coverImg" wx:if='{{currentIndex!=index}}' src="{{url+item.cover_path}}" data-index="{{index}}" />
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</block>
+<block wx:else>
+  <view class="nodatabox">
+    <view class="img">
+      <image src="/imgs/new/nodata.png" style="width:300rpx;height:300rpx;" />
+    </view>
+    <view class="tip">暂无广告信息</view>
+  </view>
+</block>

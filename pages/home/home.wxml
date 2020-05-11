@@ -1,0 +1,95 @@
+<pagePublic/>
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<van-popup show="{{ authoaddress }}" custom-class="popup1">
+  <view class='layer'>
+    <view class='title'>警告</view>
+    <view class='txt'>请允许获取地理位置,否则将无法使用.</view>
+    <button open-type='openSetting' plain='true' hover-class='none' bindopensetting='agreeAddress'>确定</button>
+  </view>
+</van-popup>
+<view class='headTopNav'>
+  <view class='address'>
+    <navigator url='/pages/address/address' hover-class="none">
+      <van-icon name="location-o" />
+      <text class='text_hidden'>{{addressName}}</text>
+      <van-icon name="arrow" style='float:right;' />
+    </navigator>
+  </view>
+  <swiper indicator-dots="{{data.topImages.length>1?true:false}}" autoplay="{{autoplay}}" indicator-color="{{indicator}}" indicator-active-color="{{indicatorActive}}" interval="{{interval}}" duration="{{duration}}" style="height:300rpx;">
+    <block wx:for="{{data.topImages}}">
+      <navigator url='{{item.link?item.link+"&from_id=0&source=31"+"&ope_id="+ope_id:""}}' bindtap='clickTopimg' data-id='{{item.id}}'>
+        <swiper-item>
+          <image src="{{rootUrl+item.path}}" class="slide-image" mode="widthFix" />
+        </swiper-item>
+      </navigator>
+    </block>
+  </swiper>
+</view>
+
+<!-- 活动精选 -->
+<view>
+  <view class='inner'>
+    <view class='between'>
+      <view class="tit">活动精选</view>
+      <navigator class='more' url="/pages/index/index" open-type="switchTab">查看更多
+        <van-icon name="arrow" />
+      </navigator>
+    </view>
+  </view>
+  <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+    <view class='block' wx:for="{{data.act_recommend}}">
+      <navigator url='/pages/bargain/bargain?from_id=0&source=31&act_no={{item.no}}&inst_id={{item.inst_id}}&ope_id={{ope_id}}'>
+        <view class='zz'></view>
+        <image src='{{rootUrl+item.pic_path}}'></image>
+        <view class='text'>
+          <view class='h1 van-ellipsis'>{{filter.decode(item.title)}}</view>
+          <view class='txt flex' style='align-items:center;'>
+            <view style='margin-right:10rpx;'>
+              <block wx:if="{{item.startDiff>0}}">
+                <image src='../../imgs/2.png' class='status'></image>即将开始
+              </block>
+              <block wx:elif='{{item.startDiff<=0&&item.endDiff>0}}'>
+                <image src='../../imgs/h.png' class='status'></image>进行中
+              </block>
+              <block wx:else>
+                已结束
+              </block>
+            </view>
+            <view>
+              <van-icon name="location" />{{item.mindis}}~{{item.maxdis}}km</view>
+          </view>
+          <view class='tip van-ellipsis'>
+            <text>K</text> {{item.name}}</view>
+        </view>
+      </navigator>
+    </view>
+  </scroll-view>
+</view>
+<!-- 附近机构 -->
+<view>
+  <view class='inner'>
+    <view class='between'>
+      <view class="tit">附近机构</view>
+      <navigator class='more' url="/pages/nearby/nearby" open-type="switchTab">查看更多
+        <van-icon name="arrow" />
+      </navigator>
+    </view>
+  </view>
+  <view class='list'>
+    <navigator class='li' wx:for="{{data.around_insts}}" url='/pages/nearbydetail/nearbydetail?id={{item.inst_id}}'>
+      <view class='list_lf'>
+        <image src="{{rootUrl+item.cover_image}}"></image>
+      </view>
+      <view class='list_rt'>
+        <view class='actName text_hidden'>{{item.name}}</view>
+        <view class='act_time text_hidden' wx:if='{{item.intro}}'>{{item.intro}}</view>
+        <view class='distance'>
+          <van-icon name="location" />{{item.mindis}}~{{item.maxdis}}km</view>
+        <view class='tags'>
+          <text wx:if='{{item.category_name}}'>{{item.category_name}}</text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</view>
+<van-toast id="van-toast" />

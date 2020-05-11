@@ -1,0 +1,47 @@
+<view class="topline"></view>
+<view class="databox">
+  <view class="title">{{name}}{{type==5||type==9?"(仅限上海地区)":""}}</view>
+  <view class="img">
+    <image src="{{serverUrl+intropath}}" style="width:690rpx;" mode="widthFix" />
+  </view>
+  <pagePublic noFixed/>
+  <view class="getbtn" bindtap="goMy" wx:if="{{type==2}}">
+    <view>会员签到</view>
+  </view>
+  <navigator class="getbtn" wx:if="{{type==6}}" url="/pages/unions/unions?union=1&tabInd=0">
+    查看教育机构列表
+  </navigator>
+  <navigator class="getbtn" wx:elif="{{type==7}}" url="/pages/unions/unions?union=0&tabInd=1">
+    查看儿童乐园列表
+  </navigator>
+  <navigator class="getbtn" wx:elif="{{type==5}}" url="/pages/getPrize/ticketList/ticketList">
+    转赠
+  </navigator>
+  <navigator class="getbtn" wx:elif="{{type==10}}" url="/pages/new/recharge/recharge">
+    立即获券
+  </navigator>
+  <navigator class="getbtn" wx:elif="{{type==2}}" url="/pages/user/advert/advert">
+    立即获券
+  </navigator>
+
+  <view class='list' wx:if='{{type==9}}'>
+    <button class='li' open-type='share'>
+      <image src='../../../imgs/weixin.png'></image>
+      分享给好友
+    </button>
+    <navigator class='li' bindtap='shareFriend' url=''>
+      <image src='../../../imgs/friend.png'></image>
+      分享朋友圈
+    </navigator>
+  </view>
+</view>
+
+<van-popup show="{{ show }}" bind:close="onClose" custom-class='layer'>
+  <view class='conten'>
+    <image src='{{serverUrl+shareImg}}' class='shareImg' mode='widthFix'></image>
+    <button class='ok' bindtap='saveImg'>
+      <image src='/imgs/downImg.png' class='dowmImg'></image>
+      保存图片到相册</button>
+  </view>
+</van-popup>
+<van-toast id="van-toast" />

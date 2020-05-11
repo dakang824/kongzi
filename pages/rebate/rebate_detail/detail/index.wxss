@@ -1,0 +1,76 @@
+.header .user {
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 50px;
+  margin-right: 30rpx;
+}
+
+.header .box {
+  background: #fff;
+  width: 630rpx;
+  margin: auto;
+  padding: 35rpx 30rpx;
+  box-shadow: 0px 1rpx 30rpx 0px rgba(153, 153, 153, 0.2);
+  border-radius: 10rpx;
+  position: relative;
+  top: 25rpx;
+  align-items: center;
+}
+.between{
+  margin: 0;
+}
+.header {
+  height: 140rpx;
+  background: #4da5fc;
+}
+
+.header .rt .name {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.footer {
+  font-size: 24rpx;
+  font-weight: 500;
+  color: #999;
+}
+
+.footer view {
+  margin-right: 50rpx;
+}
+
+.footer text {
+  color: #4da5fc;
+}
+
+.list {
+  margin: 100rpx 30rpx 0;
+}
+
+.li .person {
+  max-width: 88rpx;
+  border-radius: 50px;
+  max-height: 88rpx;
+  margin-right: 30rpx;
+}
+
+.li .name {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.li .date{
+  font-size:22rpx;
+  color: #999;
+}
+.list .li{
+  align-items: center;
+  padding: 30rpx 30rpx;
+  border-bottom: 1px solid #f3f3f3;
+}
+.list .li .footer{
+  margin-top:10rpx; 
+}
+.li .rt {
+  width: 100%;
+}

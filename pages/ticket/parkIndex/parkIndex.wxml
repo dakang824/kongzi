@@ -1,0 +1,65 @@
+<pagePublic/>
+<view class="topline"></view>
+<view class="detailbox">
+  <view class="imgbox">
+    <image src="{{serverUrl}}{{dataList.park_info.top_pic}}" style="width:690rpx;height:360rpx;border-radius:20rpx;" />
+  </view>
+  <view class="detail flex">
+    <view class="logoname">{{dataList.park_info.name}}</view>
+    <view class="num">（{{dataList.park_info.branches}}个园区）</view>
+  </view>
+</view>
+<van-tabs active="{{ active }}" bind:change="onChange">
+  <van-tab title="介绍">
+    <view class="intro">
+      <view class="imgbox" style="margin-top:30rpx;">
+        <block wx:for='{{dataList.park_intro_images}}'>
+          <image src="{{serverUrl+item.url}}" mode="widthFix" style="width:690rpx;" />
+        </block>
+      </view>
+    </view>
+  </van-tab>
+  <van-tab title="门票">
+    <view class="ticketbox">
+      <navigator url='/pages/ticket/indexTicketDetail/indexTicketDetail?id={{item.id}}&park_id={{item.park_id}}' class="ticketitem flex" wx:for="{{dataList.tickets}}" wx:key="{{index}}">
+        <view class="left">
+          <image src="{{serverUrl}}{{item.list_pic}}" style="width:100%;height:100%;border-radius:10rpx;" />
+        </view>
+        <view class="right">
+          <view class="row title">{{item.name}}</view>
+          <view class="row flex" style="margin-top:6rpx;">
+            <view class="rowicon"></view>
+            <view class="school">{{item.park_name}}（{{dataList.park_info.branches}}个园区）</view>
+          </view>
+          <view class="row flex" style="margin-top:6rpx;">
+            <view class="old" wx:if="{{item.type==1}}" style="width:60rpx;">次票</view>
+            <view class="old" wx:if="{{item.type==2}}" style="width:60rpx;">套票</view>
+            <view class="old" wx:if="{{item.type==3}}" style="width:60rpx;">年票</view>
+            <view class="old" style="margin-left:20rpx;">{{item.age_from}}~{{item.age_to}}岁</view>
+          </view>
+          <view class="row flex pricebox" style="margin-top:20rpx;">
+            <view class="price">{{item.price}}元</view>
+            <!-- <view class="distancebox flex">
+                            <image src="/imgs/address.png" style="width:20rpx;height:24rpx;" />
+                            <view class="distance">{{item.new_mindis}}km~{{item.new_maxdis}}km</view>
+                        </view> -->
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </van-tab>
+  <van-tab title="园区">
+    <view class="schoolbox">
+      <view class="itembox" wx:for="{{dataList.branches}}" wx:key="{{index}}">
+        <view class="name">{{item.name}}</view>
+        <view class="info" style="margin-top:20rpx;">电话：{{item.phone}}</view>
+        <view class="info">地址：{{item.address}}</view>
+      </view>
+    </view>
+  </van-tab>
+</van-tabs>
+<view class="sendbtn" bindtap="callUp">
+  <view>咨询</view>
+</view>
+
+<view style="height:180rpx;"></view>

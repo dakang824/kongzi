@@ -1,0 +1,161 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<pagePublic noFixed/>
+<view>
+  <view class='head'>
+    <view class='txt'>账户余额(元)</view>
+    <view class='money'>￥{{filter.fixed(totalMoney*1||0,2)}}</view>
+    <view class='txt'>可提现金额 ￥{{filter.fixed(w_amount/100||0,2)}}</view>
+  </view>
+  <van-tabs active="{{ active }}" bind:change="onChange" swipeable bind:scroll='scroll' swipe-threshold='4'>
+    <van-tab title="全部">
+      <view class='timeSelect van-hairline--bottom {{fixed?"fixed":""}}'>
+        <picker mode="date" value="{{all.start}}" end="{{nowTime}}" bindchange="timeChange" data-id='1'>
+          <view class="picker">
+            {{all.start}}
+          </view>
+        </picker>
+        <text>至</text>
+        <picker mode="date" value="{{all.end}}" end="{{nowTime}}" bindchange="timeChange" data-id='2'>
+          <view class="picker">
+            {{all.end}}
+          </view>
+        </picker>
+      </view>
+      <template is="list" data="{{data:allData}}"></template>
+    </van-tab>
+    <van-tab title="收益">
+      <view class='timeSelect van-hairline--bottom  {{fixed?"fixed":""}}'>
+        <picker mode="date" value="{{profit.start}}" end="{{nowTime}}" bindchange="timeChange" data-id='3'>
+          <view class="picker">
+            {{profit.start}}
+          </view>
+        </picker>
+        <text>至</text>
+        <picker mode="date" value="{{profit.end}}" end="{{nowTime}}" bindchange="timeChange" data-id='4'>
+          <view class="picker">
+            {{profit.end}}
+          </view>
+        </picker>
+      </view>
+      <template is="list" data="{{data:profitData}}"></template>
+    </van-tab>
+    <van-tab title="提现">
+      <view class='timeSelect van-hairline--bottom  {{fixed?"fixed":""}}'>
+        <picker mode="date" value="{{cash.start}}" end="{{nowTime}}" bindchange="timeChange" data-id='5'>
+          <view class="picker">
+            {{cash.start}}
+          </view>
+        </picker>
+        <text>至</text>
+        <picker mode="date" value="{{cash.end}}" end="{{nowTime}}" bindchange="timeChange" data-id='6'>
+          <view class="picker">
+            {{cash.end}}
+          </view>
+        </picker>
+      </view>
+      <template is="list" data="{{data:cashData}}"></template>
+    </van-tab>
+    <van-tab title="消费">
+      <view class='timeSelect van-hairline--bottom  {{fixed?"fixed":""}}'>
+        <picker mode="date" value="{{consumet.start}}" end="{{nowTime}}" bindchange="timeChange" data-id='7'>
+          <view class="picker">
+            {{consumet.start}}
+          </view>
+        </picker>
+        <text>至</text>
+        <picker mode="date" value="{{consumet.end}}" end="{{nowTime}}" bindchange="timeChange" data-id='8'>
+          <view class="picker">
+            {{consumet.end}}
+          </view>
+        </picker>
+      </view>
+      <template is="list" data="{{data:consume}}"></template>
+    </van-tab>
+    <van-tab title="退款">
+      <view class='timeSelect van-hairline--bottom  {{fixed?"fixed":""}}'>
+        <picker mode="date" value="{{refund.start}}" end="{{nowTime}}" bindchange="timeChange" data-id='13'>
+          <view class="picker">
+            {{refund.start}}
+          </view>
+        </picker>
+        <text>至</text>
+        <picker mode="date" value="{{refund.end}}" end="{{nowTime}}" bindchange="timeChange" data-id='14'>
+          <view class="picker">
+            {{refund.end}}
+          </view>
+        </picker>
+      </view>
+      <template is="list" data="{{data:refundData}}"></template>
+    </van-tab>
+    <van-tab title="充值">
+      <view class='timeSelect van-hairline--bottom  {{fixed?"fixed":""}}'>
+        <picker mode="date" value="{{recharge.start}}" end="{{nowTime}}" bindchange="timeChange" data-id='9'>
+          <view class="picker">
+            {{recharge.start}}
+          </view>
+        </picker>
+        <text>至</text>
+        <picker mode="date" value="{{recharge.end}}" end="{{nowTime}}" bindchange="timeChange" data-id='10'>
+          <view class="picker">
+            {{recharge.end}}
+          </view>
+        </picker>
+      </view>
+      <template is="list" data="{{data:cashData}}"></template>
+    </van-tab>
+    <van-tab title="平台补贴">
+      <view class='timeSelect van-hairline--bottom  {{fixed?"fixed":""}}'>
+        <picker mode="date" value="{{subsidy.start}}" end="{{nowTime}}" bindchange="timeChange" data-id='11'>
+          <view class="picker">
+            {{subsidy.start}}
+          </view>
+        </picker>
+        <text>至</text>
+        <picker mode="date" value="{{subsidy.end}}" end="{{nowTime}}" bindchange="timeChange" data-id='12'>
+          <view class="picker">
+            {{subsidy.end}}
+          </view>
+        </picker>
+      </view>
+      <template is="list" data="{{data:subsidyData}}"></template>
+    </van-tab>
+    <van-tab title="上课全返">
+      <view class='timeSelect van-hairline--bottom  {{fixed?"fixed":""}}'>
+        <picker mode="date" value="{{allBack.start}}" end="{{nowTime}}" bindchange="timeChange" data-id='15'>
+          <view class="picker">
+            {{allBack.start}}
+          </view>
+        </picker>
+        <text>至</text>
+        <picker mode="date" value="{{allBack.end}}" end="{{nowTime}}" bindchange="timeChange" data-id='16'>
+          <view class="picker">
+            {{allBack.end}}
+          </view>
+        </picker>
+      </view>
+      <template is="list" data="{{data:allBackData}}"></template>
+    </van-tab>
+  </van-tabs>
+</view>
+<van-notify id="van-notify" />
+
+<template name='list'>
+  <view class='list'>
+    <block wx:if="{{data.length}}">
+      <view class='li' wx:for='{{data}}'>
+        <view class='lf'>
+          <!-- <view class='tit'>XXXXX视频课程</view> -->
+          <view class='money'>{{item.time}}</view>
+        </view>
+        <view class='rt'>
+          {{item.type==1||item.type==4||item.type==5||item.type==6||item.type==7?"+":"-"}}{{item.amount/100}}元
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="noData">
+        ~ 没有更多数据 ~
+      </view>
+    </block>
+  </view>
+</template>

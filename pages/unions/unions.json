@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "search": "../../dist/search/index",
+    "van-popup": "../../dist/popup/index",
+    "van-slider": "../../dist/slider/index",
+    "van-search": "../../dist/search/index",
+    "van-loading": "../../dist/loading/index"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "联盟成员列表"
+}

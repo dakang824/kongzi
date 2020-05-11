@@ -1,0 +1,5 @@
+@import "/pages/new/pullNewUser/pullNewUser.wxss";
+.itembox{
+  padding-top: 30rpx;
+  margin-top:0;
+}

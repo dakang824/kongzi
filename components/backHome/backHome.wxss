@@ -1,0 +1,16 @@
+.back_icon {
+  position: fixed;
+  bottom: 109rpx;
+  right: 10rpx;
+  margin: auto;
+  text-align: center;
+  width: 134rpx;
+  height: 134rpx;
+  z-index: 9999999;
+}
+
+.back_home {
+  width: 134rpx;
+  height: 134rpx;
+  vertical-align: center;
+}

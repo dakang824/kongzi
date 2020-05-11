@@ -1,0 +1,37 @@
+<pagePublic noFixed/>
+<block wx:if="{{dataList.length}}">
+  <view class="btmbox">
+    <view class="itembox flex" wx:for="{{dataList}}" wx:key="{{index}}">
+      <view class="leftbox">
+        <view class="top_icon"></view>
+        <view class="btm_icon"></view>
+        <view class="middle_icon"></view>
+        <view class="typebox">
+          <view class="type">通用券</view>
+          <!-- <view class="getbtn">转赠</view> -->
+          <button class="getbtn" open-type="share" wx:if="{{item.status==0}}" bindtap="foward" data-index="{{index}}" data-id="{{item.id}}" data-getTime="{{item.get_time}}" data-validTime="{{item.valid_time}}">转赠</button>
+          <!-- <button class="getbtn" wx:if="{{item.status!=1}}">取消转赠</button> -->
+          <view class="getbtn" wx:if="{{item.status==1}}" bindtap="cancelForward" data-id="{{item.id}}">取消转赠</view>
+        </view>
+      </view>
+      <view class="rightbox">
+        <view class="time1 com flex">
+          <view class="notice">过期时间：
+            <text>{{item.new_valid_time}}</text>
+          </view>
+          <view class="tip" wx:if="{{item.isExp==1}}">即将过期</view>
+        </view>
+        <view class="time2 com">领取时间：{{item.new_get_time}}</view>
+        <view class="range com">使用范围：除特定抽奖活动外，全场通用。</view>
+      </view>
+    </view>
+  </view>
+</block>
+<block wx:else>
+  <view class="nodatabox">
+    <view class="img">
+      <image src="/imgs/new/nodata.png" style="width:300rpx;height:300rpx;" />
+    </view>
+    <view class="tip">暂无抽奖券</view>
+  </view>
+</block>

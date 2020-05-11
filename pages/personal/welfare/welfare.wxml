@@ -1,0 +1,7 @@
+<block wx:for='{{4}}'>
+	<van-image width="100%" src="{{imageurl+'welfare'+(index+1)}}.jpg" fit='widthFix' use-loading-slot lazy-load image-class='image'> 
+		<van-loading slot="loading" type="spinner" size="20" vertical />
+	</van-image>
+</block>
+
+<button bindtap="jump" wx:if='{{success==0}}'>立即申请</button>

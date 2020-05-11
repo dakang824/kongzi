@@ -1,0 +1,70 @@
+<pagePublic/>
+<view class='headInfo'>
+  <view class='bg'>
+    <view class='headTit'>
+      <image src='{{rootUrl+data.img}}' class='img'></image>
+      <view class='right'>
+        <view class='tit'>
+          <text>{{data.lable}}</text>{{data.title}}</view>
+        <view class='money'>¥{{data.money}}</view>
+        <view class='time'>活动时间：{{data.activeTime}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='from'>
+  <van-cell-group>
+    <van-field clearable label="孩子姓名:" placeholder="{{order.stu_name}}" bind:clear="onClickIcon" bind:change="input" data-id='1' input-class='clear_hair_top' disabled='{{true}}' />
+  </van-cell-group>
+  <van-cell-group>
+    <van-field clearable type="number" label="孩子年龄:" placeholder="{{order.stu_age}}" bind:change="input" data-id='2' bind:clear="onClickIcon" disabled='{{true}}' />
+  </van-cell-group>
+  <van-cell-group>
+    <van-field value="{{order.mobile}}" clearable type="number" label="联系电话:" placeholder="{{order.contact}}" bind:clear="onClickIcon" bind:change="input" data-id='3' disabled='{{true}}' />
+  </van-cell-group>
+
+
+  <view class='form'>
+    <view class='tit'>填写以下校区到访时间：</view>
+    <view class='block' wx:for="{{order.books}}">
+      <view class='title'>{{item.branch_name}}</view>
+      <view class='inputTime van-hairline--bottom'>
+        <text>到访时间:</text>
+        <view bindtap="popTime" data-id='{{index}}'>{{item.time}}</view>
+      </view>
+      <view class='inputTime van-hairline--bottom'>
+        <text>备注信息:</text>
+        <block wx:if="{{show}}">
+          <view class='textarea'>{{order.books[index].comment}}</view>
+        </block>
+        <block wx:else>
+          <textarea wx:if='{{!timeShow}}' bindinput='textarea' auto-height="{{true}}" data-id='{{index}}' value='{{order.books[index].comment}}' />
+          <view wx:if='{{timeShow}}' class='textarea'>{{order.books[index].comment}}</view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <van-button size="large" bind:click="sign" custom-class='sumit {{disabled?"disabled":"ok"}}' round disabled="{{disabled}}">继续</van-button>
+</view>
+
+
+<van-toast id="van-toast" />
+
+<van-popup show="{{ timeShow }}" bind:close="onClose" position='bottom'>
+  <van-datetime-picker type="datetime" value="{{ currentDate }}" min-date="{{ minDate }}" max-date="{{ maxDate }}" bind:confirm='confirm' bind:cancel='onClose' />
+</van-popup>
+<van-popup show="{{ show }}" custom-class='layer'>
+  <view class='close' bindtap="layerClose">
+    <van-icon name="cross" />
+  </view>
+  <view class='circle'>
+    <van-icon name="success" />
+  </view>
+  <view class='success_txt'>
+    恭喜您 您已预约成功 ~</view>
+  <view>
+    <van-button round custom-class='btn' bind:click='goback'>返回活动</van-button>
+  </view>
+  <van-button round custom-class='btn btn1' bind:click='gomeet'>进入预约列表</van-button>
+</van-popup>

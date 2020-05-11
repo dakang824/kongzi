@@ -1,0 +1,35 @@
+<view class='page'>
+  <image src='{{imgUrl}}share.jpg' class='img' mode="widthFix"></image>
+  <view class='content'>
+    分享此活动给您的朋友，
+    <block wx:if='{{d.seclevel_profit}}'>您的朋友在支付的时候会获得{{d.shared_discount}}%的优惠，同时</block>您将获得支付金额的{{d.firstlevel_profit}}%{{tx}}；
+    <block wx:if='{{d.seclevel_profit}}'>
+      您朋友分享给其他朋友后，您仍会获得支付金额的{{d.seclevel_profit}}%{{tx}}。
+    </block>
+    {{txt}}可以获得同样{{tx}}。
+  </view>
+  <view class='list'>
+    <button class='li' open-type='share'>
+      <image src='../../../imgs/weixin.png'></image>
+      分享给好友
+    </button>
+    <navigator class='li' bindtap='shareFriend' url=''>
+      <image src='../../../imgs/friend.png'></image>
+      {{txt}}
+    </navigator>
+  </view>
+  <block wx:if='{{d.type==4||d.isInstOrders==0}}'>
+    <navigator url='/pages/bargain/courses/courses?union_id={{d.inst_id}}&order_no={{d.no}}' class='selClass' wx:if='{{d.selected_course!==1}}'>选择课程</navigator>
+    <!-- <button class='selClass' wx:else style='color:#ccc;border-color:#ccc;background:rgba(238,238,238,1);opacity:.8;'>选择课程</button> -->
+  </block>
+</view>
+
+<van-popup show="{{ show }}" bind:close="onClose" custom-class='layer'>
+  <view class='conten'>
+    <image src='{{rootUrl+shareImg}}' class='shareImg'></image>
+    <button class='ok' bindtap='saveImg'>
+      <image src='/imgs/downImg.png' class='dowmImg'></image>
+      保存图片到相册</button>
+  </view>
+</van-popup>
+<van-toast id="van-toast" />

@@ -1,0 +1,280 @@
+.flex{
+    display: flex;
+}
+.header{
+    width:750rpx;
+    height: 342rpx;
+    position: relative;
+}
+.header .cardbg{
+    width: 100%;
+    height: 100%;
+}
+.header .cardinfo{
+    position: absolute;
+    top:40rpx;
+    left:50%;
+    transform: translate(-50%,0)
+}
+.header .cardinfo .smallman{
+    position: absolute;
+    top:38rpx;
+    left:39rpx;
+}
+.header .cardinfo .money{
+    position: absolute;
+    left:38rpx;
+    bottom:60rpx;
+}
+.detail{
+    margin-top: 150rpx;
+
+}
+.box{
+    width: 690rpx;
+    margin: 0 auto;
+}
+.box .title{
+    font-size:40rpx;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+}
+.box .tip{
+    font-size:32rpx;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(17,17,17,1);
+    margin-top: 60rpx;
+}
+.box .rule{
+    font-size:26rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(17,17,17,1);
+    line-height:50rpx;
+}
+.box .btn{
+    width:600rpx;
+    height:80rpx;
+    background:linear-gradient(90deg,rgba(244,229,191,1),rgba(222,192,124,1));
+    border-radius:40rpx;
+    font-size:32rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    line-height: 80rpx;
+    text-align: center;
+    /* margin-top: 180rpx; */
+    margin: 180rpx auto 0;
+}
+.mask{
+    width:750rpx;
+    height:100vh;
+    background:rgba(0,0,0,1);
+    opacity:0.7;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top:0;
+}
+.buybox{
+    width:750rpx;
+    height:730rpx;
+    background:rgba(255,255,255,1);
+    border-radius:20rpx 20rpx 0 0;
+    position: fixed;
+    z-index: 20;
+    bottom:0;
+    left:0;
+}
+.buydetail{
+    display: flex;
+    flex-direction: column;
+    width:690rpx;
+    align-items: center;
+    margin: 0 auto;
+}
+.buydetail>view{
+    width:690rpx;
+}
+.buydetail .row1{
+    font-size:32rpx;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(17,17,17,1);
+    margin: 43rpx 0 0 0;
+    text-align: center;
+}
+.buydetail .row2{
+    justify-content: space-between;
+    margin-top:30rpx;
+}
+.buydetail .row2 .key{
+    font-size:28rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+}
+.buydetail .row2 .value>view{
+    margin: 0 31rpx;
+}
+.buydetail .boldline{
+    width:690rpx;
+    height:2rpx;
+    background:rgba(238,238,238,1);
+    margin-top: 30rpx;
+}
+.buydetail .row3{
+    height: 100rpx;
+    border-top: 1rpx solid rgba(238,238,238,1);
+    border-bottom: 1rpx solid rgba(238,238,238,1);
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30rpx;
+}
+.buydetail .row3 .key{
+    font-size:28rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(153,153,153,1);
+}
+.buydetail .row3 .value{
+    font-size:28rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+    margin-right: 10rpx;
+}
+.buydetail .row4{
+    height: 180rpx;
+    padding-top:60rpx;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+.buydetail .row4 .key{
+    font-size:32rpx;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+}
+.buydetail .row4 .value{
+    font-size:44rpx;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+    margin-right: 10rpx;
+}
+.buybox .buybtn{
+    width:750rpx;
+    height:98rpx;
+    background:rgba(255,255,255,1);
+    padding: 0 25rpx;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+.buybtn .money{
+    font-size:32rpx;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(255,44,86,1);
+    line-height:44rpx;
+}
+.moneybtn .cancel{
+    width:330rpx;
+    height:80rpx;
+    background:rgba(255,255,255,1);
+    border:1rpx solid rgba(255,44,86,1);
+    border-radius:30rpx;
+    font-size:28rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(255,44,86,1);
+    line-height:80rpx;
+    text-align: center;
+}
+.moneybtn .pay{
+    width:330rpx;
+    height:80rpx;
+    background:linear-gradient(90deg,rgba(255,90,144,1),rgba(255,44,86,1));
+    border-radius:30rpx;
+    font-size:28rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    line-height:80rpx;
+    text-align: center;
+    margin-left: 30rpx;
+}
+.payway{
+    width:750rpx;
+    height:885rpx;
+    background:rgba(255,255,255,1);
+    border-radius:20rpx 20rpx 0 0;
+    position: fixed;
+    z-index: 20;
+    bottom:0;
+    left:0;
+}
+.waybox{
+    width:690rpx;
+    margin: 0 auto;
+}
+.waybox .row1{
+    font-size:32rpx;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(17,17,17,1);
+    text-align: center;
+    margin-top:45rpx;
+}
+.waybox .boldline{
+    width:690rpx;
+    height:2rpx;
+    background:rgba(238,238,238,1);
+    margin-top: 30rpx;
+}
+.waybox .money{
+    font-size:60rpx;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+    margin-top: 50rpx;
+    text-align: center;
+}
+.waybox .row2{
+    font-size:24rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(153,153,153,1);
+    justify-content: space-between;
+}
+.waybox .way1{
+    height: 158rpx;
+    align-items: center;
+    border-top:1rpx solid #EEEEEE;
+    justify-content: space-between;
+    margin-top: 50rpx;
+}
+.waybox .way1 .left .info{
+    margin-left:27rpx;
+}
+.waybox .way1 .left .info .top{
+    font-size:32rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(17,17,17,1);
+}
+.waybox .way1 .left .info .btn{
+    font-size:24rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(102,102,102,1);
+}
+.waybox .way2{
+    height:120rpx;
+    border-top: 1rpx solid #EEE;
+    border-bottom: 1rpx solid #EEE;
+    margin-top: 0;
+}

@@ -1,0 +1,3 @@
+<navigator class='back_icon' open-type='switchTab' url='/pages/new/index/index'>
+  <image src='/imgs/new/back_home.png' class='back_home'></image>
+</navigator>

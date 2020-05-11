@@ -1,0 +1,32 @@
+page {
+  background: #f1f1f1;
+}
+
+.box {
+  background: #fff;
+  border-radius: 16rpx;
+  margin: 20rpx 30rpx;
+  padding: 25rpx;
+  color: #434242;
+  font-size: 27rpx;
+}
+
+.box .li .circle {
+  width: 8rpx;
+  height: 8rpx;
+  background: #D2D2D2;
+  border-radius: 50%;
+  margin-right: 15rpx;
+}
+
+.box .li {
+  color: #696969;
+  font-size: 26rpx;
+  padding: 20rpx;
+}
+.tip{
+  font-size:21rpx;
+  color: #939393;
+  margin: 30rpx 30rpx;
+  display: block;
+}

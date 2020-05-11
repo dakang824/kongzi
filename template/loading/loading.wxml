@@ -1,0 +1,8 @@
+<template name='loading'>
+  <view class='loading_box loading_big {{isHide ? "loading_hide" : ""}}'>
+    <view class='loading_box loading_small' style='transform: translate3d({{20 * x}}%, 0px, 0px);'></view>
+  </view>
+  <cover-view class='layer {{isHide?"hiddenlayer":"showlayer"}}'>
+  
+  </cover-view>
+</template>

@@ -1,0 +1,13 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<van-popup show="{{show}}" custom-class="show_money">
+  <view class='b'>
+    <image src='{{imageurl}}show_money.png' class='img'></image>
+    <view class="txt">
+      <view class="money">
+        <text>{{filter.fixed(money.bonusAmount/100,2)}}</text> 元</view>
+        <button bindtap="onClick" disabled="{{disabled}}">{{money.btn_text||'提现到微信零钱'}}</button>
+      <view class="tip">{{money.tip_text||'领取后，还有更多好礼等着您!'}}</view>
+    </view>
+  </view>
+</van-popup>
+<image src="{{imageurl}}money.png" class="fixedMoney" bindtap="jump" wx:if='{{!show}}'></image>

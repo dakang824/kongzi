@@ -1,0 +1,48 @@
+.Selected .title {
+  color: #242424;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 57rpx;
+  margin: 50rpx 30rpx;
+}
+
+.Selected .title button {
+  color: #FF2E58 !important;
+  font-weight: initial;
+}
+.box{
+  padding: 0 30rpx;
+}
+.box .input{
+  padding: 50rpx 0 30rpx;
+}
+.box text{
+  color: #878787;
+  font-size: 27rpx;
+}
+.box .cardImg {
+  width: 690rpx;
+  height: 435rpx;
+  border-radius:20rpx;
+}
+
+.fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.fixed .disabled {
+  color: #ccc;
+  background: #eee;
+  border-radius: 0;
+}
+.fixed .ok {
+  background: linear-gradient(90deg, rgba(255, 90, 144, 1), rgba(255, 44, 86, 1));
+  border-color: transparent;
+  color: #fff;
+  border-radius: 0;
+}
+.van-cell__title{
+  font-weight: bold;
+}

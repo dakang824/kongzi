@@ -1,0 +1,141 @@
+/* @import "/pages/ticket/cardTicket/cardTicket.wxss";
+
+.head {
+  position: absolute;
+  top: 38rpx;
+  left: 38rpx;
+  display: flex;
+  align-items: center;
+}
+
+.head image {
+  display: inline-block;
+  margin-right: 10rpx;
+  vertical-align: center;
+}
+
+.list .li .smallman {
+  position: relative;
+  top: auto;
+  left: auto;
+}
+
+.list .li .money {
+  font-size: 24rpx;
+} */
+
+.flex{
+  display: flex;
+}
+.van-tab--active{
+  color: #FF2C56!important;
+}
+.van-tabs__line{
+  width:30rpx !important;
+  left:3.5% !important;
+  background: #FF2C56!important;
+}
+.itembox{
+  
+  padding: 0 30rpx;
+}
+.itembox .item{
+  width: 690rpx;
+  margin: 20rpx  auto 20rpx;
+  box-shadow:0px 0px 30rpx 0px rgba(153,153,153,0.3);
+  border-radius:20rpx;
+
+}
+.item .img{
+  position: relative;
+}
+.item .img .lineup{
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  top: -2rpx;
+  left: 0rpx;
+}
+.item .img .use{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width:188rpx;
+  height: 152rpx;
+}
+.title{
+  padding: 10rpx 20rpx;
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(17,17,17,1);
+  line-height:44rpx;
+}
+.time{
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(17,17,17,1);
+  padding: 10rpx 20rpx;
+}
+.sendbox{
+  /* height: 118rpx; */
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1rpx solid #eee;
+  /* padding: 25rpx 0rpx; */
+  
+}
+.sendbox .left{
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(255,44,86,1);
+  line-height:40rpx;
+  margin-left: 20rpx;
+  padding: 25rpx 0;
+}
+.sendbox .right{
+  margin-right: 20rpx;
+  padding: 25rpx 0rpx;
+}
+.sendbox .right .send{
+  width:150rpx;
+  height:56rpx;
+  background:linear-gradient(90deg,rgba(255,90,144,1),rgba(255,44,86,1));
+  border-radius:28rpx;
+  font-size:26rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  line-height:56rpx;
+  text-align: center;
+}
+.sendbox .right .ercode{
+  width:150rpx;
+  height:56rpx;
+  border:1px solid rgba(255,44,86,1);
+  border-radius:28rpx;
+  font-size:26rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(255,44,86,1);
+  line-height:56rpx;
+  text-align: center;
+  margin-left: 30rpx;
+}
+.nodatabox .img {
+  text-align: center;
+  margin-top: 280rpx;
+}
+
+.nodatabox .tip {
+  text-align: center;
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 54rpx;
+  margin-top: 49rpx;
+}

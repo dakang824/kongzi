@@ -1,0 +1,29 @@
+ <pagePublic/>
+<image src="{{serverUrl}}{{imgStr}}sharePage.png" class="bg_pic" mode="aspectFill">
+  <view class="titlebox">
+    <view>每天数百件奖品免费送，真正的拿到手软</view>
+    <view style="margin-top:5rpx;">现金、实物商品、网红物品，应有尽有！</view>
+    
+  </view>
+</image>
+<van-button type="default" custom-class="btn" bind:click="goDraw">点击抽奖</van-button>
+
+<!-- 新用户登录 -->
+<view class="mask" wx:if="{{isNewUser}}" bindtap="closeNewUser"></view>
+<view class="newuser" wx:if="{{isNewUser}}">
+  <view class="img">
+    <image src="{{imgUrl}}newUser.png" style="width:298rpx;height:278rpx;" />
+  </view>
+  <view class="row2">恭喜您获得
+    <text class="num">{{ticket_count}}</text>张抽奖券</view>
+  <view class="row3">每使用1张抽奖券，您会获得{{login.settings.draw_bonus}}元现金。分享给朋友，会获得更多抽奖券。</view>
+  <view class="row4">
+    <view class="left" bindtap="goDraw">去抽奖</view>
+    <navigator url='/pages/new/getTicket/getTicket?type=9&name=分享获券任务&intro_path=data/plat/ticketTasks/8.png' class="right">去分享</navigator>
+  </view>
+  <view class="close" bindtap="closeNewUser">
+    <image src="/imgs/close.png" style="width:30rpx;height:30rpx;" />
+  </view>
+</view>
+
+<backHome/>

@@ -1,0 +1,21 @@
+@import "/pages/ticket/ticketSend/ticketSend";
+@import "/pages/order/index/index";
+
+.box {
+  min-height: auto;
+  background: transparent;
+  padding: 0;
+}
+
+.box .li {
+  box-shadow: inherit;
+  margin-bottom: 20rpx;
+}
+
+.box .li .t {
+  padding: 0;
+  margin: 0;
+}
+.box_inner{
+  padding: 30rpx 0;
+}

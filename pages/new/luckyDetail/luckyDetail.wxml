@@ -1,0 +1,493 @@
+<block wx:if='{{showBack}}'>
+  <backHome/>
+</block>
+ <pagePublic/>
+<van-dialog id="van-dialog" />
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class='inner'>
+  <view class='header'>
+    <image src='{{serverUrl}}{{dataList.award_info.pic_path}}' mode="widthFix" class='pic'></image>
+    <view class='tip'>已集
+      <text>{{dataList.award_info.ticket_count==""?"0":dataList.award_info.ticket_count}}张</text>抽奖券
+    </view>
+    <view class='tip1'>还差
+      <text>{{(dataList.award_info.draw_limit-dataList.award_info.ticket_count)<0?"0":(dataList.award_info.draw_limit-dataList.award_info.ticket_count)}}张</text>
+    </view>
+    <image class="bigprize" src="/imgs/new/big_prize.png" style="width:124rpx;height:119rpx;" wx:if="{{dataList.award_info.draw_type==2}}" />
+  </view>
+</view>
+<view class='time vCenter' wx:if="{{dataList.award_info.isToday==1&&dataList.award_info.draw_second!=0&&dataList.award_info.status==1}}">
+  <view class='font'>距离今日开奖还剩:</view>
+  <text>{{hourTime}}</text> :
+  <text>{{minuteTime}}</text> :
+  <text>{{secondTime}}</text>
+</view>
+
+<view class='inner detail'>
+  <view class='title'>{{dataList.award_info.name}}</view>
+  <block wx:if='{{dataList.award_info.sponsor}}'>
+    <view class='between zanzhu'>
+      <view class='lf vCenter'>
+        <image src='/imgs/new/zanzhu.png' class='vip'></image>
+        <text style='max-width:380rpx' class='van-ellipsis'>{{dataList.award_info.spon_name}}<text style='font-weight: 400'>（赞助商）</text></text>
+      </view>
+      <view class='vCenter' style='color:#7E7E7E;font-size:26rpx;' bindtap='call'>
+        <image src='/imgs/new/call.png' class='call'></image>
+        电话咨询
+      </view>
+    </view>
+    <image src="{{serverUrl+dataList.award_info.sponsor}}" style="width:690rpx;height:216rpx;border-radius:10rpx;background:#f2f2f2" bindtap='preview' data-name='tap' data-e='{{serverUrl+dataList.award_info.sponsor}}' show-menu-by-longpress/>
+  </block>
+  <block wx:else>
+    <view class="prizeimg" wx:if="{{dataList.ads.length!=0}}">
+      <swiper class="swiper swiper-middle" style="height:140rpx;" autoplay="{{true}}" interval="{{5000}}" duration="{{1000}}" indicator-active-color='#fff' circular easing-function='easeOutCubic'>
+        <swiper-item class="swiper-item" wx:for="{{dataList.ads}}" wx:key="{{index}}">
+          <view class="img" bindtap="goPage" data-link="{{item.link}}" data-i='{{item.id}}'>
+            <image src="{{serverUrl+item.pic_path}}" style="width:690rpx;height:140rpx;border-radius:20rpx;" />
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+  </block>
+
+  <view class='info'>
+    <block wx:if="{{dataList.award_info.status==0}}">
+      <view wx:if="{{dataList.award_info.draw_type==1}}">
+        <text class='t'>开奖条件：</text> 每集齐
+        <text class='red'>{{dataList.award_info.draw_limit}}张</text>抽奖券开一次奖
+      </view>
+      <view wx:if="{{dataList.award_info.draw_type==2}}">
+        <text class='t'>开奖条件：</text> 至少集齐
+        <text class='red'>{{dataList.award_info.draw_limit}}张</text>抽奖券
+      </view>
+      <view>
+        <text class='t'>中奖名额：</text>
+        <text class='red'>{{dataList.award_info.winners==""?"0":dataList.award_info.winners}}个</text>
+      </view>
+      <view>
+        <text class='t'>剩余奖品：</text>
+        <text class='red'>{{dataList.award_info.lefts==""?"0":dataList.award_info.lefts}}件</text>
+      </view>
+      <view wx:if="{{dataList.award_info.draw_type==1&&dataList.award_info.draw_now==0}}">
+        <text class='t'>开奖时间：</text>19:00前集齐，当天19:30开奖；之后集齐，第二天开奖
+      </view>
+      <view wx:if="{{dataList.award_info.draw_type==1&&dataList.award_info.draw_now==1}}">
+        <text class='t'>开奖时间：</text>集齐立即开奖
+      </view>
+      <view wx:if="{{dataList.award_info.draw_type==2&&dataList.award_info.draw_now==0}}">
+        <text class='t'>开奖时间：</text>每周六19:00前集齐，周六19:30开奖；之后集齐，第二周周六19:30开奖
+      </view>
+      <view wx:if="{{dataList.award_info.draw_type==2&&dataList.award_info.draw_now==1}}">
+        <text class='t'>开奖时间：</text>集齐立即开奖
+      </view>
+      <view>
+        <text class='t'>参与条件：</text>消耗
+        <text class='red'>{{dataList.award_info.tickets}}张</text>抽奖券
+      </view>
+      <view>
+        <text class='t'>活动时间：</text> {{dataList.award_info.start_time}}-{{dataList.award_info.end_time}}
+      </view>
+    </block>
+    <block wx:if="{{dataList.award_info.status==1||dataList.award_info.status==2}}">
+      <view wx:if="{{dataList.award_info.draw_now==0}}">
+        <text class='t'>开奖时间：</text>{{draw_time1}} {{draw_time2}} ({{week}})
+      </view>
+      <view wx:if="{{dataList.award_info.draw_now==1}}">
+        <text class='t'>开奖时间：</text>{{filter.sliceMunite(dataList.award_info.draw_time)}}
+        <!-- 集齐立即开奖 -->
+      </view>
+      <view>
+        <text class='t'>参与人数：</text>
+        <text class='red'>{{dataList.award_info.join_count}}人</text>
+      </view>
+      <view>
+        <text class='t'>中奖名额：</text>
+        <text class='red'>{{dataList.award_info.winners==""?"0":dataList.award_info.winners}}个</text>
+      </view>
+      <view>
+        <text class='t'>参与条件：</text>消耗
+        <text class='red'>{{dataList.award_info.tickets}}张</text>抽奖券
+      </view>
+    </block>
+  </view>
+
+  <view class='between operation iconbox flex'>
+    <view class="iconitem flex">
+      <van-icon name="eye-o" size="38rpx" />
+      <view class="com">{{dataList.award_info.view_count}}次浏览</view>
+    </view>
+    <block wx:if="{{dataList.award_info.is_like==1}}">
+      <view class="iconitem flex" bindtap="clicCancelkZan">
+        <van-icon name="good-job" size="38rpx" color="#FF2C56" />
+        <view class="com" style="color:#FF2C56">{{dataList.award_info.like_count}}次点赞</view>
+      </view>
+    </block>
+    <block wx:if="{{dataList.award_info.is_like==0}}">
+      <view class="iconitem flex" bindtap="clickZan">
+        <van-icon name="good-job-o" size="38rpx" />
+        <view class="com">{{dataList.award_info.like_count}}次点赞</view>
+      </view>
+    </block>
+    <block wx:if="{{dataList.award_info.is_collect==0}}">
+      <view class="iconitem flex" bindtap="clickCollect">
+        <van-icon name="like-o" size="38rpx" />
+        <view class="com">{{dataList.award_info.collect_count}}次收藏</view>
+      </view>
+    </block>
+    <block wx:if="{{dataList.award_info.is_collect==1}}">
+      <view class="iconitem flex" bindtap="clickCancleCollect">
+        <van-icon name="like" size="38rpx" color="#FF2C56" />
+        <view class="com" style="color:#FF2C56">{{dataList.award_info.collect_count}}次收藏</view>
+      </view>
+    </block>
+    <view class="iconitem flex">
+      <button class="sharebtn" open-type="share">
+        <image src="/imgs/new/share.png" style="width:30rpx;height:30rpx;" />
+        <view class="sharetitle">分享</view>
+      </button>
+    </view>
+  </view>
+
+  <block wx:if="{{dataList.award_info.status==0||dataList.award_info.status==1}}">
+    <block wx:if="{{dataList.award_info.is_join==0}}">
+      <button class="newbox" bindtap='checkAddress' hover-class='hover' disabled='{{joinSuccess}}'>
+        <view class="">参与抽奖</view>
+        <view class="num">({{dataList.award_info.join_count}}人参与)</view>
+      </button>
+    </block>
+
+
+    <view class="newbox1" wx:else>
+      <view class="left">
+        <view class="title">您已参与</view>
+        <view class="num">(共{{dataList.award_info.join_count}}人参与)</view>
+      </view>
+      <!-- {{dataList.award_info.is_join==1?'margin-left:130rpx ':' '}}; -->
+      <view class="right" hover-class='hover' bindtap="continue">
+        <view class="title">继续投注</view>
+        <view class="num">(已投{{dataList.award_info.my_tickets}}张券)</view>
+      </view>
+    </view>
+    <view class="remindme">
+      <van-checkbox checked-color="#FF2C56" value="{{ checked }}" wx:if="{{dataList.award_info.is_join==1}}" bind:change="onChange">开奖提醒我</van-checkbox>
+    </view>
+  </block>
+  <view class='coupon between' style="background:rgba(156,96,255,.1)">
+    <view class='vCenter'>
+      <view class='img' style="background:#9C60FF">
+        <image src='/imgs/new/renwu.png' mode="widthFix"></image>
+      </view>
+      直接获得奖品（无需参与抽奖）
+    </view>
+    <van-button hover-class='active' color="#9C60FF" type="default" round size="mini" custom-class='btn' bind:click="goPullUser">直接拿</van-button>
+  </view>
+  <view class='coupon between' style="margin-top:-50rpx;">
+    <view class='vCenter'>
+      <view class='img'>
+        <image src='/imgs/new/detail_seal.png' mode="widthFix"></image>
+      </view>
+      目前剩余{{dataList.user_tickets}}张抽奖券
+    </view>
+    <van-button hover-class='active' type="default" round size="mini" custom-class='btn' bind:click="goGetTicket">去获券</van-button>
+  </view>
+  <block wx:if='{{dataList.award_info.is_join==1&&dataList.award_info.status!=2}}'>
+    <view class='win'>
+      <view class='title'>
+        <image src='{{imgUrl}}detial_winTitle.png' mode="widthFix"></image>
+        <view class='between'>
+          <view>我中奖的概率: {{dataList.rate}}
+            <text class='s'>‰</text>
+          </view>
+          <view bindtap='showPro' class='question_right vCenter'>
+            <van-icon name="question-o" />
+          </view>
+        </view>
+      </view>
+      <view class='between txt van-hairline--bottom'>
+        <view>基础值：{{dataList.base_rate}}
+          <text class='s'>‰</text>
+        </view>
+        <view>增加值：{{dataList.add_rate}}
+          <text class='s'>‰</text>
+        </view>
+      </view>
+      <view class='scroll' wx:if="{{dataList.rate_add_lists.length!=0}}">
+        <view class='in'>
+          <view class='between {{members>5?"c":""}}' wx:for='{{dataList.rate_add_lists}}' wx:key="{{index}}">
+            <view class='vCenter'>
+              <image src='{{serverUrl}}{{item.pic_path}}' class='user' style="border-radius:50%"></image>
+              {{filter.decode(item.nickname)}}
+            </view>
+            <text>+{{item.rate}}<text class='s'>‰</text></text>
+          </view>
+        </view>
+      </view>
+      <van-button type="default" round custom-class='up_btn' style="" bind:click='showUp'>提升中奖率</van-button>
+    </view>
+
+    <view class='win rank'>
+      <view class='title'>
+        <image src='{{serverUrl}}{{imgStr}}detail_rank.png' mode="widthFix"></image>
+        <view class='between'>
+          <view>中奖概率排行榜
+          </view>
+        </view>
+      </view>
+      <view class='scroll'>
+        <view class='in'>
+          <view class='between {{ranks>7?"c":""}}' wx:for='{{dataList.rate_list}}' wx:key="{{index}}">
+            <view class='vCenter'>
+              <image src='{{serverUrl}}{{item.pic_path}}' class='user' style="border-radius:50%"></image>
+              {{filter.decode(item.nickname)}}
+            </view>
+            <view class='rt'>
+              <text>{{item.rate}}<text class='s'>‰</text></text>
+              <view class='icon'>
+                <image src='/imgs/new/rank_{{index>2?4:index+1}}.png'></image>
+                <view class='t'>{{index+1}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{dataList.award_info.status==2}}">
+    <view class='win rank'>
+      <view class='title'>
+        <image src='{{imgUrl}}detail_zj.png' mode="widthFix"></image>
+        <view class='between draw-between'>
+          <view class="row1 flex">
+            <view class="title">中奖名单</view>
+            <view class="status">已参与</view>
+          </view>
+          <view class="row2" style="margin-top: 40rpx;">参与人数：{{dataList.award_info.join_count}}人</view>
+          <view class="row2">中奖名额：{{dataList.award_info.winners}}个</view>
+        </view>
+      </view>
+      <view class='scroll'>
+        <view class='in'>
+          <view class='between {{ranks>7?"c":""}}' wx:for='{{dataList.winners}}' wx:key="{{index}}">
+            <view class='vCenter'>
+              <image src='{{serverUrl}}{{item.pic_path}}' class='user' style="border-radius:50%"></image>
+              {{filter.decode(item.nickname)}}
+            </view>
+            <view class='rt'>
+              <text style='margin-right:0'>{{filter.mobile(item.mobile)}}<text class='s'></text></text>
+              <!-- <view class='icon'>
+              </view> -->
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+<view class='info_rule'>
+  <view class='inner'>
+    <view class='t'>奖品介绍</view>
+    <view class='img'>
+      <image src='{{serverUrl}}{{dataList.award_info.intro_path}}' mode="widthFix" style="border-radius:20rpx;" class='pic' show-menu-by-longpress></image>
+    </view>
+  </view>
+</view>
+
+<view class='comment inner'>
+  <view class='between tit'>
+    <view class='t'>评论</view>
+    <view class='flex' bindtap="openShowComment">
+      <van-icon name="comment-o" size='20px' />
+      <text>写评论</text>
+    </view>
+  </view>
+
+  <view class='list'>
+    <view class='van-hairline--bottom' wx:if="{{dataList.award_comments.length!=0}}" wx:for='{{dataList.award_comments}}' wx:key="{{index}}">
+      <view class='flex li'>
+        <view class='lf vCenter'>
+          <image src='{{serverUrl}}{{item.pic_path}}' class='user' style="border-radius:50%;"></image>
+          <view class='user_info'>
+            <text>{{filter.decode(item.nickname)}}</text>
+            <view>{{item.new_create_time}}</view>
+          </view>
+        </view>
+        <view class='rt active' style="{{item.checked?'color:#FF2C56':''}}">
+          <van-icon name="good-job-o" size='17px' color="#FF2C56" wx:if="{{item.checked}}" data-no="{{item.no}}" data-index="{{index}}" />
+          <van-icon name="good-job-o" size='17px' wx:else bind:click="commentClick" data-no="{{item.no}}" data-index="{{index}}" /> {{item.like_count}}
+        </view>
+      </view>
+      <view class='say'>
+        {{item.content}}
+      </view>
+    </view>
+    <view wx:if="{{dataList.award_comments.length==0}}" class="nocomment">暂无评论</view>
+  </view>
+</view>
+
+<van-popup show="{{ probability }}" bind:close="onClose" custom-class='lay_box'>
+  <view class='lay_box'>
+    <van-icon name="cross" custom-class='lay_box_close' size='24px' color='#999' bind:click='onClose' />
+    <image src='/imgs/new/prize.png' mode="widthFix" class='topImg'></image>
+    <view class='box'>
+      <view class='title'>中奖概率说明</view>
+      <text class='content'>中奖是根据每个人的权重随机产生的，权重越大越有可能中奖，权重=基础概率+概率增加值，每邀请一位好友参与抽奖，将会为您随机增加一定的中奖概率增长值，快去邀请好友增加你的中奖概率吧。</text>
+      <!-- <van-button type="default" round custom-class='btn' bind:click='onClose'>知道了</van-button> -->
+      <view class="know" bindtap="onClose">知道了</view>
+    </view>
+  </view>
+</van-popup>
+<van-popup show="{{ up }}" bind:close="onClose" custom-class='lay_box'>
+  <view class='lay_box up'>
+    <van-icon name="cross" custom-class='lay_box_close' size='24px' color='#999' bind:click='onClose' />
+    <image src='{{imgUrl}}lay_money.png' mode="widthFix" class='topImg' style='width:268rpx;margin-top:-75rpx'></image>
+    <view class='box'>
+      <view class='title'>提升中奖概率</view>
+      <text class='content' decode>每邀请一位好友参与抽奖，将会为您随机增加一定的中奖概率增长值，好友之间也是可以相互转赠抽奖券哦~ \n个人中心-抽奖券-转赠。 </text>
+      <view class='between share' style='font-size:28rpx;'>
+        <button class="sharebtn maskshare" open-type="share" style='font-size:28rpx;'>
+          <image src="/imgs/weixin.png" style="width:44rpx;height:35rpx;" />
+          <view class="sharetitle">邀请好友</view>
+        </button>
+        <view hover-class='active' bindtap='shareFriend' class='v'>
+          <image src='/imgs/friend.png' mode="widthFix"></image>
+          分享朋友圈
+        </view>
+      </view>
+
+    </view>
+  </view>
+</van-popup>
+<van-popup use-slot show="{{ shareImgbox }}" bind:close="onClose" showConfirmButton='{{false}}' custom-class='van-dialog'>
+  <image src="{{shareImg}}" class='shareFriendImg' mode="widthFix" />
+  <view class='dialog_down' wx:if="{{shareImg!=null}}">
+    <view class='btn' hover-class='hover' bindtap='saveImg'>
+      <image src='/imgs/new/down.png' class='down'></image>
+      保存图片到相册
+    </view>
+  </view>
+</van-popup>
+
+<view class="mask" wx:if="{{showMask}}" bindtap="closeMask" catchtouchmove="preventTouchMove"></view>
+<view class="tickets" wx:if="{{showMask}}" wx:key="{{index}}" style="{{myUserTicketsList.length==0?'height:690rpx;box-sizing:border-box;padding-top:100rpx;margin-top:160rpx;':''}}" catchtouchmove="preventTouchMove">
+  <view class="need" wx:if="{{myUserTicketsList.length!=0}}">剩余{{dataList.user_tickets}}张抽奖券</view>
+  <view class="tip" wx:if="{{myUserTicketsList.length==0}}" style="color:#FF0000;font-weight:bold;font-size:38rpx;">抽奖券数量不足</view>
+  <view class="tip" wx:if="{{myUserTicketsList.length >= dataList.award_info.draw_limit}}">即可参与本次抽奖</view>
+  <block wx:if="{{myUserTicketsList.length!=0}}">
+    <scroll-view scroll-y="true" style="height:800rpx;">
+      <view class="itembox flex" wx:for="{{myUserTicketsList}}" wx:key="{{index}}" bindtap="onChoose" data-index="{{index}}">
+        <view class="leftbox">
+          <view class="top_icon"></view>
+          <view class="btm_icon"></view>
+          <view class="middle_icon"></view>
+          <view class="typebox">
+            <radio class="radio" class="common" checked="{{item.checked}}" color="#FF2C56" />
+            <view class="type">通用券</view>
+          </view>
+        </view>
+        <view class="rightbox">
+          <view class="time1 com flex">
+            <view class="notice">过期时间：
+              <text>{{item.new_valid_time}}</text>
+            </view>
+            <!-- <view class="tip" wx:if="{{item.is_valid}}">即将过期</view> -->
+          </view>
+          <view class="time2 com">领取时间：{{item.new_get_time}}</view>
+          <view class="range com">使用范围：除特定抽奖活动外，全场通用。</view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="btnbox flex">
+      <view class="all" bindtap="allChoose">
+        <radio class="radio" class="common" checked="{{isAll}}" color="#FF2C56" />
+        <view class="title">全选</view>
+      </view>
+      <view class="sure" bindtap="sureBetting">确定</view>
+      <view class="goget" bindtap="goGetTicket">去获券</view>
+    </view>
+  </block>
+  <view class="noData" wx:if="{{myUserTicketsList.length==0}}" style="margin:105rpx auto 0;">
+    <view class="img">
+      <image src="/imgs/new/no_tickets.png" style="width:200rpx;height:200rpx;" />
+    </view>
+    <view class="get" bindtap="goGetTicket">
+      <view>去获券</view>
+    </view>
+  </view>
+  <van-icon name="cross" custom-class="close" bind:click="closeMask" />
+</view>
+
+<view class="mask" wx:if="{{showcomment}}" bindtap="closeMask"></view>
+<view class="commentbox" wx:if="{{showcomment}}">
+  <view class="value">
+    <textarea placeholder="请输入评论" bindinput="inputComment"></textarea>
+  </view>
+  <view class="btnbox flex">
+    <view class="sure" bindtap="cancelComment">取消</view>
+    <view class="goget" bindtap="sureComment">评论</view>
+  </view>
+</view>
+
+<van-popup show="{{ authorization||getMobile }}" bind:close="closeMobile" custom-class='layerBox' bind:close="closeAuthorization">
+  <view class='authorBox'>
+    <view class='redbg'>
+      <image src='{{imgUrl}}auth.png' class='img' mode='widthFix'></image>
+      <view>抽奖和中奖公布都是根据参与者的微信昵称和手机号哦！请您允许吧！</view>
+    </view>
+    <view class='close' bindtap='closeAuthorization'>
+      <van-icon name="close" color='#fff' size='50rpx' />
+    </view>
+    <view class='box_tit'>
+      <view class='vCenter middle'>
+        <view class='logo'>
+          <image src='/imgs/new/logo.png' mode='widthFix'></image>
+        </view>
+        <text>孔紫家长社区</text>
+      </view>
+      <view class='middel'>
+        <view class='between' wx:if='{{!nickname}}'>
+          <view class='tip'>
+            {{nickName?nickName:'● 申请获得你的昵称、头像'}}
+          </view>
+          <block wx:if='{{nickName}}'>
+            <van-button disabled custom-class='btn active small_btn' type="info">允许</van-button>
+          </block>
+          <block wx:else>
+            <van-button round custom-class='btn active small_btn' open-type="getUserInfo" bind:getuserinfo="getInfo">允许</van-button>
+          </block>
+        </view>
+        <view class='between' wx:if='{{!mobileshow}}'>
+          <view class='tip'>
+            {{mobile?mobile:'●'+tipTxt}}
+          </view>
+          <block wx:if='{{isMobile||successGetMobile}}'>
+            <van-button disabled custom-class='btn active small_btn' type="info">允许</van-button>
+          </block>
+          <block wx:else>
+            <van-button custom-class='btn active small_btn' type="info" bind:getphonenumber='getPhoneNumber' open-type="getPhoneNumber">允许</van-button>
+          </block>
+        </view>
+
+        <van-cell-group wx:if="{{isMobile}}">
+          <van-field title-width='60px' value="{{ mobile||Mobile }}" center label="手机号" placeholder="请输入你的手机号" use-button-slot bind:input='inputMobile'>
+            <van-button slot="button" color='#FFE9EE' custom-class='sendcolor' size="small" type="info" bind:click='getCode' disabled='{{secondCode!=60}}'>{{secondCode==60?'发送验证码':secondCode+'秒'}}</van-button>
+          </van-field>
+          <van-field title-width='60px' value="{{ code }}" center label="验证码" placeholder="请输入短信验证码" border="{{ false }}" bind:input='inputCode' />
+        </van-cell-group>
+      </view>
+      <view class='btns'>
+        <van-button round custom-class='btn active sumit_btn' bind:click='sureMobile'>确定</van-button>
+      </view>
+    </view>
+  </view>
+</van-popup>
+<van-popup show="{{joinSuccess}}" bind:close="close" custom-class='layerBox1' bind:close="closeAuthorization">
+  <view class='authorBox1'>
+    <image src='{{imgUrl}}join_gift.png' class='img' mode='widthFix'></image>
+    <view class='content_txt'>
+      <!-- <view class='color'>{{showMsg}}</view> -->
+      <view class='color1'>恭喜您获得{{showMsg}}元现金</view>
+      <view class='color2'>已存入您的账户余额</view>
+      <van-button type="default" custom-class='konw' bindtap='close'>我知道了</van-button>
+    </view>
+  </view>
+</van-popup>

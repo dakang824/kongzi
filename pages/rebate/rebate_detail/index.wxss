@@ -1,0 +1,128 @@
+.header {
+  background: #4da5fc;
+  height: 200rpx;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20rpx;
+  width: 630rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  margin: auto;
+  box-shadow: 0px 1px 30px 0px rgba(153, 153, 153, 0.2);
+  padding: 30rpx;
+  top: 20rpx;
+  position: relative;
+}
+
+.head .rt {
+  position: relative;
+  top: -15rpx;
+  width: 100%;
+}
+
+.head .tit {
+  font-size: 28rpx;
+  font-weight: bold;
+  height: 67rpx;
+}
+.between{
+  margin: 0 30rpx;
+}
+.head image {
+  max-width: 200rpx;
+  max-height: 160rpx;
+  margin-right: 30rpx;
+  border-radius: 10rpx;
+}
+
+.head .money {
+  font-size: 22rpx;
+  color: #333;
+  margin: 10rpx 0;
+}
+
+.head .flex {
+  color: #999;
+  font-size: 22rpx;
+  align-items: center;
+}
+
+.content {
+  margin-top: 110rpx;
+}
+
+.block {
+  width: 330rpx;
+  height: 120rpx;
+  background: rgba(248, 248, 248, 1);
+  border-radius: 20rpx;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.block .tit {
+  font-size: 28rpx;
+}
+
+.block .num {
+  font-size: 44rpx;
+  color: #4da5fc;
+  margin-left: 44rpx;
+  margin-right: 5rpx;
+}
+
+.block .p {
+  font-size: 27rpx;
+}
+.list .li{
+  padding: 30rpx 0;
+  margin: 0 30rpx;
+  border-bottom: 1px solid #f3f3f3;
+}
+.list .li .user {
+  max-width: 88rpx;
+  max-height: 88rpx;
+  border-radius: 50px;
+  margin-right: 30rpx;
+}
+
+.list .li .rt {
+  width: 100%;
+}
+.list .li .footer{
+  margin-top:15rpx; 
+}
+.list .li .footer .txt text{
+  color: #4DA5FC;
+}
+.list .li .rt .tit {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.list .li .rt .time {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.list .flex {
+  justify-content: space-between;
+}
+
+.li .txt {
+  display: flex;
+  font-size: 24rpx;
+}
+
+.li .txt view {
+  margin-right: 50rpx;
+}
+.li .link{
+  font-size:22rpx;
+  color: #999;
+}

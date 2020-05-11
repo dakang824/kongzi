@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "van-popup": "../../../dist/popup/index",
+        "van-count-down": "../../../dist/count-down/index"
+    },
+    "navigationBarTitleText": "签到看广告"
+}

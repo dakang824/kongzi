@@ -1,0 +1,111 @@
+@import "dist/common/index.wxss";
+van-icon{
+  vertical-align: middle!important;
+}
+van-image{
+  display: inherit;
+}
+page{
+  transition: all 0.3s;
+  font-family:Microsoft YaHei;
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+.vCenter{
+  display:flex;
+  align-items:center;
+}
+.text_hidden {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flex {
+  display: flex;
+}
+
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inner {
+  margin: 30rpx;
+}
+
+.in {
+  padding: 30rpx;
+}
+
+/* 头部导航 */
+.headTopNav {
+  width: 750rpx;
+  height: 320rpx; /* 添加*/
+  background: #FA2335;
+  z-index: 0; /* 改为0*/
+  position: relative; /* 添加*/
+}
+
+.headTopNav .nav {
+  padding-top: 62rpx;
+  margin: 0 auto;
+  font-size: 38rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 38rpx; /* 添加*/
+}
+
+/* 添加*/
+.van-icon-arrow-left {
+  float: left;
+  padding-left: 24rpx;
+  font-size: 45rpx!important;
+}
+
+button::after {
+  border: none;
+  padding: 0;
+}
+/* 解决安卓和苹果textarea不兼容 */
+.ios_textarea {
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  left: -10rpx;
+  top: -8rpx;
+  line-height: inherit!important;
+}
+
+.android_textarea {
+  top: 5rpx;
+  padding: 0 !important;
+  line-height: inherit!important;
+}
+
+.hover{
+  opacity: .7;
+}
+.noData{
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 450rpx;
+  text-align: center;
+}

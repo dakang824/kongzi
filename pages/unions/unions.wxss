@@ -1,0 +1,58 @@
+@import "/pages/nearby/nearby.wxss";
+
+.headTopNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.data_box {
+  padding-top: 200rpx;
+}
+
+.btie {
+  height: 40rpx;
+  font-size: 27rpx;
+}
+.box_right{
+  position: relative;
+}
+.box_right .btie{
+  position: absolute;
+  top: 0;
+  left: 20rpx;
+  bottom: 0;
+  margin: auto;
+  font-size: 23rpx;
+  color:#999;
+}
+.list_lf{
+  position: relative;
+}
+.list_lf .menber{
+  /* position: absolute; */
+  position: absolute;
+  top: 15rpx;
+  left: -7rpx;
+  height:34rpx;
+  background:linear-gradient(90deg, rgba(98, 134, 253, 1), rgba(77, 180, 252, 1));
+  border-radius:0 6rpx 6rpx 0;
+  font-size:20rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(254,254,254,1);
+  line-height: 34rpx;
+  text-align: center;
+  padding:0 10rpx;
+}
+.list_lf .sanjiao{
+  width:0;
+  height:0;
+  border-width:8rpx 8rpx 0 0;
+  border-style:solid;
+  border-color:transparent #086ed3 transparent;
+  position:absolute;
+  top:8rpx;
+  left:-7rpx;
+}

@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "search": "../../../dist/search/index",
+    "van-popup": "../../../dist/popup/index",
+    "van-slider": "../../../dist/slider/index",
+    "van-search": "../../../dist/search/index",
+    "van-rate": "../../../dist/rate/index"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "亲子玩乐"
+}

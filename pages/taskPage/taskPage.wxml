@@ -1,0 +1,17 @@
+<van-popup show="{{ authoaddress }}" custom-class="popup1">
+  <view class='layer'>
+    <view class='title'>警告</view>
+    <view class='txt'>请允许获取地理位置,否则将无法使用.</view>
+    <button open-type='openSetting' plain='true' hover-class='none' bindopensetting='agreeAddress'>确定</button>
+  </view>
+</van-popup>
+
+<image class="bg_pic" src="{{serverUrl+imgStr}}getTicket.png" />
+<view class="box">
+  <view class="row1">{{show_msg}}</view>
+  <navigator class="row3" url='/pages/new/waitPrizes/waitPrizes'>去抽奖</navigator>
+  <navigator url='/pages/new/getTicket/getTicket?type=9&name=分享获券任务&intro_path=data/plat/ticketTasks/8.png' class="row4">去分享</navigator>
+</view>
+<van-dialog id="van-dialog" />
+<backHome/>
+<pagePublic/>

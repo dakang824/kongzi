@@ -1,0 +1,294 @@
+.header {
+  position: relative;
+}
+
+.header .img {
+  width: 100%;
+}
+
+.money {
+  width: 650rpx;
+  background: #fff;
+  box-shadow: 0px 0px 50px 0px rgba(153, 153, 153, 0.3);
+  border-radius: 20rpx;
+  position: absolute;
+  bottom: 7rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 40rpx 30rpx;
+  font-size: 32rpx;
+  color: #666;
+}
+
+.box {
+  padding: 50rpx 30rpx;
+}
+
+.box .tip {
+  font-size: 32rpx;
+  margin-bottom: 10rpx;
+  font-weight: 500;
+}
+
+.box .inn {
+  padding: 30rpx 0;
+  font-size: 32rpx;
+}
+
+.box .marTop {
+  margin-top: 50rpx;
+}
+
+.box .money_box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 60rpx 0;
+}
+
+.box .money_box view {
+  width: 220rpx;
+  height: 140rpx;
+  background: #f5f5f5;
+  border-radius: 20rpx;
+  font-size: 38rpx;
+  font-weight: bold;
+  text-align: center;
+  line-height: 140rpx;
+  margin-bottom: 20rpx;
+}
+
+.box .money_box view.active {
+  background: linear-gradient(90deg, rgba(255, 90, 144, 1), rgba(255, 44, 86, 1));
+  color: #fff;
+}
+
+.btn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 0;
+  color: #fff;
+  height: 97rpx;
+  font-size: 32rpx;
+  line-height: 97rpx;
+}
+
+.bg {
+  background: linear-gradient(90deg, rgba(255, 90, 144, 1), rgba(255, 44, 86, 1));
+}
+
+.lay_box {
+  width: 650rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  overflow: inherit !important;
+  position: relative;
+}
+
+.lay_box .topImg {
+  width: 211rpx;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  vertical-align: middle;
+}
+
+.lay_box .box {
+  padding: 0 30rpx 60rpx;
+}
+
+.lay_box .box .tip {
+  font-size: 28rpx;
+  color: #666;
+  text-align: center;
+}
+
+.lay_box .lay_box_close {
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+  z-index: 99;
+}
+
+.coupon {
+  width: 100%;
+  height: 200rpx;
+  background: linear-gradient(-30deg, rgba(254, 77, 88, 1), rgba(253, 79, 118, 1));
+  box-shadow: 0px 0px 30rpx 0px rgba(153, 153, 153, 0.2);
+  border-radius: 10rpx;
+  margin-top: 50rpx;
+  position: relative;
+}
+
+.circle {
+  position: absolute;
+  top: -17.5rpx;
+  width: 35rpx;
+  height: 35rpx;
+  border-radius: 50%;
+  right: 179rpx;
+  background: #fff;
+}
+
+.bottom {
+  bottom: -17.5rpx;
+  top: inherit;
+}
+
+.line {
+  border-left: 1px dashed #fff;
+  height: 129rpx;
+  position: absolute;
+  right: 195rpx;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+}
+
+.coupon {
+  color: #fff;
+}
+
+.coupon .lf {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 30rpx 40rpx;
+  font-size: 22rpx;
+}
+
+.coupon .tit {
+  font-size: 38rpx;
+}
+
+.coupon .rt {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: 0;
+  width: 200rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+}
+
+.coupon .rt text {
+  font-size: 44rpx;
+  margin-right: 5rpx;
+}
+
+.lay_box .head {
+  position: relative;
+  height: 265rpx;
+}
+
+.lay_box .head .title {
+  position: absolute;
+  color: #fff;
+  font-size: 44rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200rpx;
+}
+
+.amount {
+  font-size: 40rpx;
+  color: #333;
+}
+
+.mask {
+  width: 750rpx;
+  height: 100vh;
+  background: rgba(0, 0, 0, 1);
+  opacity: 0.7;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+}
+
+.cashbox {
+  width: 600rpx;
+  height: 460rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 20rpx;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.cashbox .row1 {
+  text-align: center;
+  margin-top: -165rpx;
+  margin-left: 30rpx;
+}
+
+.cashbox .row1 image {
+  width: 274rpx;
+  height: 242rpx;
+}
+
+.cashbox .row2 {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  color: rgba(17, 17, 17, 1);
+  text-align: center;
+  margin-left: 30rpx;
+  margin-top: 20rpx;
+}
+
+.cashbox .row3 {
+  position: absolute;
+  bottom: 0rpx;
+  left: 0rpx;
+  width: 100%;
+  height: 108rpx;
+  line-height: 108rpx;
+  border-top: 2rpx solid #eee;
+}
+
+.cashbox .row3>view {
+  width: 50%;
+  text-align: center;
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+}
+
+.cashbox .row3 .left {
+  width: 50%;
+  text-align: center;
+  color: rgba(204, 204, 204, 1);
+}
+
+.cashbox .row3 .right {
+  width: 50%;
+  text-align: center;
+  color: #ff2c56;
+  border-left: 1rpx solid #eee;
+}
+
+.cashbox .closeImg {
+  width: 29rpx;
+  height: 29rpx;
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+}
+
+.cashbox .title {
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: bold;
+}

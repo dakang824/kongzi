@@ -1,0 +1,119 @@
+page {
+  background: #F3F3F3;
+}
+
+.top {
+  width: 100%;
+}
+
+.box_from {
+  margin: 0 44rpx;
+}
+
+.box_from .title {
+  font-size: 36rpx;
+  color: #202020;
+  text-align: center;
+  font-weight: 500;
+  margin: 20rpx 0 45rpx;
+}
+
+.box_from .flex {
+  align-items: center;
+  margin-bottom: 26rpx;
+}
+
+.box_from .flex .left {
+  font-size: 30rpx;
+  color: #5D5D5D;
+  font-weight: 400;
+  min-width: 160rpx;
+}
+
+.box_from .flex .right {
+  flex: 1;
+}
+
+.box_from .flex .right input {
+  background: #fff;
+  height: 69rpx;
+  border-radius: 34rpx;
+  padding: 0 25rpx;
+  font-size: 28rpx;
+}
+
+.placeholder {
+  font-size: 27rpx;
+  color: #9C9C9C;
+  margin-left: 29rpx;
+}
+
+.agree {
+  font-size: 25rpx;
+}
+
+.agree text {
+  color: #4380DF;
+}
+
+.btn {
+  width: 384rpx;
+  height: 77rpx;
+  background: linear-gradient(165deg, rgba(0, 222, 255, 1) 0%, rgba(0, 114, 255, 1) 100%);
+  border-radius: 39rpx;
+  font-size: 39rpx;
+  font-weight: 400;
+  line-height: 77rpx;
+  color: #fff;
+  margin-top: 20rpx;
+  margin-bottom: 60rpx;
+}
+.btn.disabled{
+  background:#ddd;
+  background-color: #ddd!important;
+  opacity: .5;
+}
+
+.layBox {
+  position: relative;
+}
+
+.layBox .header {
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #4da5fc;
+  text-align: center;
+  font-size: 35rpx;
+  font-weight: bold;
+  color: #fff;
+}
+
+.layBox .layClose {
+  position: absolute;
+  right: 15rpx;
+  top: 15rpx;
+  color: #fff;
+}
+
+.lay_content {
+  max-height: 650rpx;
+  overflow: auto;
+  padding: 30rpx;
+}
+
+.lay_content .tit {
+  font-size: 28rpx;
+  font-weight: bold;
+  padding: 10rpx 0;
+}
+
+.lay_content .txt {
+  font-size: 25rpx;
+  color: #999;
+}
+
+.lay_content .tip {
+  font-size: 25rpx;
+  color: #999;
+  font-weight: inherit;
+}

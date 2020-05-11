@@ -1,0 +1,53 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+ <pagePublic/>
+<van-popup show="{{ show }}" bind:close="onClose" custom-class='layer'>
+  <view class='conten'>
+    <image src='{{serverUrl+path}}' class='shareImg' mode='widthFix'></image>
+    <button class='ok' bindtap='saveImg'>
+      <image src='/imgs/downImg.png' class='dowmImg'></image>
+      保存图片到相册</button>
+  </view>
+</van-popup>
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />
+<image class="bg_pic" src="{{imgUrl}}laxin_user.jpg" mode="widthFix" />
+<view class='box'>
+  <view class="itembox">
+    <view class="rule">
+      <view class="top flex">
+        <view class="line"></view>
+        <view class="word">活动规则</view>
+        <view class="line"></view>
+      </view>
+      <view class="btm">邀满
+        <text>{{apply_info.new_users}}</text>个新用户，提现金额将转入您的微信零钱。（目前只限上海用户）</view>
+    </view>
+    <view class="invitation" wx:if="{{(award_info.new_user_limit-apply_info.count)==0}}">已经成功邀请
+      <text>{{award_info.new_user_limit}}</text>人</view>
+    <view class="invitation" wx:else>已经成功邀请{{apply_info.count}}人 还剩
+      <text>{{(apply_info.new_users-apply_info.count)<0?'0':(apply_info.new_users-apply_info.count)||0}}</text>人</view>
+    <block wx:if="{{data.length}}">
+      <view class="manbox">
+        <view class="man flex" wx:for="{{data}}" bindtap='isAvailable' data-i='{{item}}'>
+          <view class="pic">
+            <view>
+              <image src='{{item.pic_path?serverUrl+item.pic_path:"/imgs/perso.png"}}' class="headportrait" binderror='errorImg'></image>
+              <text class='{{item.valid==1?"tip":"green"}}'>{{item.valid==1?'有效':'无效'}}</text>
+            </view>
+            <view class="name van-ellipsis">{{filter.decode(item.nickname)}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class='noData'>~ 暂无数据 ~</view>
+    </block>
+    <button class="getaward {{apply_info.status==1||apply_info.status==3?'gray':''}}" bindtap="getPrize" wx:if="{{apply_info.status==1||apply_info.status==3}}" disabled='{{apply_info.status==1||apply_info.status==3}}'>
+      <view>{{apply_info.status==1?'已拉满':apply_info.status==3?'提现成功':''}}</view>
+    </button>
+    <view class="sharebox flex" wx:else>
+      <button class="left" open-type='share'>好友邀请</button>
+      <view class="left" style="margin-top:40rpx" bindtap='shareFriend'>朋友圈邀请</view>
+    </view>
+  </view>
+</view>

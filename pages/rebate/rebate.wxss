@@ -1,0 +1,98 @@
+page {
+  background: #f9f9f9;
+}
+.noData{
+  text-align: center;
+  font-size: 28rpx;
+  color: #999;
+  margin-top: 200rpx;
+}
+.list {
+  padding: 0 30rpx;
+  margin-top:25rpx; 
+}
+
+.list .li {
+  background: #fff;
+  margin-bottom: 25rpx;
+  padding: 30rpx;
+  border-radius: 20rpx;
+  box-shadow: 0px 1rpx 50rpx 0px rgba(153, 153, 153, 0.3);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #f3f3f3;
+  padding-bottom: 20rpx;
+}
+
+.head .rt {
+  font-weight: bold;
+  height: 67rpx;
+  width: 100%;
+}
+
+.head image {
+  width: 200rpx;
+  min-width: 200rpx;
+  max-width: 200rpx;
+  max-height: 160rpx;
+  margin-right: 30rpx;
+  border-radius: 10rpx;
+}
+
+.head .money {
+  font-size: 22rpx;
+  color: #333;
+  margin: 10rpx 0;
+}
+
+.head .flex {
+  color: #999;
+  font-size: 22rpx;
+  align-items: center;
+}
+
+.footer {
+  margin-top: 20rpx;
+}
+
+.footer view {
+  width: 50%;
+  text-align: center;
+  padding: 20rpx 0;
+  font-size: 26rpx;
+  color: #999;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.footer view:first-child {
+  border-right: 1px solid #f3f3f3;
+}
+
+.footer view text {
+  margin-left: 10rpx;
+}
+
+.footer .person {
+  width: 26rpx;
+  height: 26rpx;
+  vertical-align: middle;
+}
+
+.footer .money {
+  width: 26rpx;
+  height: 26rpx;
+  vertical-align: middle;
+}
+
+.circle {
+  width: 24rpx;
+  height: 24rpx;
+  background: rgba(166, 210, 253, 1);
+  border-radius: 50%;
+  margin-right: 20rpx;
+}

@@ -1,0 +1,177 @@
+.list {
+  padding: 0 30rpx;
+  padding-bottom: 24rpx;
+}
+
+.list .li {
+  box-shadow: 0rpx 1rpx 50rpx 0rpx rgba(153, 153, 153, 0.3);
+  border-radius: 20rpx;
+  margin: 24rpx auto 0;
+  padding: 30rpx 30rpx 0;
+}
+
+.list .li:last-child {
+  margin-bottom: 24rpx;
+}
+
+.list .li .footer_box {
+  margin-top: 20rpx;
+}
+
+.list .li .footer_box button {
+  flex: 0.5;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-size: 28rpx;
+  border-radius: 0;
+  color: rgba(77, 165, 252, 1);
+  background: #fff;
+}
+
+.list .li .footer_box button.middle {
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+
+.list .li .footer_box button.gray {
+  color: #ddd;
+}
+
+.list .li .lf_img {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+  min-width: 200rpx;
+  margin-right: 23rpx;
+}
+
+.between {
+  align-items: flex-start;
+}
+
+.list .li .rt {
+  font-size: 22rpx;
+  color: #666;
+  width: 66%;
+}
+
+.list .li .rt .tit {
+  font-size: 28rpx;
+  font-weight: bold;
+  min-height: 60rpx;
+}
+
+.list .li .rt .address text {
+  width: 96%;
+}
+.list .li .rt .address image {
+  width: 16rpx;
+  min-width: 16rpx;
+  margin-right: 10rpx;
+  height: 20rpx;
+  margin-top: 8rpx;
+}
+
+.list .li .rt .tip {
+  height: 32px;
+  background: #f8f8f8;
+  border-radius: 8rpx;
+  line-height: 32rpx;
+  padding: 2rpx 10rpx;
+  margin: 30rpx 0;
+  margin-right: 25rpx
+}
+
+.list .li .school {
+  margin-top: 20rpx;
+}
+
+.list .li .school text {
+  width: 24rpx;
+  height: 24rpx;
+  background: #e5e5e5;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10rpx;
+}
+
+.list .li .btn {
+  width: 120rpx;
+  min-width: 120rpx;
+  height: 50rpx;
+  background: linear-gradient(90deg, rgba(255, 90, 144, 1), rgba(255, 44, 86, 1));
+  border-radius: 25px;
+  text-align: center;
+  line-height: 50rpx;
+  color: #fff;
+  font-size: 20rpx;
+}
+
+.list .li .t {
+  align-items: center;
+  padding-top: 30rpx;
+}
+
+.box {
+  position: relative;
+  width: 628rpx;
+  height: 900rpx;
+}
+
+.box .bg {
+  width: 100%;
+  position: absolute;
+  vertical-align: middle;
+}
+
+.van-popup {
+  border-radius: 13rpx;
+  overflow: inherit !important;
+}
+
+.box .close {
+  position: absolute;
+  bottom: -100rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: #fff;
+  display: block;
+  width: 70rpx;
+  height: 70rpx;
+  font-size: 60rpx;
+}
+
+.t_box {
+  width: 480rpx;
+  height: 710rpx;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  text-align: center;
+}
+
+.t_box .color {
+  color: #f54f1b;
+  font-size: 32rpx;
+  padding-top: 120rpx;
+  font-weight: bold;
+}
+
+.t_box .line {
+  height: 1px;
+  border-top: 1px dashed #e63c00;
+  width: 410rpx;
+  margin: 80rpx auto 0;
+}
+
+.t_box .code2 {
+  background: #eee;
+  width: 250rpx;
+  height: 250rpx;
+  margin: 80rpx auto 0;
+}

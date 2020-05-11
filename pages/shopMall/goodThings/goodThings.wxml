@@ -1,0 +1,75 @@
+<pagePublic/>
+<page class='{{showChooseBox?"pageFiexed":""}}'>
+  <view class="serachbox">
+    <view class="item flex">
+      <navigator url='/pages/shopMall/search/search' class="left" hover-class='none'>
+        <van-search custom-class="v" disabled placeholder="搜索商品名称" />
+      </navigator>
+    </view>
+  </view>
+  <view class="swiperbox">
+    <swiper class="swiper swiper-middle" indicator-dots autoplay interval="{{5000}}" duration="{{1000}}" indicator-active-color='#FF2C56' indicator-color='rgba(255,44,86,.3)' circular easing-function='easeOutCubic'>
+      <swiper-item class="swiper-item" wx:for="{{topAds}}" wx:key="{{index}}">
+        <navigator class="img" url='/{{item.link}}'>
+          <image src="{{serverUrl+item.pic_path}}" />
+        </navigator>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="parent flex">
+    <navigator url='/pages/shopMall/child/child' class="left">
+      <image src="/imgs/new/childicon.png" style="width:330rpx;height:120rpx;" />
+      <view class="title">儿童馆</view>
+    </navigator>
+    <navigator url='/pages/shopMall/parent/parent' class="left" style="margin-left:30rpx">
+      <image src="/imgs/new/parenticon.png" style="width:330rpx;height:120rpx;" />
+      <view class="title">家长馆</view>
+    </navigator>
+  </view>
+  <view class="recommend">
+    <view class="title">好物推荐</view>
+    <view class="itembox flex">
+      <navigator url='/pages/shopMall/detail/detail?id={{item.id}}' class="item" wx:for="{{recommend}}" wx:key="{{index}}">
+        <image src="{{serverUrl+item.list_pic}}" class="img" />
+        <view class="intro van-multi-ellipsis--l2">{{item.name}}</view>
+        <view class="price flex">
+          <view class="sell">￥{{item.price}}</view>
+          <view class="yuan">￥{{item.ori_price}}</view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+
+  <view class="recommend">
+    <view class="title">新品上架</view>
+    <view class="itembox flex">
+      <navigator url='/pages/shopMall/detail/detail?id={{item.id}}' class="item" wx:for="{{newProucts}}" wx:key="{{index}}">
+        <image src="{{serverUrl+item.list_pic}}" class="img" />
+        <view class="intro van-multi-ellipsis--l2">{{item.name}}</view>
+        <view class="price flex">
+          <view>￥{{item.price}}</view>
+          <view class="yuan">￥{{item.ori_price}}</view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <van-divider contentPosition="center" dashed customStyle='padding:0 150rpx 20rpx'>已加载完毕</van-divider>
+  <van-popup show="{{showChooseBox}}" position="top" bind:close="onClose" custom-class='popup' z-index='10'>
+    <view class="type">
+      <view class="top">开奖类别</view>
+      <view class="btn flex">
+        <view class="item {{type1==index?'active':''}}" bindtap="choose1" data-index="{{index}}" wx:for="{{dataType1}}" wx:key="{{index}}" style="">{{item.title}}</view>
+      </view>
+    </view>
+    <view class="type" style="padding-bottom:60rpx">
+      <view class="top">奖品类别</view>
+      <view class="btn flex">
+        <view class="item {{item.isChoose?'active':''}}" bindtap="choose2" data-index="{{index}}" wx:for="{{dataType2}}" wx:key="{{index}}" style="">{{item.name}}</view>
+      </view>
+    </view>
+    <view class='fiexed flex'>
+      <view bindtap='reset' class="reset">重置</view>
+      <view bindtap='searchBtn' class="sure">确定</view>
+    </view>
+  </van-popup>
+</page>

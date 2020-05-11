@@ -1,0 +1,217 @@
+<wxs module="filter" src="../../../../utils/filter.wxs"></wxs>
+<view class='page'>
+  <view class='fixed between'>
+    <view bindtap='tap' data-i='1'>直接分享
+      <text>({{total.direct}})</text>
+      <view class='line' wx:if='{{ind==1}}'></view>
+    </view>
+    <view bindtap='tap' data-i='2'>间接分享
+      <text>({{total.indirect}})</text>
+      <view class='line' wx:if='{{ind==2}}'></view>
+    </view>
+    <view bindtap='tap' data-i='3'>分红团队
+      <text>({{total.team}})</text>
+      <view class='line' wx:if='{{ind==3}}'></view>
+    </view>
+  </view>
+  <view class='args' wx:if='{{ind==1||ind==2||ind==3&&d.team_leader==2}}'>
+    <view class='tip'>目前全队共{{total.all_count}}人，{{total.agent_count
+      <0?0:total.agent_count}}名代言人，包括{{total.direct_agent_count}}名直接分享代言人</view>
+        <van-search value="{{ postData.keyword }}" placeholder="搜索昵称" bind:search='onSearch' bind:clear='onSearch' />
+        <van-dropdown-menu active-color="#ee0a24">
+          <van-dropdown-item value="{{ postData.order }}" options="{{ option1 }}" bind:change='itemChange' />
+        </van-dropdown-menu>
+    </view>
+
+    <view class='{{ind==1||ind==2||d.team_leader==2?"":"box_content"}}'>
+      <block wx:if='{{ind==1}}'>
+        <template is="list" data="{{data:directData,url,team_leader:d.team_leader}}"></template>
+      </block>
+      <block wx:if='{{ind==2}}'>
+        <template is="list" data="{{data:indirectData,url,team_leader:d.team_leader}}"></template>
+      </block>
+      <block wx:if='{{ind==3}}'>
+        <!-- <template is="list" data="{{data:teamData,url,team_leader:d.team_leader}}"></template> -->
+        <block wx:if='{{d.team_leader==2}}'>
+          <view class='box'>
+            <view class='li' wx:for='{{teamData}}'>
+              <!-- <view class='top flex vCenter'>
+                <view class='vCenter'>
+                  <image src='{{item.pic_path?url+item.pic_path:"/imgs/perso.png"}}' class='head'></image>
+                  <view class='txt'>
+                    <view class='nickname' style='max-width:inherit;'>{{item.nickname?filter.decode(item.nickname):'未授权'}}</view>
+                    <view class='tag' wx:if='{{item.status==1||item.status==2}}'>{{item.status==1?'非代言人':item.status==2?'准代言人':item.status==3?'代言人':''}}</view>
+                  </view>
+                </view>
+                <view class='t'>
+                  <view>贡献收益{{item.amount?item.amount:0}}元</view>
+                </view>
+              </view> -->
+              <view class='top flex'>
+                <view class='flex'>
+                  <image src='{{item.pic_path?url+item.pic_path:"/imgs/perso.png"}}' class='head'></image>
+                  <view class='txt'>
+                    <view class='flex'>
+                      <view class='nickname van-ellipsis'>{{item.nickname?filter.decode(item.nickname):'未授权'}}</view>
+                      <view bindtap='copy' class='copy' data-n='{{filter.decode(item.nickname)}}'>
+                        <van-icon name="description" /> 复制昵称</view>
+                    </view>
+                    <view class='joinTime'>加入时间：{{filter.sliceMunite(item.join_time)}}</view>
+                  </view>
+                </view>
+
+                <view class='t' style="text-align:right;">
+                  <view class='d' style="color:#00EE00" wx:if="{{item.status==0&&item.team_leader!=2}}">已禁用</view>
+                  <view class='d' style="color:#FF3B30" wx:if="{{item.status==1&&item.team_leader!=2}}">非代言人</view>
+                  <view class='d' style="color:#00EE00" wx:if="{{item.status==2&&item.team_leader!=2}}">准代言人</view>
+                  <view class='d' style="color:#00EE00" wx:if="{{item.status==3&&item.team_leader!=2}}">代言人</view>
+                  <view class='d' style="color:#01D5D6" wx:if="{{item.status==3&&item.team_leader==2}}">队长</view>
+                  <view>分享{{item.sub_count}}人</view>
+                </view>
+              </view>
+              <view class='footer between'>
+                <view class='lf'>分红收益：
+                  <text>{{item.amount?item.amount:0}}元</text>
+                </view>
+                <view class='rt'>{{item.orders}}单</view>
+              </view>
+            </view>
+
+          </view>
+        </block>
+        <view class='box' wx:else>
+          <!-- <view class='banner'>按您当前潜在队员的消费情况，您每月可能收入至少
+            <text>10000</text>元
+          </view> -->
+          <view class='swiper' wx:if="{{messageList.length}}">
+            <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+              <block wx:for="{{messageList}}" wx:key="index">
+                <swiper-item>
+                  <view class="vCenter">
+                    <view class="swiper_bg van-ellipsis">
+                      <view class="item-text">{{item.msg}}</view>
+                    </view>
+                  </view>
+                </swiper-item>
+              </block>
+            </swiper>
+          </view>
+
+          <view class='contentBg'>
+            <view class='inner_box'>
+              <view class='doing success' wx:if='{{d.team_leader==1}}'>
+                <view class='t'>您已达到队长条件</view>
+                <text>直接分享代言人已满足<text class='red'>{{d.team_need}}</text>人，立即开启队长身份</text>
+              </view>
+              <view class='doing' wx:else>
+                <image src='{{imageurl}}share_inner_doing.png' class='img'></image>
+                <view class='t'>您目前还未达到队长条件</view>
+                <text>还差 <text class='red'>{{d.team_need-d.down_agents<0?0:d.team_need-d.down_agents}}</text>位直接分享代言人，即可开启队长身份</text>
+              </view>
+
+              <view class='progress'>
+                <image src='{{imageurl}}share_inner_pro.png' class='main' mode='widthFix'></image>
+                <image src='{{imageurl}}share_inner_scoll.png' class='scoll' style='left:{{len>88?88:len}}%;'></image>
+              </view>
+              <view class='between tip'>
+                <view>直接分享代言人{{d.down_agents}}位</view>
+                <view class='rt'>
+                  <text>共需</text>{{d.team_need}}
+                  <text>人</text>
+                </view>
+              </view>
+
+              <view class='btn' wx:if='{{d.team_need>d.team_count}}'>
+                <button bindtap='conset' bindtap='showShare'>联系好友成为队长</button>
+              </view>
+              <view class='circle' bindtap='startAgentTeam' wx:else>
+                马上开启队长身份
+              </view>
+            </view>
+          </view>
+          <view class='s'>什么是团队分红?</view>
+        </view>
+      </block>
+    </view>
+
+    <template name='list'>
+      <view class='box' wx:if='{{data.length}}'>
+        <view class='li' wx:for='{{data}}'>
+          <view class='top flex'>
+            <view class='flex'>
+              <image src='{{item.pic_path?url+item.pic_path:"/imgs/perso.png"}}' class='head'></image>
+              <view class='txt'>
+                <view class='flex'>
+                  <view class='nickname van-ellipsis'>{{item.nickname?filter.decode(item.nickname):'未授权'}}</view>
+                  <view bindtap='copy' class='copy' data-n='{{filter.decode(item.nickname)}}'>
+                    <van-icon name="description" /> 复制昵称</view>
+                </view>
+                <view class='joinTime'>加入时间：{{filter.sliceMunite(item.join_time)}}</view>
+              </view>
+            </view>
+
+            <view class='t' style="text-align:right">
+              <!-- <view class='d'>{{item.status==1?'非代言人':item.status==2?'准代言人':item.status==3?'代言人':''}}</view> -->
+              <view class='d' style="color:#00EE00" wx:if="{{item.status==0&&item.team_leader!=2}}">已禁用</view>
+              <view class='d' style="color:#FF3B30" wx:if="{{item.status==1&&item.team_leader!=2}}">非代言人</view>
+              <view class='d' style="color:#00EE00" wx:if="{{item.status==2&&item.team_leader!=2}}">准代言人</view>
+              <view class='d' style="color:#00EE00" wx:if="{{item.status==3&&item.team_leader!=2}}">代言人</view>
+              <view class='d' style="color:#01D5D6" wx:if="{{item.status==3&&item.team_leader==2}}">队长</view>
+              <view>分享{{item.sub_count}}人</view>
+            </view>
+          </view>
+          <view class='footer between'>
+            <view class='lf'>分享收益：
+              <text>{{item.amount?item.amount:0}}元</text>
+            </view>
+            <view class='rt'>{{item.orders}}单</view>
+          </view>
+        </view>
+        <!-- <view class='button'>
+          <view class='btn'>
+            <button open-type='share'>继续分享，获取更多代言收益</button>
+          </view>
+        </view> -->
+      </view>
+      <block wx:else>
+        <view class="nodatabox">
+          <view>
+            <view class="img">
+              <image src="/imgs/new/nodata.png" style="width:300rpx;height:300rpx;" />
+            </view>
+            <view class="tip">暂无信息</view>
+          </view>
+        </view>
+      </block>
+    </template>
+  </view>
+
+  <van-popup show="{{ show }}" custom-class='lay_bg'>
+    <view class='lay_bg'>
+      <image src='{{imageurl}}layer_bg.png' class='bg'></image>
+      <van-icon name="close" color='#fff' size='60rpx' custom-class='close' bind:click='onClose' />
+      <view class='box'>
+        <view class='title'>欢迎开启，请填写开启信息</view>
+        <van-cell-group>
+          <van-field value="{{ username }}" clearable label="姓名：" placeholder="请输入用户名" title-width='60px' bind:input='onInput' data-i='name' />
+          <block wx:if='{{errPhone}}'>
+            <van-field value="{{ sms }}" title-width='60px' label="手机号:" placeholder="请输入手机号" border="{{ false }}" use-button-slot bind:input='onInput' data-i='mobile' type='number'>
+              <van-button slot="button" size="small" type="primary" bind:click='getCode' disabled='{{time!="发送验证码"}}'>{{time}}</van-button>
+            </van-field>
+            <van-field value="{{ password }}" type='number' label="验证码：" placeholder="请输入短信验证码" border="{{ false }}" title-width='70px' bind:input='onInput' data-i='mobileCode' />
+          </block>
+          <view class="mobile van-hairline--bottom" wx:else>
+            <text class='txt'>手机号 :</text>
+            <text class='value'>{{postData.mobile}}</text>
+            <van-button size="small" open-type="getPhoneNumber" bind:getphonenumber="getphonenumber">授权手机号</van-button>
+          </view>
+
+        </van-cell-group>
+        <view class='ok'>
+          <button class='sumit success' bindtap='openMoneyWay'>开启赚钱之旅</button>
+        </view>
+      </view>
+    </view>
+  </van-popup>
+  <van-toast id="van-toast" />
+  <share shareImg='{{shareImg}}' qrPath='{{d.qr_path}}' />

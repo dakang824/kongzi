@@ -1,0 +1,94 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+ <pagePublic/>
+<view class='page'>
+  <van-tabs sticky swipeable color="#0096FF" swipe-threshold='5' bind:change="onChange">
+    <van-tab title="今日中奖">
+      <template is="list" data="{{dataList,showChoose}}"></template>
+    </van-tab>
+    <van-tab title="昨日中奖">
+      <template is="list" data="{{dataList,showChoose}}"></template>
+    </van-tab>
+    <van-tab title="更多记录">
+      <template is="list" data="{{dataList,showChoose}}"></template>
+    </van-tab>
+  </van-tabs>
+</view>
+<view class="serachbox" style="" wx:if="{{showChoose}}">
+  <view style="height:10rpx;"></view>
+  <view class="item flex">
+    <view class="left">
+      <input placeholder="搜索奖品名称" confirm-type="search" bindconfirm="serachMore" value="{{content}}" bindinput="inputContent" maxlength="12" />
+    </view>
+    <view class="right flex">
+      <view class="allbox flex" bindtap="choose">
+        <image src="/imgs/new/hisicon.png" style="width:22rpx;height:20rpx;" />
+        <view class="all">筛选</view>
+      </view>
+    </view>
+  </view>
+</view>
+<template name='list'>
+  <!-- dataList.length!=0 -->
+  <block wx:if="{{dataList.length!=0}}">
+    <navigator class='box' wx:for="{{dataList}}" wx:key="{{index}}" style="{{(showChoose&&index==0)?'margin-top:120rpx':''}}" url='{{"/pages/new/luckyDetail/luckyDetail?award_id="+item.award_id+"&tickets="+item.tickets+"&draw_id=" + item.draw_id}}' hover-class='none'>
+      <view class='flex van-hairline--bottom'>
+        <view class='img big_img'>
+          <image src="{{item.icon_path}}" mode="widthFix"></image>
+          <image class="big" wx:if="{{item.draw_type==2}}" src="/imgs/new/big_prize.png" style="width:62rpx;height:59rpx;" />
+        </view>
+        <view class='rt'>
+          <view class="isjoinbox">
+            <view class="isjoin" wx:if="{{item.is_join==1}}">已参与</view>
+            <view class='van-ellipsis' style="width:350rpx;">{{item.name}}</view>
+          </view>
+          <view class='gray'>开奖时间：{{filter.sliceMunite(item.draw_time)}}</view>
+          <!-- <view class='gray' wx:if="{{item.draw_now==1}}">开奖时间：集满立即开奖</view> -->
+          <view class='gray'>参与人数：{{item.join_count==""?"0":item.join_count}}人</view>
+          <view class='gray'>中奖名额：{{item.winners}}个</view>
+        </view>
+      </view>
+
+      <view class='between li' wx:for='{{item.winners_list}}' wx:key="{{index}}">
+        <view class='vCenter'>
+          <image src='{{item.pic_path}}' class='user'></image>
+          {{filter.decode(item.nickname)}}
+        </view>
+        <text>{{filter.mobile(item.mobile)}}</text>
+      </view>
+      <!-- <van-button hover-class='active' type="default" round size="mini" custom-class='btn'>查看详情</van-button> -->
+    </navigator>
+    <view class="nomore" wx:if="{{noMore}}">~没有更多数据~</view>
+  </block>
+  <block wx:if="{{dataList.length==0}}">
+    <view class="nodatabox">
+      <view class="img">
+        <image src="/imgs/new/nodata.png" style="width:300rpx;height:300rpx;" />
+      </view>
+      <view class="tip">暂无信息</view>
+    </view>
+  </block>
+</template>
+
+<van-popup show="{{showChooseBox}}" position="top" bind:close="onClose" custom-class='popup' z-index='10'>
+  <view class="startbox">
+    <view class="timeline"></view>
+    <view class="start">开奖日期:</view>
+    <view class="timebox flex">
+      <picker mode="date" value="{{startTime}}" class="startTime" bindchange="chooseStartTime">
+        <view class="picker">
+          {{startTime}}
+        </view>
+      </picker>
+      <view class="zhi">至</view>
+      <picker mode="date" value="{{endTime}}" class="startTime" bindchange="chooseEndTime">
+        <view class="picker">
+          {{endTime}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class='fiexed flex'>
+    <view bindtap='reset' class="reset">重置</view>
+    <view bindtap='searchBtn' class="sure">确定</view>
+  </view>
+</van-popup>

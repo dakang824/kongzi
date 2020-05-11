@@ -1,0 +1,50 @@
+<wxs module="filter" src="../../../../utils/filter.wxs"></wxs>
+<swiper autoplay="{{true}}" duration="{{1000}}" circular>
+  <swiper-item wx:for='{{d.intro_pics}}' wx:key="{{index}}" data-i='{{index}}' bindtap="jump" data-i="{{index}}">
+    <image src="{{serverUrl+item.path}}" class="slide-image" mode="widthFix" />
+  </swiper-item>
+</swiper>
+<view class="info">
+  <view class="title">{{d.name}}</view>
+  <view class="between start">
+    <view class="left vCenter">
+      <van-rate value='{{d.stars/2}}' size="12rpx" allow-half readonly gutter='2' />
+      <text>{{d.score}}分</text>
+      <text>{{d.comments}}人评分</text> </view>
+    <text>人均{{d.average}}元</text>
+  </view>
+  <view>
+    <van-tag type="danger" color='#fff4f8' text-color='#FA2335'>{{d.age_from}}~{{d.age_to}}岁</van-tag>
+    <block wx:for='{{d.labels}}'>
+      <van-tag type="danger" color='#fff4f8' text-color='#FA2335'>{{item}}</van-tag>
+    </block>
+  </view>
+  <view class="between address">
+    <view>
+      <text>{{item.district}}</text>
+      <text>{{item.center}}</text>
+    </view>
+    <view>
+      <van-icon name="location" color="#f52634" size="28rpx" />{{distance}}km</view>
+  </view>
+  <view class="row between">
+    <view class="between">
+      <van-icon name="location-o" size="35rpx" />
+      <text>地址：{{d.address}}</text>
+    </view>
+    <view class="btn" bindtap="copy">复制</view>
+  </view>
+  <view class="row between">
+    <view class="between">
+      <van-icon name="phone-o" size="35rpx" />
+      <text>电话：{{filter.mobile(d.phone)}}</text>
+    </view>
+    <view class="btn call" bindtap="call">咨询</view>
+  </view>
+  <view class="row between">
+    <view class="between">
+      <van-icon name="clock-o" size="35rpx" />
+      <text>营业时间：{{d.open_time}}</text>
+    </view>
+  </view>
+</view>

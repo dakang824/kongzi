@@ -1,0 +1,16 @@
+@import "/pages/ticket/ticketSend/ticketSend";
+@import "/pages/ticket/discountTicket/discountTicket";
+
+.detailbox .header1 {
+  width: 630rpx;
+  height: 380rpx;
+  margin: auto;
+}
+
+.detailbox .itembox {
+  padding: 0;
+}
+
+.box {
+  margin-top: 0;
+}

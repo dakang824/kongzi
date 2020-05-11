@@ -1,0 +1,91 @@
+<import src="../../template/activeList.wxml" />
+ <pagePublic/>
+<view class='headTopNav' id='headTopNav'>
+  <navigator url='/pages/address/address' hover-class="none">
+    <view class='address'>
+      <view class='vCenter t'>
+        <text class='text_hidden'>{{addressName}}</text>
+        <van-icon name="arrow" />
+      </view>
+      <view style='float:right;font-size:29rpx;' class='vCenter'>
+        <text>{{province}}</text>
+        <!-- <van-icon name="location-o" /> -->
+        <image src='/imgs/address_img.png' class='address_img' mode='widthFix'></image>
+      </view>
+    </view>
+  </navigator>
+  <van-search class='cancel' value="{{ getActsNearby.condition }}" placeholder="搜索课程名称" use-action-slot background='transparent' bind:clear='clearSearch' bind:search='setSearchValue' bind:change='search'>
+    <view slot="action" bind:tap="togglePopup" class='screen'>
+      <view>
+        <image src='../../imgs/screen.png'></image>筛选</view>
+    </view>
+  </van-search>
+  <view class='triangle-up' wx:if="{{show}}"></view>
+</view>
+
+<view class='bar'>
+  <view class='loading' wx:if="{{loading}}">
+    <van-loading type="spinner" size='30rpx' /> 努力加载中...
+  </view>
+
+  <block wx:if="{{list.all.length}}">
+    <!-- <scroll-view scroll-y style="height:{{scrollHeight}}px;"> -->
+    <view class='list'>
+      <block wx:for="{{list.all}}" wx:key="index">
+        <template is="activeList" data="{{...item,imgUrl:imgUrl,ope_id:ope_id,index:index,isshow:true}}"></template>
+      </block>
+      <block wx:if='{{noData}}'>
+        <view style='padding-bottom:1rpx'>
+          <van-divider contentPosition="center" dashed wx:if='{{list.all.length>3}}' customStyle='padding:0 150rpx;'>已加载完毕</van-divider>
+        </view>
+      </block>
+      <block wx:else>
+        <view class='loading'>
+          <van-loading type="spinner" size='30rpx' /> 努力加载中...
+        </view>
+      </block>
+    </view>
+    <!-- </scroll-view> -->
+  </block>
+  <block wx:else>
+    <view class='noData'>~ 暂无更多数据 ~</view>
+  </block>
+</view>
+
+<van-popup show="{{show}}" position="top" bind:close="onClose" custom-class='popup' z-index='10'>
+  <scroll-view scroll-y style="height:{{scrollHeight-40}}px;">
+    <view style='padding:0 30rpx 100rpx;'>
+      <view class='title'>距离范围</view>
+      <view>
+        <van-slider value="{{distance}}" use-button-slot bind:drag="onDrag" active-color="#FF2C56">
+          <view class="custom-button" slot="button">
+            <view class='white'></view>
+            <view class='txt'>{{getActsNearby.distance?getActsNearby.distance/1000+'公里':'全部'}}</view>
+          </view>
+        </van-slider>
+      </view>
+      <!-- <view class='title' style='margin-top:70px;'>活动类型</view>
+      <view class='block clearfix'>
+        <view class='li {{item.checked?"active":""}}' wx:for='{{activeType}}' data-value='{{index}}' bindtap='activeType'>
+          {{item.name}}
+        </view>
+      </view> -->
+      <view class='title' style='margin-top:60px;'>课程类别</view>
+      <view class='block clearfix'>
+        <view class='li {{item.checked?"active":""}}' wx:for='{{activeStatus}}' data-value='{{index}}' bindtap='activeChange'>
+          {{item.name}}
+        </view>
+      </view>
+      <view class='title' style="margin-top:35rpx;">学龄阶段</view>
+      <view class='block clearfix'>
+        <view class='li {{item.checked?"active":""}}' wx:for='{{age}}' data-value='{{index}}' bindtap='ageChange'>
+          {{item.name}}
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class='fiexed'>
+    <view bindtap='reset'>重置</view>
+    <view bindtap='onPullDownRefresh'>确定</view>
+  </view>
+</van-popup>

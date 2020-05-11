@@ -1,0 +1,93 @@
+.loading_box {
+  width: 100%;
+  height: 3px;
+  transition: all 200ms linear;
+}
+
+.loading_big {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999999999;
+  background: linear-gradient(to right, rgba(250, 35, 53, 1) 0%, rgba(239, 106, 30, 0.8) 20%, rgba(250, 35, 53, 0.5)70%);
+}
+
+.loading_small {
+  background: #fff;
+}
+
+.loading_hide {
+  opacity: 0;
+  height: 0;
+}
+
+.showlayer {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: transparent;
+  display: block;
+  z-index: 9999999;
+}
+
+.hiddenlayer {
+  height: 0;
+  display: none;
+}
+
+.loader {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+
+.loader-3 .dot {
+  width: 10px;
+  height: 10px;
+  background: #ff9b57;
+  border-radius: 50%;
+  position: absolute;
+  top: calc(50% - 5px);
+}
+
+.loader-3 .dot1 {
+  left: 0px;
+  -webkit-animation: dot-jump 0.5s cubic-bezier(0.77, 0.47, 0.64, 0.28) alternate infinite;
+  animation: dot-jump 0.5s cubic-bezier(0.77, 0.47, 0.64, 0.28) alternate infinite;
+}
+
+.loader-3 .dot2 {
+  left: 20px;
+  -webkit-animation: dot-jump 0.5s 0.2s cubic-bezier(0.77, 0.47, 0.64, 0.28) alternate infinite;
+  animation: dot-jump 0.5s 0.2s cubic-bezier(0.77, 0.47, 0.64, 0.28) alternate infinite;
+}
+
+.loader-3 .dot3 {
+  left: 40px;
+  -webkit-animation: dot-jump 0.5s 0.4s cubic-bezier(0.77, 0.47, 0.64, 0.28) alternate infinite;
+  animation: dot-jump 0.5s 0.4s cubic-bezier(0.77, 0.47, 0.64, 0.28) alternate infinite;
+}
+
+@keyframes dot-jump {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  100% {
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}

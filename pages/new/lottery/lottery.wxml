@@ -1,0 +1,157 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+ <pagePublic/>
+<page class='{{showChooseBox?"pageFiexed":""}}'>
+  <view class='time'>
+    <image src='{{serverUrl}}{{imgStr}}lottery_bg.png' mode="widthFix" class='topImg'></image>
+    <view class='b'>
+      <text>距离下次开奖还剩:</text>
+      <view class='t'>
+        <van-count-down use-slot time="{{ t }}" bind:change="onChange"></van-count-down>
+        <text><text>{{timeData.hours}}</text></text> :
+        <text><text>{{timeData.minutes}}</text></text> :
+        <text><text>{{timeData.seconds}}</text></text>
+      </view>
+    </view>
+    <view class="tip">
+      <image src="/imgs/new/tip.png" />
+      <view>开奖前5分钟，停止投注</view>
+    </view>
+  </view>
+  <view class='{{fixed?"fixed":""}}' id='fixed'>
+    <view class="serachbox">
+      <view style="height:10rpx;"></view>
+      <view class="item flex">
+        <view class="left">
+          <van-search custom-class="v" value="{{award_name}}" placeholder="搜索奖品名称" bind:search="serachMore" bind:change="inputContent" />
+        </view>
+        <view class="right flex">
+          <view class="allbox flex" bindtap="choose">
+            <image src="../../../imgs/new/chooseicon2.png" style="width:22rpx;height:20rpx;" />
+            <view class="all" style="{{showChooseBox?'color:#FF2C56':''}}">筛选</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="itembox" wx:if="{{!showChooseBox}}">
+      <view class="item flex">
+        <view class="default" bindtap="clickDefault" style="{{show4?'color:#FF2C56':''}}">默认排序</view>
+        <view class="default prize flex" bindtap="clickPrize">
+          <view class="key" style="{{show1?'color:#FF2C56':''}}">奖品价值</view>
+          <block wx:if="{{show1}}">
+            <view class="value" wx:if="{{prizeSort}}">
+              <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;transform:rotate(180deg)" />
+              <image src="../../../imgs/new/redsanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx;transform:rotate(180deg)" />
+            </view>
+            <view class="value" wx:else>
+              <image src="../../../imgs/new/redsanjiao.png" style="width:9rpx;height:6rpx;" />
+              <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx" />
+            </view>
+          </block>
+          <block wx:else>
+            <view class="value">
+              <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;transform:rotate(180deg)" />
+              <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx;" />
+            </view>
+          </block>
+        </view>
+        <view class="default prize flex" bindtap="clickTime">
+          <view class="key" style="{{show2?'color:#FF2C56':''}}">集齐时间</view>
+          <block wx:if="{{show2}}">
+            <view class="value" wx:if="{{timeSort}}">
+              <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;transform:rotate(180deg)" />
+              <image src="../../../imgs/new/redsanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx;transform:rotate(180deg)" />
+            </view>
+            <view class="value" wx:else>
+              <image src="../../../imgs/new/redsanjiao.png" style="width:9rpx;height:6rpx;" />
+              <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx" />
+            </view>
+          </block>
+          <block wx:else>
+            <view class="value">
+              <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;transform:rotate(180deg)" />
+              <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx;" />
+            </view>
+          </block>
+        </view>
+        <view class="default prize flex" bindtap="clickCount">
+          <view class="key" style="{{show3?'color:#FF2C56':''}}">开奖时间</view>
+          <block wx:if="{{show3}}">
+            <view class="value" wx:if="{{countSort}}">
+              <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;transform:rotate(180deg)" />
+              <image src="../../../imgs/new/redsanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx;transform:rotate(180deg)" />
+            </view>
+            <view class="value" wx:else>
+              <image src="../../../imgs/new/redsanjiao.png" style="width:9rpx;height:6rpx;" />
+              <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx" />
+            </view>
+          </block>
+          <block wx:else>
+            <view class="value">
+              <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;transform:rotate(180deg)" />
+              <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx;" />
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+    <view class='popupBg' wx:if='{{showChooseBox}}'>
+      <view class='popup'>
+        <view class="type">
+          <view class="top">开奖类别</view>
+          <view class="btn flex">
+            <view class="item {{type1==index?'active':''}}" bindtap="choose1" data-index="{{index}}" wx:for="{{dataType1}}" wx:key="{{index}}" style="">{{item.title}}</view>
+
+          </view>
+        </view>
+        <view class="type" style="padding-bottom:60rpx">
+          <view class="top">奖品类别</view>
+          <view class="btn flex">
+            <view class="item {{item.isChoose?'active':''}}" bindtap="choose2" data-index="{{index}}" wx:for="{{dataType2}}" wx:key="{{index}}" style="">{{item.name}}</view>
+          </view>
+        </view>
+        <view class='fiexed flex'>
+          <view bindtap='reset' class="reset">重置</view>
+          <view bindtap='searchBtn' class="sure">确定</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <block wx:if="{{awards_today.length}}">
+    <view class='page'>
+      <view class='list'>
+        <navigator url='/pages/new/luckyDetail/luckyDetail?award_id={{item.award_id}}&tickets={{item.tickets}}&draw_id={{item.draw_id}}' class='li' wx:for="{{awards_today}}" wx:key="{{index}}">
+          <view class='img big_img'>
+            <image src='{{serverUrl}}{{item.icon_path}}' mode="widthFix"></image>
+            <image class="big" wx:if="{{item.draw_type==2}}" src="/imgs/new/big_prize.png" style="width:92rpx;height:89rpx;" />
+            <!-- <view class='t' wx:if="{{hourTime==0&&minuteTime==0&&secondTime<10}}">{{secondTime}}</view> -->
+          </view>
+          <view class='foot'>
+            <view class='van-ellipsis t'>{{item.name}}</view>
+            <view class='between'>
+              <view class='m'>({{item.winners}}个中奖名额)</view>
+              <van-tag plain type="primary">{{item.draw_type==2?(item.day==0?'今日开奖':item.day
+                <6? '本周六开奖': '下周六开奖'):(item.day==0? '今日开奖':item.day==1? '明日开奖': '')}}</van-tag>
+            </view>
+
+            <view class='between'>
+              <text>{{item.join_count}}人参与</text>
+              <van-button hover-class='active' type="default" round size="mini" custom-class='btn {{item.is_join==0?"":"green"}}'>{{item.is_join==0?"去参与":'已参与'}}</van-button>
+            </view>
+          </view>
+        </navigator>
+      </view>
+      <view>
+        <van-divider contentPosition="center" dashed wx:if="{{noMore}}" customStyle='padding:20rpx 150rpx;'>已加载完毕</van-divider>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="nodatabox">
+      <view class="img">
+        <image src="/imgs/new/nodata.png" style="width:300rpx;height:300rpx;" />
+      </view>
+      <view class="tip">~没有更多数据~</view>
+    </view>
+  </block>
+</page>

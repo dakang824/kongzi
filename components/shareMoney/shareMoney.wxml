@@ -1,0 +1,8 @@
+<view class="vCenter share">
+  <view class="left">
+    <view>分享有礼</view>
+  </view>
+  <view class="middle">每分享一个新用户，双方都可获得最高
+    <text>88元</text>红包哦！</view>
+  <van-button type="primary" size="small" color="#FA3331" round>去分享</van-button>
+</view>

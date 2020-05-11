@@ -1,0 +1,95 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<view class="card">
+	<view class="title between">
+		<view class="lf">孔紫选课好评卡</view>
+		<view class="rt">{{cards.use_status===0?'未使用':cards.use_status===1?'已选课':cards.use_status===2?'已出席':cards.use_status===3?'已签单':'未兑换'}}</view>
+	</view>
+	<block wx:if='{{hasCard}}'>
+		<view class="info">
+			<navigator class="between cardNumber" url="/pages/selCourseCard/Cashback/Cashback?id={{cards.id}}" hover-class="none">
+				<view class="txt">卡号：{{cards.code}}</view>
+				<view class="rt" wx:if='{{cards.hasreview}}'>
+					好评返现
+					<van-icon name="arrow" />
+				</view>
+			</navigator>
+
+			<view class="txt">有效期限：{{filter.spot(filter.slice(cards.valid_time,10))}}-{{filter.spot(filter.slice(cards.valid_to,10))}}</view>
+			<view class="footer between">
+				<view class="lf">已选{{cards.select_count}}个课程，还可选{{cards.left_count}}个课程</view>
+				<van-button bind:click='go' disabled="{{cards.left_count==0}}">立即选课</van-button>
+			</view>
+		</view>
+	</block>
+	<block wx:else>
+		<view class="btn">
+			<navigator url="/pages/selCourseCard/exchangeCard/exchangeCard">
+				<van-button type="default" color='#FF2D58' plain>立即兑换</van-button>
+			</navigator>
+		</view>
+	</block>
+</view>
+
+<view class="Selected">
+	<view class="between title">
+		<view class="lf">{{hasCard?'已选课程':'卡片展示'}}</view>
+		<van-button type="primary" size="small" color='#FFE9EE' bind:click='call'>联系客服</van-button>
+	</view>
+	<block wx:if='{{hasCard}}'>
+		<block wx:if='{{cards.select_course.length}}'>
+			<view class="block" wx:for='{{cards.select_course}}'>
+				<view class="head between" style="margin-bottom: {{item.address?'35rpx':'0'}};">
+					<van-image width="93rpx" height='93rpx' src="{{url+item.cover_image}}" radius='7rpx' use-loading-slot lazy-load class="img">
+						<van-loading slot="loading" type="spinner" size="16" vertical />
+					</van-image>
+					<view class="rt">
+						<view class="between">
+							<view class="tit van-ellipsis">{{item.course_name}}</view>
+							<view class="tag">{{item.course_type==1?'体验课':item.course_type==2?'短课包':item.course_type==3?'正式课':''}}</view>
+						</view>
+						<view class="flex">
+							<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.min_age}}-{{item.max_age}}岁</van-tag>
+							<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.online==0?'线上':item.online==1?'线下':''}}</van-tag>
+						</view>
+					</view>
+				</view>
+				<view class="info">
+					<view class="vCenter row" wx:if='{{item.address}}'>
+						<image src="/imgs/selCourse_address.png" class="address_img"></image>
+						<view>{{item.address}}</view>
+					</view>
+					<navigator class="between row1 van-hairline--bottom" hover-class="none" url="/pages/nearbydetail/nearbydetail?id={{item.inst_id}}">
+						<view class="vCenter">
+							<image src="/imgs/selCourse_type.jpg" class="address_img"></image>
+							{{item.inst_name}}
+						</view>
+						<view class="rt">机构介绍
+							<van-icon name="arrow" />
+						</view>
+					</navigator>
+					<view class="footer between">
+						<view class="lf">
+							<view class="txt">选课日期：{{filter.spot(filter.slice(item.select_time,10))}}</view>
+							<view wx:if='{{item.status==2}}'>首次上课：{{filter.spot(filter.slice(item.arrive_time,16))}}</view>
+						</view>
+						<van-button round type="info" color='#FF2D58' custom-class='bg' wx:if='{{item.status==2}}'>已上课</van-button>
+						<van-button round type="info" color='#FF2D58' plain wx:if='{{item.status==1}}' bind:click='showTime' data-courseId="{{item.course_id}}" data-cardId="{{item.card_id}}">标记上课</van-button>
+					</view>
+				</view>
+			</view>
+		</block>
+		<block wx:else>
+			<view class="noData">~ 暂无数据 ~</view>
+		</block>
+	</block>
+	<block wx:else>
+		<view class="imgs">
+			<image src='{{imageurl}}card_pre.png' mode="widthFix"></image>
+			<image src='{{imageurl}}card_back.png' mode="widthFix"></image>
+		</view>
+	</block>
+</view>
+
+<van-popup show="{{ show }}" bind:close="onClose" position="bottom">
+	<van-datetime-picker type="datetime" value="{{ currentDate }}" min-date="{{ minDate }}" bind:confirm='markCourse' title='选择上课时间' bind:cancel='cancel' />
+</van-popup>

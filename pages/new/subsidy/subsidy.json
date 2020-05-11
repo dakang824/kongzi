@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-uploader": "../../dist/uploader/index",
+    "van-field": "../../dist/field/index"
+  },
+  "navigationBarTitleText": "平台补贴"
+}

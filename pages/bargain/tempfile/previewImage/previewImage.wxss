@@ -1,0 +1,48 @@
+page {
+  background: #171717;
+}
+
+.slide-image {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+swiper, swiper-item {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.van-icon-arrow-left {
+  padding-left: 0;
+}
+
+.between {
+  position: absolute;
+  top: 40rpx;
+  left: 30rpx;
+  right: 30rpx;
+  z-index: 99;
+  color: #fff;
+  font-size: 27rpx;
+}
+.between .vCenter .left{
+  position: relative;
+  left: -10rpx;
+  top: 2rpx;
+}
+.between .vCenter .right{
+  position: relative;
+  right: -10rpx;
+  top: 2rpx;
+}
+.rotate {
+  transform: rotate(180deg);
+}
+
+.between .vCenter van-icon {
+  font-size: 27rpx;
+}

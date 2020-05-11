@@ -1,0 +1,97 @@
+page {
+  background: #522cac;
+}
+
+.img {
+  width: 100%;
+  vertical-align: bottom;
+  position: relative;
+  left: -1px;
+}
+
+.content {
+  background: #fff;
+  padding: 70rpx 30rpx;
+  width: 644rpx;
+  border-radius: 10rpx;
+  margin: 0 auto;
+  font-size: 26rpx;
+  font-weight: 500;
+  line-height: 44rpx;
+}
+
+.list {
+  display: flex;
+  padding: 44rpx 55rpx;
+}
+
+.list .li:first-child {
+  margin-right: 40rpx;
+}
+
+.list .li:last-child image {
+  width: 35rpx;
+  height: 34rpx;
+  vertical-align: middle;
+  margin-right: 20rpx;
+}
+
+.list .li:first-child image {
+  width: 44rpx;
+  height: 35rpx;
+  vertical-align: middle;
+  margin-right: 20rpx;
+}
+
+.list .li {
+  width: 300rpx;
+  height: 82rpx;
+  border-radius: 41rpx;
+  background: #fff;
+  line-height: 82rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+.selClass {
+  width: 640rpx;
+  height: 82rpx;
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 41rpx;
+  margin: 0 auto;
+  line-height: 82rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 32rpx;
+}
+
+.shareImg {
+  width: 470rpx;
+}
+
+.conten {
+  background: #fff;
+  width: 470rpx;
+  padding-bottom:30rpx; 
+  overflow: hidden
+}
+.dowmImg{
+  width: 28rpx;
+  height: 28rpx;
+  vertical-align: middle;
+}
+.layer {
+  border-radius: 20rpx;
+}
+
+.ok {
+  width: 422rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size:26rpx;
+  color: #fff;
+  background: linear-gradient(90deg, rgba(61, 127, 218, 1), rgba(77, 165, 252, 1));
+  border-radius: 30rpx;
+  margin: 40rpx auto 0;
+}

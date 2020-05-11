@@ -1,0 +1,53 @@
+<pagePublic/>
+<loading-top id="loading" />
+<van-dialog id="van-dialog" />
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class="header">
+  <view class="top flex">
+    <view class="img flex">
+      <image src="/imgs/new/tz.png" />
+    </view>
+    <view class="tip">收到一张来自好友{{filter.decode(name)}}送给你的卡券</view>
+  </view>
+  <view class="btm flex">
+    <view class="left">
+      <view class="img flex">
+        <image src="{{url+pic_path}}" />
+      </view>
+    </view>
+    <view class="right">
+      <view class="name">{{filter.decode(name)}}</view>
+      <view class="note">我赠送给你一张卡券，记得领取呀~</view>
+    </view>
+  </view>
+</view>
+<view class="detailbox">
+  <view class="itembox">
+    <view class="header1">
+      <view class="cardinfo">
+        <image src="{{imgUrl}}card.png" style="width:630rpx;" mode='widthFix' />
+        <view class='head'>
+          <image src="/imgs/new/smallman.png" style="width:23rpx;height:35rpx;" /> {{no}}</view>
+        <view class="money valid_days">有效日期: {{filter.spot(filter.sliceTime(valid_from))+'-'+filter.spot(filter.sliceTime(valid_to))}}
+        </view>
+      </view>
+    </view>
+    <view class='box'>
+      <view class='info'>
+        <view class='tit'>权益详情</view>
+        <text space='emsp' decode>1. 一次性获客30张抽奖券。\n2. 每天可通过签到领取1张抽奖券。\n3. 凡在【孔紫家长社区】购买的乐园门票，都可获得10%的平台返利。\n4. 所有通过平台报名【孔紫教育联盟】成员课程的，都将获得平台提供的【退换无忧】诚信保障: 如果您与教育机构发生纠纷，平台将会帮助您通过合法手段维护您的权益；如果教育机构倒闭，平台会帮助您追回学费，如果无法追回，平台将支付您应该退回的学费。(具体的保障细节，请查看【退换无忧】诚信保障条款)\n5. 所有通过平台报名【孔紫教育联盟】成员课程的，都将获得所报课程学费5%-15%的平台补贴。（特别说明：此项权益只针对教育机构的非在读学员，并且通过平台报名试听课、兴趣课或正式课的学员；每家机构的补贴比例可能不同，请查看下方的【孔紫教育联盟】成员列表确认比例；在您向机构缴纳学费之前，请与平台家长客服联系并确认，以免产生纠纷）</text>
+        <navigator class='txt' url='/pages/unions/unions?union=1&tabInd=0'>【孔紫教育联盟】成员列表（上海）</navigator>
+        <view class='txt' catchtap='call'>联系客服</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="sendbtn" bindtap='getCard' wx:if='{{!d.transfer_result}}'>
+  <view>领取</view>
+</view>
+<view class="sendbtn1" wx:else>
+  <view>已领取</view>
+</view>
+<view style="height:40rpx;"></view>
+
+<backHome/>

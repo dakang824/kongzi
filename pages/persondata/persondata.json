@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-field": "../../dist/field/index",
+    "van-notify": "../../dist/notify/index"
+  },
+  "navigationBarTitleText": "个人信息"
+}

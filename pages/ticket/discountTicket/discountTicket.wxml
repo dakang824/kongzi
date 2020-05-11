@@ -1,0 +1,79 @@
+<pagePublic/>
+<van-dialog id="van-dialog" />
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class="header1">
+  <view class="cardbg">
+    <image src="{{imgUrl}}cardbg.png" style="width:100%;height:100%;" />
+  </view>
+  <view class="cardinfo">
+    <image src="{{imgUrl}}card.png" style="width:690rpx;height:380rpx;" />
+    <block wx:if='{{t}}'>
+      <view class='head'>
+        <image src="/imgs/new/smallman.png" style="width:23rpx;height:35rpx;" /> {{no}}</view>
+      <view class="money valid_days">有效日期: {{filter.spot(filter.sliceTime(valid_from))+'-'+filter.spot(filter.sliceTime(valid_to))}}
+      </view>
+    </block>
+    <block wx:else>
+      <image class="smallman" src="/imgs/new/smallman.png" style="width:23rpx;height:35rpx;" />
+      <view class="money">有效日期: 自购买之日起一年内有效</view>
+    </block>
+  </view>
+</view>
+<view class='box'>
+  <text class='title' wx:if='{{!t}}'>{{money}}元【孔紫联盟卡】超值购</text>
+  <view class='info'>
+    <view class='tit'>权益详情</view>
+    <text space='emsp' decode>1. 一次性获得30张抽奖券。\n2. 每天可通过签到领取1张抽奖券。\n3. 凡在【孔紫家长社区】购买的乐园门票，都可获得10%的平台返利。\n4. 所有通过平台报名【孔紫诚信保障】机构的课程（包括试听课、短期课、正式课等），都将获得平台提供的退换无忧诚信保障服务: 如果您在换课或退费过程中有任何不愉快，平台将帮您沟通处理；如果您与教育机构发生纠纷，平台将会帮助您通过法律手段维护您的权益；如果教育机构倒闭，平台会帮助您追回学费，如果无法追回，平台将赔偿您应该退回的学费。\n5. 所有通过平台报名【孔紫教育联盟】成员的课程（包括试听课、短期课、正式课等），都将获得所报正式课程学费5%-15%的平台补贴。（特别说明：此项权益只针对教育机构的非在读学员；每家机构的补贴比例可能不同，请查看下方的【孔紫教育联盟】成员列表确认补贴额度；在您向机构缴纳学费之前，请与平台家长客服联系并确认，以免产生纠纷）</text>
+    <navigator class='txt' url='/pages/unions/unions?union=1&tabInd=0'>【孔紫教育联盟】成员列表（上海）</navigator>
+    <navigator class='txt' url='/pages/unions/unions?union=1&tabInd=2'>【孔紫诚信保障】机构列表（上海）</navigator>
+  </view>
+</view>
+<view style="height:140rpx;"></view>
+<van-popup show="{{ show }}" bind:close="onClose" position='bottom'>
+  <view class='layer'>
+    <view class='tit van-hairline--bottom'>付款详情</view>
+    <view class='between row'>
+      <view>购买数量</view>
+      <van-stepper value="{{ num }}" bind:change="stepperChange" />
+    </view>
+    <van-cell-group>
+      <van-cell title="应付金额" value="￥{{amount}}" />
+      <van-cell title="优惠金额" value="￥0" border="{{ false }}" />
+    </van-cell-group>
+    <view class="midline">
+      <van-radio-group value="{{ radio }}" bind:change="onChange">
+        <van-cell-group>
+          <van-cell title="余额支付" value-class="value-class" clickable data-name="1" bind:click="onClick" src="/imgs/new/yepay.png" label='剩余可用余额{{balance/100}}元'>
+            <van-radio name="1" checked-color="#FF3A68" />
+          </van-cell>
+          <van-cell title="微信支付" value-class="value-class" clickable data-name="2" bind:click="onClick" src="/imgs/new/wxpay.png">
+            <van-radio name="2" checked-color="#FF3A68" />
+          </van-cell>
+        </van-cell-group>
+      </van-radio-group>
+    </view>
+    <view class='between pay'>
+      <view class='vCenter'>
+        实付:
+        <view class='money'> ￥{{amount}}</view>
+      </view>
+      <view class='btns'>
+        <van-button type="primary" size="normal" custom-class='layer_btn cancel' round bind:click="onClose">取消</van-button>
+        <van-button type="primary" size="normal" custom-class='layer_btn' round bind:click="payMoney">付款</van-button>
+      </view>
+    </view>
+  </view>
+</van-popup>
+
+<view class='submit' wx:if='{{t}}'>
+  <!-- <view class="lianxi" catchtap="call">联系客服</view> -->
+  <!-- <van-button round custom-class='button' bind:click='cancelTransferCard' wx:if='{{status==2}}'>取消转赠</van-button>
+  <van-button round custom-class='button' open-type='share' wx:else>转赠</van-button> -->
+  <button class="button" bindtap='cancelTransferCard' wx:if='{{status==2}}' style="border-radius:0;width:750rpx">取消转赠</button>
+  <button class="button" open-type='share' wx:else style="border-radius:0;width:750rpx">转赠</button>
+</view>
+<view class='submit' bindtap='buy' wx:else>
+  <view class="lianxi" catchtap="call">联系客服</view>
+  <view class="button">立即购买</view>
+  <!-- <button class="button" style="border-radius:0">立即购买</button> -->
+</view>

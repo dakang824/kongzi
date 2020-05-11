@@ -1,0 +1,6 @@
+{
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "recommend": "../../components/recommend/recommend"
+  }
+}

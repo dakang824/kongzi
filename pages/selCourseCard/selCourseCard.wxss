@@ -1,0 +1,168 @@
+page {
+  background: #FEFEFE;
+}
+
+.card {
+  margin: 40rpx 30rpx 0;
+  box-shadow: 0px 0px 50px 0px rgba(153, 153, 153, 0.2);
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+.card .btn{
+  padding: 90rpx 0;
+  display: flex;
+  justify-content: center;
+}
+.card .btn button{
+  width:249rpx;
+  height:82rpx;
+  line-height: 82rpx;
+  font-weight:bold;
+  font-size: 32rpx;
+  border-radius: 15rpx;
+}
+.card .title {
+  background: #FF2D58;
+  padding: 30rpx;
+  color: #fff;
+  font-size: 27rpx;
+}
+
+.card .title .lf {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.card .info {
+  color: #242424;
+  font-size: 27rpx;
+  padding: 35rpx 40rpx;
+}
+
+.card .info .txt {
+  margin-bottom: 15rpx;
+}
+
+.card .info .footer {
+  color: #FF2E58;
+  font-size: 24rpx;
+}
+
+.card .info .footer button {
+  height: 59rpx;
+  line-height: 59rpx;
+  background: linear-gradient(87deg, rgba(255, 90, 144, 1) 0%, rgba(255, 44, 86, 1) 98%);
+  border-radius: 30rpx;
+  color: #fff;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.Selected {
+  margin: 70rpx 30rpx 0;
+}
+
+.Selected .title {
+  color: #242424;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 57rpx;
+}
+
+.Selected .title button {
+  color: #FF2E58 !important;
+  font-weight: initial;
+}
+
+.Selected .block {
+  background: #fff;
+  margin: 0 0 36rpx;
+  box-shadow: 0px 0px 50px 0px rgba(153, 153, 153, 0.2);
+  border-radius: 20rpx;
+  padding: 40rpx 30rpx 20rpx;
+}
+
+.Selected .block .head {
+  margin-bottom: 35rpx;
+}
+
+.Selected .block .head .img {
+  min-width: 93rpx;
+  margin-right: 33rpx;
+}
+
+.Selected .block .head>.rt {
+  flex: 1;
+}
+
+.Selected .block .head .rt .between {
+  margin-bottom: 20rpx;
+}
+
+.Selected .block .head .rt .tit {
+  font-size: 30rpx;
+  font-weight: bold;
+  width: 400rpx;
+}
+
+.Selected .block .head .rt .tag {
+  color: #A8A8A8;
+  font-size: 27rpx;
+}
+
+.Selected .block .info .row {
+  color: #242424;
+  font-size: 24rpx;
+}
+
+.Selected .block .info .address_img {
+  width: 25rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+}
+
+.Selected .block .info .row1 .address_img {
+  width: 30rpx;
+  height: 31rpx;
+  margin-right: 20rpx;
+}
+.Selected .block .info .row1{
+  color: #707070;
+  font-size: 27rpx;
+  padding: 30rpx 0 20rpx;
+}
+.Selected .block .info .row1 .vCenter {
+  font-size: 27rpx;
+  font-weight: bold;
+  color: #242424;
+}
+.Selected .block .info .footer{
+  padding: 40rpx 0 20rpx;
+  color: #767676;
+  font-size: 24rpx;
+}
+.Selected .block .info .footer .txt{
+  margin-bottom: 10rpx;
+}
+.Selected .block .info .footer button{
+  height:60rpx;
+  line-height: 60rpx;
+}
+.bg{
+  background:linear-gradient(87deg,rgba(255,90,144,1) 0%,rgba(255,44,86,1) 98%);
+  color: #fff;
+}
+van-tag{
+  margin-right: 28rpx;
+}
+.imgs image{
+  width: 100%;
+  margin-bottom: 30rpx;
+}
+.cardNumber .rt{
+  font-size: 24rpx;
+  color: #707070;
+}
+.noData{
+  margin-top: 250rpx;
+}

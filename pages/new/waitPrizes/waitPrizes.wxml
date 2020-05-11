@@ -1,0 +1,140 @@
+ <pagePublic/>
+<page class='{{showChooseBox?"pageFiexed":""}}'>
+  <view class="serachbox">
+    <view style="height:10rpx;"></view>
+    <view class="item flex">
+      <view class="left">
+        <van-search custom-class="v" value="{{award_name}}" placeholder="搜索奖品名称" bind:search="serachMore" bind:change="inputContent" />
+      </view>
+      <view class="right flex">
+        <view class="allbox flex" bindtap="choose">
+          <image src="../../../imgs/new/chooseicon2.png" style="width:22rpx;height:20rpx;" />
+          <view class="all" style="{{showChooseBox?'color:#FF2C56':''}}">筛选</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="itembox" wx:if="{{!showChooseBox}}">
+    <view class="item flex">
+      <view class="default" bindtap="clickDefault" style="{{show4?'color:#FF2C56':''}}">默认排序</view>
+      <view class="default prize flex" bindtap="clickPrize">
+        <view class="key" style="{{show1?'color:#FF2C56':''}}">奖品价值</view>
+        <block wx:if="{{show1}}">
+          <view class="value" wx:if="{{prizeSort}}">
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;transform:rotate(180deg)" />
+            <image src="../../../imgs/new/redsanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx;transform:rotate(180deg)" />
+          </view>
+          <view class="value" wx:else>
+            <image src="../../../imgs/new/redsanjiao.png" style="width:9rpx;height:6rpx;" />
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx" />
+          </view>
+        </block>
+        <block wx:else>
+          <view class="value">
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;transform:rotate(180deg)" />
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx;" />
+          </view>
+        </block>
+      </view>
+      <view class="default prize flex" bindtap="clickTime">
+        <view class="key" style="{{show2?'color:#FF2C56':''}}">上架时间</view>
+        <block wx:if="{{show2}}">
+          <view class="value" wx:if="{{timeSort}}">
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;transform:rotate(180deg)" />
+            <image src="../../../imgs/new/redsanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx;transform:rotate(180deg)" />
+          </view>
+          <view class="value" wx:else>
+            <image src="../../../imgs/new/redsanjiao.png" style="width:9rpx;height:6rpx;" />
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx" />
+          </view>
+        </block>
+        <block wx:else>
+          <view class="value">
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;transform:rotate(180deg)" />
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx;" />
+          </view>
+        </block>
+      </view>
+      <view class="default prize flex" bindtap="clickCount">
+        <view class="key" style="{{show3?'color:#FF2C56':''}}">集齐差数</view>
+        <block wx:if="{{show3}}">
+          <view class="value" wx:if="{{countSort}}">
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;transform:rotate(180deg)" />
+            <image src="../../../imgs/new/redsanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx;transform:rotate(180deg)" />
+          </view>
+          <view class="value" wx:else>
+            <image src="../../../imgs/new/redsanjiao.png" style="width:9rpx;height:6rpx;" />
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx" />
+          </view>
+        </block>
+        <block wx:else>
+          <view class="value">
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;transform:rotate(180deg)" />
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx;" />
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <block wx:if="{{wait_data.length}}">
+    <view class='li' wx:for='{{wait_data}}' wx:key="{{index}}" style="{{index==0?'margin-top:220rpx':''}}" bindtap="goDetail" data-awardid="{{item.award_id}}" data-tickets="{{item.tickets}}" data-drawid="{{item.draw_id}}" data-drawtype="{{item.draw_type}}">
+      <view class='top'>
+        <image class="bigprize" src="/imgs/new/big_prize.png" style="width:124rpx;height:119rpx;" wx:if="{{item.draw_type==2}}" />
+        <view class='img'>
+          <image src='{{serverUrl}}{{item.pic_path}}'></image>
+        </view>
+        <view class='lf'>已集
+          <text class='red'>{{item.ticket_count==""?"0":item.ticket_count}}张</text>抽奖券</view>
+        <view class='rt'>还差
+          <text class='red'>{{(item.draw_limit-item.ticket_count)<0?"0":(item.draw_limit-item.ticket_count)}}张</text>
+        </view>
+      </view>
+      <view class='footer'>
+        <view class='tit'>{{item.name}}
+          <text>({{item.winners}}个中奖名额)</text>
+        </view>
+        <view class='box between'>
+          <view class='lf'>
+            <view wx:if="{{item.draw_type==1}}">开奖条件：每集齐
+              <text class='red'>{{item.draw_limit}}张</text>抽奖券开一次奖
+            </view>
+            <view wx:if="{{item.draw_type==2}}">开奖条件：至少集齐
+              <text class='red'>{{item.draw_limit}}张</text>抽奖券
+            </view>
+            <view>参与条件：消耗{{item.tickets}}张抽奖券</view>
+          </view>
+          <view class="join" wx:if='{{item.is_join==0}}' catchtap="goDetail" data-awardid="{{item.award_id}}" data-tickets="{{item.tickets}}" data-drawid="{{item.draw_id}}" data-drawtype="{{item.draw_type}}">参与抽奖</view>
+          <view class="join active_join" wx:if='{{item.is_join==1}}' catchtap="goDetail" data-awardid="{{item.award_id}}" data-tickets="{{item.tickets}}" data-drawid="{{item.draw_id}}" data-drawtype="{{item.draw_type}}">已参与</view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class="nomore" wx:if="{{noMore}}">~没有更多数据~</view> -->
+  </block>
+  <block wx:if="{{!wait_data.length}}">
+    <view class="nodatabox">
+      <view class="img">
+        <image src="/imgs/new/nodata.png" style="width:300rpx;height:300rpx;" />
+      </view>
+      <view class="tip">~没有更多数据~</view>
+    </view>
+  </block>
+  <van-popup show="{{showChooseBox}}" position="top" bind:close="onClose" custom-class='popup' z-index='10'>
+    <view class="type">
+      <view class="top">开奖类别</view>
+      <view class="btn flex">
+        <view class="item {{type1==index?'active':''}}" bindtap="choose1" data-index="{{index}}" wx:for="{{dataType1}}" wx:key="{{index}}" style="">{{item.title}}</view>
+
+      </view>
+    </view>
+    <view class="type" style="padding-bottom:60rpx">
+      <view class="top">奖品类别</view>
+      <view class="btn flex">
+        <view class="item {{item.isChoose?'active':''}}" bindtap="choose2" data-index="{{index}}" wx:for="{{dataType2}}" wx:key="{{index}}" style="">{{item.name}}</view>
+      </view>
+    </view>
+    <view class='fiexed flex'>
+      <view bindtap='reset' class="reset">重置</view>
+      <view bindtap='searchBtn' class="sure">确定</view>
+    </view>
+  </van-popup>
+</page>

@@ -1,0 +1,73 @@
+page {
+  background: #fff;
+  margin: 40rpx 30rpx;
+  width: auto;
+}
+
+.slide-image, swiper, swiper-item {
+  width: 690rpx;
+  height: 300rpx;
+  border-radius: 20rpx;
+}
+
+.info {
+  margin-top: 30rpx;
+}
+
+.info .title {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.info .start {
+  margin: 20rpx 0 5rpx;
+  font-size: 24rpx;
+}
+
+.info .start text {
+  padding-left: 12rpx;
+}
+
+.info van-tag {
+  margin-right: 17rpx;
+}
+
+.info .address {
+  font-size: 24rpx;
+  color: #666;
+  margin: 10rpx 0 20rpx;
+}
+
+.info .address text {
+  padding-right: 30rpx;
+}
+
+.info .left {
+  margin-left: -2px;
+}
+
+.row {
+  border-top: 1rpx solid #eee;
+  font-size: 24rpx;
+  padding: 30rpx 0;
+  color: #454545;
+}
+
+.row .btn {
+  width: 93rpx;
+  height: 35rpx;
+  line-height: 35rpx;
+  background: rgba(255, 180, 0, 0.05);
+  border-radius: 7rpx;
+  color: #fb8e00;
+  text-align: center;
+}
+
+.row .call {
+  background: rgba(10, 114, 255, 0.05);
+  color: #0a72ff;
+}
+
+.row text {
+  padding-left: 20rpx;
+}

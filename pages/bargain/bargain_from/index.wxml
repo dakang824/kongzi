@@ -1,0 +1,159 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast" />
+<view class='headInfo'>
+  <view class='bg'>
+    <view class='headTit'>
+      <image src='{{rootUrl+data.img}}' class='img'></image>
+      <view class='right'>
+        <view class='tit'>
+          <text wx:if='{{data.lable!=5}}'>{{data.lable==1?"砍价":data.lable==2?"拼团":data.lable==3?"试听":data.lable==4?"联合课包":data.lable==6?"限时":""}}</text>{{filter.decode(data.title)}}</view>
+        <view class='money'>¥{{data.type==4?filter.fixed(data.money,2):filter.fixed(data.money*100,2)}}</view>
+        <view class='time'>活动时间：{{data.activeTime}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='from'>
+  <view class='child'>
+    <van-field required clearable label="孩子姓名 :" placeholder="请填写孩子名" bind:clear="onClickIcon" bind:change="input" data-id='1' input-class='clear_hair_top' />
+  </view>
+  <view class="section gender" wx:if='{{data.type==4||data.need_stu_gender==1}}'>
+    <view class="picker van-hairline--bottom">
+      <text style='color:red'>*</text>
+      <text class='txt'>孩子性别 :</text>
+      <van-radio-group value="{{ order.gender }}" bind:change="genderChange">
+        <van-radio name="m">男</van-radio>
+        <van-radio name="f">女</van-radio>
+      </van-radio-group>
+    </view>
+  </view>
+  <view class="section van-hairline--bottom" wx:if='{{data.type==4||data.need_stu_age==1}}'>
+    <view class="picker">
+      <text style='color:red'>*</text>
+      <text class='txt'>孩子年龄 :</text>
+    </view>
+    <view class='clearfix age'>
+      <view class='yearBtn {{selNum==index?"active":""}}' wx:for='{{columns}}' bindtap='selage' data-index='{{index}}' data-item='{{item}}'>{{item}}</view>
+    </view>
+  </view>
+  <van-cell-group wx:if="{{order.mobile||!errPhone}}">
+    <van-field required value="{{order.mobile}}" clearable type="number" label="联系电话 :" placeholder="请填写联系电话" bind:clear="onClickIcon" bind:change="input" data-id='3' />
+  </van-cell-group>
+
+  <view class="section" wx:else>
+    <view class="picker van-hairline--bottom">
+      <text style='color:red'>*</text>
+      <text class='txt'>联系电话 :</text>
+      <van-button size="small" open-type="getPhoneNumber" bind:getphonenumber="getphonenumber">授权手机号</van-button>
+    </view>
+  </view>
+  <view class="section" wx:if='{{bt.enable_gift}}'>
+    <view class="picker van-hairline--bottom switch_s" style='padding-right:0;'>
+      <text class='txt'><text style='color:red'>*</text>礼品领取</text>
+      <view class='switch' bindtap='switchLine' wx:if='{{switchGift}}'>
+        <text class='online {{order.get_gift_type==1?"active":""}}'>线下领取</text>
+        <text class='downline {{order.get_gift_type==2?"active":""}}'>线上邮寄</text>
+      </view>
+      <view class='switch disable' wx:else>
+        <text class='online {{order.get_gift_type==1?"active":""}}'>线下领取</text>
+        <text class='downline {{order.get_gift_type==2?"active":""}}'>线上邮寄</text>
+      </view>
+    </view>
+    <block wx:if='{{!isFromShare}}'>
+      <van-cell-group custom-class='ce' wx:if='{{order.get_gift_type==2}}'>
+        <van-field required readonly value="{{ province+' '+city+' '+area }}" bindtap='showCity' label="选择城区:" icon="arrow" placeholder="选择省和城市" />
+        <van-field required value="{{ order.gift_address }}" label="邮寄地址:" placeholder="请填写礼品邮寄地址" input-class='placeholder' bind:change="input" data-id='4' />
+        <!-- input-class='{{platform?"ios_textarea":order.gift_address?"":"android_textarea"}}' -->
+      </van-cell-group>
+      <view wx:if='{{order.get_gift_type==1}}' class='gift_txt'>
+        <text space='emsp' decode>{{bt.gift_address}}</text>
+      </view>
+    </block>
+  </view>
+  <view class="section" wx:if='{{data.type!==4}}'>
+    <view class="picker">
+      <text style='color:red'>*</text>
+      <text class='txt'>选择校区 : </text>
+    </view>
+
+    <van-radio-group value="{{ school }}" bind:change="onChange">
+      <van-cell-group>
+        <van-cell wx:for="{{ data.act_members }}" wx:key="index" title="{{item.branch_name}}" samllTip='{{item.branch_address}}' clickable data-name="{{index}}" bind:click="toggle">
+          <van-radio catch:tap="toggle" name="{{ index }}" class="checkboxes-{{ index }}" data-name="{{index}}" />
+        </van-cell>
+      </van-cell-group>
+    </van-radio-group>
+  </view>
+
+  <van-button size="large" bind:click="sign" custom-class='sumit {{disabled?"disabled":"ok"}}' round disabled="{{disabled}}">{{data.select_course_type==1?'下一步':'继续'}}</van-button>
+</view>
+
+<van-popup show="{{ isFromShare }}" bind:close="back" custom-class='layerT' position='bottom'>
+  <view class='van-hairline--top-bottom title'>
+    付款详情
+    <view class='close' bindtap="back">
+      <van-icon name="cross" />
+    </view>
+  </view>
+  <view class='row van-hairline--top-bottom'>
+    <view class='lf'>
+      应付金额
+    </view>
+    <view class='rt'>
+      ￥{{(discount+pay_amount)/100}}
+    </view>
+  </view>
+  <view class='van-hairline--top-bottom' wx:if='{{!ticket.id&&ticketsLen.length}}'>
+    <van-cell title="优惠卡券" is-link value="{{ticketsLen.length+' 张'}}" url="/pages/shopMall/chooseCard/chooseCard?total_price={{pay_amount/100}}&prod_no={{bt.no}}&prod_id={{bt.inst_id?bt.inst_id:bt.union_id}}&prod_type={{data.lable==4?1:2}}" />
+  </view>
+  <view class='van-hairline--top-bottom' wx:if='{{ticket.id}}'>
+    <van-cell is-link title="{{ticket.type==1?'代金券减':ticket.type==4?'购物卡减':'折扣券减'}}" value="{{reduce+' 元'}}" url="/pages/shopMall/chooseCard/chooseCard?id={{ticket.id}}&total_price={{pay_amount/100}}&prod_no={{bt.no}}&prod_id={{bt.inst_id?bt.inst_id:bt.union_id}}&prod_type={{data.lable==4?1:2}}"
+    />
+  </view>
+  <view class='row' wx:if='{{data.type!=1}}'>
+    <!-- <view class='lf'>
+      优惠金额
+    </view>
+    <view class='rt from1'>
+      ￥{{discount/100}} （来自朋友分享）
+    </view> -->
+    <van-radio-group value="{{ order.pay_type }}" bind:change="onChange1">
+      <van-cell-group>
+        <van-cell title="余额支付" value-class="value-class" clickable data-name="2" bind:click="onClick" src="/imgs/new/yepay.png" label='剩余可用余额{{balance/100}}元'>
+          <van-radio name="2" />
+        </van-cell>
+        <van-cell title="微信支付" value-class="value-class" clickable data-name="1" bind:click="onClick" src="/imgs/new/wxpay.png">
+          <van-radio name="1" disabled='{{(ticket.id?pay_amount1:filter.fixed(pay_amount/100,2))==0}}' />
+        </van-cell>
+      </van-cell-group>
+    </van-radio-group>
+  </view>
+
+  <view class='footer'>
+    <view class='lf'>实际付款</view>
+    <view class='rt'>￥{{ticket.id?pay_amount1:filter.fixed(pay_amount/100,2)}}</view>
+  </view>
+  <view class='detail-btn'>
+    <van-button round custom-class='btn' bind:click='payMoney'>确认付款</van-button>
+  </view>
+</van-popup>
+<van-popup show="{{ cityShow }}" bind:close="showCity" position='bottom'>
+  <van-area area-list="{{ areaList }}" columns-placeholder="{{ ['请选择', '请选择', '请选择'] }}" bind:confirm='seleCity' bind:cancel='showCity'  title="选择城区"/></van-popup>
+<van-popup show="{{ show }}" custom-class='layer'>
+  <view class='close' bindtap="layerClose">
+    <van-icon name="cross" />
+  </view>
+  <view class='circle'>
+    <van-icon name="success" />
+  </view>
+  <view class='success_txt'>
+    付款成功</view>
+  <view>
+    <van-button round custom-class='btn' bind:click='goback'>返回活动</van-button>
+  </view>
+  <van-button round custom-class='btn btn1' bind:click='gomeet'>去选课</van-button>
+</van-popup>
+
+<pagePublic noFixed/>

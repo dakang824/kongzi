@@ -1,0 +1,57 @@
+<pagePublic noFixed/>
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class='list'>
+  <block wx:if='{{list.length}}'>
+    <view class='li' wx:for='{{list}}'>
+      <view class='flex'>
+        <image src='{{item.list_pic?url+item.list_pic:"/imgs/wuzhaop.png"}}' class='lf_img' binderror='errorImg' data-i='{{index}}'></image>
+        <view class='rt'>
+          <view class='between' style='padding-right:30rpx;'>
+            <view class='tit van-ellipsis'>{{item.title||item.mem_course}}</view>
+            <!-- <text>{{filter.toFixed(item.distance/1000)}}km</text> -->
+          </view>
+          <text class='tip'>{{item.age_from}}~{{item.age_to}}岁</text>
+          <text class='tip'>{{item.course_online==1?'线上':item.course_online==0?'线下':''}}课程</text>
+          <view class='between t'>
+            <view style="width: 100%;">
+              <view class='address flex' style="align-items:baseline">
+                <image src='/imgs/address.png'></image>
+                <text class='van-multi-ellipsis--l2' style='padding-right:30rpx;'>{{item.address}}</text>
+              </view>
+              <view class='school between'>
+                <view class="jigou van-ellipsis"><text></text>{{item.branch_name}}</view>
+                <view wx:if='{{item.course_online==0}}'>{{item.distance}}km</view>
+              </view>
+            </view>
+
+          </view>
+        </view>
+      </view>
+      <view class='flex footer_box van-hairline--top'>
+        <button bindtap='call' data-i='{{item.phone}}' class='{{item.phone?"":"gray"}}' disabled='{{!item.phone}}'>
+          <van-icon name="phone-o" /> 联系客服</button>
+        <button class='middle {{item.pay_back==0||(item.status==4||item.status==5)?"gray":""}}' bindtap='showCode' data-i='{{item}}' data-ind='{{index}}' disabled='{{item.pay_back==0||(item.status==4||item.status==5)}}'>
+          <van-icon name="qr" /> 二维码</button>
+        <button bindtap='subsidy' disabled='{{item.plat_subsidy==0}}' class='{{item.plat_subsidy==0?"gray":""}}' data-i='{{item}}'>
+          <van-icon name="balance-o" /> 平台补贴</button>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='noData'>~ 没有更多数据 ~</view>
+  </block>
+</view>
+
+<van-popup show="{{show}}" bind:close="onClose">
+  <view class='box'>
+    <image src='{{imgUrl}}laybox_bg.png' class='bg' mode='widthFix'></image>
+    <view class='t_box'>
+      <view class='color'>机构扫码后返还报名费</view>
+      <view class='line'></view>
+      <image class='code2' src='{{ url+qr_path }}'></image>
+      <view class='color' style='margin-top:-60rpx'>报名二维码</view>
+    </view>
+    <van-icon name="close" custom-class='close' bind:click='onClose' />
+  </view>
+</van-popup>
+<van-dialog id="van-dialog" />

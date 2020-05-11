@@ -1,0 +1,114 @@
+<view class="header">
+    <view class="cardbg">
+        <image src="{{imgUrl}}cardbg.png" style="width:100%;height:100%;" />
+    </view>
+    <view class="cardinfo">
+        <image src="{{imgUrl}}card.png" style="width:690rpx;height:380rpx;" />
+        <image class="smallman" src="/imgs/new/smallman.png" style="width:23rpx;height:35rpx;" />
+        <view class="money">￥365.00</view>
+    </view>
+</view>
+<view class="detail">
+    <view class="box">
+        <view class="title">365元【孔紫会员卡】超值购</view>
+        <view class="tip">权益详情</view>
+        <view class="rule" style="margin-top:40rpx;">
+            <text>1. 凡在【孔紫家长社区】购买的所有商品均享有9折优惠，如遇优惠商品，将在优惠价的基础上再享9折优惠。</text>
+        </view>
+        <view class="rule">
+            <text>2. 每天送你一张抽奖券</text>
+        </view>
+        <view class="rule">
+            <text>3. 购买孔紫联盟的线下课程，将享受10%的返利。</text>
+        </view>
+        <view class="btn" bindtap="buy">立即购买</view>
+        <!-- <view class="btn">转赠</view> -->
+    </view>
+</view>
+<view style="height:180rpx;"></view>
+<view class="mask" wx:if="{{showMask}}"></view>
+<view class="buybox" wx:if="{{showMask}}">
+    <view class="buydetail">
+        <view class="row1">付款详情</view>
+        <view class="boldline"></view>
+        <view class="row2 flex">
+            <view class="key">购买数量</view>
+            <view class="value flex">
+                <image bindtap="reduce" src="/imgs/new/reduce.png" style="width:44rpx;height:44rpx;" />
+                <view>{{num}}</view>
+                <image bindtap="add" src="/imgs/new/add.png" style="width:44rpx;height:44rpx;" />
+            </view>
+        </view>
+        <view class="row3 flex">
+            <view class="key">付款金额</view>
+            <view class="value">￥{{totalPrice}}</view>
+        </view>
+       <view class="row3 flex" style="margin-top:0rpx;borer-top:none;">
+            <view class="key">优惠金额</view>
+            <view class="value">￥0</view>
+        </view>
+        <view class="row4 flex">
+            <view class="key">实际付款</view>
+            <view class="value">￥{{totalPrice}}</view>
+        </view>
+    </view>
+    <view class="midline"></view>
+    <view class="buybtn flex">
+        <view class="moneybtn flex">
+            <view class="cancel" bindtap="cancelBuy">取消</view>
+            <view class="pay" bindtap="pay">确定</view>
+        </view>
+    </view>
+</view>
+<view class="payway" wx:if="{{payMask}}">
+    <view class="waybox">
+       <view class="row1">支付方式</view>
+       <view class="boldline"></view>
+       <view class="money">￥365.00</view>
+       <view class="row2 flex" style="margin-top:40rpx;">
+           <view class="key">付款金额：</view>
+           <view class="value">￥365.00</view>
+       </view>
+       <view class="row2 flex">
+           <view class="key">付款金额：</view>
+           <view class="value">￥365.00</view>
+       </view>
+       <view class="row2 flex" style="color:#333333">
+           <view class="key">付款金额：</view>
+           <view class="value">￥365.00</view>
+       </view>
+       <view class="way1 flex" bindtap="chooseway" data-paytype="1">
+           <view class="left flex">
+               <view class="img flex">
+                   <image src="/imgs/new/way1.png" style="width:38rpx;height:38rpx;"  />
+               </view>
+               <view class="info">
+                   <view class="top">余额转账</view>
+                   <view class="btn">账户可用余额900.00元</view>
+               </view>
+           </view>
+           <view class="right">
+               <image src="/imgs/new/chooseway.png" style="width:40rpx;height:40rpx;margin-right:20rpx;" />
+           </view>
+       </view>
+       <view class="way1 way2 flex" bindtap="chooseway" data-paytype="2">
+           <view class="left flex">
+               <view class="img flex">
+                   <image src="/imgs/new/way2.png" style="width:38rpx;height:38rpx;"  />
+               </view>
+               <view class="info">
+                   <view class="wechat">微信转账</view>
+               </view>
+           </view>
+           <view class="right" wx:if="{{way2}}">
+               <image src="/imgs/new/chooseway.png" style="width:40rpx;height:40rpx;margin-right:20rpx;" />
+           </view>
+       </view>
+        <view class="buybtn flex" style="margin-top:50rpx;">
+            <view class="moneybtn flex">
+                <view class="cancel" bindtap="cancelBuy">取消</view>
+                <view class="pay" bindtap="pay">确定</view>
+            </view>
+        </view>
+    </view>
+</view>

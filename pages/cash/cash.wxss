@@ -1,0 +1,57 @@
+.money{
+  margin-right:30rpx; 
+}
+.tit{
+  padding: 50rpx 30rpx 40rpx;
+  font-size:28rpx;
+  font-weight:bold;
+}
+.van-cell__title{
+  max-width: 45rpx!important;
+  min-width: 45rpx!important;
+  font-size:35rpx;
+  font-weight:bold;
+}
+.between{
+  margin: 0
+}
+.tip{
+  padding: 40rpx 30rpx 20rpx;
+  font-size:27rpx;
+  color:#999999;
+}
+.tip .all{
+  color: #4DA5FC;
+}
+.go{
+  height:82rpx!important;
+  line-height: 82rpx!important;
+  color: #CCCCCC!important;
+  background:#EEEEEE!important;
+}
+.active{
+  color: #fff!important;
+  background:linear-gradient(90deg,rgba(61,127,218,1),rgba(77,165,252,1));
+  height:82rpx!important;
+  line-height: 82rpx!important;
+}
+.van-field__input{
+  font-size:35rpx;
+  color: #333333;
+}
+.go_cash{
+  width:600rpx;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  margin-top: 300rpx;
+}
+.reminder{
+  font-size:24rpx;
+  padding-left: 30rpx;
+  color: #EA0202;
+}
+.progress{
+  margin-right: 30rpx;
+  font-size: 28rpx;
+}

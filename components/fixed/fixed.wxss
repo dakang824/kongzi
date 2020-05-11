@@ -1,0 +1,57 @@
+
+.show_money {
+  background: transparent !important;
+}
+
+.show_money .b {
+  position: relative;
+}
+
+.show_money .b .img {
+  width: 751rpx;
+  height: 806rpx;
+}
+
+.show_money .b .txt {
+  position: absolute;
+  bottom: 193rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+}
+
+.show_money .b button {
+  width: 365rpx;
+  height: 87rpx;
+  font-size: 35rpx;
+  color: #d50f00;
+  text-align: center;
+  background: transparent;
+  margin: 10rpx auto 30rpx;
+}
+
+.show_money .b .tip {
+  font-size: 21rpx;
+  color: #fff;
+  text-align: center;
+}
+
+.show_money .b .money {
+  color: #fff;
+  font-size: 28rpx;
+}
+
+.show_money .b .money text {
+  font-size: 115rpx;
+}
+
+.fixedMoney {
+  width: 167rpx;
+  height: 224rpx;
+  position: fixed;
+  right: 0;
+  bottom: 167rpx;
+  z-index: 9;
+  transform: rotate(-10deg);
+}

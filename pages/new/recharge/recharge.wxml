@@ -1,0 +1,66 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class='header'>
+  <image src='{{imgUrl}}recharge.png' class='img' mode='widthFix'></image>
+  <view class='money between'>
+    <view>账户余额(元）</view>
+    <view class='amount'>￥{{filter.fixed(balance/100||0,2)}} </view>
+  </view>
+</view>
+<pagePublic noFixed/>
+<view class='box'>
+  <view class='tip'>输入充值金额：</view>
+  <view class='van-hairline--bottom inn'>
+    <input placeholder='手动输入充值金额' type='digit' bindinput='inputMoney' value='{{money}}'></input>
+  </view>
+
+  <view class='tip marTop'>选择充值金额：</view>
+  <view class='money_box'>
+    <view wx:for='{{amount}}' class='{{item==money?"active":""}}' bindtap='selMoney' data-i='{{item}}'>{{item}}元</view>
+  </view>
+</view>
+<button class='btn {{money?"bg":""}}' bindtap='recharge' disabled='{{!money}}'>立即充值</button>
+
+<van-popup show="{{ tickets }}" bind:close="onClose" custom-class='lay_box'>
+  <view class='lay_box up'>
+    <van-icon name="cross" custom-class='lay_box_close' size='24px' color='#999' bind:click='onClose' color='#fff' />
+    <view class='head'>
+      <image src='{{imgUrl}}recharge_head_bg.png' mode="widthFix" class='topImg' style='width:100%;margin-top:-80rpx'></image>
+      <view class='title'>恭喜您充值成功~</view>
+    </view>
+    <view class='box'>
+      <view class='tip'>送您{{tickets}}张抽奖券，直接放入您的账户中</view>
+      <view class='tip'>可在个人中心-抽奖券中查看</view>
+
+      <view class='coupon'>
+        <view class='circle'></view>
+        <view class='line'></view>
+        <view class='circle bottom'></view>
+
+        <view class='lf'>
+          <view class='tit'>抽奖券</view>
+          <view>
+            <text>
+            使用抽奖券可以在【奖天天】\n进行抽奖哦！
+          </text>
+          </view>
+        </view>
+        <view class='rt'>
+          <text>{{tickets}} </text> 张</view>
+      </view>
+    </view>
+  </view>
+</van-popup>
+<view class="mask" wx:if="{{showMask}}" bindtap="closeMask"></view>
+<view class="cashbox" wx:if="{{showMask}}">
+  <view class="row1">
+    <image src="{{imgUrl}}recharge_cash.png" />
+  </view>
+  <view class='title'>温馨提示</view>
+  <view class="row2" style="margin-top:50rpx;">充值金额仅用于平台消费，不可提现！</view>
+  <view class="row2">是否确定充值？</view>
+  <view class="row3 flex">
+    <view class="left" bindtap="closeMask">取消</view>
+    <view class="right" bindtap="sureRecharge">确定</view>
+  </view>
+  <image src="../../../imgs/close.png" class="closeImg" bindtap="closeMask" />
+</view>

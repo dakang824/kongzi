@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "w_childList": "../../components/w_childList/w_childList",
+    "w_loadingData": "../../components/w_loadingData/w_loadingData",
+    "fixed": "../../components/fixed/fixed",
+    "recommend": "../../components/recommend/recommend",
+    "virus": "../../components/virus/virus"
+  },
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "孔紫家长社区",
+  "enablePullDownRefresh": true
+}

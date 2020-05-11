@@ -1,0 +1,26 @@
+<view class='share'>
+	<van-popup show="{{shareImg}}" bind:close="onClose" custom-class='layerBox shareBox' z-index='99999999'>
+		<image src='{{url+qrPath}}' mode='widthFix' class='poster'></image>
+		<view class='footer flex'>
+			<button class='btn' catchtap="onClose" open-type='share'>
+				<view class='img'>
+					<image src='/imgs/weixin.png' class='weixin'></image>
+				</view>
+				<view>分享给好友</view>
+			</button>
+			<view bindtap='downLoadImg'>
+				<view class='img'>
+					<image src='/imgs/down1.png' class='friend'></image>
+				</view>
+				<view>转发朋友圈</view>
+			</view>
+		</view>
+	</van-popup>
+	<view class='bt'>
+		<van-button type="default" custom-class="shareFixed" bindtap="showShare" wx:if='{{fixed}}'>
+			<!-- <van-button type="default" custom-class="shareFixed" open-type="share" wx:if='{{fixed}}'> -->
+			<van-icon name="gold-coin-o" custom-class="left" size="34rpx" color="#fff" /> 分享好友
+			<van-icon name="arrow" custom-class="right" color="#FF2C56" />
+		</van-button>
+	</view>
+</view>

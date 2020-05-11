@@ -1,0 +1,161 @@
+.share .lay_box {
+  width: 590rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  overflow: inherit !important;
+  position: absolute;
+  top: 80rpx;
+  left: 25rpx;
+}
+
+.share .lay_bg .bg {
+  width: 670rpx;
+  position: relative;
+  top: -5rpx;
+}
+
+.share .lay_box .topImg {
+  width: 211rpx;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-top: -90rpx;
+}
+
+.share .lay_bg {
+  width: 670rpx;
+  height: 849rpx;
+  position: relative;
+  background: transparent !important;
+}
+
+.share .lay_box .box {
+  padding: 40rpx;
+  padding-top: 130rpx;
+}
+
+.share .lay_box .box .title {
+  font-size: 32rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40rpx;
+  color: #fa2335;
+}
+
+.share .lay_box .lay_box_close {
+  position: absolute;
+  right: 30rpx;
+  top: -60rpx;
+}
+
+.share .lay_box .sumit {
+  width: 330rpx;
+  height: 87rpx;
+  background: #e8e8e8;
+  border-radius: 44rpx;
+  margin: 50rpx auto 28rpx;
+  font-size: 32rpx;
+  color: #fff;
+  line-height: 87rpx;
+}
+
+.share .btn_tip {
+  text-align: center;
+  color: #929292;
+  font-size: 25rpx;
+}
+
+.share .lay_box .van-cell {
+  background: #eee;
+  margin-bottom: 20rpx;
+  border-radius: 6rpx;
+}
+
+.share .sumit.success {
+  background: linear-gradient(180deg, rgba(255, 82, 131, 1) 0%, rgba(248, 39, 11, 1) 99%);
+}
+
+.share .shareBox {
+  background-color: transparent !important;
+  border-radius: 42rpx;
+  overflow-y: inherit !important;
+  margin-top: 50rpx;
+}
+
+.share .shareBox .footer .weixin {
+  width: 69rpx;
+  height: 54rpx;
+  vertical-align: middle;
+}
+
+.share .shareBox .footer .friend {
+  width: 39rpx;
+  height: 46rpx;
+  vertical-align: middle;
+}
+
+.poster {
+  height: 783rpx;
+  width: 532rpx;
+}
+
+.share .shareBox .footer .btn{
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  line-height: inherit;
+  color: #fff;
+  font-size: 27rpx;
+}
+
+.share .shareBox .footer {
+  color: #fff;
+  font-size: 27rpx;
+  display: flex;
+  justify-content: space-around;
+}
+
+.share .shareBox .footer .img {
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 50%;
+  margin-top: 25rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20rpx;
+  margin-left: 15rpx;
+}
+
+
+.share .bt .shareFixed {
+  position: fixed;
+  bottom: 290rpx;
+  right: 0;
+  background: linear-gradient(90deg, rgba(255, 210, 90, 1) 0%, rgba(255, 44, 86, 1) 100%);
+  border-radius: 58rpx 0px 0px 58rpx;
+  height: 75rpx;
+  padding: 0 18rpx;
+  font-size: 27rpx;
+  color: #fff;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.share .shareFixed .left{
+  margin-left: 10rpx;
+  position: relative;
+  top: 6rpx;
+}
+.share .shareFixed .right{
+  margin-left: 10rpx;
+  width: 35rpx;
+  height: 35rpx;
+  border-radius: 50%;
+  background-color: #FFF;
+  line-height: 35rpx;
+  text-align: center;
+}

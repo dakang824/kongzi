@@ -1,0 +1,44 @@
+ <pagePublic/>
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class='subsidy'>
+  <image src='{{imgUrl}}subsidy_head.jpg' mode='widthFix' class='head_bg'></image>
+  <view class='inner'>
+    <van-cell-group border="{{ false }}">
+      <van-field value="{{postData.sign_amount}}" label="签单金额(元)：" placeholder='填写签单金额' title-width='100px' left-icon="balance-o" bind:input='onInputValue' type='number'/>
+      <van-field value="{{filter.toFixed(options.subsidy<=100?postData.sign_amount*options.subsidy/100:options.subsidy)}}" label="补贴金额(元)："  title-width='100px' left-icon="after-sale" disabled wx:if='{{options.subsidy!="undefined"}}'/>
+      <view bindtap='timeSwitch'>
+        <van-field value="{{postData.sign_time}}" label="签单时间：" placeholder='填写签单时间' left-icon="underway-o" title-width='100px' src="/imgs/new/yepay.png" readonly/>
+      </view>
+      <van-field label="上传报课合同领取平台补贴" left-icon="upgrade" border="{{ false }}" title-width='200px' readonly/>
+    </van-cell-group>
+  </view>
+  <view class='box'>
+    <van-uploader file-list="{{ postData.img }}" max-count='{{100}}' use-before-read bind:before-read="beforeRead" bind:after-read="afterRead" bind:delete='delUploadImg' showDel='{{!status==1||status==3}}' />
+  </view>
+
+  <view class='bt'>
+    <block wx:if='{{!isupdate}}'>
+      <van-button type="default" custom-class="btn {{postData.sign_amount&&postData.sign_time&&postData.img.length?'':'gray'}}" bind:click='onSubmit'>申请补贴</van-button>
+    </block>
+    <block wx:elif='{{status==1}}'>
+      <van-button type="default" custom-class='btn'>审核中...</van-button>
+    </block>
+    <block wx:elif='{{status==3}}'>
+      <view class='btn_tip'>*请上传正确的报课合同。</view>
+      <van-button type="default" custom-class='btn marbt' bind:click='againSumit'>审核失败,重新提交</van-button>
+    </block>
+    <block wx:elif='{{status==2}}'>
+      <van-button type="default" round size="large" custom-class='success_btn'>已打款</van-button>
+    </block>
+    <block wx:else>
+      <view class='between btns_b'>
+        <van-button type="default" bind:click='onExamine' round size="normal" custom-class='btns'>提交审核</van-button>
+        <van-button type="default" bind:click='onSubmit' round size="normal" custom-class='btns'>修改</van-button>
+      </view>
+    </block>
+  </view>
+</view>
+
+<van-popup show="{{ show }}" bind:close="timeSwitch" position="bottom">
+  <van-datetime-picker type="date" value="{{ currentDate }}" min-date="{{ minDate }}" bind:input="onInput" bind:confirm='timeConfirm' bind:cancel='timeSwitch' />
+</van-popup>

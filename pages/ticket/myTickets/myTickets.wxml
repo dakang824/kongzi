@@ -1,0 +1,62 @@
+<pagePublic noFixed/>
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<loading-top id="loading" />
+<view class='page'>
+  <van-tabs sticky swipeable color="#FF2C56" swipe-threshold='6' bind:change="onChange">
+    <van-tab title="全部">
+      <template is="list" data="{{list:list,url:url}}"></template>
+    </van-tab>
+    <van-tab title="未使用">
+      <template is="list" data="{{list:list1,url:url}}"></template>
+    </van-tab>
+    <van-tab title="使用中">
+      <template is="list" data="{{list:list2,url:url}}"></template>
+    </van-tab>
+    <van-tab title="转赠中">
+      <template is="list" data="{{list:list3,url:url}}"></template>
+    </van-tab>
+    <van-tab title="已用完">
+      <template is="list" data="{{list:list4,url:url}}"></template>
+    </van-tab>
+    <van-tab title="已过期">
+      <template is="list" data="{{list:list5,url:url}}"></template>
+    </van-tab>
+  </van-tabs>
+</view>
+
+<template name='list'>
+  <view class="itembox" wx:if="{{list.length}}">
+    <view class="item" wx:for="{{list}}" wx:key="{{index}}">
+      <view class="img">
+        <image src="{{url+item.top_pic}}" style="width:690rpx;height:300rpx;border-radius:20rpx 20rpx 0 0;{{(item.status==2||item.status==3||item.status==4)?'opacity:0.5':''}}" />
+        <image class="use" wx:if="{{item.status==3}}" src="../../../imgs/new/use.png" />
+        <image class="use" wx:if="{{item.status==2}}" src="../../../imgs/new/send.png" />
+        <image class="use" wx:if="{{item.status==4}}" src="../../../imgs/new/typeover.png" />
+      </view>
+      <view class="title">{{item.name}}</view>
+      <view class="time">有效期限：{{filter.spot(filter.sliceTime(item.valid_from))}}-{{filter.spot(filter.sliceTime(item.valid_to))}}</view>
+      <view class="sendbox flex">
+        <view class="left">兑换码：{{item.code}}</view>
+        <view class="right flex">
+          <button class="send" wx:if="{{item.status==0||item.status==1}}" open-type="share" data-index="{{index}}" data-id="{{item.id}}" data-toppic="{{item.top_pic}}" data-name="{{item.name}}">转赠</button>
+          <button class="send" bindtap="cancelSend" style="background:#eee" wx:if="{{item.status==2}}" data-index="{{index}}" data-id="{{item.id}}" data-toppic="{{item.top_pic}}" data-name="{{item.name}}">取消转增</button>
+          <view class="ercode" bindtap='showQRCode' data-qr='{{item.qr_path}}'>二维码</view>
+
+        </view>
+      </view>
+    </view>
+  </view>
+  <block wx:else>
+    <view class='noData'>~ 没有更多数据 ~</view>
+  </block>
+</template>
+
+<van-popup show="{{ show }}" bind:close="onClose" custom-class='layer'>
+  <view class='layer'>
+    <view class='close' bindtap='onClose'>
+      <van-icon name="cross" size='23px' />
+    </view>
+    <view class='tit'>扫码销票</view>
+    <image src='{{url+qrCode}}'></image>
+  </view>
+</van-popup>

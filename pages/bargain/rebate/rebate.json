@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-popup": "../../../dist/popup/index"
+  },
+  "navigationBarTitleText": "分享返利",
+  "navigationBarBackgroundColor": "#5B27BE"
+}

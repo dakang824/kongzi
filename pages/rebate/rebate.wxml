@@ -1,0 +1,33 @@
+ <pagePublic/>
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<loading-top id="loading" />
+<view class='list'>
+  <block wx:if='{{list.length}}'>
+    <navigator class='li' wx:for="{{list}}" url='/pages/rebate/rebate_detail/index?act_no={{item.act_no}}&inst_id={{item.inst_id}}&pic_path={{item.pic_path}}&title={{item.title}}&actTime={{item.actTime}}&totalperson={{item.gx}}&totlaMoney={{item.totalmoney}}'>
+      <view class='head'>
+        <image src='{{imgUrl+item.pic_path}}'></image>
+        <view class='rt'>
+          <text class='tit van-multi-ellipsis--l2'>{{filter.decode(item.title)}}</text>
+          <view class='money'>活动时间：{{item.actTime}}</view>
+          <!-- <view class='flex'>
+          <view class='circle'></view>
+          <text>孔紫教育培训机构</text>
+        </view> -->
+        </view>
+      </view>
+      <view class='between footer'>
+        <view class='lf'>
+          <image src='../../imgs/perso.png' class='person'></image>
+          <text>贡献人数:{{item.gx}}</text>
+        </view>
+        <view class='rt'>
+          <image src='../../imgs/money.png' class='money'></image>
+          <text>返利总额:￥{{item.totalmoney}}</text>
+        </view>
+      </view>
+    </navigator>
+  </block>
+  <block wx:else>
+    <view class='noData'>~ 没有更多数据 ~</view>
+  </block>
+</view>

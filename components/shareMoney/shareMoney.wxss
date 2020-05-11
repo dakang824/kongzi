@@ -1,0 +1,43 @@
+.share {
+  background: #fff;
+  height: 102rpx;
+  border-radius: 20rpx;
+}
+
+.vCenter {
+  display: flex;
+  align-items: center;
+}
+
+.share button {
+  margin-right: 17rpx;
+}
+
+.share .left {
+  min-width: 102rpx;
+  height: 102rpx;
+  background: linear-gradient(0deg, rgba(255, 175, 0, 1) 0%, rgba(255, 209, 0, 1) 100%);
+  border-radius: 20rpx;
+  font-size: 30rpx;
+  font-weight: 800;
+  color: #0e0e0e;
+  position: relative;
+}
+
+.share .left view {
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  top: 12rpx;
+  left: 22rpx;
+}
+
+.share .middle {
+  font-size: 22rpx;
+  color: #424242;
+  margin: 0 30rpx 0 25rpx;
+}
+
+.share .middle text {
+  color: #fb3438;
+}

@@ -1,0 +1,75 @@
+<pagePublic/>
+<page>
+  <view class="serachbox">
+    <view style="height:10rpx;"></view>
+    <view class="item flex">
+      <view class="left">
+        <van-search custom-class="v" value="{{condition}}" placeholder="请输入关键词" bind:search="serach" bind:change="inputContent" />
+      </view>
+      <!-- <view class="right flex">
+        <view class="allbox flex" bindtap="choose">
+          <image src="../../../imgs/new/chooseicon2.png" style="width:22rpx;height:20rpx;" />
+          <view class="all" style="{{showChooseBox?'color:#FF2C56':''}}">筛选</view>
+        </view>
+      </view> -->
+    </view>
+  </view>
+  <view class="itembox" wx:if="{{!showChooseBox}}">
+    <view class="item flex">
+      <view class="default {{active==0?'active':''}}" bindtap="tabsClick" data-i='0'>综合</view>
+      <view class="default prize flex" bindtap="tabsClick" data-i='1'>
+        <view class="key {{active==1?'active':''}}">热度</view>
+        <view class='flex flip'>
+          <van-icon name="play" color="{{postData.orderby==2?'#ff2c56':'#999'}}" custom-class='transform-270' size='21rpx' />
+          <van-icon name="play" color="{{postData.orderby==3?'#ff2c56':'#999'}}" custom-class='transform-90' size='21rpx' />
+        </view>
+      </view>
+      <view class="default prize flex" bindtap="tabsClick" data-i='2'>
+        <view class="key {{active==2?'active':''}}">最新</view>
+        <view class='flex flip'>
+          <van-icon name="play" color="{{postData.orderby==4?'#ff2c56':'#999'}}" custom-class='transform-270' size='21rpx' />
+          <van-icon name="play" color="{{postData.orderby==5?'#ff2c56':'#999'}}" custom-class='transform-90' size='21rpx' />
+        </view>
+      </view>
+      <view class="default prize flex" bindtap="tabsClick" data-i='3'>
+        <view class="key {{active==3?'active':''}}">价格</view>
+        <view class='flex flip'>
+          <van-icon name="play" color="{{postData.orderby==6?'#ff2c56':'#999'}}" custom-class='transform-270' size='21rpx' />
+          <van-icon name="play" color="{{postData.orderby==7?'#ff2c56':'#999'}}" custom-class='transform-90' size='21rpx' />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="cardbox">
+    <navigator url='/pages/shopMall/localDetail/localDetail?id={{item.id}}' class="content" wx:for="{{dataList}}" wx:key="{{index}}">
+      <view class="img">
+        <image src="{{serverUrl+item.top_pic}}" />
+        <block wx:if='{{item.status==2||item.status==3||item.status==4}}'>
+          <image class="over" src="/imgs/new/{{item.status==2?'over':item.status==3||item.status==4?'active_end':''}}.png" />
+        </block>
+
+        <van-count-down wx:if="{{item.seconds > 0}}" class="time" time="{{ item.seconds }}" format="DD天HH时mm分ss秒"></van-count-down>
+      </view>
+      <view class="name">{{item.name}}</view>
+      <view class="line"></view>
+      <view class="price flex">
+        <view class="left flex">
+          <view class="yuan">￥{{item.price}}</view>
+          <view class="sale">
+            <text>市场价￥{{item.ori_price}}</text>
+          </view>
+        </view>
+        <view class="right">剩余{{item.left_count
+          <0? "0":item.left_count}}件</view>
+        </view>
+    </navigator>
+    </view>
+    <block wx:if="{{!dataList.length}}">
+      <view class="nodatabox">
+        <view class="img">
+          <image src="/imgs/new/nodata.png" style="width:300rpx;height:300rpx;" />
+        </view>
+        <view class="tip">~没有更多数据~</view>
+      </view>
+    </block>
+</page>

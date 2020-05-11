@@ -1,0 +1,49 @@
+<import src="../../template/activeList.wxml" />
+<van-dialog id="van-dialog" />
+<loading-top id="loading" />
+<pagePublic/>
+<van-tabs type='line' border="{{false}}" active="{{ active }}" bind:change="onChange" custom-class='tabs' color="#fff" swipeable animated sticky>
+  <van-tab title="全部">
+    <scroll-view scroll-y wx:if="{{list.all.length}}" style='height:{{scrollHeight}}px;'>
+      <view class='list'>
+        <block wx:for="{{list.all}}">
+          <template is="myJoin" data="{{...item,imgUrl:imgUrl,ope_id:ope_id}}"></template>
+        </block>
+      </view>
+    </scroll-view>
+    <view wx:else class='noData'>~ 没有更多数据了 ~</view>
+  </van-tab>
+  <block wx:if='{{id==2}}'>
+    <van-tab title="即将开始">
+      <scroll-view scroll-y wx:if="{{list.start.length}}" style='height:{{scrollHeight}}px;'>
+        <view class='list'>
+          <block wx:for="{{list.start}}">
+            <template is="myJoin" data="{{...item,imgUrl:imgUrl,ope_id:ope_id}}"></template>
+          </block>
+        </view>
+      </scroll-view>
+      <view wx:else class='noData'>~ 没有更多数据了 ~</view>
+    </van-tab>
+  </block>
+  
+  <van-tab title="进行中">
+    <scroll-view scroll-y wx:if="{{list.doing.length}}" style='height:{{scrollHeight}}px;'>
+      <view class='list'>
+        <block wx:for="{{list.doing}}">
+          <template is="myJoin" data="{{...item,imgUrl:imgUrl,ope_id:ope_id}}"></template>
+        </block>
+      </view>
+    </scroll-view>
+    <view wx:else class='noData'>~ 没有更多数据了 ~</view>
+  </van-tab>
+  <van-tab title="即将结束">
+    <scroll-view scroll-y wx:if="{{list.end.length}}" style='height:{{scrollHeight}}px;'>
+      <view class='list'>
+        <block wx:for="{{list.end}}">
+          <template is="myJoin" data="{{...item,imgUrl:imgUrl,ope_id:ope_id}}"></template>
+        </block>
+      </view>
+    </scroll-view>
+    <view wx:else class='noData'>~ 没有更多数据了 ~</view>
+  </van-tab>
+</van-tabs>

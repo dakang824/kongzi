@@ -1,0 +1,24 @@
+<pagePublic/>
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<view>
+  <view class='between'>
+    <view class='tit'>提现金额</view>
+    <navigator class='progress' url='/pages/cash/progress/progress'>提现记录<van-icon name="arrow" /></navigator>
+  </view>
+
+  <view class='money'>
+    <van-field value="{{ cashMoney }}" type='digit' clearable label="￥" placeholder="请输入提现金额" bind:clear="onClickIcon" bind:change='changeMoney' />
+  </view>
+  <view class='between tip'>
+    <text>可提现金额{{filter.fixed(nowMoney||0,2)}}元（满100元可拉新提现）</text>
+    <text class='all' bindtap='allCash'>全部提现</text>
+  </view>
+  <text class='reminder' wx:if='{{cashMoney>nowMoney}}'>(您输入的金额超过可提现的余额)</text>
+  <view class='go_cash'>
+    <van-button size="large" custom-class='{{cashMoney&&cashMoney<=nowMoney?"active":"go"}}' round disabled='{{cashMoney&&cashMoney<=nowMoney?false:true}}' bind:click='cash'>
+      立即提现</van-button>
+  </view>
+</view>
+<van-toast id="van-toast" />
+<van-notify id="van-notify" />
+<van-dialog id="van-dialog" />

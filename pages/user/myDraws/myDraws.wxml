@@ -1,0 +1,129 @@
+<pagePublic/>
+<view class='page'>
+  <van-tabs sticky swipeable color="#0096FF" active="{{ active }}" swipe-threshold='5' bind:change="onChange">
+    <van-tab title="未开奖">
+      <view class="nobox">
+        <block wx:if="{{data.length!=0}}">
+          <view class="itembox flex" wx:for="{{data}}" wx:key="{{index}}" bindtap='goLuckyDetail' data-awardid="{{item.award_id}}" data-drawid="{{item.draw_id}}">
+            <view class="noleft">
+              <view class="img big_img">
+                <image src="{{serverUrl}}{{item.icon_path}}" style="width:100%;height:100%;border-radius:10rpx;" />
+                <image class="big" wx:if="{{item.draw_type==2}}" src="/imgs/new/big_prize.png" style="width:62rpx;height:59rpx;" />
+              </view>
+            </view>
+            <view class="noright">
+              <view class="row1 van-ellipsis">{{item.name}}</view>
+              <view class="row2" wx:if="{{item.status==1}}" style="margin-top:10rpx;">待开奖</view>
+              <view class="row2" wx:if="{{item.status==2}}" style="margin-top:10rpx;">已开奖</view>
+              <view class="row2 jiqi" wx:if="{{item.status==0}}" style="margin-top:10rpx;">未集齐</view>
+              <view class="row2 xiaxian" wx:if="{{item.status==0&&item.award_status==5}}" style="margin-top:10rpx;">未集齐，已下线</view>
+              <view class="row3" style="margin-top:20rpx;" wx:if="{{item.draw_now==0}}">开奖时间：{{item.new_draw_time}} ({{item.week}})</view>
+              <view class="row3" style="margin-top:20rpx;" wx:if="{{item.draw_now==1}}">开奖时间：集满立即开奖</view>
+              <view class="row3" wx:if="{{item.status==1}}">参与人数：{{item.join_count}}人</view>
+              <view class="row3">中奖名额：{{item.winners}}个</view>
+              <view class="row3" wx:if="{{item.status==0}}">已集{{item.ticket_count==""?"0":item.ticket_count}}张抽奖券，还差{{(item.draw_limit-item.ticket_count)
+                <0? "0":(item.draw_limit-item.ticket_count)}}张</view>
+              </view>
+            </view>
+        </block>
+        <block wx:if="{{data.length==0}}">
+          <view class="nodatabox">
+            <view class="img">
+              <image src="/imgs/new/nodata.png" style="width:300rpx;height:300rpx;" />
+            </view>
+            <view class="tip">暂无信息</view>
+          </view>
+        </block>
+        </view>
+    </van-tab>
+    <van-tab title="已开奖">
+      <!-- <view class="nobox">
+        <block wx:if="{{data1.length!=0}}">
+          <view class="itembox flex" wx:for="{{data1}}" wx:key="{{index}}" bindtap='goDetail' data-awardid="{{item.award_id}}" data-drawid="{{item.draw_id}}">
+            <view class="noleft">
+              <view class="img big_img">
+                <image src="{{serverUrl}}{{item.icon_path}}" style="width:100%;height:100%;border-radius:10rpx;" />
+                <image class="big" wx:if="{{item.draw_type==2}}" src="/imgs/new/big_prize.png" style="width:62rpx;height:59rpx;" />
+              </view>
+            </view>
+            <view class="noright">
+              <view class="row1">{{item.name}}</view>
+              <view class="row2 iswin" wx:if="{{item.is_win==1}}" style="margin-top:10rpx;">
+                <view class="status1">恭喜您，已中奖</view>
+                <view class="status2" catchtap="getPrize" data-awardid="{{item.award_id}}" data-awardtype="{{item.award_type}}" data-drawid="{{item.draw_id}}" wx:if="{{item.is_get==0}}">领取奖品</view>
+                <view class="status2 hasget" wx:if="{{item.is_get==1}}">已领取</view>
+              </view>
+              <view class="row2 xiaxian" wx:if="{{item.is_win==0}}" style="margin-top:10rpx;">很遗憾，未中奖</view>
+
+              <view class="row3" style="margin-top:20rpx;">开奖时间：{{item.new_draw_time}} ({{item.week}})</view>
+              <view class="row3">参与人数：{{item.join_count}}人</view>
+              <view class="row3">中奖名额：{{item.winners}}个</view>
+            </view>
+          </view>
+        </block>
+        <block wx:if="{{data1.length==0}}">
+          <view class="nodatabox">
+            <view class="img">
+              <image src="/imgs/new/nodata.png" style="width:300rpx;height:300rpx;" />
+            </view>
+            <view class="tip">暂无信息</view>
+          </view>
+        </block>
+      </view> -->
+      <template is="list" data="{{url:serverUrl,data:data1}}"></template>
+    </van-tab>
+    <van-tab title="已中奖">
+      <template is="list" data="{{url:serverUrl,data:data2}}"></template>
+    </van-tab>
+  </van-tabs>
+  </view>
+
+  <template name='list'>
+    <view class="nobox">
+      <block wx:if="{{data.length!=0}}">
+        <view class="itembox flex" wx:for="{{data}}" wx:key="{{index}}" bindtap='goDetail' data-i='{{item}}'>
+          <view class="noleft">
+            <view class="img big_img">
+              <image src="{{url+item.icon_path}}" style="width:100%;height:100%;border-radius:10rpx;" />
+              <image class="big" wx:if="{{item.draw_type==2}}" src="/imgs/new/big_prize.png" style="width:62rpx;height:59rpx;" />
+            </view>
+          </view>
+          <view class="noright">
+            <view class='between' style='width:100%'>
+              <view class="row1 van-ellipsis">{{item.name}}</view>
+              <view class="row2 tip" wx:if="{{item.is_win==1}}">
+                <view class="status1">{{item.is_get==0?'未领取':item.is_get==1?'待发放':item.is_get==2?'已发放':''}}</view>
+              </view>
+            </view>
+
+            <view class="row2 iswin" wx:if="{{item.is_win==1}}" style="margin-top:10rpx;">
+              <view class="status1">恭喜您，已中奖</view>
+              <view class="status2" catchtap="getPrize" data-awardid="{{item.award_id}}" data-awardtype="{{item.award_type}}" data-drawid="{{item.draw_id}}" wx:if="{{item.is_get==0}}">领取奖品</view>
+              <!-- <view class="status2 hasget" wx:if="{{item.is_get==1}}">已领取</view> -->
+            </view>
+
+            <view class="row2 xiaxian" wx:if="{{item.is_win==0}}" style="margin-top:10rpx;">很遗憾，未中奖</view>
+            <view class="row3" style="margin-top:20rpx;">开奖时间：{{item.new_draw_time}} ({{item.week}})</view>
+            <view class='between'>
+              <view>
+                <view class="row3">参与人数：{{item.join_count}}人</view>
+                <view class="row3">中奖名额：{{item.winners}}个</view>
+              </view>
+              <block wx:if='{{item.is_win==1}}'>
+                <button disabled='{{item.is_get==1||item.is_get==2}}' class="{{item.is_get==1||item.is_get==2?'gray':''}} status3" catchtap="getPrize" data-i="{{item}}" wx:if='{{item.get_type==2}}'>{{item.is_get==0?'领取奖品':item.is_get==1?'已领取':item.is_get==2?'已发放':''}}</button>
+                <button disabled='{{item.is_get==2}}' class="{{item.is_get==2?'gray':''}} status3" catchtap="jumpAddress" data-i="{{item}}" wx:else>{{item.is_get==0?'领取奖品':item.is_get==1?'修改':item.is_get==2?'已发放':''}}</button>
+              </block>
+            </view>
+          </view>
+        </view>
+      </block>
+      <block wx:if="{{data.length==0}}">
+        <view class="nodatabox">
+          <view class="img">
+            <image src="/imgs/new/nodata.png" style="width:300rpx;height:300rpx;" />
+          </view>
+          <view class="tip">暂无信息</view>
+        </view>
+      </block>
+    </view>
+  </template>

@@ -1,0 +1,86 @@
+<view class='headTopNav {{show?"fixed":""}}' id='headTopNav'>
+  <navigator url='/pages/address/address' hover-class="none">
+    <view class='address'>
+      <view class='vCenter t'>
+        <text class='text_hidden'>{{addressName}}</text>
+        <van-icon name="arrow" />
+      </view>
+      <view style='float:right;font-size:29rpx;' class='vCenter'>
+        <text>{{province}}</text>
+        <!-- <van-icon name="location-o" /> -->
+        <image src='/imgs/address_img.png' class='address_img' mode='widthFix'></image>
+      </view>
+    </view>
+  </navigator>
+  <van-search class='cancel' value="{{ getActsNearby.content }}" placeholder="{{tabInd==0?'搜索机构名称':'搜索乐园名称'}}" use-action-slot background='transparent' bind:clear='clearSearch' bind:search='inputContent' bind:change='search'>
+    <view slot="action" bind:tap="openChoose" class='screen'>
+      <view>
+        <image src='/imgs/screen.png'></image>筛选</view>
+    </view>
+  </van-search>
+  <view class='triangle-up' wx:if="{{show}}"></view>
+</view>
+<view style="height:200rpx"></view>
+<view class="ticketbox">
+  <pagePublic noFixed/>
+  <navigator class="ticketitem flex" wx:for="{{dataList}}" wx:key="{{index}}" data-id="{{item.id}}" data-parkid="{{item.park_id}}" bindtap="enterDetail" url='/pages/ticket/indexTicketDetail/indexTicketDetail?id={{item.id}}&&park_id={{item.park_id}}'>
+    <view class="left">
+      <image src="{{serverUrl}}{{item.list_pic}}" style="width:100%;height:100%;border-radius:10rpx;" />
+    </view>
+    <view class="right">
+      <view class="row title">{{item.name}}</view>
+      <view class="row flex" style="margin:13rpx 0;">
+        <view class="rowicon"></view>
+        <view class="school">{{item.park_name}}（{{item.branches==""?"0":item.branches}}个园区）</view>
+      </view>
+      <view class="row flex" style="margin-top:6rpx;">
+        <!-- 1：次票 2：套票（N次） 3：年票（无限次） -->
+        <view class="old" wx:if="{{item.type==1}}" style="width:60rpx;">次票</view>
+        <view class="old" wx:if="{{item.type==2}}" style="width:60rpx;">套票</view>
+        <view class="old" wx:if="{{item.type==3}}" style="width:60rpx;">年票</view>
+        <view class="old" style="margin-left:20rpx;">{{item.age_from}}~{{item.age_to}}岁</view>
+      </view>
+      <view class="row flex pricebox" style="margin-top:20rpx;">
+        <view class="price">{{item.price}}元</view>
+        <view class="distancebox flex">
+          <van-icon name="location-o" />
+          <view class="distance">{{item.new_mindis}}~{{item.new_maxdis}}km</view>
+        </view>
+      </view>
+    </view>
+  </navigator>
+  <block wx:if='{{noMore}}'>
+    <view style='padding-bottom:1rpx;'>
+      <van-divider contentPosition="center" dashed wx:if='{{dataList.length>3}}' customStyle='padding:0 150rpx;'>已加载完毕</van-divider>
+    </view>
+    <view class='noData' wx:if='{{!dataList.length}}'>~ 没有更多数据 ~</view>
+  </block>
+  <block wx:else>
+    <view class='loading'>
+      <van-loading type="spinner" size='30rpx' /> 努力加载中...
+    </view>
+  </block>
+</view>
+
+<van-popup show="{{show}}" position="top" bind:close="onClose" custom-class='popup' z-index='10'>
+  <scroll-view scroll-y>
+    <view style='padding:0 30rpx 100rpx;'>
+      <view class='title' style='margin-top:35px;'>门票类型</view>
+      <view class='block clearfix'>
+        <view class='li ticketli {{item.checked?"active":""}}' wx:for='{{typeList}}' data-value='{{index}}' bindtap='ticketChange' style="">
+          {{item.name}}
+        </view>
+      </view>
+      <view class='title' style="margin-top:20rpx;">年龄阶段</view>
+      <view class='block clearfix'>
+        <view class='li {{item.checked?"active":""}}' wx:for='{{age}}' data-value='{{index}}' bindtap='ageChange'>
+          {{item.name}}
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class='fiexed'>
+    <view bindtap='reset'>重置</view>
+    <view bindtap='searchBtn'>确定</view>
+  </view>
+</van-popup>

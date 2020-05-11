@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-tab": "../../../dist/tab/index",
+    "van-tabs": "../../../dist/tabs/index",
+    "van-popup": "../../../dist/popup/index"
+  },
+  "navigationBarTitleText": "历史中奖",
+  "enablePullDownRefresh": true
+}

@@ -1,0 +1,89 @@
+ <pagePublic/>
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class="mask" wx:if="{{showMask}}" bindtap="closeMask"></view>
+<view class="award" wx:if="{{showMask}}">
+  <view class="img">
+    <image src="{{imgUrl}}newUser1.png" style="width:354rpx;height:285rpx;" />
+  </view>
+  <view class="row1" style="margin-top:20rpx;">恭喜您已完成任务</view>
+  <view class="row1">请尽快领奖</view>
+  <navigator open-type='redirect' url='/pages/new/getPrize/getPrize?nua_id={{newUserTask_info.nua_id}}' class="row2">立即领奖</navigator>
+  <image class="close" bindtap="closeMask" src="../../../imgs/close.png"></image>
+</view>
+
+<van-popup show="{{ show }}" bind:close="onClose" custom-class='layer'>
+  <view class='conten'>
+    <image src='{{serverUrl+path}}' class='shareImg' mode='widthFix'></image>
+    <button class='ok' bindtap='saveImg'>
+      <image src='/imgs/downImg.png' class='dowmImg'></image>
+      保存图片到相册</button>
+  </view>
+</van-popup>
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />
+<image class="bg_pic" src='{{imgUrl+"laxin_user1.jpg"}}' mode="widthFix" />
+
+<view class='box'>
+  <view class="itembox">
+    <view class="timebox flex">
+      <view class="tip">结束倒计时：</view>
+      <van-count-down use-slot time="{{ award_info.end_second*1000 }}" bind:change="onChange">
+        <view class="time">{{timeData.days
+          <10? '0'+timeData.days:timeData.days }}</view>
+            <view class="day">天</view>
+            <view class="time">{{timeData.hours
+              <10? '0'+timeData.hours:timeData.hours }}</view>
+                <view class="day">时</view>
+                <view class="time">{{timeData.minutes
+                  <10? '0'+timeData.minutes:timeData.minutes }}</view>
+                    <view class="day">分</view>
+                    <view class="time">{{timeData.seconds
+                      <10? '0'+timeData.seconds:timeData.seconds}}</view>
+                        <view class="day">秒</view>
+      </van-count-down>
+      </view>
+      <view style="height:94rpx;"></view>
+      <view class="rule">
+        <view class="top flex">
+          <view class="line"></view>
+          <view class="word">活动规则</view>
+          <view class="line"></view>
+        </view>
+        <view class="btm">邀请
+          <text>{{data[0].new_user_limit||award_info.new_user_limit}}</text>个新用户，即可直接获得奖品。（目前只限上海用户）</view>
+      </view>
+      <view class="invitation" wx:if="{{(award_info.new_user_limit-(newUserTask_info.new_user_count?newUserTask_info.new_user_count:0))==0}}">已经成功邀请
+        <text>{{award_info.new_user_limit}}</text>人</view>
+      <view class="invitation" wx:else>已经成功邀请{{newUserTask_info.new_user_count?newUserTask_info.new_user_count:0}}人，还剩
+        <text>{{(data[0].new_user_limit||award_info.new_user_limit)-(newUserTask_info.new_user_count?newUserTask_info.new_user_count:0)<0?'0':(data[0].new_user_limit||award_info.new_user_limit)-(newUserTask_info.new_user_count?newUserTask_info.new_user_count:0)}}</text>人</view>
+      <block wx:if="{{data.length}}">
+        <view class="manbox">
+          <view class="man flex" wx:for="{{data}}" bindtap='isAvailable' data-i='{{item}}'>
+            <view class="pic">
+              <view>
+                <image src='{{item.pic_path?serverUrl+item.pic_path:"/imgs/perso.png"}}' class="headportrait" binderror='errorImg'></image>
+                <text class='{{item.valid==1?"tip":"green"}}'>{{item.valid==1?'有效':'无效'}}</text>
+              </view>
+              <view class="name van-ellipsis">{{filter.decode(item.nickname)}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class='noData'>~ 暂无数据 ~</view>
+      </block>
+      <button class="getaward {{newUserTask_info.status==3?'gray':''}}" bindtap="getPrize" wx:if="{{newUserTask_info.status==1||newUserTask_info.status==3}}" disabled='{{newUserTask_info.status==3}}'>
+        <view>{{newUserTask_info.status==1?'领取奖品':'已领取'}}</view>
+      </button>
+
+      <view class="sharebox flex" wx:else>
+        <block wx:if='{{award_info.new_user_limit}}'>
+          <button class="left" open-type='share'>好友邀请</button>
+        </block>
+        <block wx:else>
+          <button class="left" bindtap='tip'>好友邀请</button>
+        </block>
+        <view class="left" style="margin-top:40rpx" bindtap='shareFriend'>朋友圈邀请</view>
+      </view>
+      </view>
+      </view>

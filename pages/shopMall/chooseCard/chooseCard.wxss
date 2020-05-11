@@ -1,0 +1,108 @@
+page{
+  background:rgba(245,245,245,1);
+}
+.flex{
+  display: flex;
+}
+
+.itembox{
+  padding: 30rpx 30rpx;
+  background: #F5F5F5;
+}
+.items{
+  width:690rpx;
+  height:180rpx;
+  background:rgba(255,255,255,1);
+  border-radius:20rpx;
+  align-items:center;
+  margin-top: 30rpx;
+}
+.items .icon{
+  margin-left: 40rpx;
+}
+.items .left{
+  margin-left: 40rpx;
+}
+.items .left .t{
+  font-size:44rpx;
+  font-family:Helvetica Neue;
+  font-weight:400;
+  color:rgba(255,44,86,1);
+}
+.items .left .t text{
+  font-size:20rpx;
+}
+.items .left .zhe{
+  font-size:20rpx;
+  font-family:Helvetica Neue;
+  font-weight:400;
+  color:rgba(255,44,86,1);
+}
+.items .left .zhe text{
+  font-size:44rpx;
+  margin-right:10rpx;
+}
+.items .left .b{
+  font-size:22rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(255,44,86,1);
+}
+.items .middle{
+  margin-left: 40rpx;
+  /* width: 340rpx; */
+}
+.items .middle .t{
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(17,17,17,1)
+}
+.items .middle .b{
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+}
+.items .right{
+  width:132rpx;
+  height:60rpx;
+  background:linear-gradient(90deg,rgba(255,90,144,1),rgba(255,44,86,1));
+  border-radius:30rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+}
+.surebox{
+  position: fixed;
+  left: 0rpx;
+  bottom: 20rpx;
+  height: 100rpx;
+  width: 750rpx;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.surebox .title{
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+
+}
+.surebox .btn{
+  width:150rpx;
+  height:70rpx;
+  background:linear-gradient(90deg,rgba(255,90,144,1),rgba(255,44,86,1));
+  border-radius:41rpx;
+  line-height: 70rpx;
+  text-align: center;
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(255,255,255,1);
+}

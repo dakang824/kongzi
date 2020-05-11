@@ -1,0 +1,543 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />
+<van-notify id="van-notify" />
+<import src="../../../template/activeList.wxml" />
+<import src="../../../template/activeTemp.wxml" />
+<!-- 授权框 -->
+<van-popup show="{{ autho }}" custom-class="popup">
+  <view class='popup'>
+    <view class='top'>
+      <image src='/imgs/jg.png' class='userImg'></image>
+    </view>
+    <view class='tip' style='margin-bottom:30rpx;'>孔紫家长社区申请获取一下权限</view>
+    <view class='samll'>获取你的公开信息(头像,昵称等)</view>
+    <van-button type="danger" custom-class='submit' round bind:click='autho' open-type='getUserInfo'>点击授权</van-button>
+  </view>
+</van-popup>
+<view hidden='{{!data}}'>
+  <view class='headInfo'>
+    <image src='{{music.status?"/imgs/music.png":"/imgs/stop.png"}}' class='music {{music.status?"rotate":""}}' bindtap='musicStatus'></image>
+    <audio src="{{rootUrl+data.act_info.music_path}}" id="music" loop></audio>
+    <image src='{{rootUrl+data.act_info.pic_path}}' class='bg' mode="widthFix">
+      <image src="/imgs/new/{{data.act_info.course_type==2?'duankebao.png':data.act_info.course_type==3?'zhengshike.png':data.act_info.course_type==4?'lianhekebao.png':data.act_info.course_type==1?'tiyanke.png':''}}" wx:if='{{data.act_info.course_type==2||data.act_info.course_type==1||data.act_info.course_type==4||data.act_info.course_type==3}}' class="bale"></image>
+
+      <view class='swiper' wx:if="{{messageList.length}}">
+        <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+          <block wx:for="{{messageList}}" wx:key="index">
+            <swiper-item>
+              <view class="vCenter">
+                <view class="swiper_bg van-ellipsis">
+                  <image src='../../../imgs/new/laba.png' class='user'></image>
+                  <view class="item-text">{{item.msg}}</view>
+                </view>
+              </view>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </image>
+    <view class='new_title_bar'>
+      <view class="left bg">
+        <block>
+          <view class="man">￥</view>
+          <view class="sell">{{data.act_info.deposit||data.act_info.audition_price||data.act_info.bound_discount_price||0}}</view>
+          <view class="yuan" wx:if="{{data.act_info.ori_price&&data.act_info.ori_price!=(data.act_info.deposit||data.act_info.audition_price||data.act_info.bound_discount_price||0)}}">￥{{data.act_info.ori_price}}</view>
+        </block>
+      </view>
+      <view class="right" wx:if='{{data.act_info.type!=5}}'>
+        <view class="title">活动结束倒计时</view>
+        <view class="timebox">
+          <view class="time">{{countDown.d}}</view>
+          <view class="fu">:</view>
+          <view class="time">{{countDown.h>0?countDown.h:'00'}}</view>
+          <view class="fu">:</view>
+          <view class="time">{{countDown.m>0?countDown.m:'00'}}</view>
+          <view class="fu">:</view>
+          <view class="time">{{countDown.s>0?countDown.s:'00'}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='box'>
+      <view class='box_tit van-multi-ellipsis--l2'>
+        <text class='t' wx:if='{{data.act_info.type!=5}}'>{{data.act_info.type==1?'邀友砍价':data.act_info.type==2?'拉友拼团':data.act_info.type==3?data.act_info.audition_price+'元试听':data.act_info.type==6?'限时优惠':''}}</text>
+        <text>{{filter.decode(data.act_info.title)}}</text>
+      </view>
+
+      <view class="invite" wx:if="{{id==2&&!data.group_info.open_id&&data.top1.size}}">
+        <view class="title">仅剩{{data.top1.size-1}}人即可拼团成功，立即加入</view>
+        <view class="manbox">
+          <view class="left">
+            <view class="item">
+              <image class="img" src="{{rootUrl+data.top1.pic_path}}">
+                <view class="team">团长</view>
+              </image>
+            </view>
+            <view class="item" wx:for='{{top1_users}}'>
+              <view class="who">?</view>
+              <image class="img" src="{{rootUrl+data.top1.pic_path}}" />
+            </view>
+            <view class="item item1" wx:for='{{data.top1.size-data.top1.cur_count}}'>
+              <view class="who">?</view>
+            </view>
+          </view>
+          <view class="right" bindtap='join'>
+            立即加入
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='retail' wx:if="{{data.act_info.agent_status==3}}">
+      <view class="left">
+        <image src='/imgs/new/Gold_coin.png'></image>
+        <text>自购返现：{{filter.fixed(data.act_info.self_rate*100,1)}}%</text>
+      </view>
+      <text>分享收益：{{filter.fixed(data.act_info.self_rate*100,1)}}/{{filter.fixed(data.act_info.l1_rate*100,1)}}/{{filter.fixed(data.act_info.l2_rate*100,1)}}%</text>
+      <view class="right">
+        <text>团队分红：{{filter.fixed(data.act_info.team_rate*100,1)}}%</text>
+      </view>
+    </view>
+    <view class='yh_row send_gift' wx:if='{{data.act_info.enable_gift}}'>
+      <view>
+        <view class='t'>赠送礼品</view>
+        {{data.act_info.gift_name}}
+      </view>
+      <image src='{{rootUrl+data.act_info.gift_path}}'></image>
+    </view>
+    <view class='yh_row' wx:if='{{data.act_info.type==6||data.act_info.type==5}}'>
+      <view class='t'>优惠</view>
+      {{ data.act_info.deposit_intro ||data.act_info.bound_intro }}
+    </view>
+
+    <view class='barInfo' wx:if='{{false}}'>
+      <view style='position:relative'>
+        <image src='../../imgs/bar.png'></image>
+        <!-- 砍价样式 -->
+        <view class='left' wx:if='{{id==1}}'>
+          <view class='startPrice'>
+            <view>原价：</view>
+            <view>¥{{data.act_info.ori_price}}</view>
+          </view>
+          <text class='line'></text>
+          <text class='floorPrice'>底价：¥<text>{{data.act_info.bargain_price_limit}}</text></text>
+        </view>
+        <!-- 拼团样式 -->
+        <!-- 拼团未开始 -->
+        <view class='left' wx:if='{{id==2&&!data.group_info.open_id}}'>
+          <text class='pTorg'>原价：<text>¥{{data.act_info.ori_price}}</text></text>
+        </view>
+        <!-- 拼团已开始 -->
+        <view class='left' wx:if='{{id==2&&data.group_info.open_id}}'>
+          <view class='startPrice'>
+            <view>原价：</view>
+            <view>¥{{data.act_info.ori_price}}</view>
+          </view>
+          <text class='line'></text>
+          <text class='floorPrice'>{{data.group_info.size}}人团：¥<text>{{self?((data.group_info.group_member_price-data.act_info.group_head_discount)):data.group_info.group_member_price}}</text></text>
+        </view>
+        <!-- 试听样式 -->
+        <view class='left' wx:if='{{id==3}}'>
+          <text class='pTorg'>试听价：<text>¥{{data.act_info.audition_price}}</text></text>
+        </view>
+        <!-- 优惠样式 -->
+        <view class='left' wx:if='{{id==5}}'>
+          <text class='pTorg'><text style='font-size:26rpx'>{{data.act_info.deposit_intro}}</text></text>
+        </view>
+        <view class='time'>
+          <view>距离活动{{data.act_info.status==1?'开始':'结束'}}还剩</view>
+          <view>{{countDown.d}}天{{countDown.h>0?countDown.h:'00'}}时{{countDown.m>0?countDown.m:'00'}}分</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='content'>
+    <!-- 砍价 -->
+    <view class='box bargain' wx:if='{{data.bargain_info.act_no}}'>
+      <view class='time start'>
+        <view class='time_tit'>活动有效时间倒计时</view>
+        <view class='t'>
+          <text>{{countDown.d}}</text>天
+          <text>{{countDown.h>0?countDown.h:'00'}}</text>时
+          <text>{{countDown.m>0?countDown.m:'00'}}</text>分
+        </view>
+        <view class='row'>
+          <view>
+            <view>{{data.bargain_info.bargain_list.length}}</view>
+            <view>已砍价次数</view>
+          </view>
+          <view>
+            <view>{{data.bargain_info.cur_price}}</view>
+            <view>当前购买价格</view>
+          </view>
+          <view>
+            <view>
+              {{filter.toFixed(dreduct)}}</view>
+            <view>已砍价金额</view>
+          </view>
+        </view>
+        <view class='list van-hairline--top'>
+          <view class='tit'>砍价列表</view>
+          <block wx:if="{{data.bargain_info.bargain_list.length}}">
+            <view class='li van-hairline--bottom' wx:for="{{data.bargain_info.bargain_list}}">
+              <view class='userImg'>
+                <!-- 展位图 -->
+                <image src='{{(item.pic_path?rootUrl+item.pic_path:"/imgs/perso.png")}}' class='{{item.pic_path?"":"floorplan"}}' binderror='bargainError' data-i='{{index}}'></image>
+              </view>
+              <view class='userInfo'>
+                <view class='between'>
+                  <view>{{item.nickname?item.nickname:'匿名'}}</view>
+                  <view>已砍
+                    <text>{{filter.toFixed(item.reduct)}}</text>元</view>
+                </view>
+                <view class='ti'>{{item.time}}</view>
+              </view>
+            </view>
+            <van-button type="default" custom-class='more' bind:click='lookMore'>查看更多</van-button>
+          </block>
+          <block wx:else>
+            <view class='empty'>
+              还没有人帮忙砍价哦~
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+
+    <!-- 拼团 -->
+    <view class='assemble' wx:if='{{id==2}}'>
+      <block wx:if="{{!data.group_info.open_id}}">
+        <view class='tit'>
+          <!-- <view class='i'>
+            <view></view>
+            选择拼团人数
+            <view></view>
+          </view> -->
+          <view class='discount' wx:if="{{startPT}}">
+            <text>选择拼团人数</text>(团长优惠{{data.act_info.group_head_discount}}元)</view>
+          <view class='assemble_tip success' wx:elif="{{(data.group_info.group_list.length+1)==data.group_info.size}}">恭喜{{data.group_info.size}}人团拼团成功~</view>
+          <view class='assemble_tip' wx:else>{{data.group_info.size}}人团 I 还需{{data.group_info.size-data.group_info.group_list.length-1}}人即可成团</view>
+
+        </view>
+        <view class='list'>
+          <view class='li van-hairline--bottom' wx:for='{{data.groups}}'>
+            <text>{{item.size}}人团</text>
+            <text>￥{{filter.fixed((data.act_info.ori_price*100-item.price*100)*0.01,2)}}</text>
+            <van-button type="default" disabled='{{data.act_info.status==1?true:false}}' custom-class='btn {{data.act_info.status==1?"disabled":"ok"}}' round bindtap='openTeam' data-no='{{index}}' data-money='{{filter.fixed((data.act_info.ori_price*100-item.price*100)*0.01,2)}}'>发起</van-button>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class='box'>
+          <view class='time start'>
+            <view class='time_tit'>活动有效时间倒计时</view>
+            <view class='t'>
+              <text>{{countDown.d}}</text>天
+              <text>{{countDown.h>0?countDown.h:'00'}}</text>时
+              <text>{{countDown.m>0?countDown.m:'00'}}</text>分
+            </view>
+            <view class='row'>
+              <view>
+                <view>{{data.group_info.size}}</view>
+                <view>拼团人数</view>
+              </view>
+              <view>
+                <view>{{filter.toFixed(teamMoney)}}
+                  <!-- data.group_info.group_member_price  -->
+                </view>
+                <view>拼团价格</view>
+              </view>
+              <view>
+                <view>{{data.group_info.size-data.group_info.group_list.length-1}}</view>
+                <view>剩余名额</view>
+              </view>
+            </view>
+            <view class="between betweenT van-hairline--top">
+              <view class='teamer'>
+                <view class='userHead'>
+                  <image src='{{data.group_info.pic_path?rootUrl+data.group_info.pic_path:"/imgs/perso.png"}}' class='leader' binderror='headerError'></image>
+                  <text>团长</text>
+                </view>
+                <view class='leaderName text_hidden'>{{data.group_info.nickname}}</view>
+              </view>
+              <block wx:for="{{data.group_info.size-1}}">
+                <view class='circleF' wx:if="{{data.group_info.group_list[index]}}">
+                  <image class='follow' src='{{data.group_info.group_list[index].pic_path?rootUrl+data.group_info.group_list[index].pic_path:"/imgs/perso.png"}}' binderror='imgError' data-i='{{index}}'></image>
+                  <text class='followName text_hidden'>{{data.group_info.group_list[index].nickname}}</text>
+                </view>
+                <view class='circle' wx:else>?</view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 详情 -->
+  <view class='info'>
+    <view class='{{data.act_info.tem_id&&tem?"richText":""}}' style='background:url({{rootUrl+(data.act_info.tem_id&&tem?data.act_info.back_path:"")}});background-size:100%'>
+      <view style='display:inline-block;width:100%;'></view>
+      <pagePublic noFixed/>
+      <view wx:if='{{data.act_info.tem_id&&tem}}'>
+        <template is="courseTemp{{id}}" data="{{data:data,rootUrl:rootUrl}}"></template>
+      </view>
+      <view wx:else>
+        <image src='{{rootUrl+data.act_info.back_path}}' style='width:100%;' mode="widthFix"></image>
+      </view>
+    </view>
+  </view>
+
+  <block wx:if='{{id==2}}'>
+    <!-- 拼团固定底部操作 -->
+    <van-row custom-class='fixed'>
+      <template is="detailBottom" data="{{collec:collec}}"></template>
+      <van-col span="12" class='middle' wx:if="{{startPT}}">
+        <van-button custom-class='widthFix {{data.act_info.status==1?"disabled":"ok"}}' type="default" disabled='{{data.act_info.status==1}}' bind:click='teamBuy'>
+          <view style='position:relative;top:-15rpx;'>原价购买</view>
+          <text style='position:relative;top:-82rpx;'>(￥{{data.act_info.ori_price}})</text>
+        </van-button>
+      </van-col>
+      <!-- 拼团进行中 -->
+      <!-- 好友已经进行过拼团 -->
+      <block wx:if='{{teamdoing||friendHelpOk}}'>
+        <block wx:if='{{payStatus==2}}'>
+          <van-col span="6">
+            <van-button custom-class='widthFix disabled' type="default" disabled='true'>
+              <text>拉友进团</text>
+            </van-button>
+          </van-col>
+          <van-col span="6" bindtap='showPayType' data-i='{{2}}'>
+            <van-button custom-class='widthFix ok' type="default">
+              <text>立即支付</text>
+            </van-button>
+          </van-col>
+        </block>
+        <block wx:else>
+          <van-col span="12">
+            <van-button custom-class='widthFix ok' type="default" bind:click='showUp'>
+              <text>拉友进团</text>
+            </van-button>
+          </van-col>
+        </block>
+      </block>
+      <!-- 拼团成员已满 -->
+      <block wx:if='{{teamOK}}'>
+        <van-col span="12">
+          <van-button custom-class='widthFix  ok' type="default">
+            <text>拼团成功</text>
+          </van-button>
+        </van-col>
+      </block>
+
+      <!-- 好友通过分享进入显示 -->
+      <block wx:if='{{friendHelp}}'>
+        <van-col span="12">
+          <van-button custom-class='widthFix ok' type="default" bind:click="statusClick" data-status='0' data-s='1'>
+            <text>加入此团</text>
+          </van-button>
+        </van-col>
+      </block>
+    </van-row>
+  </block>
+
+  <block wx:if='{{id==1}}'>
+    <!-- 砍价固定底部操作 -->
+    <van-row custom-class='fixed'>
+      <block>
+        <template is="detailBottom" data="{{collec:collec}}"></template>
+        <block wx:if='{{isStrat}}'>
+          <van-col span="12">
+            <van-button disabled="{{data.act_info.status==1}}" bind:click="statusClick" data-status='0' custom-class='widthFix {{data.act_info.status==1?"disabled":"ok"}}' type="default">
+              <text>发起砍价</text>
+            </van-button>
+          </van-col>
+        </block>
+
+        <!-- 邀友砍价 -->
+        <block wx:if='{{isLaunch}}'>
+          <van-col class='middle' span="6">
+            <view class='line'></view>
+            <block>
+              <van-button custom-class='widthFix' type="default" bind:click='showPayType' data-money='{{data.bargain_info.cur_price}}' data-i='1'>
+                <view style='position:relative;top:-15rpx;'>立刻购买</view>
+                <text style='position:relative;top:-82rpx;'>(￥{{data.bargain_info.cur_price}})</text>
+              </van-button>
+            </block>
+          </van-col>
+          <van-col span="6">
+            <van-button custom-class='widthFix ok' type="default" open-type='share'>
+              <text>邀友砍价</text>
+            </van-button>
+          </van-col>
+        </block>
+
+        <!-- 底价购买 -->
+        <block wx:if='{{isLowmoney}}'>
+          <van-col span="12">
+            <van-button bind:click="showPayType" custom-class='widthFix ok' type="default" data-i='1'>
+              <text>底价购买</text>
+            </van-button>
+          </van-col>
+        </block>
+        <!-- 帮Ta砍价 -->
+        <block wx:if='{{isHelp}}'>
+          <van-col span="12">
+            <van-button bind:click="statusClick" data-status='1' custom-class='widthFix ok' type="default">
+              <text>帮TA砍价</text>
+            </van-button>
+          </van-col>
+        </block>
+        <!-- 帮Ta邀友 -->
+        <block wx:if='{{helpHim}}'>
+          <van-col class='middle' span="6">
+            <view class='line'></view>
+            <block>
+              <van-button custom-class='widthFix' type="default" bind:click="follow">
+                <view>我要发起</view>
+              </van-button>
+            </block>
+          </van-col>
+          <van-col span="6">
+            <van-button custom-class='widthFix ok' type="default" open-type='share'>
+              <text>帮TA邀友</text>
+            </van-button>
+          </van-col>
+        </block>
+      </block>
+    </van-row>
+
+    <!-- 砍价弹出层 -->
+    <van-popup show="{{ show }}" bind:close="onClose" custom-class="popup">
+      <view class='popup'>
+        <view class='top'>
+          <image src='{{rootUrl+data.bargain_info.pic_path}}' class='userImg'></image>
+          <van-icon name="cross" custom-class='cross' bind:click="onClose" />
+        </view>
+        <view class='tip'>谢谢你帮我砍了
+          <text>{{filter.toFixed(reduce)}}</text>元~</view>
+        <van-button type="danger" custom-class='submit' round bindtap='follow'>我也要参与此活动</van-button>
+      </view>
+    </van-popup>
+  </block>
+
+  <block wx:if="{{id==5||id==3||id==6}}">
+    <van-row custom-class='fixed'>
+      <block>
+        <template is="detailBottom" data="{{collec:collec}}"></template>
+        <van-col span="12">
+          <van-button disabled="{{data.act_info.status==1}}" bind:click="statusClick" custom-class='widthFix {{data.act_info.status==1?"disabled":"ok"}}' type="default" data-status='0'>
+            <text>立即购买</text>
+          </van-button>
+        </van-col>
+      </block>
+    </van-row>
+  </block>
+</view>
+<van-popup show="{{ layer }}" bind:close="onClose" custom-class='layer'>
+  <view class='close' bindtap="onClose">
+    <van-icon name="cross" />
+  </view>
+  <view class='circle'>
+    <van-icon name="success" />
+  </view>
+  <view class='success_txt'>
+    恭喜您 您已成功购买 ~</view>
+  <view wx:if='{{data.act_info.enableSharedProfit}}'>
+    <button class='btn' bindtap='goShare'>分享返利</button>
+  </view>
+  <!-- <view>
+    <van-button round custom-class='btn' bind:click='gomeet'>去预约</van-button>
+  </view> -->
+</van-popup>
+
+<van-popup show="{{ isFromShare }}" bind:close="fromShare" custom-class='layerT' position='bottom' z-index='999999'>
+  <view class='van-hairline--top-bottom title'>
+    付款详情
+    <view class='close' bindtap="onClose">
+      <van-icon name="cross" />
+    </view>
+  </view>
+  <view class='row van-hairline--top-bottom'>
+    <view class='lf'>
+      付款金额
+    </view>
+    <view class='rt'>
+      ￥{{(data.act_info.shared_discount+pay_amount)}}
+    </view>
+  </view>
+  <view class='row van-hairline--top-bottom'>
+    <view class='lf'>
+      优惠金额
+    </view>
+    <view class='rt from1'>
+      ￥{{data.act_info.shared_discount}} （来自朋友分享）
+    </view>
+  </view>
+  <view class='footer'>
+    <view class='lf'>实际付款</view>
+    <view class='rt'>￥{{pay_amount}}</view>
+  </view>
+
+  <view class='detail-btn'>
+    <van-button round custom-class='btn' bind:click='payMoney'>确认付款</van-button>
+  </view>
+</van-popup>
+
+<van-popup show="{{ sharefanli }}" custom-class='rebate'>
+  <van-icon name="cross" custom-class='close' bind:click='shareClose' />
+  <view class='tit'>分享返利</view>
+  <scroll-view scroll-y class='txt'>
+    分享此活动给您的朋友，您的朋友在支付的时候会获得{{data.act_info.shared_discount}}%的优惠，同时您将获得支付金额的{{data.act_info.firstlevel_profit}}%的返利；您朋友分享给其他朋友后，您仍会获得支付金额的{{data.act_info.seclevel_profit}}%的返利
+  </scroll-view>
+  <button class="share" open-type='share' data-type='1'>分享好友</button>
+  <view class='circle_top'></view>
+  <view class='circle_bottom'></view>
+</van-popup>
+
+<van-dialog use-slot title="选择支付方式" show="{{ payType }}" show-cancel-button bind:close="onClose" bind:confirm='{{t_s==1?"goBuy":"againBuy"}}' bind:getuserinfo="getUserInfo" zIndex='99999'>
+  <view style='padding:30rpx 0;'>
+    <van-radio-group value="{{ payRadio }}" bind:change="onChange1">
+      <van-cell-group>
+        <van-cell title="余额支付" value-class="value-class" clickable data-name="2" bind:click="onClick" src="/imgs/new/yepay.png" label='剩余可用余额{{balance/100}}元'>
+          <van-radio name="2" checked-color="#4da5fc" />
+        </van-cell>
+        <van-cell title="微信支付" value-class="value-class" clickable data-name="1" bind:click="onClick" src="/imgs/new/wxpay.png">
+          <van-radio name="1" checked-color="#4da5fc" />
+        </van-cell>
+      </van-cell-group>
+    </van-radio-group>
+  </view>
+</van-dialog>
+
+<van-popup show="{{ up }}" bind:close="onClose" custom-class='lay_box' zIndex='99999'>
+  <view class='lay_box up'>
+    <van-icon name="cross" custom-class='lay_box_close' size='24px' color='#999' bind:click='onClose' />
+    <!-- <image src='{{imageurl}}lay_money.png' mode="widthFix" class='topImg' style='width:268rpx;margin-top:-75rpx'></image> -->
+    <view class='box'>
+      <view class='title'>分享好友</view>
+      <!-- <text class='content' decode>每邀请一位好友参与抽奖，将会为您随机增加一定的中奖概率增长值，好友之间也是可以相互转赠抽奖券哦~ \n个人中心-抽奖券-转赠。 </text> -->
+      <view class='between share' style='font-size:28rpx;'>
+        <button class="sharebtn maskshare" open-type="share" style='font-size:28rpx;'>
+          <image src="/imgs/weixin.png" style="width:44rpx;height:35rpx;" />
+          <view class="sharetitle">邀请好友</view>
+        </button>
+        <view hover-class='active' bindtap='shareFriend' class='v'>
+          <image src='/imgs/friend.png' mode="widthFix"></image>
+          分享朋友圈
+        </view>
+      </view>
+
+    </view>
+  </view>
+</van-popup>
+<van-popup use-slot show="{{ shareImgbox }}" bind:close="onClose" showConfirmButton='{{false}}' custom-class='van-dialog' zIndex='99999'>
+  <image src="{{shareImg}}" class='shareFriendImg' mode="widthFix" />
+  <view class='dialog_down'>
+    <view class='btn' hover-class='hover' bindtap='saveImg'>
+      <image src='/imgs/new/down.png' class='down'></image>
+      保存图片到相册
+    </view>
+  </view>
+</van-popup>
+
+<share fixed type='1' qrPath='{{data.act_info.share_pic}}' sharePic='{{data.act_info.share_pic}}' prod_no='{{data.act_info.no}}' prod_id='{{data.act_info.inst_id}}' />

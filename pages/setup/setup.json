@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "van-notify": "../../dist/notify/index"
+  },
+  "navigationBarTitleText": "添加孩子"
+}

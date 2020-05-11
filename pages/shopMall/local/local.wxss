@@ -1,0 +1,270 @@
+.nodatabox .img {
+  text-align: center;
+  margin-top: 400rpx;
+}
+
+.nodatabox .tip {
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 54rpx;
+  margin-top: 49rpx;
+}
+
+.nomore {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 44rpx;
+  text-align: center;
+  margin-top: 20rpx;
+}
+
+.join {
+  width: 160rpx;
+  height: 60rpx;
+  background: linear-gradient(90deg, rgba(255, 90, 144, 1), rgba(255, 44, 86, 1));
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 60rpx !important;
+  text-align: center;
+}
+
+.active_join {
+  background: rgba(229, 229, 229, 1);
+  color: #fff;
+}
+
+.serachbox {
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  width: 100%;
+  z-index: 11;
+  background: #fff;
+  height: 100rpx;
+}
+
+.serachbox .item {
+  width: 690rpx;
+  justify-content: space-between;
+  margin: 20rpx auto;
+}
+
+.serachbox .item .left {
+  width: 6900rpx;
+  height: 70rpx;
+  background: rgba(245, 245, 245, 1);
+  border-radius: 30rpx;
+}
+
+.serachbox .item .left input {
+  font-size: 26rpx;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  height: 100%;
+  line-height: 100%;
+}
+
+.serachbox .item .left .v {
+  font-size: 26rpx;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  text-align: center;
+  height: 100%;
+  line-height: 100%;
+  width: 690rpx;
+  height: 70rpx;
+  background: rgba(245, 245, 245, 1) !important;
+  border-radius: 30rpx;
+}
+
+.v .van-cell {
+  background: rgba(245, 245, 245, 1) !important;
+}
+
+.serachbox .item .right {
+  width: 160rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  justify-content: center;
+  align-items: center;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: rgba(17, 17, 17, 1);
+  position: relative;
+}
+
+.serachbox .item .right .allbox {
+  justify-content: center;
+  align-items: center;
+}
+
+.serachbox .item .right .allbox .all {
+  margin-left: 7rpx;
+}
+
+.itembox {
+  /* margin-top: 100rpx; */
+  position: fixed;
+  top: 100rpx;
+  left: 0rpx;
+  height: 84rpx;
+  z-index: 11;
+  width: 100%;
+  background: #fff;
+}
+
+.itembox .item {
+  height: 84rpx;
+  border-bottom: 1rpx solid #eee;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.itembox .item .default {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: rgba(153, 153, 153, 1);
+}
+
+.itembox .item .default .value {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 7rpx;
+}
+
+.cardbox {
+  margin-top: 210rpx;
+  padding: 0 30rpx;
+}
+
+.cardbox .content {
+  box-shadow: 0px 0px 30rpx 0px rgba(153, 153, 153, 0.3);
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+}
+
+page {
+  padding-bottom: 30rpx;
+}
+
+.cardbox .content .img {
+  position: relative;
+  width: 690rpx;
+  height: 300rpx;
+  border-radius: 20rpx 20rpx 0rpx 0rpx;
+}
+
+.cardbox .content .img .lineup {
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  top: -3rpx;
+  left: 0rpx;
+}
+
+.cardbox .content .img .over {
+  width: 200rpx;
+  height: 160rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cardbox .content .img .time {
+  background: rgba(255, 44, 86, 1);
+  border-radius: 6rpx;
+  position: absolute;
+  top: 30rpx;
+  right: -10rpx;
+  font-size: 26rpx;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1) !important;
+  text-align: center;
+  padding: 2rpx 10rpx;
+}
+
+.van-count-down {
+  color: #fff !important;
+}
+
+.cardbox .content .img image {
+  border-radius: 20rpx 20rpx 0rpx 0rpx;
+  width: 100%;
+  height: 300rpx;
+}
+
+.cardbox .content .name {
+  padding: 25rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: rgba(17, 17, 17, 1);
+  line-height: 44rpx;
+}
+
+.cardbox .content .line {
+  width: 100%;
+  height: 1rpx;
+  background: #eee;
+}
+
+.cardbox .content .price {
+  height: 90rpx;
+  padding: 0rpx 30rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardbox .content .price .left {
+  align-items: center;
+}
+
+.cardbox .content .price .left .yuan {
+  font-size: 38rpx;
+  font-weight: bold;
+  color: rgba(255, 44, 86, 1);
+}
+
+.cardbox .content .price .left .sale {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  margin-left: 25rpx;
+}
+
+.cardbox .content .price .left .sale text {
+  text-decoration: line-through;
+}
+
+.cardbox .content .price .right {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+}
+
+.transform-90 {
+  transform: rotate(90deg);
+  position: absolute !important;
+  bottom: -1rpx;
+}
+
+.itembox .item .active {
+  color: #ff2c56;
+}
+
+.transform-270 {
+  transform: rotate(270deg);
+  position: absolute !important;
+  top: 4rpx;
+}
+
+.flip {
+  flex-flow: column-reverse;
+  position: relative;
+}

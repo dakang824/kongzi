@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-loading": "../../dist/loading/index",
+    "van-search": "../../../dist/search/index"
+  },
+  "navigationBarTitleText": "待开奖品",
+  "enablePullDownRefresh": true
+}

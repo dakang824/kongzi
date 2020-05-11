@@ -1,0 +1,10 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<view class="van-count-down">
+  <slot wx:if="{{ useSlot }}" />
+  <block wx:elif='{{zdy}}'>
+    <text>{{filter.timeslice(formattedTime)[0]}}</text> :
+    <text>{{filter.timeslice(formattedTime)[1]}}</text> :
+    <text>{{filter.timeslice(formattedTime)[2]}}</text>
+  </block>
+  <block wx:else>{{ formattedTime }}</block>
+</view>

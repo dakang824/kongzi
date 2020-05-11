@@ -1,0 +1,208 @@
+@import "/pages/shopMall/shareGoods/bonus/bonus.wxss";
+page {
+  background: #fff;
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 32rpx;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  background: #fff;
+  z-index: 9;
+  border-bottom: 1px solid #eee;
+}
+
+.fixed text {
+  color: #fa2335;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+.fixed>view {
+  position: relative;
+}
+
+.fixed .line {
+  width: 47rpx;
+  height: 9rpx;
+  background: #ffa200;
+  border-radius: 5rpx;
+  position: absolute;
+  left: -25rpx;
+  right: 0;
+  bottom: 10rpx;
+  margin: auto;
+}
+
+.box .li {
+  width: 689rpx;
+  border-radius: 20rpx;
+  margin: auto;
+  box-shadow: 0px 0px 30px 0px rgba(153, 153, 153, 0.2);
+  background: linear-gradient(0deg, rgba(241, 241, 241, 1) 0%, rgba(255, 255, 255, 1) 99%);
+  margin-bottom: 30rpx;
+}
+
+.box .li .head {
+  min-width: 86rpx;
+  width: 86rpx;
+  height: 86rpx;
+  border-radius: 50%;
+  margin-right: 40rpx;
+}
+
+.box .li .nickname {
+  font-size: 30rpx;
+  font-weight: 500;
+  max-width: 125rpx;
+  text-align: left;
+}
+
+.box .li .copy {
+  width: 144rpx;
+  height: 37rpx;
+  background: #fea100;
+  border-radius: 19rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 21rpx;
+  line-height: 37rpx;
+  margin-left: 40rpx;
+}
+
+.box .li .txt .flex {
+  text-align: left;
+}
+
+.box .li .joinTime {
+  font-size: 21rpx;
+  margin-top: 15rpx;
+  text-align: left;
+}
+
+.box .li .t {
+  font-size: 21rpx;
+  color: #3a3a3a;
+  min-width: 114rpx;
+}
+
+.box .li .top {
+  padding: 30rpx;
+  justify-content: space-between;
+}
+
+.box .li .t .d {
+  font-size: 24rpx;
+  color: #212121;
+  margin-bottom: 15rpx;
+}
+
+.box .li .footer {
+  font-size: 30rpx;
+  background: #fff;
+  padding: 20rpx 30rpx;
+  color: #232323;
+}
+
+.box .li .footer text, .box .li .footer .rt {
+  color: #fb273c;
+}
+
+.button {
+  padding: 50rpx 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9;
+}
+
+.btn {
+  width: 621rpx;
+  height: 87rpx;
+  margin: 0 auto;
+  position: relative;
+  background: linear-gradient(157deg, #ff6e02, #ff0, #ff6d00);
+  border-radius: 88rpx;
+}
+
+.btn button {
+  width: 611rpx;
+  height: 77rpx;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: linear-gradient(16deg, rgba(255, 14, 59, 1) 0%, rgba(255, 78, 0, 1) 99%);
+  border-radius: 88rpx;
+  font-size: 30rpx;
+  font-weight: 800;
+  color: #fff;
+  line-height: 77rpx;
+}
+
+.page .box .contentBg {
+  background: #fff;
+}
+
+.page .box .contentBg .inner_box {
+  box-shadow: 0px 0px 10px 0px rgba(122, 122, 122, 0.11);
+}
+
+.args {
+  margin-top: 115rpx;
+}
+
+.nodatabox .img {
+  text-align: center;
+  margin-top: 240rpx;
+  width: 100%;
+}
+
+.nodatabox .tip {
+  text-align: center;
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 54rpx;
+  margin-top: 30rpx;
+}
+
+.box_content {
+  margin-top: 110rpx;
+}
+
+.box .bg_li {
+  background: #fff;
+}
+
+.tag {
+  height: 33rpx;
+  background: #ff3646;
+  border-radius: 17rpx;
+  font-size: 21rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 33rpx;
+  margin-top: 15rpx;
+  padding: 0 10rpx;
+}
+
+.box {
+  position: relative;
+}
+
+.swiper {
+  margin: auto;
+  position: inherit;
+  top: inherit;
+  left: inherit;
+}

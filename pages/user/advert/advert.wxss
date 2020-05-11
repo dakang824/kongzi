@@ -1,0 +1,295 @@
+page {
+  background: linear-gradient(to right bottom, #fb8714, #f25b3d, #e10094);
+}
+
+.box {
+  flex-direction: column;
+}
+
+.top {
+  width: 100%;
+  height: 55vh;
+  background: #fa2335;
+}
+
+.top .row1 {
+  font-size: 80rpx;
+  font-family: MF LiHei (Noncommercial);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  padding-top: 20rpx;
+}
+
+.top .row2 {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  padding-top: 20rpx;
+}
+
+.top .row3 {
+  justify-content: center;
+  align-items: center;
+  width: 560rpx;
+  height: 50rpx;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  padding: 2rpx 20rpx;
+  box-sizing: border-box;
+  margin: 20rpx auto 0;
+}
+
+.top .row3 .tip {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  margin-left: 20rpx;
+}
+
+.btn {
+  height: 45vh;
+  background: linear-gradient(to right bottom, #fb8714, #f25b3d, #e10094);
+}
+
+.content {
+  width: 100%;
+  position: absolute;
+  top: 100rpx;
+  left: 0rpx;
+  z-index: 20;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 1100rpx;
+}
+
+.item {
+  height: 800rpx;
+  padding: 30rpx;
+  width: 500rpx !important;
+}
+
+.itemVideo {
+  position: absolute;
+  width: 500rpx;
+  height: 760rpx;
+  z-index: 5;
+  opacity: 1;
+  top: 13%;
+  border: 10rpx solid #fdd780;
+}
+
+.itemImg {
+  position: absolute;
+  width: 500rpx;
+  height: 100rpx;
+  z-index: 5;
+  opacity: 1;
+  top: 78.5%;
+  border: 10rpx solid #fdd780;
+}
+
+.itemPrize {
+  position: absolute;
+  z-index: 100000;
+  opacity: 1;
+  top: 20%;
+  left: 0rpx;
+  width: 130rpx;
+  height: 50rpx;
+  background: rgba(254, 186, 55, 1);
+  border-radius: 25rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-size: 26rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+}
+
+.itemPrize1 {
+  background: green;
+  color: rgba(255, 255, 255, 1);
+  width: 150rpx;
+}
+
+.playImg {
+  position: absolute;
+  z-index: 10;
+  width: 126rpx;
+  height: 126rpx;
+  top: 460rpx;
+  left: 225rpx;
+}
+
+.coverImg {
+  position: absolute;
+  width: 500rpx;
+  height: 760rpx;
+  z-index: 5;
+  opacity: 1;
+  top: 13%;
+  border: 10rpx solid #fdd780;
+}
+
+.active {
+  opacity: 1;
+  z-index: 10;
+  height: 890rpx;
+  top: 7%;
+  transition: all 0.2s ease-in 0s;
+}
+
+.active2 {
+  opacity: 1;
+  z-index: 10;
+  top: 82.5%;
+  transition: all 0.2s ease-in 0s;
+  border: 10rpx solid #fdd780;
+}
+
+.active3 {
+  opacity: 1;
+  z-index: 10;
+  top: 10%;
+  transition: all 0.2s ease-in 0s;
+  left: 0rpx;
+}
+
+.img {
+  width: 404rpx;
+  height: 120rpx;
+  position: relative;
+}
+
+.img .time {
+  color: rgba(255, 81, 0, 1);
+  position: absolute;
+  top: 20rpx;
+  left: 110rpx;
+}
+
+.img .title {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(255, 81, 0, 1);
+  position: absolute;
+  top: 60rpx;
+  left: 30rpx;
+}
+
+.mask {
+  width: 750rpx;
+  height: 100vh;
+  background: rgba(0, 0, 0, 1);
+  opacity: 0.7;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+}
+
+.get_ticket {
+  position: fixed;
+  z-index: 99999;
+  left: 100rpx;
+  top: 200rpx;
+}
+
+.nodatabox .img {
+  text-align: center;
+  margin-top: 240rpx;
+  width: 100%;
+}
+
+.nodatabox .tip {
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 54rpx;
+  margin-top: 230rpx;
+}
+
+.coverView {
+  position: relative;
+  width: 404rpx;
+  height: 120rpx;
+}
+
+.covertime {
+  color: rgba(255, 81, 0, 1);
+  position: absolute;
+}
+
+.covertitle {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(255, 81, 0, 1);
+  position: absolute;
+}
+
+.coverexit {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  top: 100rpx;
+  left: 50rpx;
+}
+
+.coverback {
+  position: absolute;
+  top: 76rpx;
+  left: 100rpx;
+  font-size: 30rpx;
+  color: #fff;
+}
+
+.coverback1 {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 20rpx 0px rgba(153, 153, 153, 0.3);
+  border-radius: 30rpx;
+  width: 120rpx;
+  height: 60rpx;
+  position: absolute;
+  top: 76rpx;
+  left: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coverback1 .i {
+  width: 10rpx;
+  height: 22rpx;
+  margin-left: -4rpx;
+}
+
+.coverback1 .v {
+  font-size: 28rpx;
+  color: #111;
+  font-weight: 500;
+  margin-left: 8rpx;
+}
+
+.daojishi {
+  position: absolute;
+  top: 76rpx;
+  right: 50rpx;
+  width: 60rpx;
+  height: 60rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 20rpx 0px rgba(153, 153, 153, 0.3);
+  border-radius: 50%;
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 28rpx;
+}
+
+.adverbox {
+  width: 500rpx;
+  height: 100%;
+  transition: all 0.5s;
+}

@@ -1,0 +1,232 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<dk-tabbar tabBar="{{tabBar}}"></dk-tabbar>
+<view class="header">
+  <view class="nologin" wx:if="{{!userInfo.nickname}}">
+    <view class="row1 flex">
+      <view class="perso flex">
+        <image src="/imgs/perso.png" style="width:120rpx;height:120rpx;" />
+      </view>
+      <!-- <view class="tip">请点击登录</view> -->
+      <button class="tip" style="background:#fff" open-type="getUserInfo" bindgetuserinfo="getInfo">请点击登录</button>
+    </view>
+    <view class="line"></view>
+    <view class="itembox flex">
+      <navigator url='/pages/getPrize/prizeTicket/prizeTicket' class="item" hover-class='none'>
+        <view class="num">{{cardInfo.drawTicketCount}}</view>
+        <view class="type">奖券</view>
+      </navigator>
+      <navigator url='/pages/user/course/course' class="item" hover-class='none'>
+        <view class="num">{{cardInfo.courseCount}}</view>
+        <view class="type">课程</view>
+      </navigator>
+      <navigator url='/pages/ticket/myTickets/myTickets' class="item" hover-class='none'>
+        <view class="num">{{cardInfo.parkTicketCount}}</view>
+        <view class="type">门票</view>
+      </navigator>
+      <navigator url='/pages/user/cardTicket/cardTicket' class="item" hover-class='none'>
+        <view class="num">{{cardInfo.cardCount}}</view>
+        <view class="type">卡券</view>
+      </navigator>
+    </view>
+  </view>
+  <view class="login" wx:else>
+    <view class="row1 flex">
+      <view class="persobox flex">
+        <view class="perso">
+          <image src="{{userInfo.pic_path?url+userInfo.pic_path:'/imgs/perso.png'}}" style="width:120rpx;height:120rpx;" />
+        </view>
+        <view class="namebox">
+          <view class="name">{{userInfo.nickname}}</view>
+          <view class='vCenter'>
+            <!-- <van-tag round custom-class='tag' color='#E5E5E5' wx:if='{{userInfo.role}}'>{{userInfo.role}}</van-tag> -->
+            <view class='role' wx:if="{{userInfo.name}}">{{userInfo.name}}
+              <text style="font-size:24rpx;" wx:if="{{userInfo.role}}">({{userInfo.role}})</text>
+            </view>
+            <view class="tel">{{userInfo.mobile}}</view>
+          </view>
+        </view>
+      </view>
+      <navigator url='/pages/user/edit/edit' class="edit">编辑资料</navigator>
+    </view>
+    <navigator class="ro row2 flex" wx:if='{{!childrens.length}}' url='/pages/user/edit/edit'>
+      <view class="title1">当前暂未添加孩子信息 </view>
+      <view class="title2">去添加</view>
+    </navigator>
+    <view class="rowbox flex" wx:else style="{{childrens.length>2?'padding-left:0rpx':''}}">
+      <scroll-view scroll-x="true" style="height: 50rpx;" style="white-space: nowrap;width: 100%">
+        <view class='between'>
+          <view class="row2 childrow2 flex" wx:for='{{childrens}}'>
+            <view class="childbox flex vCenter">
+              <view class='flex {{item.gender=="m"?"":"m"}}' style="align-items:center;margin-left:10rpx;">
+                <image src='{{item.gender=="m"?"/imgs/new/icon_man.png":"/imgs/new/icon_gril.png"}}' />
+              </view>
+              <view class="name">
+                <text class='van-ellipsis name1'>{{item.name}}</text>/{{item.gender=="m"?"男":"女"}}/{{item.age}}</view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <!-- <navigator class="row3 flex" url='/pages/user/advert/advert'>
+      <view class="row3_left flex">
+        <image src="/imgs/new/sign.png" style="width:46rpx;height:44rpx;" />
+        <view class="title">签到获取抽奖券~</view>
+      </view>
+      <view class="row3_right">签到+N</view>
+    </navigator> -->
+    <view class="itembox flex">
+      <navigator url='/pages/getPrize/prizeTicket/prizeTicket' class="item" hover-class='none'>
+        <view class="num">{{cardInfo.drawTicketCount}}</view>
+        <view class="type">奖券</view>
+      </navigator>
+      <navigator class="item" url='/pages/user/course/course' hover-class='none'>
+        <view class="num">{{cardInfo.courseCount}}</view>
+        <view class="type">课程</view>
+      </navigator>
+      <navigator url='/pages/ticket/myTickets/myTickets' class="item" hover-class='none'>
+        <view class="num">{{cardInfo.parkTicketCount}}</view>
+        <view class="type">门票</view>
+      </navigator>
+      <navigator url='/pages/user/cardTicket/cardTicket' class="item" hover-class='none'>
+        <view class="num">{{cardInfo.cardCount}}</view>
+        <view class="type">卡券</view>
+      </navigator>
+    </view>
+  </view>
+</view>
+<swiper class="swiper_container" autoplay="true" circular="true" interval="3000">
+  <swiper-item>
+    <view class='vCenter active_in' data-url='/pages/shopMall/shareGoods/shareGoods' bindtap='jump' data-i='1'>
+      <image src='{{imageurl}}share_adv.png' mode='widthFix'></image>
+    </view>
+  </swiper-item>
+  <!-- <swiper-item>
+    <view class='vCenter active_in' data-url='/pages/new/getGift/list' bindtap='jump' data-i='2'>
+      <image src='{{imageurl}}active_mine.png' mode='widthFix'></image>
+    </view>
+  </swiper-item> -->
+</swiper>
+
+<view class="moneybox flex" wx:if="{{userInfo.nickname}}">
+  <view class="moneyleft">
+    <view class="row1">账户余额(元)</view>
+    <view class="row2">
+      <text style="font-size:36rpx">￥</text>{{filter.fixed(userInfo.balance/100||0,2)}}</view>
+    <view class="row3">可提现金额(元)：￥{{filter.fixed(userInfo.w_amount/100||0,2)}}</view>
+  </view>
+  <view class="moneyright">
+    <navigator class="row1 flex" url='/pages/moneyDetail/moneyDetail?totalMoney={{userInfo.balance/100}}' hover-class='none' style='justify-content: flex-end'>
+      <view class="detail">明细</view>
+      <van-icon name="arrow" size='24rpx' />
+    </navigator>
+    <view class='flex btns'>
+      <navigator class="row1" url='/pages/cash/cash?totalMoney={{userInfo.balance/100}}'>
+        提现
+      </navigator>
+      <navigator class="row1 color" url='/pages/new/recharge/recharge'>
+        充值
+      </navigator>
+    </view>
+  </view>
+</view>
+<pagePublic noFixed/>
+<view class="myclass">
+  <view class="classbox">
+    <view class="classlist flex" style="padding:0 20rpx;">
+      <navigator url='/pages/reservestatus/reservestatus' class="detail" hover-class='none'>
+        <view class="icon">
+          <image src="/imgs/new/myicon2.png" style="width:41rpx;height:40rpx;" />
+        </view>
+        <view class="value">预约列表</view>
+      </navigator>
+      <navigator url='/pages/activity/activity?type=1' class="detail" hover-class='none'>
+        <view class="icon">
+          <image src="/imgs/new/myicon3.png" style="width:41rpx;height:40rpx;" />
+        </view>
+        <view class="value">活动参与</view>
+      </navigator>
+      <navigator url='/pages/rebate/rebate' class="detail" hover-class='none'>
+        <view class="icon">
+          <image src="/imgs/new/myicon5.png" style="width:41rpx;height:40rpx;" />
+        </view>
+        <view class="value">分享返利</view>
+      </navigator>
+      <!-- <navigator url='/pages/user/myDraws/myDraws' class="detail" hover-class='none'>
+        <view class="icon">
+          <image src="/imgs/new/myicon6.png" style="width:41rpx;height:40rpx;" />
+        </view>
+        <view class="value">抽奖列表</view>
+      </navigator> -->
+      <navigator url='/pages/personal/notice/notice' class="detail" hover-class='none'>
+        <view class="icon">
+          <image src="/imgs/notice.png" style="width:39rpx;height:39rpx;" />
+        </view>
+        <view class="value">通知管理</view>
+      </navigator>
+    </view>
+    <view class="classlist flex" style="padding:0 40rpx;margin-top:-40rpx">
+      <navigator url='/pages/user/myCollects/myCollects' class="detail" hover-class='none'>
+        <view class="icon">
+          <image src="/imgs/new/myicon7.png" style="width:41rpx;height:40rpx;" />
+        </view>
+        <view class="value">收藏</view>
+      </navigator>
+      <navigator url='/pages/user/feedback/feedback?t=1' class="detail" hover-class='none'>
+        <view class="icon">
+          <image src="/imgs/new/myicon9.png" style="width:41rpx;height:40rpx;" />
+        </view>
+        <view class="value">投诉</view>
+      </navigator>
+      <navigator url='/pages/user/feedback/feedback?t=2' class="detail" hover-class='none'>
+        <view class="icon">
+          <image src="/imgs/new/myicon10.png" style="width:41rpx;height:40rpx;" />
+        </view>
+        <view class="value">反馈</view>
+      </navigator>
+      <button class="detail" bindtap='call'>
+        <view class="icon">
+          <image src="/imgs/new/myicon8.png" style="width:41rpx;height:40rpx;" />
+        </view>
+        <view class="value">客服</view>
+      </button>
+    </view>
+  </view>
+</view>
+
+<view class="mask" wx:if="{{showMask}}" bindtap="closeMask"></view>
+<view class="get_tickets" wx:if="{{showMask}}">
+  <view class="img">
+    <image src="{{imageurl}}choujiang.png" style="width:353rpx;height:279rpx;" />
+  </view>
+  <view class="send">送您{{taskList[0].daily_tickets}}张抽奖券！</view>
+  <view class="way">您可以使用抽奖券在【奖天天】进行抽奖哦！</view>
+  <view class="detail flex">
+    <view class="left flex">
+      <view class="title">抽奖券</view>
+      <view class="userway">使用抽奖券可以在【奖天天】进行抽奖哦！</view>
+    </view>
+    <view class="right flex">
+      <view class="rightbox flex">
+        <view class="num">{{taskList[0].daily_tickets}}</view>
+        <view class="unit">张</view>
+      </view>
+    </view>
+    <view class="topicon"></view>
+    <view class="midicon"></view>
+    <view class="btnicon"></view>
+  </view>
+  <view class="getbtn" bindtap="getTickets" wx:if="{{taskList[0].is_get==0}}">
+    <view>领取</view>
+  </view>
+  <view class="getbtn getbtn1" wx:if="{{taskList[0].is_get==1}}">
+    <view>已领取成功</view>
+  </view>
+  <van-icon name="cross" custom-class="close" bind:click="closeMask" />
+</view>
+
+<van-dialog use-slot title="授权用户信息" show="{{ show }}" show-cancel-button confirm-button-open-type="getUserInfo" bind:close="onClose" bind:getuserinfo="getInfo">
+  <view class='loginTip'>检测到您还未登录，请确认授权。</view>
+</van-dialog>
+
+
+<van-dialog id="van-dialog" />

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "ff-canvas": "../../components/f2canvas/f2-canvas",
+    "virus": "../../components/virus/virus"
+  }
+}

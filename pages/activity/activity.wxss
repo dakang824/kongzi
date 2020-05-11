@@ -1,0 +1,256 @@
+page{
+  overflow-y: hidden;
+}
+.tabs .van-tab{
+  background-color: transparent!important;
+  color: #fff;
+}
+.tag{
+  margin-right: 10rpx;
+}
+scroll-view{
+  position: relative;
+  top: 10rpx;
+}
+.tabs .van-tabs__wrap,.van-tabs__nav{
+  background: #fa2335!important;
+}
+.list_fter .jl,.list_fter .del{
+  font-size: 22rpx;
+  color: #999;
+}
+.list_fter .van-icon{
+  font-size: 26rpx;
+}
+.list_fter van-icon{
+  margin-top: 10rpx;
+}
+.van-tabs__wrap{
+  padding-bottom:10rpx;
+}
+.noData{
+  font-size: 28rpx;
+  color:#999;
+  text-align: center;
+  margin-top: 150rpx;
+}
+.bar{
+  position: relative
+}
+.screen {
+  font-size: 24rpx;
+  height: 44px;
+  line-height: 44px;
+  color: rgba(198, 198, 198, 1);
+  padding: 0 15rpx 0 15rpx;
+  box-shadow: -1px 0px 0px #f3f3f3;
+  z-index: 9;
+  position: absolute;
+  right: 0;
+  top: 0
+}
+
+.screen image {
+  width: 18px;
+  height: 16px;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
+  left: -3px;
+}
+.list .li{
+  padding: 25rpx 0;
+  margin: 0 30rpx;
+  border-bottom: 1px solid rgba(238,238,238,1);
+  display: flex;
+}
+.list navigator:last-child{
+  padding-bottom: 20rpx;
+}
+.list_lf {
+  position: relative;
+  border-radius: 5px;
+}
+.list_rt{
+  width: 68%;
+}
+
+.list_lf .label {
+  position:absolute;
+  top: 20rpx;
+  left: -8rpx;
+  padding:0 6rpx;
+  height: 40rpx;
+  font-size: 20rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 40rpx;
+  background:linear-gradient(90deg,rgba(98,134,253,1),rgba(77,180,252,1));
+  border-top-right-radius: 6rpx;
+  border-bottom-right-radius: 6rpx;
+  border-bottom-left-radius: 6rpx;
+}
+
+.list_lf .label .arg {
+  width: 0;
+  height: 0;
+  border-width: 8rpx 8rpx 0 0;
+  border-style: solid;
+  border-color: transparent #086ED3 transparent;
+  position: absolute;
+  top:-7rpx;
+  left:1rpx;
+}
+
+.list_lf image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 5px;
+  margin-right: 24rpx;
+}
+.list_rt .actName{
+  font-size: 32rpx;
+}
+.list_rt .status{
+  font-size: 24rpx;
+  margin-top: 20rpx;
+}
+.list_rt .status .startImg{
+  width: 18rpx;
+  height: 20rpx;
+}
+.list_rt .status .doingImg{
+  width: 20rpx;
+  height: 24rpx;
+}
+.list_rt .status .lightningImg{
+  width: 18rpx;
+  height: 26rpx;
+}
+.list_rt .status image{
+  margin-right: 10rpx;
+  vertical-align: middle;
+}
+.list_rt .status .star{
+  color: #4DA5FC;
+}
+.list_rt .status .doing{
+  color: #FFA740;
+}
+.list_rt .status .doing{
+  color: #FB2323;
+}
+.list_rt .act_time{
+  font-size:24rpx;
+  color:rgba(51,51,51,1);
+  margin-top: 20rpx;
+}
+.list_rt .list_fter{
+  display: flex;
+  justify-content: space-between;
+  font-size:22rpx;
+  margin-top: 25rpx;
+  color: #333333;
+  align-items:center;
+}
+.list_rt .list_fter text:first-child{
+  border-radius:100px;
+  color: #fff;
+  font-size: 20rpx;
+  background: #63B1FE; 
+  width: 30rpx;
+  height: 30rpx;
+  display: inline-block;
+  text-align: center;
+  margin-right:10rpx;
+}
+.list_rt .list_fter text:last-child{
+  color: #999;
+}
+.act_time text{
+  width:40rpx;
+  height:40rpx;
+  border:1px solid rgba(251,35,35,1);
+  border-radius:6rpx;
+  display: inline-block;
+  line-height: 40rpx;
+  text-align: center;
+  margin: 0 10rpx;
+  font-size: 24rpx;
+  color: #FB2323;
+  font-weight:bold;
+}
+.van-overlay{top:350rpx;}
+.popup{
+  top: 130rpx!important;
+}
+.popup .title{
+  font-size:28rpx;
+  margin:70rpx 0 49rpx 0; 
+  font-weight:bold;
+}
+.custom-button{
+  width: 30rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  background: #4DA5FC;
+  border-radius: 50px;
+  text-align: center;
+  position: relative;
+}
+.custom-button .white{
+  width: 15rpx;
+  height: 15rpx;
+  border-radius:50px;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  display: block
+}
+.custom-button .txt{
+  position: absolute;
+ left:-32rpx;
+  bottom:-39rpx;
+  font-size:24rpx;
+  width:100rpx;
+}
+.block .li{
+  border:1px solid #CCCCCC;
+  font-size:24rpx;
+  float: left;
+  margin-right: 35rpx;
+  border-radius: 25px;
+  padding: 15rpx 28rpx;
+  margin-bottom: 35rpx;
+}
+.block .li.active{
+  border:1px solid #4DA5FC;
+  color: #4DA5FC;
+}
+.fiexed{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex
+}
+.fiexed view{
+  width: 50%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+.fiexed view:first-child{
+  background: #F6F6F6;
+  font-size:32rpx;
+  color: #CCCCCC
+}
+.fiexed view:last-child{
+  background: linear-gradient(90deg,rgba(61,127,218,1),rgba(77,165,252,1));
+  font-size:32rpx;
+  color: #FFFFFF
+}

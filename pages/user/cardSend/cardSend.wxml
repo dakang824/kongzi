@@ -1,0 +1,37 @@
+<pagePublic />
+<van-dialog id="van-dialog" />
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class="header">
+	<view class="top flex">
+		<view class="img flex">
+			<image src="/imgs/new/tz.png" />
+		</view>
+		<view class="tip">收到一张来自好友{{filter.decode(options.name)}}赠送的卡券</view>
+	</view>
+	<view class="btm flex">
+		<view class="left">
+			<view class="img flex">
+				<image src="{{serverUrl}}{{options.pic_path}}" style="border-radius:50%;" />
+			</view>
+		</view>
+		<view class="right">
+			<view class="name">{{filter.decode(options.name)}}</view>
+			<view class="note">我赠送给你一张卡券，记得领取呀~</view>
+		</view>
+	</view>
+</view>
+<view class="itembox">
+	<view class="item">
+		<view class="img">
+			<van-image width="690rpx" src="{{serverUrl+options.top_pic}}" radius='20rpx 20rpx 0 0' use-loading-slot fit='widthFix'>
+				<van-loading slot="loading" type="spinner" size="20" vertical />
+			</van-image>
+		</view>
+		<view class="title"> {{options.cardname}}</view>
+	</view>
+</view>
+
+<view class="getbtn" bindtap="getTicket" wx:if="{{result==0}}">领取</view>
+<navigator class="getbtn" wx:elif='{{options.prod_type&&options.prod_id&&options.prod_no}}' url="/pages/bargain/bargain?act_no={{options.prod_no}}&inst_id={{options.prod_id}}&ope_id={{opeid}}&from_id=0&source=31">已领取（点击进入专用商品）</navigator>
+<view class="getbtn" wx:else style="background:#EEEEEE">已领取</view>
+<backHome />

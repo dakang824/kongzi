@@ -1,0 +1,178 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class="header">
+  <view class="img">
+    <image src="{{serverUrl+dataList.top_pic}}" mode="widthFix"/>
+    <van-count-down use-slot wx:if="{{dataList.seconds > 0}}" time="{{ dataList.seconds }}" bind:change="onChange">
+      <view class="timebox flex">
+        <view class="time">{{timeData.days}}</view>
+        <view class="fu">:</view>
+        <view class="time">{{timeData.hours}}</view>
+        <view class="fu">:</view>
+        <view class="time">{{timeData.minutes}}</view>
+        <view class="fu">:</view>
+        <view class="time">{{timeData.seconds}}</view>
+      </view>
+    </van-count-down>
+    <view class='swiper' wx:if="{{dataList.agent_status==3&&messageList.length}}">
+      <swiper class="swiper_container"  vertical="true" autoplay="true" circular="true" interval="2000">
+        <block wx:for="{{messageList}}" wx:key="index">
+          <swiper-item>
+            <view class="vCenter">
+              <view class="swiper_bg van-ellipsis">
+                <image src='../../../imgs/new/laba.png' class='user'></image>
+                <view class="item-text">{{item.msg}}</view>
+              </view>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+  <!-- <view class="pricebox flex">
+    <view class="left flex" style="{{!dataList.showTime?'width:100%':''}}">
+      <view class="title">限时特惠：</view>
+      <view class="num"><text style="font-size:28rpx">￥</text>{{dataList.price}}</view>
+    </view>
+  </view> -->
+  <view class="overtip" wx:if="{{dataList.status==2||((dataList.stock-dataList.buy_count)<0)||(dataList.stock-dataList.buy_count)==0}}">已售罄</view>
+  <view class="titlebox"> {{dataList.name}} </view>
+  <view class="numbox flex">
+    <view class="left flex">
+      <view class="yuan"><text>￥</text>{{dataList.price}}</view>
+      <view class="sale"><text>￥</text>{{dataList.ori_price}}</view>
+      <view class="you">运费：{{dataList.postage==0?'免运费':'￥'+dataList.postage}}</view>
+    </view>
+    <view class="right" wx:if="{{dataList.limit!=0}}">每人限购{{dataList.limit}}件</view>
+  </view>
+  <view class="line"></view>
+  <view class="bottombox between">
+    <view class="left flex">
+      <view class="price1">京东价:￥{{dataList.jd_price}}</view>
+      <view class="price1" style="margin-left:20rpx">天猫价:￥{{dataList.tm_price}}</view>
+    </view>
+    <view class="right" bindtap="adjustment">调价提醒</view>
+  </view>
+  <view class="line" style="margin-top:28rpx;height:2rpx;"></view>
+  <view class="numbox flex" style="padding-left:0">
+    <view class="left flex">
+      <view class="sell">已售{{dataList.buy_count}}件</view>
+    </view>
+    <view class="right">剩余{{(dataList.stock-dataList.buy_count)<0?"0":dataList.stock-dataList.buy_count}}件</view>
+  </view>
+</view>
+<view class='retail' wx:if="{{dataList.agent_status==3}}">
+  <view class="left">
+    <image src='/imgs/new/Gold_coin.png'></image>
+    <text>自购返现：{{filter.fixed(dataList.self_rate*100,1)}}%</text>
+  </view>
+  <text>分享收益：{{filter.fixed(dataList.self_rate*100,1)}}/{{filter.fixed(dataList.l1_rate*100,1)}}/{{filter.fixed(dataList.l2_rate*100,1)}}%</text>
+  <view class="right">
+    <text>团队分红：{{filter.fixed(dataList.team_rate*100,1)}}%</text>
+  </view>
+</view>
+<view class="line"></view>
+<pagePublic noFixed/>
+<view class="content">
+  <view class="title">商品介绍</view>
+  <view class="img">
+    <image src="{{serverUrl}}{{dataList.intro_pic}}"  style="width:750rpx" mode='widthFix'/>
+  </view>
+</view>
+<view class="btnbox flex">
+  <view class="left" wx:if="{{dataList.join_draw==1}}" bindtap="goLuckyDetail">抽奖获取</view>
+  <view class='right' style="{{dataList.join_draw==0?'width:750rpx':''}};{{(dataList.status==2||dataList.stock-dataList.buy_count==0||dataList.stock-dataList.buy_count<0)?'background:#E5E5E5':''}}" bindtap="goBuy">￥{{dataList.price}} 购买</view>
+</view>
+
+
+<view class="mask" wx:if="{{showMask}}" bindtap="cancel" catchtouchmove="preventTouchMove"></view>
+<view class="mask_price" wx:if="{{showMask}}">
+  <image class="img" src="{{serverUrl}}{{imgStr}}price.png" style="width:621rpx;height:993rpx">
+    <view class="row1">调价提醒</view>
+    <view class="row2">当您发现此商品京东或天猫正常售价（非短期特惠）低于我们所标明的京东价或天猫价时，可通过此提醒我们。我们将重新评估后会做出价格调整。降价之后会给您发送降价通知。</view>
+    <view class="row3">
+      <view class="title">是否提交调价提醒？</view>
+      <view class="box flex">
+        <view class="jd flex {{choose_jd?'active':''}}" bindtap="platform" data-type="1">
+          <image src="/imgs/new/jd.png" style="" />
+          <view>京东降价</view>
+          <radio wx:if="{{choose_jd}}" class="common" checked="{{true}}" color="#FF2C56" />
+        </view>
+        <view class="jd flex {{choose_jd?'':'active'}}" bindtap="platform" data-type="2">
+          <image src="/imgs/new/tm.png" style="" />
+          <view>天猫降价</view>
+          <radio wx:if="{{!choose_jd}}" class="common" checked="{{true}}" color="#FF2C56" />
+        </view>
+      </view>
+      <view class="note flex">
+        <view>备注:</view>
+        <input maxlength="20" value="{{content}}" bindinput="inputContent" />
+      </view>
+    </view>
+    <view class="row4 flex">
+      <view class="left" bindtap="cancel">取消</view>
+      <view class="right" bindtap="cutPrice">提交</view>
+    </view>
+    <view class="close1" catchtap="cancel">
+      <image src="../../../imgs/qingkong.png" style="" />
+    </view>
+  </image>
+</view>
+
+
+
+<van-popup show="{{ authorization||getMobile }}" bind:close="closeMobile" custom-class='layerBox' bind:close="closeAuthorization">
+  <view class='authorBox'>
+    <view class='redbg'>
+      <image src='{{imgUrl}}auth.png' class='img' mode='widthFix'></image>
+      <!-- <view>抽奖和中奖公布都是根据参与者的微信昵称和手机号哦！请您允许吧！</view> -->
+      <view style="text-align:center;">该操作需要您授权！请您允许吧！</view>
+    </view>
+    <view class='close' bindtap='closeAuthorization'>
+      <van-icon name="close" color='#fff' size='50rpx' />
+    </view>
+    <view class='box_tit'>
+      <view class='vCenter middle'>
+        <view class='logo'>
+          <image src='/imgs/new/logo.png' mode='widthFix'></image>
+        </view>
+        <text>孔紫家长社区</text>
+      </view>
+      <view class='middel'>
+        <view class='between' wx:if='{{!nickname}}'>
+          <view class='tip'>
+            {{nickName?nickName:'● 申请获得你的昵称、头像'}}
+          </view>
+          <block wx:if='{{nickName}}'>
+            <van-button disabled= custom-class='btn active small_btn' type="info">允许</van-button>
+          </block>
+          <block wx:else>
+            <van-button round custom-class='btn active small_btn' open-type="getUserInfo" bind:getuserinfo="getInfo">允许</van-button>
+          </block>
+        </view>
+        <view class='between' wx:if='{{!mobileshow}}'>
+          <view class='tip'>
+            {{mobile?mobile:'●'+tipTxt}}
+          </view>
+          <block wx:if='{{isMobile||successGetMobile}}'>
+            <van-button disabled custom-class='btn active small_btn' type="info">允许</van-button>
+          </block>
+          <block wx:else>
+            <van-button custom-class='btn active small_btn' type="info" bind:getphonenumber='getPhoneNumber' open-type="getPhoneNumber">允许</van-button>
+          </block>
+        </view>
+
+        <van-cell-group wx:if="{{isMobile}}">
+          <van-field title-width='60px' value="{{ mobile||Mobile }}" center label="手机号" placeholder="请输入你的手机号" use-button-slot bind:input='inputMobile'>
+            <van-button slot="button" color='#FFE9EE' custom-class='sendcolor' size="small" type="info" bind:click='getCode' disabled='{{secondCode!=60}}'>{{secondCode==60?'发送验证码':secondCode+'秒'}}</van-button>
+          </van-field>
+          <van-field title-width='60px' value="{{ code }}" center label="验证码" placeholder="请输入短信验证码" border="{{ false }}" bind:input='inputCode' />
+        </van-cell-group>
+      </view>
+      <view class='btns'>
+        <van-button round custom-class='btn active sumit_btn' bind:click='sureMobile'>确定</van-button>
+      </view>
+    </view>
+  </view>
+</van-popup>
+
+<share shareImg='{{shareImg}}' fixed type='4' qrPath='{{dataList.share_pic}}' sharePic='{{dataList.share_pic}}' prod_no='0' prod_id='{{id}}'/> 

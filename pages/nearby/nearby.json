@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "search": "../../dist/search/index",
+    "van-tab": "../../dist/tab/index",
+    "van-tabs": "../../dist/tabs/index",
+    "van-popup": "../../dist/popup/index",
+    "van-slider": "../../dist/slider/index",
+    "van-search": "../../dist/search/index"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "教培机构"
+}

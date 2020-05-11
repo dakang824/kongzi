@@ -1,0 +1,28 @@
+<view class="header">
+  <view class="imgbox" bindtap="goTicketsList">
+    <view class="day flex">
+      <view class="day_title">奖天天抽奖券</view>
+      <view class="detail">详情</view>
+    </view>
+    <view class="ticket flex">
+      <view class="num">{{dataList.myTicketCount}}</view>
+      <view class="unit">张</view>
+    </view>
+    <view class="tip">您有{{dataList.myExpireTicketCount}}张抽奖券即将过期，请尽快使用。</view>
+    <view class="img">
+      <image src="/imgs/new/prize2.png" />
+    </view>
+  </view>
+</view>
+<pagePublic noFixed/>
+<view class="btmbox">
+  <view class="itembox flex" wx:for="{{dataList.tasks}}" wx:key="{{index}}">
+    <view class="left flex">
+      <image src="/imgs/new/prize_man.png" />
+      <view class="title">{{item.name}}</view>
+    </view>
+    <view class="right" bindtap="goDetail" data-type="{{item.type}}" data-name="{{item.name}}" data-intropath="{{item.intro_path}}">
+      <view>查看详情</view>
+    </view>
+  </view>
+</view>

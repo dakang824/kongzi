@@ -1,0 +1,20 @@
+<loading-top id="loading" />
+<view class='top_tip'>
+  <view class='c'>
+    <image src='{{imageurl+(t==1?"person_c.png":"person_z.png")}}'></image>
+  </view>
+  <text>{{t==1?'您的投诉信息将会发送到孔紫相关部门，我们的工作人员会在72小时之内与您电话联系。如果您在72小时内没有收到电话，可直接拨打客服电话询问投诉结果。':'您的反馈信息将会发送到孔紫相关部门，我们会认真研讨您的反馈，并不断的完善我们的产品。'}}</text>
+</view>
+
+<view class='box'>
+  <view class='f'>
+    <textarea class='txt' placeholder='{{t==1?"请填写您的投诉意见，以便我们更好的改善服务~":"请填写您的反馈建议，感谢您对我们产品的支持~"}}' placeholder-class='place' value='{{c}}' bindinput='input' maxlength='300'></textarea>
+    <text class='total'>{{c.length}}/300</text>
+  </view>
+  <!-- <text class='tip' wx:if='{{t==1}}'>*问题将在收到投诉的72小时内处理，非工作日则自动顺延。</text> -->
+</view>
+<view class='btn'>
+  <button class='home-btn {{c?"active":""}}' disabled='{{c?false:true}}' plain bindtap='submit'>提交</button>
+</view>
+<pagePublic noFixed/>
+<van-dialog id="van-dialog" />

@@ -1,0 +1,77 @@
+<!-- <wxs module="filter" src="../../../component/posterTmp/filter.wxs"></wxs> -->
+<view class='page'>
+	<view class='customer' bindtap='call'>
+		<image src='/imgs/phone2.png' class='phone'></image>
+		客服
+	</view>
+	<view class='inner'>
+		<view class='title'>
+			<image src='{{imageurl}}{{d.status==0?"doing.png":d.status==2?"error.png":d.status==1?"e.png":""}}' class='logo'></image>
+			<text class='inst_name'>{{d.status==0?"防疫用品申请审核中···":d.status==1?"防疫用品申请通过":d.status==2?"防疫用品申请未通过审核···":""}}</text>
+		</view>
+		<view class='tip'>{{d.status==0?"您的防疫用品申请已提交审核。":d.status==2?"您的防疫用品申请未通过审核！":""}}
+		</view>
+		<view class="btn_nav" bindtap="jump"><van-button round type="info" size="small" custom-class='btn1'>查看活动详情</van-button></view>
+	</view>
+
+	<block wx:if='{{d.status==0}}'>
+		<view class='txt'>
+			<text space='ensp' decode style="line-height: 47rpx;">您的申请已提交审核，我方会在3个工作日内完成审核流程，结果会显示在该页面。\n    审核过程中可能会有我方工作人员与您电话联系，核实信息，请注意接听。\n    如有任何疑问，可拨打客户热线400 859 0900（周一到周五，早9点到晚6点）；或直接拨打相关负责人手机13262946869（7天12小时）。</text>
+		</view>
+		<navigator class='btn_sumit' url='/pages/new/index/index' open-type='switchTab'>
+			<van-button size="large" round type="info" custom-class='btn_color'>我知道了</van-button>
+		</navigator>
+	</block>
+	<block wx:if='{{d.status==2}}'>
+		<view class='txt'>
+			很抱歉，您于{{m[0]}}年{{m[1]}}月{{m[2]}}日提交的防疫用品申请未通过审核，原因如下：<text style="color:red">{{d.audit_msg}}</text>。您可以点击“返回申请页面”按钮，重新提交申请，或点击右上方客服进行联系。
+		</view>
+		<navigator class='btn_sumit' url='/pages/personal/welfare/welfare' open-type='redirect'>
+			<van-button size="large" round type="info" custom-class='btn_color'>返回活动详情页</van-button>
+		</navigator>
+	</block>
+	<block wx:if='{{d.status==1}}'>
+		<view class='txt1' style="margin-top:50rpx">
+			<text space='emsp' decode style="line-height: 47rpx;">  您的申请已通过。学校及老师物资在学生领取后的3个工作日内寄出，寄出数量按学生领取数量的十分之一的比例计算。\n  学生兑换码已生成，您可以发送兑换码到指定邮箱，然后分配给每个班级的学生家长。\n  以下二维码为学生领取入口，长按识别便可进入领取页面。</text>
+		</view>
+		<view class="qrcode">
+			<image src="{{serverUrl+d.qr_path}}" show-menu-by-longpress></image>
+			<view class="small">长按识别或保存到手机</view>
+			<view class="flex vCenter">物资发货状态：{{d.post_status==0?'未领取':d.post_status==1?'待处理':d.post_status==2?'已人工处理':d.post_status==3?'已自动处理':''}}
+				<van-button type="primary" size="small" color='#FF5A90' bind:click='postStatus'>物流信息</van-button>
+			</view>
+		</view>
+
+		<view class='btn_sumit' bindtap="show">
+			<van-button size="large" round type="info" custom-class='btn_color'>发送兑换码到邮箱</van-button>
+		</view>
+	</block>
+</view>
+
+<van-popup show="{{show}}" round closeable bind:close='show' class='t'>
+	<view class="derivemodal-dialog">
+		<view class="derivemodal-title">
+			<image class='derivemodal-pic' src='{{imageurl}}pic1.png'></image>
+		</view>
+		<view class='derivemodal-content vCenter'>
+			<view>邮箱地址：</view>
+			<input value='{{email}}' bindinput='deriveEmail' placeholder='请在此填写邮箱地址'></input>
+		</view>
+		<view class='linell'>
+			<text>导出的数据会以Excel文件形式发送到您所填写的邮箱，请注意查收。</text>
+		</view>
+		<view class="btn">
+			<van-button round type="info" size="normal" disabled="{{disabled}}" bind:click='sendGoEmail'>提交</van-button>
+		</view>
+	</view>
+</van-popup>
+
+<van-popup show="{{logistics}}" round closeable position="bottom" bind:close="onClose">
+	<view class='between topmar'>
+		<view>{{company+'：'+no}}</view>
+		<van-button type="primary" size="mini" bind:click='copy' color="#ff2c56">复制</van-button>
+	</view>
+	<view class='inner'>
+		<van-steps steps="{{ steps }}" active="{{ steps.length }}" direction="vertical" active-color="#ee0a24" />
+	</view>
+</van-popup>

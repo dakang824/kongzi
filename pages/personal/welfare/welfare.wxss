@@ -1,0 +1,22 @@
+page {
+  position: relative;
+}
+.image{
+  vertical-align: top;
+  display: inline-block!important;
+}
+button {
+  position: absolute;
+  width: 325rpx;
+  height: 96rpx;
+  line-height: 96rpx;
+  background: linear-gradient(165deg, rgba(0, 222, 255, 1) 0%, rgba(0, 114, 255, 1) 100%);
+  border-radius: 48rpx;
+  color: #fff;
+  text-align: center;
+  font-size: 45rpx;
+  margin: 0 auto;
+  bottom: 50rpx;
+  left: 0;
+  right: 0;
+}

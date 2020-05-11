@@ -1,0 +1,239 @@
+<template name='courseTemp2'>
+  <view class="team_i">
+    <view class='rule'>
+      <text class='info_title'>活动规则</text>
+      <view class='rule_txt'>
+        <view class='active'>
+          <text space='ensp' decode='&emsp'>{{data.act_info.rules}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='member'>
+      <view class='member_list'>
+        <text class='info_title'>课程详情</text>
+        <view class='img'>
+          <image src='{{rootUrl+data.act_info.course_pic}}' style='width:100%;height:100%;' mode="widthFix"></image>
+        </view>
+        <view class='inner'>
+          <text class='course_tip'>课程名称 :</text>
+          <view class='active fit'>
+            <text class='fit course_font' style='min-height:30rpx;' space='ensp' decode='&emsp'>{{data.act_info.course_name}}</text>
+          </view>
+
+          <view class='course_into'>
+            <view class='course_tip pink'>课程内容 :</view>
+            <view class='active fit'>
+              <text class='fit course_font' space='ensp' decode='&emsp'>{{data.act_info.course_intro}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='address'>
+      <text class='info_title'>校区地址</text>
+      <view wx:for='{{data.act_members}}' class='address_info'>
+        <view class='fit school_name'>{{item.branch_name}}</view>
+        <text class='fit school_address'>{{item.branch_address}}</text>
+      </view>
+    </view>
+  </view>
+</template>
+<template name='courseTemp1'>
+  <view class='bargain_i'>
+    <image src='{{imageurl}}aircraft.png' class='aircraft'></image>
+    <view class='rule'>
+      <text class='info_title'><text></text> 活动规则
+      <text></text> </text>
+      <view class='rule_txt'>
+        <view class='active'>
+          <text space='ensp' decode='&emsp'>{{data.act_info.rules}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='member'>
+      <view class='member_list'>
+        <text class='info_title'><text></text>课程详情
+        <text></text></text>
+        <view class='img'>
+          <image src='{{rootUrl+data.act_info.course_pic}}' style='width:100%;height:100%;' mode="widthFix"></image>
+        </view>
+        <view class='inner'>
+          <text class='course_tip'>课程名称 :</text>
+          <view class='active fit'>
+            <text class='fit course_font' style='min-height:30rpx;' space='ensp' decode='&emsp'>{{data.act_info.course_name}}</text>
+          </view>
+
+          <view class='course_into'>
+            <view class='course_tip pink'>课程内容 :</view>
+            <view class='active fit'>
+              <text class='fit course_font' space='ensp' decode='&emsp'>{{data.act_info.course_intro}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='address'>
+      <text class='info_title'><text></text>校区地址
+      <text></text></text>
+      <view wx:for='{{data.act_members}}' class='address_info'>
+        <view class='fit school_name'>{{item.branch_name}}</view>
+        <text class='fit school_address'>{{item.branch_address}}</text>
+      </view>
+    </view>
+  </view>
+</template>
+<template name='courseTemp5'>
+  <view class='time_i'>
+    <view class='rule'>
+      <text class='circle_lf'></text>
+      <text class='circle_rt'></text>
+      <text class='info_title'>活动规则</text>
+      <view class='rule_txt'>
+        <view class='line'> </view>
+        <view class='active'>
+          <text space='ensp' decode='&emsp'>{{data.act_info.rules}}</text>
+        </view>
+        <view class='line'> </view>
+      </view>
+    </view>
+    <view class='member'>
+      <view class='member_list'>
+        <text class='circle_lf'></text>
+        <text class='circle_rt'></text>
+        <text class='info_title'>课程详情</text>
+        <view class='line top'></view>
+        <view class='img'>
+          <image src='{{rootUrl+data.act_info.course_pic}}' style='width:100%;height:100%;' mode="widthFix"></image>
+        </view>
+        <view class='line'></view>
+        <view class='inner'>
+          <text class='course_tip'>课程名称 :</text>
+          <view class='active fit'>
+            <text class='fit course_font' style='min-height:30rpx;' space='ensp' decode='&emsp'>{{data.act_info.course_name}}</text>
+          </view>
+
+          <view class='course_into'>
+            <view class='course_tip pink'>课程内容 :</view>
+            <view class='active fit'>
+              <text class='fit course_font' space='ensp' decode='&emsp'>{{data.act_info.course_intro}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='address'>
+      <text class='circle_lf'></text>
+      <text class='circle_rt'></text>
+      <text class='info_title'>校区地址</text>
+      <view class='line top'></view>
+      <view wx:for='{{data.act_members}}' class='address_info'>
+        <view class='fit school_name'>{{item.branch_name}}</view>
+        <text class='fit school_address'>{{item.branch_address}}</text>
+      </view>
+      <view class='line'></view>
+    </view>
+  </view>
+</template>
+<template name='courseTemp6'>
+  <view class='limit_i'>
+    <view class='rule'>
+      <view class='info_title'>
+        <view class='txt'>活动规则</view>
+        <view class='circle_line'></view>
+      </view>
+      <view class='rule_txt'>
+        <view class='active'>
+          <text space='ensp' decode='&emsp'>{{data.act_info.rules}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='member'>
+      <view class='member_list'>
+        <view class='info_title'>
+          <view class='txt'>课程详情</view>
+          <view class='circle_line'></view>
+        </view>
+        <view class='rt'>
+          <text class='course_tip'><text class='t'></text> 课程名称 :
+          <text class='r'></text></text>
+          <view class='fit'>
+            <text class='fit course_font' style='min-height:30rpx;' space='ensp' decode='&emsp'>{{data.act_info.course_name}}</text>
+          </view>
+          <view class='img'>
+            <image src='{{rootUrl+data.act_info.course_pic}}' style='width:100%;height:100%;' mode="widthFix"></image>
+          </view>
+          <view class='course_into'>
+            <text class='course_tip'><text class='t'></text> 课程内容 :
+            <text class='r'></text></text>
+            <view class='fit'>
+              <text class='fit course_font' space='ensp' decode='&emsp'>{{data.act_info.course_intro}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='address'>
+      <view class='info_title'>
+        <view class='txt'>校区地址</view>
+        <view class='circle_line'></view>
+      </view>
+      <view class='rt'>
+        <view wx:for='{{data.act_members}}' class='address_info'>
+          <view class='fit school_name'>
+            <text class='b'></text> {{item.branch_name}}</view>
+          <text class='fit school_address'>{{item.branch_address}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+<template name='courseTemp3'>
+  <view class='listen_i'>
+    <view class='rule'>
+      <text class='info_title'>活动规则</text>
+      <view class='rule_txt'>
+        <view class='active'>
+          <text space='ensp' decode='&emsp'>{{data.act_info.rules}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='member'>
+      <view class='member_list'>
+        <view class='p p{{index}}' wx:for='{{4}}'>
+          <view class='m'>
+            <view class='line'></view>
+            <text class='t'></text>
+            <text class='b'></text>
+          </view>
+        </view>
+
+        <text class='info_title'>课程详情</text>
+        <view class='img'>
+          <image src='{{rootUrl+data.act_info.course_pic}}' style='width:100%;height:100%;' mode="widthFix"></image>
+        </view>
+        <view class='inner'>
+          <text class='course_tip'>课程名称 :</text>
+          <view class='active fit'>
+            <text class='fit course_font' style='min-height:30rpx;' space='ensp' decode='&emsp'>{{data.act_info.course_name}}</text>
+          </view>
+
+          <view class='course_into'>
+            <view class='course_tip pink'>课程内容 :</view>
+            <view class='active fit'>
+              <text class='fit course_font' space='ensp' decode='&emsp'>{{data.act_info.course_intro}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='address'>
+      <text class='info_title'>校区地址</text>
+      <view class='rt'>
+        <view wx:for='{{data.act_members}}' class='address_info'>
+          <view class='fit school_name'>{{item.branch_name}}</view>
+          <text class='fit school_address'>{{item.branch_address}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,79 @@
+.from .top {
+  background: #F6F6F6;
+  padding: 35rpx 30rpx;
+  color: #767676;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.from .top .lf text {
+  color: #FA2335;
+}
+
+.from .top .rt {
+  font-size: 27rpx;
+  font-weight: initial;
+}
+
+.box .row {
+  padding: 10px 15px;
+}
+
+.box .year {
+  flex-wrap: wrap;
+}
+.box .year .b.active{
+  border-color: #FA2335;
+  color: #FA2335;
+}
+.box .year .b {
+  width: 120rpx;
+  min-width: 120rpx;
+  font-size: 26rpx;
+  line-height: 50rpx;
+  height: 50rpx;
+  border: 1px solid rgba(238, 238, 238, 1);
+  border-radius: 25rpx;
+  text-align: center;
+  margin-top: 30rpx;
+}
+
+.box .row .txt {
+  font-size: 14px;
+  min-width: 90px;
+}
+
+van-radio-group {
+  display: flex;
+}
+
+van-radio {
+  margin-right: 30rpx;
+}
+
+.van-radio__label {
+  font-size: 14px !important;
+}
+
+.sumit {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.sumit button {
+  margin-top: 80rpx;
+  height: 82rpx !important;
+  line-height: 82rpx !important;
+}
+
+.from .disabled {
+  color: #ccc;
+  background: #eee;
+}
+
+.from .ok {
+  color: #fff;
+  background:linear-gradient(82deg,rgba(255,89,143,1) 0%,rgba(255,45,87,1) 100%);
+}

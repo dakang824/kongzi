@@ -1,0 +1,256 @@
+.address {
+  font-size: 34rpx;
+  color: #fff;
+  padding: 20rpx;
+}
+
+.headTopNav {
+  height: auto !important;
+}
+.layer{
+  text-align: center;
+}
+.layer button{
+  background: #fff;
+  border-radius: 0;
+  border-color: transparent;
+  border-top: 1px solid #f3f3f3;
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+  color: #4da5fc;
+}
+.layer .title{
+  padding: 30rpx 0;
+  font-size: 34rpx;
+}
+.layer .txt{
+  font-size: 28rpx;
+  padding: 30rpx 0 60rpx;
+  color: #999;
+}
+.zz {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(90deg, #4db4fc, #4dbcfc);
+  opacity: 0.8;
+  border-radius: 10rpx;
+  width: 100%;
+  display: block;
+}
+
+swiper image {
+  width: 750rpx !important;
+  position: inherit !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+.tit {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+scroll-view .block .status {
+  width: 16rpx;
+  height: 16rpx;
+}
+
+.more {
+  font-size: 24rpx;
+  color: #999;
+}
+
+scroll-view {
+  width: 100%;
+  height: 280rpx;
+}
+
+scroll-view .block {
+  width: 280rpx;
+  display: inline-block;
+  position: relative;
+  height: 280rpx;
+  border-radius: 5px;
+  margin-left: 30rpx;
+}
+
+scroll-view .txt text {
+  margin-right: 20rpx;
+}
+
+scroll-view .text {
+  position: absolute;
+  top: 140rpx;
+  left: 0;
+  right: 0;
+  margin: 0 10rpx;
+  color: #fff;
+  overflow:hidden;
+}
+
+scroll-view .text .h1 {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+scroll-view .text .txt {
+  font-size: 22rpx;
+  margin: 14rpx 0;
+  justify-content: space-between
+}
+
+scroll-view .tip text {
+  display: inline-block;
+  background: #fff;
+  width: 30rpx;
+  height: 30rpx;
+  text-align: center;
+  line-height: 30rpx;
+  color: #5aacfe;
+  border-radius: 50px;
+}
+
+scroll-view .text .tip {
+  font-size: 20rpx;
+}
+
+scroll-view .block image {
+  width: 280rpx;
+  height: 280rpx;
+  border-radius: 10rpx;
+}
+
+scroll-view {
+  white-space: nowrap;
+  width: 100%;
+}
+
+.inner {
+  margin-top: 80rpx;
+  margin-bottom: 50rpx;
+}
+
+.list .li {
+  padding: 25rpx 30rpx;
+  border-bottom: 1rpx solid #f3f3f3;
+  display: flex;
+}
+
+.list_lf {
+  border-radius: 5px;
+}
+
+.list_lf image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 5px;
+  margin-right: 24rpx;
+  vertical-align:middle;
+}
+
+.list_rt .actName {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.list_rt .distance {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 21rpx;
+}
+
+.distance .van-icon {
+  color: #ccc;
+}
+
+.list_rt {
+  width: 68%;
+}
+
+.list_rt .act_time {
+  font-size: 24rpx;
+  color: #333;
+  margin-top: 20rpx;
+}
+
+.list_rt .tags text {
+  display: inline-block;
+  border: 1px solid #63b1fe;
+  color: #63b1fe;
+  font-size: 22rpx;
+  padding: 2rpx 10rpx;
+  border-radius: 3px;
+  margin-right: 7rpx;
+}
+.list_rt .tags text:nth-child(4n){
+  margin-right: 0
+}
+.popup1 {
+  background: #fff;
+  width: 580rpx;
+  border-radius: 5px;
+  position: relative;
+  overflow: inherit !important;
+  text-align: center;
+}
+.popup {
+  background: #fff;
+  width: 580rpx;
+  height: 342rpx;
+  border-radius: 5px;
+  position: relative;
+  overflow: inherit !important;
+  text-align: center;
+}
+
+.popup .top {
+  height: 100rpx;
+}
+
+.popup .tip {
+  font-size: 24rpx;
+  margin-bottom: 63rpx;
+}
+
+.popup .tip text {
+  color: #4da5fc;
+}
+
+.popup .cross {
+  position: absolute;
+  right: 32rpx;
+  top: 32rpx;
+  color: #ccc;
+  font-size: 24rpx;
+}
+
+.samll {
+  color: #999;
+  font-size: 22rpx;
+  margin-bottom: 40rpx;
+}
+
+.popup .userImg {
+  width: 120rpx;
+  height: 120rpx;
+  position: absolute;
+  top: -60rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: 1px solid #4da5fc;
+  border-radius: 50px;
+}
+
+.popup .submit {
+  color: #fff;
+  background: linear-gradient(90deg, rgba(61, 127, 218, 1), rgba(77, 165, 252, 1));
+  border: 0;
+  height: 82rpx;
+  width: 420rpx;
+  font-size: 32rpx;
+  line-height: 82rpx;
+}

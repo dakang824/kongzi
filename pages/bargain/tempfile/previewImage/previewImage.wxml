@@ -1,0 +1,11 @@
+<view class="between">
+  <view class="vCenter" size='27rpx' bindtap="first">|<van-icon name="arrow-left" custom-class='left'/></view>
+  <van-icon name="arrow-left" size='27rpx' bind:click='pre'/> {{1+index}}/{{imgs.length}}
+  <van-icon name="arrow-left" size='27rpx' custom-class='rotate' bind:click='next'/>
+  <view class="vCenter" bindtap='last'><van-icon name="arrow-left" size='27rpx' custom-class='rotate right'/>|</view>
+</view>
+<swiper duration="{{1000}}" current='{{index}}' bindchange="swiperChange">
+  <swiper-item wx:for='{{imgs}}' wx:key="index">
+    <image src="{{serverUrl+item}}" class="slide-image" mode="widthFix" show-menu-by-longpress/>
+  </swiper-item>
+</swiper>

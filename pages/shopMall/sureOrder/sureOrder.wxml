@@ -1,0 +1,92 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class="header flex">
+  <view class="left">
+    <image src="{{serverUrl}}{{options.list_pic}}" />
+  </view>
+  <view class="right">
+    <view class="top">{{filter.decode(options.name)}} </view>
+    <view class="btm flex">
+      <view class="price">￥{{options.price}}</view>
+      <view class="act flex">
+        <image bindtap="reduce" src="/imgs/new/reduce.png" style="width:44rpx;height:44rpx" />
+        <view class="num">{{quantity}}</view>
+        <image bindtap="add" src="/imgs/new/add.png" style="width:44rpx;height:44rpx" />
+      </view>
+    </view>
+  </view>
+</view>
+<view class="line"></view>
+<view class="content">
+  <view class="title">购买信息</view>
+  <view class="row1 flex" bindtap="goAddress">
+    <view class="tip">选择收货人</view>
+    <image src="../../../imgs/right.png" style="width:12rpx;height:20rpx" />
+  </view>
+  <view class="address flex" wx:if="{{addList!=null}}">
+    <view class="left">
+      <image src="../../../imgs/new/addressicon.png" style="width:79rpx;height:79rpx;" />
+    </view>
+    <view class="right">
+      <view class="info flex">
+        <view>{{addList.post_name}}</view>
+        <view>{{addList.post_mobile}}</view>
+      </view>
+      <view class="detail">{{addList.post_address}}</view>
+    </view>
+  </view>
+  <view class="row1 flex" bindtap="chooseCard">
+    <block wx:if="{{discountList.hasCard==1}}">
+      <view class="tip">优惠金额</view>
+      <view class="value flex">
+        <view class="num">￥{{discount}}</view>
+        <image  src="../../../imgs/right.png" style="width:12rpx;height:20rpx" />
+      </view>
+    </block>
+    <block wx:else>
+      <view class="tip">优惠卡券</view>
+      <view class="value flex">
+        <view class="num">{{cardList.length}}张</view>
+        <image wx:if="{{cardList.length!=0}}" src="../../../imgs/right.png" style="width:12rpx;height:20rpx" />
+      </view>
+    </block>
+  </view>
+  <view class="row1 flex" style="">
+    <view class="tip">运费</view>
+    <view class="value flex">
+      <view class="num" wx:if="{{options.postage!=0}}">￥{{options.postage}}</view>
+      <view class="num" wx:if="{{options.postage==0}}">免运费</view>
+    </view>
+  </view>
+  <view class="row1 flex" style="border-bottom:1rpx solid #eee">
+    <view class="tip">应付金额</view>
+    <view class="value flex">
+      <view class="num">￥{{total_price}}</view>
+    </view>
+  </view>
+  <view class="title">支付方式</view>
+  <view class="row2 flex" bindtap="payMethod" data-paytype="1">
+    <view class="left flex">
+      <image src="/imgs/new/yepay.png" style="width:38rpx;height:38rpx" />
+      <view>
+        <view>余额支付</view>
+        <view class="balance">剩余可用余额{{options.balance}}元</view>
+      </view>
+    </view>
+    <view class="right">
+      <radio  class="common" checked="{{!payMethod}}" color="#FF2C56" />
+    </view>
+  </view>
+  <view class="row2 flex" bindtap="payMethod" data-paytype="2"  style="border-top:none">
+    <view class="left flex">
+      <image src="/imgs/new/wxpay.png" style="width:38rpx;height:38rpx" />
+      <view>微信支付</view>
+    </view>
+    <view class="right">
+      <radio  class="common" checked="{{payMethod}}" color="#FF2C56" />
+    </view>
+  </view>
+</view>
+<view class="btnbox flex">
+  <view class="left">实际付款：￥{{total_price1}}</view>
+  <view class='right' bindtap="buy">购买</view>
+</view>

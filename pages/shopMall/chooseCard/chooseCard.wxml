@@ -1,0 +1,41 @@
+<pagePublic/>
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class="itembox">
+  <view class="items flex" wx:for="{{dataList}}" wx:key="{{index}}"  bindtap="chooseCard" data-value="{{item.value}}" data-type="{{item.type}}" data-uselimit="{{item.use_limit}}" data-id="{{item.user_coupon_id}}" data-balance="{{item.balance}}" data-name="{{item.name}}" data-index="{{index}}">
+    <view class="icon" wx:if="{{item.type==1||item.type==2}}">
+      <radio  class="common" wx:if="{{item.use_limit==0}}" checked="{{item.isChoose}}"  color="#FF2C56" />
+      <radio  class="common" wx:else checked="{{item.isChoose}}" disabled="{{(total_price < item.use_limit)}}" color="#FF2C56" />
+    </view>
+     <view class="icon" wx:if="{{item.type==4}}">
+      <radio  class="common" wx:if="{{item.balance!=0}}" checked="{{item.isChoose}}"  color="#FF2C56" />
+      <radio  class="common" wx:else checked="{{item.isChoose}}" disabled="{{item.balance==0}}" color="#FF2C56" />
+    </view>
+    <view class="left" wx:if="{{item.type==1}}">
+      <view class="t"><text>￥</text>{{item.value}}</view>
+      <view class="b">代金券</view>
+    </view>
+    <view class="left" wx:if="{{item.type==2}}">
+      <view class="zhe"><text>{{item.value/10}}</text>折</view>
+      <view class="b">折扣券</view>
+    </view>
+    <view class="left" wx:if="{{item.type==4}}">
+      <view class="zhe"><text>{{item.balance}}</text>元</view>
+      <view class="b">购物卡</view>
+    </view>
+    <view class="middle">
+      <view class="t">{{item.name}}</view>
+      <view class="b">{{item.use_intro}}</view>
+      <view class="b" style="margin-top:4rpx;">使用期限：{{item.valid_from}}-{{item.valid_to}}</view>
+    </view>
+  </view>
+</view>
+<view class="surebox flex" wx:if="{{false}}">
+  <view class="title">{{tip}}</view>
+  <view class="btn" bindtap="sure">确定</view>
+</view>
+
+
+
+
+
+

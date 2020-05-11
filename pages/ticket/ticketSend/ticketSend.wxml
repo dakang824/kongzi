@@ -1,0 +1,45 @@
+<pagePublic/>
+<loading-top id="loading" />
+<van-dialog id="van-dialog" />
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class="header">
+  <view class="top flex">
+    <view class="img flex">
+      <image src="/imgs/new/tz.png" />
+    </view>
+    <view class="tip">收到一张来自好友{{filter.decode(name)}}送给你的门票</view>
+  </view>
+  <view class="btm flex">
+    <view class="left">
+      <view class="img flex">
+        <image src="{{url+pic_path}}" />
+      </view>
+    </view>
+    <view class="right">
+      <view class="name">{{filter.decode(name)}}</view>
+      <view class="note">我赠送给你一张门票，记得领取呀~</view>
+    </view>
+  </view>
+</view>
+<view class="detailbox">
+  <view class="itembox" style='padding:0;overflow:hidden;'>
+    <image src='{{url+tickpath}}' style='width:100%;height:300rpx;'></image>
+    <view style='font-size:28rpx;padding:32rpx;'>{{tickName}}</view>
+  </view>
+</view>
+<block wx:if='{{s}}'>
+  <view class="sendbtn" bindtap='goGet' wx:if='{{!result}}'>
+    <view>领取</view>
+  </view>
+  <view class="sendbtn1" wx:else>
+    <view>已领取</view>
+  </view>
+  <view style="height:40rpx;"></view>
+</block>
+<block wx:else>
+  <view class="sendbtn1">
+    <view>已失效</view>
+  </view>
+</block>
+
+<backHome/>

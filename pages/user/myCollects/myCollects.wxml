@@ -1,0 +1,199 @@
+<pagePublic/>
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class="chooseBox flex">
+  <view class="tic flex" bindtap="choose" data-index="1">
+    <view class="type {{index==1?'active':''}}">{{typeTitle}}</view>
+    <van-icon name="arrow-down" custom-class='icon' color="{{index==1?'#FF2C56':''}}" size="12px" style="margin-left:10rpx;" />
+  </view>
+  <view class="middle"></view>
+  <view class="tic flex" bindtap="choose" data-index="2">
+    <view class="type {{index==2?'active':''}}">{{timeTitle}}</view>
+    <van-icon name="arrow-down" custom-class='icon' color="{{index==2?'#FF2C56':''}}" size="12px" style="margin-left:10rpx;" />
+  </view>
+</view>
+<view class="typebox" wx:if="{{showMask}}">
+  <view class="itembox">
+    <view class="item flex" wx:for="{{list}}" bindtap="chooseType" wx:index="{{index}}" data-index="{{index}}">
+      <van-icon name="success" color="#FF2C56" wx:if="{{item.checked}}" />
+      <view class="line" wx:else></view>
+      <view class="type" style="{{item.checked?'color:#FF2C56':''}}">{{item.name}}</view>
+    </view>
+  </view>
+</view>
+<!-- 门票 -->
+<view class="ticketbox">
+  <block wx:if="{{dataList.length!=0}}">
+    <view class="ticketitem flex" bindtap="enterDetail" wx:for="{{dataList}}" wx:key="{{index}}" data-type="{{item.collect_type}}" data-id="{{item.id}}" data-parkid="{{item.park_id}}" data-awardid="{{item.award_id}}" data-item='{{item}}'>
+      <view class="left">
+        <image src="{{serverUrl+(item.collect_type==1||item.collect_type==3?item.list_pic:item.collect_type==2?item.icon_path:'')}}" style="width:100%;height:100%;border-radius:10rpx;" />
+        <view class="leftstatus" wx:if="{{item.collect_type==1}}">
+          <view>{{item.course_type==2?'短课包':item.course_type==1?'体验课':item.course_type==4?'联合课包':item.course_type==3?'正式课':''}}</view>
+          <view class="sanjiao"></view>
+        </view>
+        <image class="big" wx:if="{{item.draw_type==2}}" src="/imgs/new/big_prize.png" style="width:62rpx;height:59rpx;" />
+      </view>
+      <!-- //collect_type  0：全部  1：课程  2：抽奖  3：门票 -->
+      <block wx:if="{{item.collect_type==3}}">
+        <view class="right">
+          <view class="row title flex">
+            <view class="name van-ellipsis" style="width:280rpx">{{item.name}}</view>
+            <view class="price">{{item.price}}
+              <text>元</text>
+            </view>
+          </view>
+          <view class="row flex" style="margin-top:6rpx;">
+            <view class="rowicon"></view>
+            <view class="school">{{item.park_name}}（{{item.branches==""?"0":item.branches}}个园区）</view>
+          </view>
+          <view class="row flex" style="margin-top:6rpx;">
+            <!-- 1：次票 2：套票（N次） 3：年票（无限次） -->
+            <view class="old" wx:if="{{item.type==1}}" style="width:60rpx;">次票</view>
+            <view class="old" wx:if="{{item.type==2}}" style="width:60rpx;">套票</view>
+            <view class="old" wx:if="{{item.type==3}}" style="width:60rpx;">年票</view>
+            <view class="old" style="margin-left:20rpx;">{{item.age_from}}~{{item.age_to}}岁</view>
+          </view>
+          <view class="row flex pricebox" style="margin-top:20rpx;">
+            <view class="distancebox flex">
+              <image src="/imgs/new/address.png" style="width:17rpx;height:21rpx;" />
+              <view class="distance">{{item.mindis}}~{{item.maxdis}}km</view>
+            </view>
+            <view class="delbox flex" catchtap="delData" data-id="{{item.id}}" data-type="3">
+              <image src="/imgs/new/delicon.jpg" style="width:36rpx;height:40rpx;" />
+              <view class="del"></view>
+            </view>
+          </view>
+        </view>
+      </block>
+      <block wx:if="{{item.collect_type==1}}">
+        <view class="right classright">
+          <view class="row1 flex" style='position:relative;margin-bottom:20rpx;'>
+            <view class="title van-ellipsis" style="width:340rpx;">{{item.title}}</view>
+            <view style='position:absolute;right:0;top:0;'>
+              <text wx:if='{{item.ori_price&&item.ori_price!=item.act_price}}' style='text-decoration:line-through;color:#999;font-size:14px;'>{{item.type==4?filter.fixed(item.ori_price/100,2):filter.fixed(item.ori_price,2)}}元</text>
+            <view style="color:#FF5A90;font-size:26rpx;">{{item.type==4?filter.fixed(item.act_price/100,2):filter.fixed(item.act_price,2)}}元{{course_type==1||course_type==2?'起':''}}</view>
+          </view>
+        </view>
+
+        <view class="row2 flex">
+          <view class="old">{{item.age_from}}~{{item.age_to}}岁</view>
+          <!-- <view class="menber" wx:if="{{item.type==4}}">孔紫联盟成员</view> -->
+        </view>
+        <view class="row3 flex">
+          <block wx:if="{{item.type==4}}">
+            <view class="item" wx:for='{{item.category}}' wx:if="{{item.category!=''}}" wx:key="{{index}}">{{item.category}}</view>
+            <view class="item" wx:if='{{item.category.length>2}}' style="width:40rpx">......</view>
+          </block>
+          <view class="item" wx:else>{{item.category}}</view>
+        </view>
+        <view class="row4 flex">
+          <view class="row4left flex">
+            <view class="icon">k</view>
+            <view class="name">{{item.inst_name}}</view>
+            <image src="/imgs/new/address.png" style="width:17rpx;height:21rpx;" />
+            <view class="distance">{{item.mindis}}~{{item.max_dis}}km</view>
+          </view>
+          <view class="row4right flex" catchtap="delData" data-id="{{item.inst_id}}" data-type="1" data-actno="{{item.act_no}}">
+            <image src="/imgs/new/delicon.jpg" style="width:36rpx;height:40rpx;" />
+          </view>
+        </view>
+    </view>
+    </block>
+    <block wx:if="{{item.collect_type==2}}">
+      <view class="right drawright">
+        <view class="row1 between">
+          <view class="title van-ellipsis" style="width:280rpx">{{item.name}}</view>
+          <view class="number">(剩余礼品{{item.lefts}}件)</view>
+        </view>
+        <view class="row2" style="margin-top:20rpx;" wx:if="{{item.draw_type==1}}">开奖条件：每集齐{{item.draw_limit}}张抽奖券开一次奖</view>
+        <view class="row2" style="margin-top:20rpx;" wx:if="{{item.draw_type==2}}">开奖条件：至少集齐{{item.draw_limit}}张抽奖券</view>
+        <view class="row2">参与条件：消耗{{item.tickets}}张抽奖券</view>
+        <view class="row3 flex" style="justify-content:space-between">
+          <view class="seemore" bindtap="seeMore" data-id="{{item.award_id}}" data-awardstatus="{{item.award_status}}">查看更多</view>
+          <view class="delbox flex" catchtap="delData" data-id="{{item.award_id}}" data-type="2">
+            <image src="/imgs/new/delicon.jpg" style="width:36rpx;height:40rpx;" />
+            <view class="del"></view>
+          </view>
+        </view>
+      </view>
+    </block>
+</view>
+</block>
+<block wx:if="{{dataList.length==0}}">
+  <view class="nodatabox">
+    <view class="img">
+      <image src="/imgs/new/nodata.png" style="width:300rpx;height:300rpx;" />
+    </view>
+    <view class="tip">暂无信息</view>
+  </view>
+</block>
+</view>
+
+<view class="mask" wx:if="{{showDetail}}" bindtap="closeMask"></view>
+<!-- 查看详情 -->
+<view class="mask" wx:if="{{showDetail}}" style="z-index:11" bindtap="closeMask"></view>
+<view class="detailbox" wx:if="{{showDetail}}">
+  <block wx:if="{{detailList.length!=0}}">
+    <view class="itembox">
+      <view class="top flex">
+        <view class="title">抽奖活动场次详情</view>
+        <van-icon name="cross" custom-class="closeicon" bind:click="closeMask" />
+      </view>
+      <scroll-view scroll-y="true" style="height:720rpx;">
+        <view class="mid" wx:for="{{detailList}}" wx:key="{{index}}" bindtap="drawDetail" data-awardid="{{item.award_id}}" data-drawid="{{item.draw_id}}">
+          <view class="row1 flex">
+            <view class="left flex">
+              <view class="n">第{{index+1}}场</view>
+              <!-- status 0-未集齐 1-待开奖 2-已开奖 -->
+              <view class="status wei" wx:if="{{item.status==0}}" style="">未集齐</view>
+              <view class="status" wx:if="{{item.status==1}}" style="">待开奖</view>
+              <view class="status" wx:if="{{item.status==2}}" style="">已开奖</view>
+            </view>
+            <view class="right" wx:if="{{item.is_join==1}}">已参与</view>
+            <view class="right" wx:if="{{item.is_join==0}}">未参与</view>
+          </view>
+          <view class="row2 flex">
+            <view class="title">开奖时间: </view>
+            <view class="time" wx:if="{{item.status==0&&item.draw_now==0}}" style="flex:1;margin-left:20rpx;">19:00前集齐, 当天19:30开奖, 之后集齐, 第二天开奖</view>
+            <view class="time" wx:if="{{item.status==0&&item.draw_now==1}}" style="flex:1;margin-left:20rpx;">集满立即开奖</view>
+            <view class="time" wx:if="{{item.status!=0&&item.draw_now==0}}" style="flex:1;margin-left:20rpx;">{{item.new_draw_time}}</view>
+            <view class="time" wx:if="{{item.status!=0&&item.draw_now==1}}" style="flex:1;margin-left:20rpx;">集满立即开奖</view>
+          </view>
+          <view class="row2 flex">
+            <view class="title">参与人数: </view>
+            <view class="time" style="flex:1;margin-left:20rpx;">{{item.join_count}}人</view>
+          </view>
+          <view class="row2 flex">
+            <view class="title">中奖名额: </view>
+            <view class="itme" style="flex:1;margin-left:20rpx;">{{item.winners}}个</view>
+          </view>
+          <view class="row2" wx:if="{{item.status==0}}">已集齐{{item.ticket_count}}张抽奖券, 还差{{(item.draw_limit-item.ticket_count)
+            <0? "0":(item.draw_limit-item.ticket_count)}}张</view>
+          </view>
+      </scroll-view>
+      <view class="btn">
+        <view class="status" wx:if="{{award_status==0}}">活动已下线</view>
+        <view class="tip">剩余奖品：{{detailList[0].lefts}}件</view>
+        <view class="tip">活动时间：{{detailList[0].start_time}}-{{detailList[0].end_time}}</view>
+      </view>
+      </view>
+  </block>
+  <block wx:if="{{detailList.length==0}}">
+    <view class="tiptitle">温馨提示</view>
+    <view class="detailnodata">该活动已下线</view>
+    <view class="know" catchtap="closeMask">知道了</view>
+  </block>
+  </view>
+  <!-- 删除数据 -->
+  <view class="mask" wx:if="{{showDel}}" bindtap="closeMask"></view>
+  <view class="showdel" wx:if="{{showDel}}">
+    <view class="img">
+      <image src="/imgs/new/delicon2.jpg" style="width:203rpx;height:203rpx;" />
+    </view>
+    <view class="tip">是否确认删除收藏？</view>
+    <view class="line"></view>
+    <view class="del flex">
+      <view class="cancel" bindtap="closeShowDel">取消</view>
+      <view class="midline"></view>
+      <view class="sure" bindtap="openShowDel">确定</view>
+    </view>
+  </view>

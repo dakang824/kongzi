@@ -1,0 +1,336 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<dk-tabbar tabBar="{{tabBar}}"></dk-tabbar>
+<fixed show='{{getLoginMoney}}' bind:close='closeNewUserMoney' money='{{login.get_bonus}}' />
+<page>
+	<view class="new">
+		<view class="bg"></view>
+		<view class="background">
+			<!-- <navigator hover-class='hover' class="vCenter address">
+				<van-icon name="arrow-down" size="40rpx" />
+        <text>{{province}}</text>
+			</navigator> -->
+			<view class='postion'>
+				<swiper autoplay="{{true}}" duration="{{1000}}" circular bindchange="swiperChange">
+					<swiper-item wx:for='{{ad1}}' wx:key="{{index}}" data-i='{{index}}'>
+						<view data-url='/{{item.link}}' class="box" bindtap="swiperJump" hover-class="hover">
+							<van-image width="690rpx" height="300rpx" src="{{serverUrl+item.pic_path}}" radius='15rpx' use-loading-slot>
+								<van-loading slot="loading" type="spinner" size="20" vertical />
+							</van-image>
+						</view>
+					</swiper-item>
+				</swiper>
+				<view class='dots'>
+					<view class='{{current==index?"active":""}}' wx:for='{{ad1}}' wx:key="{{index}}"></view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<block wx:if='{{false}}'>
+		<view class='header'>
+			<image src='{{serverUrl}}data/communityImage/home_topbg.png' mode='widthFix'></image>
+			<view class='box'>
+				<view class='between'>
+					<view class='tit'>奖天天</view>
+					<!-- <van-transition show="{{ showbox }}" custom-class="block">
+        <view class="model flex" >
+          <image src="/imgs/new/laba.png" style="width:24rpx;height:20rpx" />
+          <view class="title">{{message}}</view>
+        </view>
+      </van-transition> -->
+					<view class="model" wx:if="{{!showbox}}" style="{{messageList.length==0?'left:0rpx':''}}">
+						<swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="3000" bindchange="changeMessage">
+							<block wx:for="{{messageList.length==0?dayList:messageList}}">
+								<swiper-item>
+									<view>{{item.msg}}</view>
+								</swiper-item>
+							</block>
+						</swiper>
+					</view>
+					<navigator url='/pages/address/address' class='lf address' hover-class='hover'>
+						<text>{{province}}</text>
+						<image src='/imgs/address_img.png' class='address_img' mode='widthFix'></image>
+					</navigator>
+				</view>
+				<view class='between txt' style="{{showbox?'':'justify-content:flex-end;'}}display:flex;">
+					<text wx:if="{{showbox}}">天天抽奖、好运不断，每晚锁定七点半</text>
+					<navigator url='/pages/new/historyPrize/historyPrize' hover-class='hover'>历史中奖
+						<van-icon name="arrow" custom-class='arr_lf' />
+					</navigator>
+				</view>
+				<view class='between txt more'>
+					<view class='between bt'>
+						<view class='button'>
+							<view hover-class='none' bindtap='swiperSwitch' data-i='1' class='{{btnActive==1?"active":"btn"}}'>待抽奖品</view>
+							<view class='arg rt' wx:if='{{btnActive==1}}'></view>
+						</view>
+						<view class='button'>
+							<view class='arg' wx:if='{{btnActive==2}}'></view>
+							<view hover-class='none' bindtap='swiperSwitch' data-i='2' class='{{btnActive==2?"active":"btn"}}'>待开奖品</view>
+							<view class='arg tr' wx:if='{{btnActive==2}}'></view>
+						</view>
+					</view>
+					<navigator url='{{btnActive==1?"/pages/new/waitPrizes/waitPrizes":"/pages/new/lottery/lottery"}}' bindtap="seeMore" class='seeMore' hover-class='hover'>{{btnActive==1?'更多待抽':'更多待开'}}
+						<van-icon name="arrow" custom-class='arr_lf' />
+					</navigator>
+				</view>
+			</view>
+		</view>
+		<view class='swiper'>
+			<view hidden='{{!(btnActive==1)}}' class='swiper_box leftRadius'>
+				<swiper autoplay="{{true}}" duration="{{1000}}" circular bindchange='swiperChange'>
+					<swiper-item wx:for='{{awards_unDraw}}' wx:key="{{index}}" data-i='{{index}}'>
+						<view wx:for='{{item}}' wx:key="{{index}}">
+							<navigator url='/pages/new/luckyDetail/luckyDetail?award_id={{item.award_id}}&tickets={{item.tickets}}&draw_id={{item.draw_id}}' class="box">
+								<view class='img big_img'>
+									<image src="{{serverUrl+item.icon_path}}" class="slide-image" mode="widthFix" />
+									<image class="big" wx:if="{{item.draw_type==2}}" src="/imgs/new/big_prize.png" style="width:62rpx;height:59rpx;" />
+								</view>
+								<view class='foot'>
+									<text class='van-ellipsis' style="display:block">{{item.name}}</text>
+									<van-button type="default" round size="mini" custom-class='btn'>{{item.is_join?'您已参与':'参与抽奖'}}</van-button>
+								</view>
+							</navigator>
+						</view>
+					</swiper-item>
+				</swiper>
+				<view class='dots'>
+					<view class='{{current==index?"active":""}}' wx:for='{{awards_unDraw}}' wx:key="{{index}}"></view>
+				</view>
+			</view>
+			<view hidden='{{!(btnActive==2)}}'>
+				<block wx:if="{{awards_today.length}}">
+					<view class='swiper_box1'>
+						<swiper indicator-dots="{{true}}" display-multiple-items="1" autoplay="{{true}}" interval="{{5000}}" duration="{{1000}}" indicator-active-color='#FF2C56' indicator-color='rgba(255,44,86,.3)' circular easing-function='easeOutCubic'>
+							<swiper-item class='box_pos' wx:for='{{awards_today}}' wx:key="{{index}}">
+								<navigator url='/pages/new/luckyDetail/luckyDetail?award_id={{item.award_id}}&tickets={{item.tickets}}&draw_id={{item.draw_id}}' class='box1'>
+									<view class='tit vCenter' wx:if="{{item.status!=2}}">
+										<view style='padding-right:10rpx;'>距离开奖: </view>
+										<van-count-down time="{{ item.draw_second }}" zdy="{{true}}" />
+									</view>
+
+									<view class='flex'>
+										<view class='img big_img'>
+											<image src="{{serverUrl}}{{item.icon_path}}" class="slide-image" mode="widthFix" />
+											<image class="big" wx:if="{{item.draw_type==2}}" src="/imgs/new/big_prize.png" style="width:62rpx;height:59rpx;" />
+										</view>
+										<view class='text'>
+											<text class='t van-ellipsis'>{{item.name}}</text>
+											<view class='m'>{{item.join_count==""?"0":item.join_count}}人参与
+												<text class='line'></text> {{item.winners==""?"0":item.winners}}个中奖名额</view>
+											<van-button bind:click='swiperSwitch' data-i='1' wx:if="{{item.status!=2&&item.is_join==0}}" type="default" round size="small" custom-class='join'>参与抽奖</van-button>
+											<van-button bind:click='swiperSwitch' data-i='1' wx:if="{{item.status!=2&&item.is_join==1}}" type="default" round size="small" custom-class='join'>您已参与</van-button>
+											<van-button bind:click='swiperSwitch' data-i='1' wx:if="{{item.status==2}}" type="default" round size="small" custom-class='join'>已开奖</van-button>
+										</view>
+									</view>
+									<text class='circle'></text>
+								</navigator>
+							</swiper-item>
+						</swiper>
+					</view>
+				</block>
+				<block wx:else>
+					<view class='swiper'>
+						<view class='swiper_box center'>
+							<view class="nodata">今日暂无待开奖品</view>
+						</view>
+					</view>
+				</block>
+			</view>
+		</view>
+		<view class="middlebox">
+			<view class="itembox flexbox">
+				<van-transition custom-class="block" name='{{index==0||index==1?"slide-left":index==3||index==4?"slide-right":"slide-down"}}' wx:for='{{card}}' wx:key='{{index}}' duration="{{ { enter: 800 } }}">
+					<navigator class="item fromId" hover-class='none' url='{{item.url}}'>
+						<view class="img flexbox">
+							<image src='/imgs/{{item.img}}' style="width:97rpx;height:97rpx;" />
+						</view>
+						<view class='title'>{{item.name}}</view>
+					</navigator>
+				</van-transition>
+			</view>
+		</view>
+	</block>
+	<!-- 疫情动态 -->
+	<block wx:if='{{show_virus}}'>
+		<virus box-shadow='boxShadow' class='virus' />
+	</block>
+	<view class="welfare_title flex vCenter"><text></text> 孔紫选课好评卡 
+	<!-- <image src="/imgs/welfare_icon.png"></image> -->
+	</view>
+	<view class="welfare middlebox" hover-class='hover'>
+		<swiper autoplay class="swiper_block" circular>
+			<!-- <swiper-item bindtap="welfare_jump">
+				<van-image width="690rpx" height="180rpx" src="{{imgUrl}}welfare.jpg" radius='5rpx' use-loading-slot>
+					<van-loading slot="loading" type="spinner" size="20" vertical />
+				</van-image>
+			</swiper-item> -->
+			<swiper-item>
+				<navigator url="/pages/selCourseCard/selCourseCard" hover-class="none">
+					<van-image width="690rpx" height="180rpx" src="{{imgUrl}}welfare.jpg" radius='5rpx' use-loading-slot>
+						<van-loading slot="loading" type="spinner" size="20" vertical />
+					</van-image>
+				</navigator>
+			</swiper-item>
+		</swiper>
+	</view>
+
+
+	<!-- {{show_virus?"":""}} -->
+	<view class='tabs'>
+		<!-- <view class='tabs marTop'> -->
+		<view class='flex tab {{fixed?"fixed":""}}' id='tabs'>
+			<view bindtap='tabsClick' data-index='1' class='{{tabs==1?"active":""}}'>
+				爆款推荐
+				<view class='line' wx:if='{{tabs==1}}'></view>
+			</view>
+			<!-- <view bindtap='tabsClick' data-index='2' class='{{tabs==2?"active":""}}'>
+        礼尚往来
+        <view class='line' wx:if='{{tabs==2}}'></view>
+      </view> -->
+			<!-- <view bindtap='tabsClick' data-index='3' class='{{tabs==3?"active":""}}'>
+        超级补贴
+        <view class='line' wx:if='{{tabs==3}}'></view>
+      </view> -->
+			<view bindtap='tabsClick' data-index='4' class='{{tabs==4?"active":""}}' wx:if='{{show_courseOnline}}'>
+				线上课程
+				<view class='line' wx:if='{{tabs==4}}'></view>
+			</view>
+			<view class='{{tabs==6?"active":""}}' bindtap='tabsClick' data-index='6'>
+				儿童用品
+				<view class='line' wx:if='{{tabs==6}}'></view>
+			</view>
+			<!-- <view bindtap='tabsClick' data-index='5' class='{{tabs==5?"active":""}}'>
+        线下教育
+        <view class='line' wx:if='{{tabs==5}}'></view>
+      </view> -->
+		</view>
+		<view class='box'>
+			<view hidden='{{!(tabs==1)}}'>
+				<template is="li" data="{{data:recom1,ope_id:ope_id}}"></template>
+				<van-divider contentPosition="center" dashed customStyle='padding:0 150rpx 20rpx'>已加载完毕</van-divider>
+			</view>
+			<view hidden='{{!(tabs==2)}}'>
+				<template is="li" data="{{data:recom2,ope_id:ope_id}}"></template>
+			</view>
+			<view hidden='{{!(tabs==3)}}'>
+				<template is="li" data="{{data:recom3,ope_id:ope_id}}"></template>
+			</view>
+			<view hidden='{{!(tabs==4)}}'>
+				<template is="li" data="{{data:lineUp,ope_id:ope_id}}"></template>
+				<w_loadingData noData='{{uplineData}}' />
+			</view>
+			<view hidden='{{!(tabs==5)}}'>
+				<template is="li" data="{{data:lineDown,ope_id:ope_id}}"></template>
+			</view>
+			<view hidden='{{!(tabs==6)}}'>
+				<w_childList list='{{childData}}' />
+				<w_loadingData noData='{{childNoData}}' />
+			</view>
+		</view>
+	</view>
+	<pagePublic noFixed />
+</page>
+
+<template name='li'>
+	<block wx:if='{{data.length}}'>
+		<recommend data='{{data}}' ope_id='{{ope_id}}' />
+	</block>
+	<block wx:else>
+		<view class="nodatabox">
+			<view>
+				<view class="img">
+					<image src="/imgs/new/nodata.png" style="width:300rpx;height:300rpx;" />
+				</view>
+				<view class="tip">暂无信息</view>
+			</view>
+		</view>
+	</block>
+</template>
+
+<view class="mask" wx:if="{{showMask}}"></view>
+<view class="get_tickets" wx:if="{{showMask}}">
+	<view class="img">
+		<image src="{{imgUrl}}choujiang.png" style="width:353rpx;height:279rpx;" />
+	</view>
+	<view class="send">送您2张抽奖券！</view>
+	<view class="way">您可以使用抽奖券在【奖天天】进行抽奖哦！</view>
+	<view class="detail flex">
+		<view class="left flex">
+			<view class="title">抽奖券</view>
+			<view class="userway">使用抽奖券可以在【奖天天】进行抽奖哦！</view>
+		</view>
+		<view class="right flex">
+			<view class="rightbox flex">
+				<view class="num">2</view>
+				<view class="unit">张</view>
+			</view>
+		</view>
+		<view class="topicon"></view>
+		<view class="midicon"></view>
+		<view class="btnicon"></view>
+	</view>
+	<view class="getbtn" bindtap="getTickets" wx:if="{{hasTickets}}">
+		<view>领取</view>
+	</view>
+	<view class="getbtn getbtn1" wx:else>
+		<view>已领取成功</view>
+	</view>
+	<van-icon name="cross" custom-class="close" bind:click="closeMask" />
+</view>
+
+<view class="mask" wx:if="{{showDraw}}" bindtap="closeDraw"></view>
+<view class="drawbox" wx:if="{{showDraw}}">
+	<view class="itembox">
+		<image class="img" src="{{imgUrl}}indexicon.png" style="width:334rpx;height:304rpx;" />
+		<view class="title">您最近一周内参与的{{join_count}}场抽奖活动已开奖</view>
+		<view class="tip" wx:if="{{win_count!=0}}">恭喜您！你有{{win_count}}场抽奖活动成为了幸运儿！</view>
+		<view class="reget" wx:if="{{lost_count!=0}}">很遗憾！你有{{lost_count}}场抽奖活动与奖品擦肩而过！</view>
+		<view class="btnbox flex">
+			<view class="know" bindtap="closeShowDraw">知道了</view>
+			<navigator url='/pages/user/myDraws/myDraws?active=1' class="detail">查看详情</navigator>
+		</view>
+		<van-icon name="cross" custom-class="closebtn" color="#CCCCCC" bind:click="closeShowDraw" />
+	</view>
+</view>
+
+<!-- <view class="mask" wx:if="{{isNewUser}}" bindtap="closeNewUser"></view>
+<view class="newuser" wx:if="{{isNewUser}}">
+  <view class="img">
+    <image src="{{imgUrl}}newUser.png" style="width:298rpx;height:278rpx;" />
+  </view>
+  <view class="row2">恭喜您获得
+    <text class="num">{{ticket_count}}</text>张抽奖券</view>
+  <view class="row3">每使用1张抽奖券，您会获得1个随机现金红包。分享给朋友，会获得更多抽奖券。</view>
+  <view class="row4">
+    <navigator url='/pages/new/waitPrizes/waitPrizes' class="left">去抽奖</navigator>
+    <navigator url='/pages/new/getTicket/getTicket?type=9&name=分享获券任务&intro_path=data/plat/ticketTasks/8.png' class="right">去分享</navigator>
+  </view>
+  <view class="close" bindtap="closeNewUser">
+    <image src="/imgs/close.png" style="width:30rpx;height:30rpx;margin:30rpx -30rpx 0 0;" />
+  </view>
+</view> -->
+
+<van-popup show="{{ authoaddress }}" custom-class="popup1">
+	<view class='layer'>
+		<view class='title'>警告</view>
+		<view class='txt'>请允许获取地理位置,否则将无法使用.</view>
+		<button open-type='openSetting' plain='true' hover-class='none' bindopensetting='agreeAddress'>确定</button>
+	</view>
+</van-popup>
+<van-popup show="{{ login.status==5 }}" custom-class="popup1">
+	<view class='layer'>
+		<view class='title'>温馨提示</view>
+		<view class='txt'>{{login.msg}}</view>
+		<view class='between van-hairline--top'>
+			<navigator open-type="exit" target="miniProgram">我知道了</navigator>
+			<navigator bindtap='call' class='callPhone'>联系客服</navigator>
+		</view>
+	</view>
+</van-popup>
+
+<van-popup show="{{holiday}}" custom-class="holiday">
+	<view class='b'>
+		<image src='{{imgUrl}}holiday_layer.png' class='img'></image>
+		<button bindtap='know'></button>
+	</view>
+</van-popup>

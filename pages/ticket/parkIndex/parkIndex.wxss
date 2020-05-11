@@ -1,0 +1,291 @@
+.flex {
+  display: flex;
+}
+
+.topline {
+  width: 750rpx;
+  height: 1rpx;
+  background: rgba(238, 238, 238, 1);
+}
+
+.detailbox {
+}
+
+.detailbox .imgbox {
+  text-align: center;
+}
+
+.detailbox .detail {
+  align-items: baseline;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  margin-bottom: 50rpx;
+}
+
+.detailbox .detail .logoname {
+  font-size: 44rpx;
+  font-family: PingFang SC;
+  font-weight: 800;
+  color: rgba(51, 51, 51, 1);
+}
+
+.detailbox .detail .num {
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+}
+
+.logo {
+  width: 690rpx;
+  height: 120rpx;
+  background: rgba(248, 248, 248, 1);
+  border-radius: 10rpx;
+  align-items: center;
+}
+
+.logo .logoimg {
+  width: 80rpx;
+  height: 80rpx;
+  background: rgba(231, 202, 255, 1);
+  border: 1px solid rgba(238, 238, 238, 1);
+  border-radius: 10rpx;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20rpx;
+}
+
+.logo .company {
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: rgba(17, 17, 17, 1);
+  line-height: 58rpx;
+  margin-left: 29rpx;
+}
+
+.detailbox .itembox .mid .value {
+  font-size: 28rpx;
+  color: rgba(51, 51, 51, 1);
+  margin-top: 10rpx;
+}
+
+.detailbox .itembox .mid .value .key {
+  font-weight: bold;
+  color: #333;
+  font-family: PingFang-SC-Bold;
+}
+
+.detailbox .itembox .mid .value .title {
+  font-family: PingFang-SC-Regular;
+}
+
+.detailbox .itembox .mid .line {
+  height: 1rpx;
+  width: 650rpx;
+  background: #eee;
+  margin-top: 50rpx;
+}
+
+.detailbox .midline {
+  width: 100%;
+  height: 20rpx;
+  background: rgba(245, 245, 245, 1);
+}
+
+.detailbox .btm {
+  text-align: center;
+  margin-top: 30rpx;
+}
+
+.sendbtn {
+  position: fixed;
+  bottom: 0rpx;
+  left: 0;
+  height: 98rpx;
+  background: linear-gradient(90deg, rgba(255, 90, 144, 1), rgba(255, 44, 86, 1));
+  width: 100%;
+  text-align: center;
+  line-height: 98rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+}
+
+.sendbtn1 {
+  position: fixed;
+  bottom: 0rpx;
+  left: 0;
+  height: 98rpx;
+  background: rgba(238, 238, 238, 1);
+  width: 100%;
+  text-align: center;
+  line-height: 98rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+}
+
+.van-tabs__line {
+  width: 30rpx !important;
+  left: 6% !important;
+  background: #ff2c56 !important;
+}
+
+.van-tab {
+  font-size: 32rpx !important;
+  font-family: PingFang SC !important;
+  font-weight: bold !important;
+  color: rgba(17, 17, 17, 1) !important;
+  line-height: 100rpx !important;
+}
+
+.van-tab--active {
+  color: #ff2c56 !important;
+  font-size: 32rpx !important;
+  font-weight: bold !important;
+}
+
+.van-tabs__wrap {
+  height: 100rpx !important;
+}
+
+.van-tabs--line {
+  padding-top: 100rpx !important;
+}
+
+.intro .title {
+  font-size: 38rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: rgba(17, 17, 17, 1);
+  line-height: 44rpx;
+  margin-top: 80rpx;
+  margin-left: 30rpx;
+}
+
+.intro .detail {
+  padding: 60rpx 30rpx;
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(102, 102, 102, 1);
+  line-height: 52rpx;
+}
+
+.intro .imgbox {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+.intro .imgbox image{
+  vertical-align: bottom;
+}
+.ticketbox .ticketitem {
+  height: 280rpx;
+  align-items: center;
+  margin: 0 auto;
+  border-bottom: 1rpx solid #eee;
+  padding: 0 30rpx;
+}
+
+.ticketbox .ticketitem .left {
+  width: 200rpx;
+  height: 200rpx;
+  background: rgba(250, 205, 137, 1);
+  border: 1px solid rgba(238, 238, 238, 1);
+  border-radius: 10rpx;
+}
+
+.ticketbox .ticketitem .right {
+  height: 200rpx;
+  margin-left: 20rpx;
+  width: 460rpx;
+}
+
+.ticketbox .ticketitem .right .title {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: rgba(17, 17, 17, 1);
+}
+
+.ticketbox .ticketitem .right .row {
+  align-items: center;
+}
+
+.ticketbox .ticketitem .right .rowicon {
+  width: 24rpx;
+  height: 24rpx;
+  background: rgba(229, 229, 229, 1);
+  border-radius: 50%;
+}
+
+.ticketbox .ticketitem .right .school {
+  font-size: 22rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 44rpx;
+  margin-left: 10rpx;
+}
+
+.ticketbox .ticketitem .right .row .old {
+  background: rgba(248, 248, 248, 1);
+  border-radius: 8rpx;
+  width: 100rpx;
+  height: 32rpx;
+  background: rgba(248, 248, 248, 1);
+  font-size: 20rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 32rpx;
+  text-align: center;
+}
+
+.ticketbox .ticketitem .right .pricebox {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.ticketbox .ticketitem .right .pricebox .price {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #ff2c56;
+  line-height: 54rpx;
+}
+
+.ticketbox .ticketitem .right .pricebox .distancebox {
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 44rpx;
+  align-items: center;
+}
+
+.ticketbox .ticketitem .right .pricebox .distancebox .distance {
+  margin-left: 11rpx;
+}
+
+.schoolbox .itembox {
+  width: 690rpx;
+  border-bottom: 1rpx solid #eee;
+  margin: 0 auto;
+  padding: 30rpx 0;
+}
+
+.schoolbox .itembox .name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: rgba(17, 17, 17, 1);
+}
+
+.schoolbox .itembox .info {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: rgba(17, 17, 17, 1);
+  margin-top: 10rpx;
+}

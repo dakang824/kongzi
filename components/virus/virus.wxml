@@ -1,0 +1,40 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<view class="dynamic box-shadow">
+  <view class="between">
+    <view class="tit">{{showMore?'国内疫情':'疫情动态'}}</view>
+    <navigator url="/pages/video/virusDetail/virusDetail" class="vCenter" wx:if='{{!showMore}}'>查看更多
+      <van-icon name="arrow" />
+    </navigator>
+  </view>
+  <view class="time">数据更新至{{filter.sliceMunite(time)}}</view>
+  <view class="flex">
+    <view>
+      <view>{{virusData.confirmedCount}}</view>
+      <view>确诊病例</view>
+      <view>昨日
+        <text class='red'> +{{virusData.confirmedIncr}}</text>
+      </view>
+    </view>
+    <view>
+      <view class="yellow">{{virusData.suspectedCount}}</view>
+      <view>疑似病例</view>
+      <view>昨日
+        <text class='yellow'> +{{virusData.suspectedIncr}}</text>
+      </view>
+    </view>
+    <view>
+      <view class="blue">{{virusData.curedCount}}</view>
+      <view>治愈病例</view>
+      <view>昨日
+        <text class='blue'> +{{virusData.curedIncr}}</text>
+      </view>
+    </view>
+    <view>
+      <view class="black">{{virusData.deadCount}}</view>
+      <view>死亡病例</view>
+      <view>昨日
+        <text class='black'> +{{virusData.deadIncr}}</text>
+      </view>
+    </view>
+  </view>
+</view>

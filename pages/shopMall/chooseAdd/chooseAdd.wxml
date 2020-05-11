@@ -1,0 +1,38 @@
+<pagePublic noFixed/>
+<block wx:if="{{dataList.length}}">
+  <view class="box" bindtap="chooseAddress" data-index="{{index}}" wx:for="{{dataList}}" wx:key="{{index}}">
+    <view class="top flex">
+      <view class="left flex">
+        <van-radio-group value="{{ item.isdefault+'' }}">
+          <van-radio checked-color="#FF2C56" icon-size='38rpx' name='1'></van-radio>
+        </van-radio-group>
+      </view>
+      <view class="right">
+        <view class="row1 flex">
+          <view>{{item.name}}</view>
+          <view>{{item.mobile}}</view>
+        </view>
+        <view class="row2">{{item.address}}</view>
+      </view>
+    </view>
+    <view class="btm flex">
+      <view class="left flex">
+        <block wx:if="{{item.isdefault==0}}">
+          <radio class="common" catchtap="setDefault" data-id="{{item.id}}" data-index="{{index}}" size="24rpx" checked="{{item.checked}}" color="#FF2C56" />
+          <view class="title" catchtap="setDefault" data-id="{{item.id}}" data-index="{{index}}">设为默认</view>
+        </block>
+      </view>
+      <view class="right flex">
+        <navigator catchtap url='/pages/shopMall/add/add?type=1&name={{item.name}}&id={{item.id}}&mobile={{item.mobile}}&address={{item.address}}&isdefault={{item.isdefault}}' style="margin-right:50rpx">编辑</navigator>
+        <view catchtap="del" data-id="{{item.id}}">删除</view>
+      </view>
+    </view>
+  </view>
+</block>
+<view class="nodata" wx:else>
+  <image src="{{serverUrl+imgStr}}noAddress.png" />
+</view>
+<navigator class="add flex" url='/pages/shopMall/add/add?type=0'>
+  <image src="/imgs/new/add.png" style="width:34rpx;height:34rpx;" />
+  <view>新增收货人</view>
+</navigator>

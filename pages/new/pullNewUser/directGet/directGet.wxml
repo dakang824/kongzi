@@ -1,0 +1,49 @@
+ <pagePublic/>
+<view class='direct'>
+  <image src='{{imgUrl+(prizeImg?"direct_get.jpg":"money_head_share.jpg")}}' class='img' mode='widthFix'></image>
+  <view class='box'>
+    <view class='title'>你这一下的点击
+      <image src='/imgs/new/direct_hand.png' class='handImg'></image>
+    </view>
+    <view class='goods'>{{award_id?('我就要拿下'+name+'了'):'我就要拿'+money+'元现金了'}}</view>
+    <image src='{{award_id?serverUrl+pic_path:imgUrl+"money_share.jpg"}}' class='good_img'></image>
+
+    <form bindsubmit='help' report-submit='true'>
+      <button class='btn' form-type='submit'>助TA一力</button>
+    </form>
+  </view>
+</view>
+
+<van-popup show="{{isNewUser}}" bind:close="onClose" custom-class='box_layer' bind:close="closeAuthorization">
+  <view class='box_layer'>
+    <image src='{{imgUrl}}Landing1.png' class='img' mode='widthFix'></image>
+    <view class='content_txt'>
+      <view class='color1'>助力成功</view>
+      <view class='color2'>转赠你5张抽奖券！</view>
+      <view class='color3'>每天数百件免费奖品直接送，真正的拿到手软！</view>
+
+      <van-button type="default" custom-class='btn' bind:click='getPrize' round color='#fff'>去抽奖</van-button>
+      <!-- <van-button type="default" custom-class='btn marleft' bind:click='getDirect' round color='#fff'>直接拿</van-button> -->
+    </view>
+  </view>
+</van-popup>
+<van-popup show="{{notNewUser}}" bind:close="onClose" custom-class='box_layer' bind:close="closeAuthorization">
+  <view class='box_layer'>
+    <image src='{{imgUrl}}Landing2.png' class='img' mode='widthFix'></image>
+    <view class='content_txt'>
+      <view class='color4'>哦哦~ 新用户才能助我一力哦！</view>
+      <view class='color5'>不过奖天天又上新奖品啦，你也快去参加吧！</view>
+      <van-button type="default" custom-class='btn' bind:click='getPrize' round color='#fff'>去抽奖</van-button>
+      <!-- <van-button type="default" custom-class='btn marleft' bind:click='getDirect' round color='#fff'>直接拿</van-button> -->
+    </view>
+  </view>
+</van-popup>
+<!-- <backHome/> -->
+
+<van-popup show="{{ authoaddress }}" custom-class="popup1">
+  <view class='layer'>
+    <view class='title'>警告</view>
+    <view class='txt'>请允许获取地理位置,否则将无法使用.</view>
+    <button open-type='openSetting' plain='true' hover-class='none' bindopensetting='agreeAddress'>确定</button>
+  </view>
+</van-popup>

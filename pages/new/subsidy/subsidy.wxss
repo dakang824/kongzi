@@ -1,0 +1,100 @@
+.subsidy .head_bg {
+  width: 100%;
+}
+
+.subsidy .van-cell__title {
+  font-weight: bold;
+}
+
+.subsidy .tip {
+  font-size: 28rpx;
+  padding: 40rpx 30rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.subsidy .box {
+  padding: 0 30rpx;
+}
+
+.subsidy .bt {
+  width: 100%;
+  text-align: center;
+}
+
+.subsidy .btn {
+  width: 500rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: linear-gradient(0deg, rgba(254, 137, 15, 1) 0%, rgba(252, 201, 39, 1) 100%);
+  border-radius: 40rpx;
+  margin: 122rpx 0 115rpx;
+  color: #fff;
+  font-size: 32rpx;
+}
+
+.btns_b {
+  margin: 0 30rpx;
+}
+
+.subsidy .btns {
+  width: 300rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: linear-gradient(0deg, rgba(254, 137, 15, 1) 0%, rgba(252, 201, 39, 1) 100%);
+  border-radius: 40rpx;
+  margin: 122rpx 0 115rpx;
+  color: #fff;
+  font-size: 32rpx;
+}
+
+.subsidy .btn_tip {
+  color: #f00;
+  font-size: 24rpx;
+  margin: 60rpx 0 20rpx;
+}
+
+.subsidy .marbt {
+  margin-top: 0;
+  color: #f00;
+}
+
+.subsidy .success_btn {
+  width: 500rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: 1px solid rgba(255, 170, 0, 1);
+  border-radius: 40rpx;
+  color: #fa0;
+  margin: 122rpx 0 115rpx;
+}
+
+.subsidy .van-cell {
+  padding: 10px 0;
+}
+
+.subsidy  .gray {
+  background: #eee;
+}
+
+.van-uploader__preview, .van-uploader__upload {
+  width: 200rpx !important;
+  height: 200rpx !important;
+}
+
+.van-uploader, .van-uploader__wrapper {
+  width: 100%;
+}
+
+.subsidy .van-uploader__preview-image {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.subsidy .van-uploader__preview {
+  margin: 0 45rpx 16rpx 0;
+}
+
+.subsidy .van-uploader__wrapper>view:nth-child(3n) {
+  margin: 0 0 16rpx 0;
+}

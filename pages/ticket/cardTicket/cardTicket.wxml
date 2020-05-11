@@ -1,0 +1,21 @@
+<pagePublic/>
+<block wx:if='{{list.length}}'>
+  <navigator class="list" wx:for='{{list}}' url='/pages/ticket/discountTicket/discountTicket?id={{item.id}}&money={{item.price}}&type={{item.type}}'>
+    <view class="li">
+      <image src="{{imgUrl}}card.png" class='bg' />
+      <image class="smallman" src="/imgs/new/smallman.png" style="width:23rpx;height:35rpx;" />
+      <view class='footer between'>
+        <view class='txt'>有效日期: 自购买之日起一年内有效</view>
+        <van-button type="primary" size="small" round color='#fff' custom-class='btn_color'>{{item.price}}元购买</van-button>
+      </view>
+    </view>
+  </navigator>
+</block>
+<block wx:else>
+   <view class="nodatabox">
+      <view class="img">
+        <image src="/imgs/new/nodata.png" style="width:300rpx;height:300rpx;" />
+      </view>
+      <view class="tip">暂无信息</view>
+    </view>
+</block>

@@ -1,0 +1,64 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<pagePublic/>
+<van-tabs active="{{ active }}" bind:change="onChange" sticky>
+  <van-tab title="全部">
+    <template is="list" data="{{data:all,serverUrl,fromTime,nowTime,toTime}}"></template>
+  </van-tab>
+  <van-tab title="待付款">
+    <template is="list" data="{{data:noPay,serverUrl,fromTime,nowTime,toTime}}"></template>
+  </van-tab>
+  <van-tab title="已付款">
+    <template is="list" data="{{data:payOver,serverUrl,fromTime,nowTime,toTime}}"></template>
+  </van-tab>
+</van-tabs>
+<template name="list">
+  <view class='timeSelect van-hairline--bottom {{fixed?"fixed":""}}'>
+    <picker mode="date" value="{{fromTime}}" end="{{nowTime}}" bindchange="timeChange" data-id='1'>
+      <view class="picker">
+        {{fromTime}}
+      </view>
+    </picker>
+    <text>至</text>
+    <picker mode="date" value="{{toTime}}" end="{{nowTime}}" bindchange="timeChange" data-id='2'>
+      <view class="picker">
+        {{toTime}}
+      </view>
+    </picker>
+  </view>
+  <block wx:if='{{data.length}}'>
+    <view class="itembox">
+      <view class="item" wx:for="{{data}}">
+        <view class="top flex">
+          <view class="time">订单时间：{{filter.sliceMunite(item.order_time)}}</view>
+          <view class="status {{item.status==1?'green':''}}">{{item.status==0?'待付款':item.status==1?'已付款':''}}</view>
+        </view>
+        <view class="btm flex">
+          <view class="left flex">
+            <image src="{{item.pic_path?serverUrl+item.pic_path:'/imgs/perso.png'}}" style="width:68rpx;height:68rpx;border-radius:50%;" binderror='errorImg' data-i='{{index}}'/>
+            <view>
+              <view class="name">{{item.nickname===''?'未授权':filter.decode(item.nickname)}}</view>
+              <view class="mid">{{item.type}}</view>
+            </view>
+          </view>
+          <view class="right">
+            <view class="money">{{item.buy_price}}元</view>
+            <!-- <view class="title">{{item.status==0?'预期收益':item.status==1?'已获收益':''}}{{item.profit}}元</view> -->
+            <view class="title" style="color:#FF0000" wx:if="{{item.status==0}}">预期收益{{item.profit}}元</view>
+            <view class="title" style="color:green" wx:if="{{item.status==1}}">已获收益{{item.profit}}元</view>
+          </view>
+        </view>
+      </view>
+      <van-divider contentPosition="center" dashed customStyle='padding:0 150rpx 20rpx'>没有更多了哦</van-divider>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="nodatabox">
+      <view>
+        <view class="img">
+          <image src="/imgs/new/nodata.png" style="width:300rpx;height:300rpx;" />
+        </view>
+        <view class="tip">暂无信息</view>
+      </view>
+    </view>
+  </block>
+</template>

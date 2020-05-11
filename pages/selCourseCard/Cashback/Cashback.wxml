@@ -1,0 +1,49 @@
+<view class="cash">
+	<view class="head between">
+		<view class="lf vCenter">
+			<image src="/imgs/shop.png"></image>
+			<text>{{cards.shop_name}}</text>
+		</view>
+		<van-button type="primary" size="small" color='#FFE9EE' bind:click='call'>联系店铺</van-button>
+	</view>
+	<view class="tip">
+		<van-icon name="play" custom-class='rotate' color='#FA2335' />
+		<view class="txt">如果您觉得店铺还不错请给个5星好评，您可以直接获得2元的直接返现 </view>
+	</view>
+	<view class="box">
+		<view class="tit">操作步骤：</view>
+		<text space='emsp' decode>1.给店铺五星好评 \n2.屏幕截图或拍照 \n3.上传凭证并提交 \n4.平台人工审核真实性 \n5.直接转入微信零钱（如果通过）</text>
+		<view>
+			<view class="doing" wx:if='{{cards.review_status==3}}'>
+				<image src="/imgs/Card_stop.png"></image>
+				<view>您的申请已被拒绝，原因如下</view>
+				<text space='emsp' decode>{{cards.reason}}</text>
+				<view class="txt">您可以重新上传凭证并提交。</view>
+			</view>
+			<view class="upload" wx:if='{{cards.review_status==0||cards.review_status==3}}'>
+				<view class="t" wx:if='{{image==""}}' bindtap="uploadImg">
+					<image src="/imgs/upload.png" class="img"></image>
+					<view>上传凭证</view>
+				</view>
+				<view class="imgs" wx:else>
+					<image src="{{image}}" mode="aspectFit" bindtap="lookImg"></image>
+					<van-icon name="clear" custom-class="clear" color="#FA2335" bind:click='clearImg' />
+				</view>
+			</view>
+			<view wx:else class="doing">
+				<block wx:if='{{cards.review_status==1}}'>
+					<image src="/imgs/review.png"></image>
+					<view>已提交，审核中</view>
+				</block>
+				<block wx:elif='{{cards.review_status==2}}'>
+					<image src="/imgs/Card_success.png"></image>
+					<view>您的申请已通过</view>
+					<view>返现已转入您的微信零钱</view>
+				</block>
+			</view>
+		</view>
+	</view>
+	<view class="fixed" wx:if='{{cards.review_status==0||cards.review_status==3}}'>
+		<van-button type="primary" block custom-class='{{image?"btn":"grey"}}' color='#F6F6F6' bind:click='submit' disabled="{{image==''}}">提交</van-button>
+	</view>
+</view>

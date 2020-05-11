@@ -1,0 +1,76 @@
+<van-dialog id="van-dialog" />
+<loading-top id="loading" />
+<pagePublic/>
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class="header">
+  <view class="top flex">
+    <view class="img flex">
+      <image src="/imgs/new/tz.png" />
+    </view>
+    <view class="tip">收到一张来自好友{{filter.decode(name)}}送给你的{{d.type==1||d.type==5?'课程':d.type==2||d.type==6?'门票':d.type==3?'卡券':''}}
+    </view>
+  </view>
+  <view class="btm flex">
+    <view class="left">
+      <view class="img flex">
+        <image src="{{url+pic_path}}" />
+      </view>
+    </view>
+    <view class="right">
+      <view class="name">{{filter.decode(name)}}</view>
+      <view class="note">我赠送给你一张{{d.type==1||d.type==5?'课程':d.type==2||d.type==6?'门票':d.type==3?'卡券':''}}，记得领取呀~</view>
+    </view>
+  </view>
+</view>
+<view class="detailbox">
+  <view class="itembox">
+    <view class='box'>
+      <view class='li' wx:for='{{list}}'>
+        <view class='head van-hairline--bottom between'>
+          <view class='vCenter'>
+            <view class='type'>{{item.type==1||item.type==5?'课程':item.type==2||item.type==6?'门票':item.type==3?'卡券':item.type==4?'特价商品':''}}</view>订单编号：{{item.order_no||item.trade_no}}</view>
+        </view>
+        <view class='m flex'>
+          <image src='{{item.pic_path?url+item.pic_path:item.list_pic?url+item.list_pic:"/imgs/wuzhaop.png"}}'></image>
+          <view class='rt'>
+            <view class='between row'>
+              <view class='tit'>{{item.name}}</view>
+              <text class='money'>￥{{item.unit_price/100}}</text>
+            </view>
+            <view class='between'>
+              <view class='lf'>
+                <text class='age' wx:if='{{item.type==2}}'>{{item.ticket_type==1?'次票':item.ticket_type==2?'套票':item.ticket_type==3?'年票':''}}</text>
+                <text class='age' wx:if='{{item.type!=3&&item.age_to}}'>{{item.age_from}}~{{item.age_to}}岁</text>
+                <text class='age' wx:if='{{item.type==4}}'>运费: </text>
+              </view>
+              <text class='money' wx:if='{{item.type!=1||item.type!=5}}'>×{{item.quantity}}</text>
+            </view>
+          </view>
+        </view>
+        <view class='between t'>
+          <view class='time'>下单时间：{{filter.spot(filter.sliceTime(item.create_time))}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="sendbtn" bindtap='goGet' wx:if='{{!result}}'>
+  <view>领取</view>
+</view>
+<navigator class="sendbtn" wx:elif='{{d.type==3&&d.prod_type&&d.prod_id&&d.prod_no}}' url="/pages/bargain/bargain?act_no={{d.prod_no}}&inst_id={{d.prod_id}}&ope_id={{ope_id}}&from_id=0&source=31">已领取（点击进入专用商品）</navigator>
+<view class="sendbtn1" wx:else>
+  <view>已领取</view>
+</view>
+
+<van-dialog use-slot title="学员信息" show="{{ modify }}" show-cancel-button bind:close="onClose" bind:confirm='sendData'>
+  <view class='box_inner'>
+    <van-cell-group>
+      <van-field value="{{ res.name }}" clearable label="姓名:" placeholder="请输入姓名" bind:click-icon="onClickIcon" title-width='50px' bind:input='onInput' data-i='1' />
+
+      <van-field value="{{ res.contact }}" type="number" label="电话:" placeholder="请输入电话号码" border="{{ false }}" title-width='50px' bind:input='onInput' data-i='2' />
+      <van-field value="{{ res.age}}" type="number" label="年龄:" placeholder="请输入孩子年龄" border="{{ false }}" title-width='50px' bind:input='onInput' data-i='3' />
+    </van-cell-group>
+  </view>
+</van-dialog>
+
+<backHome/>

@@ -1,0 +1,138 @@
+.flex{
+  display: flex;
+}
+.bg_pic{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  z-index:9;
+}
+.titlebox{
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(255,216,142,1);
+  line-height:50rpx;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  top:32.5vh;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+.btn{
+  width:500rpx !important;
+  height:80rpx !important;
+  background:linear-gradient(0deg,rgba(255,192,69,1),rgba(255,144,0,1),rgba(255,228,0,1));
+  box-shadow:0px 10rpx 30rpx 0px rgba(255,168,0,1);
+  border-radius:40rpx !important;
+  border:none !important;
+  position: fixed !important;
+  bottom:70rpx !important;
+  left:50%;
+  transform: translate(-50%,0);
+  font-size:32rpx !important;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(255,55,1,1) !important;
+  z-index: 10;
+}
+.mask {
+  width: 750rpx;
+  height: 100vh;
+  background: rgba(0, 0, 0, 1);
+  opacity: 0.7;
+  position: fixed;
+  z-index: 20;
+  left: 0;
+  top: 0;
+}
+.newuser {
+  width: 650rpx;
+  height: 580rpx;
+  background: rgba(255, 255, 255, 1);
+  position: absolute;
+  z-index: 30;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20rpx;
+}
+
+.newuser .img {
+  text-align: center;
+  margin-top: -120rpx;
+}
+
+.newuser .row2 {
+  text-align: center;
+  font-size: 38rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: rgba(17, 17, 17, 1);
+  line-height: 56rpx;
+  color: #ff5a90;
+}
+
+.newuser .row2 .num {
+  font-size: 50rpx;
+  margin: 0 5rpx;
+}
+
+.newuser .row3 {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 56rpx;
+  color: #666;
+  text-align: center;
+  width: 560rpx;
+  margin: 50rpx auto 0;
+}
+
+.newuser .row3 .num {
+  color: #111;
+}
+
+.newuser .row4 {
+  display: flex;
+  width: 560rpx;
+  margin: 50rpx auto 0;
+}
+
+.newuser .row4 .left {
+  width: 250rpx;
+  height: 80rpx;
+  background: linear-gradient(90deg, rgba(255, 90, 144, 1), rgba(255, 44, 86, 1));
+  border-radius: 40rpx;
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 80rpx;
+  text-align: center;
+}
+
+.newuser .row4 .right {
+  width: 250rpx;
+  height: 80rpx;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 44, 86, 1);
+  border-radius: 40rpx;
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(255, 44, 86, 1);
+  line-height: 80rpx;
+  text-align: center;
+  margin-left: 50rpx;
+}
+
+.newuser .close {
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+}

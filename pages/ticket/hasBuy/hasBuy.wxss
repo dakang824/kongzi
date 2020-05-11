@@ -1,0 +1,96 @@
+.flex{
+    display: flex;
+}
+.chooseBox{
+    width:100%;
+    height:88rpx;
+    background:rgba(255,255,255,1);
+    align-items: center;
+    border-top: 1rpx solid #eee;
+    border-bottom: 1rpx solid #eee;
+}
+.chooseBox .middle{
+    width:1px;
+    height:30rpx;
+    background:rgba(238,238,238,1);
+}
+.chooseBox .tic{
+    width: 50%;
+    justify-content: center;
+}
+.chooseBox .tic .type{
+    font-size:24rpx;
+    color:rgba(51,51,51,1);
+    line-height:44rpx;
+}
+.listbox{
+
+}
+.listbox .itembox{
+    width:690rpx;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 0px 30rpx 0px rgba(153,153,153,0.2);
+    border-radius:20rpx;
+    padding:0rpx 20rpx 44rpx 20rpx;
+    margin: 30rpx auto 0;
+    box-sizing: border-box;
+}
+.listbox .itembox .title{
+    height: 89rpx;
+    align-items: center;
+    border-bottom: 1rpx solid #eee;
+    justify-content: space-between;
+}
+.listbox .itembox .title .name{
+    font-size:32rpx;
+    font-weight:bold;
+    color:rgba(17,17,17,1);
+    line-height:44rpx;
+}
+.listbox .itembox .title .right{
+    font-size:28rpx;
+    color:rgba(102,102,102,1);
+    line-height:44rpx;
+}
+.listbox .itembox .title .no{
+    color: #FF2C56;
+}
+.listbox .itembox .detailbox{
+    margin-top:24rpx;
+}
+.listbox .itembox .detailbox .detail{
+    margin-left:25rpx;
+}
+.listbox .itembox .detailbox .detail .value:nth-child(1){
+    margin-top:0rpx;
+}
+.listbox .itembox .detailbox .detail .value{
+    font-size:24rpx;
+    color:rgba(102,102,102,1);
+    margin-top:6rpx;
+}
+.listbox .itembox .detailbox .detail .send{
+    width:150rpx;
+    height:56rpx;
+    background:linear-gradient(90deg,rgba(255,90,144,1),rgba(255,44,86,1));
+    border-radius:28rpx;
+    border:none;
+    line-height:56rpx;
+    margin-top:30rpx;
+    font-size: 26rpx;
+    text-align: center;
+}
+.listbox .itembox .detailbox .detail .send1{
+    width:150rpx;
+    height:56rpx;
+    border-radius:28rpx;
+    border:1rpx solid rgba(255,44,86,1);
+    line-height:56rpx;
+    margin-top:30rpx;
+    background: #fff;
+    color:#FF2C56;
+    font-weight: 500;
+    font-size: 26rpx;
+    text-align: center;
+
+}

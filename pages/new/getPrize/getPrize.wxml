@@ -1,0 +1,25 @@
+ <pagePublic/>
+<view class='header'>
+  <image src='{{imgUrl}}detail_zj.png' mode="widthFix" class='img'></image>
+  <view class='box'>
+    <view>领取奖品</view>
+    <text>请认真填写信息确保奖品顺利领取~</text>
+  </view>
+  <view class='form'>
+    <view class='row vCenter'>
+      <view class='tit'>领取方式：<text style="margin-left:42rpx;">线上邮寄</text></view>
+      <!-- <view class='switch'>
+        <view class='{{active==1&&"active"}}' bindtap='onSwitch' data-i='1'>线下领取</view>
+        <view class='{{active==2&&"active"}}' bindtap='onSwitch' data-i='2'>线上邮寄</view>
+      </view> -->
+    </view>
+    <block>
+      <van-cell-group border="{{ false }}">
+        <van-field value="{{ child_name }}" clearable label="收件人："  placeholder="请输入收件人姓名" bind:input="childName" maxlength="7" />
+        <van-field value="{{ child_phone }}" clearable type="number " label="联系电话:" placeholder="请输入联系电话"  bind:input="childPhone" type="number" maxlength="11" />
+        <van-field value="{{ child_address }}" clearable  label="收件地址:" type="textarea" placeholder="请输入收件地址" bind:input="childAddress" autosize input-class='{{platform?"ios_textarea":child_address?"":"android_textarea"}}' />
+      </van-cell-group>
+    </block>
+    <view class="submit" bindtap="sure">{{options.is_get==1?'修改':'提交'}}</view>
+  </view>
+</view>

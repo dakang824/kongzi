@@ -1,0 +1,44 @@
+ <pagePublic/>
+<view class='content'>
+  <form bindsubmit='personUpdate'>
+    <view class='list first'>
+      <view class='title'>头像</view>
+      <image src='{{ headimg }}' class='head'></image>
+    </view>
+    <view class='list'>
+      <view class='title'>昵称</view>
+      <input class='input' value='{{ nick_name }}' disabled name="nick_name"></input>
+      <image src='../../imgs/right.png'></image>
+    </view>
+    <view class='list'>
+      <view class='title'>姓名</view>
+      <input class='input' value='{{ name }}' bindinput='changeinputvalue' data-id='1' name="name"></input>
+      <image src='../../imgs/right.png'></image>
+    </view>
+    <view class='list' bindtap='updateMobile'>
+      <view class='title'>电话</view>
+      <input class='input' value='{{ mobile }}' name="mobile" disabled></input>
+      <image src='../../imgs/right.png'></image>
+    </view>
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{ role }}" name="role">
+      <view class="list">
+        <view class='title'>角色</view>
+        <text>{{ roleperson }}</text>
+        <image src='../../imgs/right.png'></image>
+      </view>
+    </picker>
+    <button class="btn {{ dis_status ? '' : 'disabled_T' }}" form-type='submit' disabled='{{ dis_status }}'>提交</button>
+  </form>
+</view>
+
+
+<van-dialog use-slot  show="{{ show }}" show-cancel-button  bind:cancel='onClose' bind:confirm="changephone">
+  <view class='title'>修改手机号</view>
+  <van-cell-group>
+    <van-field value="{{ sms }}" bind:input='inputMobile' data-id='1'  type="number" center clearable placeholder="请输入手机号"  use-button-slot>
+      <van-button slot="button" size="small" type="default"   custom-class='sendcolor' bind:click='getCode' disabled='{{!sendStatue}}'>{{time}}</van-button>
+    </van-field>
+  </van-cell-group>
+  <van-field value="{{ password }}" type="number"  bind:input='inputMobile' data-id='2' placeholder="请输入验证码" maxlength='4'/>
+</van-dialog>
+<van-notify id="van-notify" />

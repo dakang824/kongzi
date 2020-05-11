@@ -1,0 +1,80 @@
+/**index.wxss**/
+.headTopNav{
+ height: auto!important;
+}
+.address {
+  padding:20px 15px 0;
+  font-size: 34rpx;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding-bottom: 26rpx;
+  justify-content: space-between
+}
+.address .city{
+  font-size:34rpx;
+}
+.address .between{
+  margin-right: 20rpx;
+}
+.van-search{
+  padding: 0!important;
+  border-radius:15rpx;
+  width:500rpx;
+}
+.van-search .van-cell{
+  align-items:center;
+}
+.address input{
+  display: inline-block;
+  background: #fff;
+  width: 420rpx;
+  height: 70rpx;
+  border-radius: 10rpx;
+  color: #333;
+  font-size:26rpx;
+}
+.placeholder{
+  text-align: center;
+  font-size:26rpx;
+}
+
+.content .tit{
+  background: #F6F6F6;
+  font-size:28rpx;
+  padding-top: 26rpx;
+  padding-bottom: 26rpx;
+  font-weight: bold;
+  opacity: 0.7
+}
+.content .location{
+  font-size:28rpx;
+  color: #63B1FE;
+}
+.list{
+  margin-top: 0;
+}
+.list .li{
+  border-bottom: 1px solid #eee;
+  padding: 35rpx 0;
+  font-size:28rpx;
+  color: #333333;
+}
+.demo-swipe-cell {
+  user-select: none;
+}
+van-swipe-cell .li{
+  padding-left: 30rpx!important;
+}
+
+.van-swipe-cell__left,
+.van-swipe-cell__right {
+  display: inline-block;
+  width: 65px;
+  height: 44px;
+  font-size: 15px;
+  line-height: 54px;
+  color: #fff;
+  text-align: center;
+  background-color: #f44;
+}

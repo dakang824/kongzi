@@ -1,0 +1,88 @@
+function lineFeed(txt) {
+  length = txt.split("n").length - 1;
+  for (i = 0; i < length; i++) {
+    txt = txt.replace('\\n', '\n');
+  }
+  return txt;
+}
+function timeslice(txt) {
+  t=txt.split(':');
+  return t;
+}
+function sliceTime(t) {
+  return t.slice(0, 10);
+}
+function sliceLeng(t) {
+  return t.slice(0, 19);
+}
+function slice(t,length) {
+  return t.slice(0, length);
+}
+function abs(t) {
+  return Math.abs(t);
+}
+function sliceMunite(txt){
+  length = txt.split("-").length - 1;
+  for (i = 0; i < length; i++) {
+    txt = txt.replace('-', '.');
+  }
+  return txt.slice(0,16);
+}
+function fixed(num, length) {
+  return num.toFixed(length);
+}
+function spot(txt) {
+  length = txt.split("-").length - 1;
+  for (i = 0; i < length; i++) {
+    txt = txt.replace('-', '.');
+  }
+  return txt;
+}
+function mobile(t) {
+  return t.slice(0, 3) + '****' + t.slice(7);
+}
+function addZero(txt) {
+  txt++;
+  return parseInt(txt) < 10 ? '0' + txt : txt;
+}
+
+function formatTime(t) {
+  return t.slice(0, 10).replace('-', '年').replace('-', '月')+'日';
+}
+
+function ceil(num) {
+  return Math.ceil(num);
+}
+function toFixed(num) {
+  return Math.floor(num * 100) / 100;
+}
+function decode(txt) {
+  return txt?decodeURIComponent(txt):'';
+}
+function hideName(nickname) {
+  if (!nickname) return ''
+  return nickname.slice(0, 1)
+}
+function distance(distance){
+  let number= Number(distance/1000)
+  return number.toFixed(1)
+}
+module.exports = {
+  lineFeed: lineFeed,
+  ceil: ceil,
+  spot: spot,
+  addZero: addZero,
+  formatTime: formatTime,
+  sliceTime: sliceTime,
+  toFixed: toFixed,
+  decode: decode,
+  hideName: hideName,
+  mobile: mobile,
+  sLeng: sliceLeng,
+  fixed: fixed,
+  sliceMunite:sliceMunite,
+  distance:distance,
+  timeslice:timeslice,
+  abs: abs,
+  slice: slice
+}

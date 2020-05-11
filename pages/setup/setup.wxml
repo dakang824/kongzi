@@ -1,0 +1,19 @@
+<pagePublic/>
+<view>
+  <view class='box'>
+    <view class='title'>姓名</view>
+    <input placeholder='请填写孩子姓名' bindinput='inputcomplete' data-id='1' value='{{name}}'></input>
+  </view>
+  <view class='box'>
+    <view class='title'>性别</view>
+    <view class="sex {{ sexid == 1?'checked':''}}"  bindtap='sexchange' data-id='1'>男</view>
+    <view class="sex {{ sexid == 0?'checked':''}}" bindtap='sexchange' data-id='0'>女</view>
+  </view>
+  <view class='box'>
+    <view class='title'>年龄</view>
+    <input type="number" placeholder='请填写孩子年龄' bindinput='inputcomplete' data-id='2' maxlength='2' value='{{age}}'></input>
+  </view>
+  <text class='tip' style='visibility: {{ ishidden }}'>*孩子年龄范围为0~100</text>
+  <button class="btn2 {{ dis_status == true?'':'disabled_T'}}" disabled="{{ dis_status }}" bindtap='addchild'>完成</button>
+</view>
+<van-notify id="van-notify" />

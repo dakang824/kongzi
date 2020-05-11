@@ -1,0 +1,68 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<pagePublic noFixed/>
+<view class="section">
+  <view class="picker">
+    <text class='txt'>选择课程 : <text class='more'>(共{{data.act_members.length}}个课程，最多可选{{data.order_limit}}个,最少选{{data.order_limit_min}}个)</text></text>
+  </view>
+  <view class='list'>
+    <van-checkbox-group value="{{ school }}" bind:change="onChange" max="{{data.order_limit}}">
+      <van-cell-group>
+        <van-cell wx:for="{{ data.act_members }}" wx:key="index" title="{{item.mem_course?item.mem_course:item.name}}" clickable data-name="{{index}}" bind:click="toggle" samllTip='{{item.address}}' courseName='{{item.branch_name}}' data-disabled='{{selected===index||(!(age>=item.age_min&&age<=item.age_max))}}'>
+          <van-checkbox catch:tap="noop" catchtap="checkboxClick" name="{{ index }}" class="checkboxes-{{ index }}" data-name="{{index}}" disabled='{{selected===index||(!(age>=item.age_min&&age<=item.age_max))}}' data-disabled='{{selected===index||(!(age>=item.age_min&&age<=item.age_max))}}'/>
+        </van-cell>
+      </van-cell-group>
+    </van-checkbox-group>
+  </view>
+  <van-button size="large" bind:click="sign" custom-class='sumit {{disabled?"disabled":"ok"}}' round disabled="{{disabled}}">提交</van-button>
+</view>
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast" />
+
+<van-popup show="{{ isFromShare }}" custom-class='layerT' position='bottom'>
+  <view class='van-hairline--top-bottom title'>
+    付款详情
+    <view class='close' bindtap="backClose">
+      <van-icon name="cross" />
+    </view>
+  </view>
+  <view class='row van-hairline--top-bottom'>
+    <view class='lf'>
+      付款金额
+    </view>
+    <view class='rt'>
+      ￥{{(discount+pay_amount)/100}}
+    </view>
+  </view>
+  <view class='van-hairline--top-bottom' wx:if='{{!ticket.id&&ticketsLen.length}}'>
+    <van-cell title="优惠卡券" is-link value="{{ticketsLen.length+' 张'}}" url="/pages/shopMall/chooseCard/chooseCard?total_price={{pay_amount/100}}&prod_id={{shareData.inst_id}}&prod_no={{shareData.act_no}}&prod_type=1" />
+  </view>
+  <view class='van-hairline--top-bottom' wx:if='{{ticket.id}}'>
+    <van-cell is-link title="{{ticket.type==1?'代金券减':ticket.type==4?'购物卡减':'折扣券减'}}" value="{{reduce+' 元'}}" url="/pages/shopMall/chooseCard/chooseCard?id={{ticket.id}}&total_price={{pay_amount/100}}&prod_id={{shareData.inst_id}}&prod_no={{shareData.act_no}}&prod_type=1"
+    />
+  </view>
+  <view class='row van-hairline--top-bottom' style="padding: 0 33rpx;">
+    <!-- <view class='lf'>
+      优惠金额
+    </view>
+    <view class='rt from1'>
+      ￥{{discount/100}} （来自朋友分享）
+    </view> -->
+    <van-radio-group value="{{ pay_type }}" bind:change="onChange1">
+      <van-cell-group>
+        <van-cell title="余额支付" value-class="value-class" clickable data-name="2" bind:click="onClick" src="/imgs/new/yepay.png" label='剩余可用余额{{balance/100}}元'>
+          <van-radio name="2" />
+        </van-cell>
+        <van-cell title="微信支付" value-class="value-class" clickable data-name="1" bind:click="onClick" src="/imgs/new/wxpay.png">
+          <van-radio name="1" disabled='{{(ticket.id?pay_amount1:filter.fixed(pay_amount/100,2))==0}}' />
+        </van-cell>
+      </van-cell-group>
+    </van-radio-group>
+  </view>
+  <view class='footer'>
+    <view class='lf'>实际付款</view>
+    <view class='rt'>￥{{ticket.id?pay_amount1:filter.fixed(pay_amount/100,2)}}</view>
+  </view>
+  <view class='detail-btn'>
+    <van-button round custom-class='btn' bind:click='pay'>确认付款</van-button>
+  </view>
+</van-popup>

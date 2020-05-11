@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-popup": "../../../dist/popup/index",
+    "van-panel": "../../../dist/panel/index"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "奖品"
+}

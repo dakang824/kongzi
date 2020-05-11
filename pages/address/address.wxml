@@ -1,0 +1,74 @@
+<import src="../../template/loading/loading.wxml" />
+<template is='loading' data='{{...loading}}' />
+<van-dialog id="van-dialog" />
+<pagePublic/>
+<view class='headTopNav'>
+  <view class='address' >
+    <navigator class='between' url='/pages/select_city/select_city'>
+      <text class='city' bindtap='selectCity'>{{cityArea}}</text>
+      <van-icon name="arrow-down" />
+    </navigator>
+    <van-search placeholder="街道/小区/写字楼等" bind:search="onSearch">
+    </van-search>
+  </view>
+</view>
+
+<view class='content'>
+  <view class='tit in'>当前地址</view>
+  <view class='between in location'>
+    <view bindtap='black'>{{address?address:'没能获取到您当前的位置'}}</view>
+    <view bindtap='refresh'>
+      <van-icon name="aim" /> 重新定位
+    </view>
+  </view>
+  <block wx:if='{{history.length}}'>
+    <view class='tit in between'><text>历史地址</text>  <van-icon name="delete" bind:click='delAll'/></view>
+    <view class='list'>
+      <van-swipe-cell right-width="{{ 65 }}" wx:for='{{history}}' async-close bind:close="onClose" data-id='{{item.id}}'>
+        <view class='li' bindtap='historyClick' data-name='{{item.address}}'>
+          {{item.address}}
+        </view>
+        <view slot="right">删除</view>
+      </van-swipe-cell>
+    </view>
+  </block>
+  <!-- <block wx:if='{{searchValue.length}}'>
+    <view class='tit in'>附近地址</view>
+    <view class='list inner'>
+      <view class='li'>
+        华滋奔腾大厦B栋
+      </view>
+      <view class='li'>
+        华滋奔腾大厦B栋
+      </view>
+      <view class='li'>
+        华滋奔腾大厦B栋
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='tit in'>搜索地址</view>
+    <view class='list inner'>
+      <view class='li'>
+        华滋奔腾大厦
+        <view class='info'>上海市宝山区逸仙路113号</view>
+      </view>
+      <view class='li'>
+        华滋奔腾大厦A栋
+        <view class='info'>上海市宝山区逸仙路113号</view>
+      </view>
+      <view class='li'>
+        华滋奔腾大厦互联网科技园区
+        <view class='info'>上海市宝山区逸仙路113号</view>
+      </view>
+      <view class='li'>
+        华滋奔腾大厦A栋
+        <view class='info'>上海市宝山区逸仙路113号</view>
+      </view>
+      <view class='li'>
+        华滋奔腾大厦互联网科技园区
+        <view class='info'>上海市宝山区逸仙路113号</view>
+      </view>
+    </view>
+  </block> -->
+</view>

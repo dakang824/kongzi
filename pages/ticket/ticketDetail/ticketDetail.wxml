@@ -1,0 +1,76 @@
+<pagePublic/>
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<loading-top id="loading" />
+<view class="detailbox">
+  <view class="itembox">
+    <view class="top flex">
+      <view class="img">
+        <image src="{{url+list_pic}}" style="width:200rpx;height:200rpx;" />
+      </view>
+      <view class="titlebox">
+        <view class="title">{{name}}</view>
+        <view class="agebox flex">
+          <view class="old">{{type==1?'次票':type==2?'套票':type==3?'年票':''}}</view>
+          <view class="old">{{d.age_from}}~{{d.age_to}}岁</view>
+        </view>
+        <view class="see">{{d.status==0?'未使用':d.status==1?'使用中':d.status==2?'转赠中':d.status==3?'已用完':d.status==4?'已过期':''}}</view>
+      </view>
+    </view>
+    <view class="mid">
+      <view class="value flex">
+        <view class="key">总价：</view>
+        <view class="title">{{d.price}}元</view>
+      </view>
+      <view class="value flex">
+        <view class="key">类型：</view>
+        <view class="title">{{type==1?'次票':type==2?'套票':type==3?'年票':''}}</view>
+      </view>
+      <view class="value flex">
+        <view class="key">剩余次数：</view>
+        <view class="title">{{d.left_times}}次</view>
+      </view>
+      <view class="value flex">
+        <view class="key">有效日期：</view>
+        <view class="title">{{filter.spot(filter.sliceTime(d.valid_from))}} - {{filter.spot(filter.sliceTime(d.valid_to))}}</view>
+      </view>
+      <view class="value flex">
+        <view class="key">备注：</view>
+        <view class="title">{{d.user_intro}}</view>
+      </view>
+    </view>
+    <view class="itembtn">
+      <navigator url='/pages/ticket/parkIndex/parkIndex?park_id={{d.park_id}}' class="logo flex">
+        <view class="logoimg flex">
+          <image src="{{url+logo}}" style="width:100%;height:100%;" />
+        </view>
+        <view class="company">{{d.park_name}}</view>
+        <view class="seedetail">查看商家详情</view>
+      </navigator>
+      <view class="address">
+        <!-- <view class="title">地址:</view> -->
+        <view class="namebox">
+          <block wx:for='{{branches}}'>
+            <view class="row flex">
+              <view class="name">{{item.name}}：</view>
+              <view class="distance">距离{{filter.toFixed(item.distance/1000)}}km</view>
+            </view>
+            <view class="addressdetail">{{item.address}}</view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<block wx:if='{{result}}'>
+  <button class="sendbtn1" disabled='true' hover-class='hover'>
+    <view>已领取</view>
+  </button>
+</block>
+<block wx:else>
+  <button class="sendbtn" bindtap='cancelIncrease' hover-class='hover' wx:if='{{isTransfer}}'>
+    <view>取消转赠</view>
+  </button>
+  <button class="sendbtn" hover-class='hover' open-type='share' wx:else>
+    <view>转赠</view>
+  </button>
+</block>

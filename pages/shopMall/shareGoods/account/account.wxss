@@ -1,0 +1,18 @@
+@import "/pages/moneyDetail/moneyDetail.wxss";
+
+.head {
+  background: linear-gradient(-30deg, rgba(255, 55, 71, 1), rgba(255, 126, 0, 1));
+}
+
+.van-tab--active {
+  color: #fb273c !important;
+}
+
+.van-tabs__line {
+  background-color: #fb273c !important;
+}
+
+.picker {
+  border: 1px solid rgba(251, 39, 60, 1);
+  color: #fb273c;
+}

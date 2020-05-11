@@ -1,0 +1,119 @@
+page{
+  background: #F2F2F2;
+  width: 750rpx;
+  overflow-x: hidden;
+}
+.flex{
+  display: flex;
+}
+.header{
+  padding: 50rpx 30rpx 10rpx 30rpx;
+  background: #FFFFFF;
+}
+.row1 .title{
+  font-size:36rpx;
+  font-weight:500;
+  color:rgba(17,17,17,1);
+}
+.row1 .money{
+  font-size:36rpx;
+  font-weight:bold;
+  color:rgba(250,35,53,1);
+  margin-left: 30rpx;
+}
+.row2{
+  font-size:24rpx;
+  font-weight:500;
+  color:rgba(147,147,147,1);
+  margin-top: 10rpx;
+}
+.line{
+  width:690rpx;
+  height:1rpx;
+  background:rgba(181,181,181,1);
+  margin-top: 20rpx;
+}
+.row3{
+ justify-content: space-between;
+ align-items: center;
+}
+.row3 .left{
+  align-items: center;
+}
+.row3 .left>view {
+  font-size:63rpx;
+  font-weight:bold;
+  color:rgba(250,35,53,1);
+}
+.row3 .left>input{
+  margin-left: 30rpx;
+}
+.row3 .right{
+  font-size:32rpx;
+  font-weight:500;
+  color:rgba(78,78,78,1);
+}
+.midline{
+  height:54rpx;
+  background:rgba(242,242,242,1);
+  font-size:21rpx;
+  font-weight:500;
+  color:rgba(147,147,147,1);
+  line-height: 54rpx;
+  padding-left: 30rpx;
+}
+.content{
+  padding: 37rpx 30rpx;
+  background: #FFFFFF;
+}
+.content .title{
+  font-size:30rpx;
+  font-weight:500;
+  color:rgba(112,112,112,1);
+}
+.method{
+  padding:20rpx 0;
+}
+.content .method .money{
+  width:252rpx;
+  border:1px solid #999;
+  padding: 10rpx 0;
+  border-radius:32rpx;
+  font-size:30rpx;
+  font-weight:500;
+  color:rgba(112,112,112,1);
+  text-align: center;
+}
+.content .method .money.checked{
+  border: 1px solid #FB273C;
+}
+.content .tip{
+  font-size:24rpx;
+  font-weight:500;
+  color:rgba(251,39,60,1);
+  justify-content:flex-end;
+  margin-top: 10rpx;
+}
+.tip1{
+  font-size:21rpx;
+  font-weight:500;
+  color:rgba(147,147,147,1);
+  margin-left: 30rpx;
+  margin-top: 24rpx;
+}
+.btn{
+  width:514rpx;
+  height:89rpx;
+  background:rgba(232,232,232,1);
+  border-radius:45rpx;
+  text-align: center;
+  line-height: 89rpx;
+  margin: 40rpx auto 0;
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+}
+.active{
+  background:rgba(251,39,60,1);
+}

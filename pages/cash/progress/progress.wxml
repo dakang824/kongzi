@@ -1,0 +1,34 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<pagePublic noFixed/>
+<block wx:for='{{d}}'>
+  <navigator class='box' wx:key="index" catchtap='goinfo' data-id='{{item}}'>
+    <van-panel use-footer-slot='{{item.status==2}}' title=" " desc='{{filter.sLeng(item.time)}}' status="{{item.status==0?'任务中':item.status==1?'待审核':item.status==2?'提现失败':item.status==3?'已完成':''}}" color="{{item.status==0?'#4DA5FC':item.status==1?'#990066':item.status==2?'#f00':item.status==3?'#660099':''}}">
+      <view class='content' bindtap='viewImg' data-img='{{rootUrl+item.qr_path}}'>
+        <view class='rt between'>
+          <view>提现金额:
+            <text>{{item.amount/100}}元</text>
+          </view>
+          <view>需邀新人:
+            <text>{{item.new_users}}人</text>
+          </view>
+          <view>已邀新人:
+            <text>{{item.count}}人</text>
+          </view>
+        </view>
+      </view>
+      <view slot="footer" class='footer' wx:if='{{item.status==2}}'>
+        <view catchtap='call'>
+          <van-button size="small" type="info">联系客服</van-button>
+        </view>
+      </view>
+    </van-panel>
+  </navigator>
+</block>
+
+<block wx:if="{{!d.length}}">
+   <view class="nodatabox">
+      <view class="img">
+        <image src="/imgs/new/nodata.png" style="width:300rpx;height:300rpx;" />
+      </view>
+    </view>
+</block>

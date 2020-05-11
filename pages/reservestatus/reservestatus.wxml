@@ -1,0 +1,64 @@
+<pagePublic/>
+<van-tabs sticky swipeable border="{{false}}" color="#fff" swipe-threshold='5' bind:change="onChange">
+  <van-tab title="全部">
+    <template is="orderBlock" data="{{ allreserve: allreserve,status:'all',isHave:true,rootUrl:rootUrl}}"></template>
+  </van-tab>
+  <van-tab title="已预约">
+    <template is="orderBlock" data="{{ allreserve: allreserve,status:1,isHave:booked,rootUrl:rootUrl}}"></template>
+  </van-tab>
+  <van-tab title="已到访">
+    <template is="orderBlock" data="{{ allreserve: allreserve,status:2,isHave:finished,rootUrl:rootUrl}}"></template>
+  </van-tab>
+  <van-tab title="已过期">
+    <template is="orderBlock" data="{{ allreserve: allreserve,status:3,isHave:overdue,rootUrl:rootUrl}}"></template>
+  </van-tab>
+  <!-- <van-tab title="已取消">
+    <template is="orderBlock" data="{{ allreserve: allreserve,status:4,isHave:cancal}}"></template>
+  </van-tab> -->
+</van-tabs>
+
+<template name='orderBlock'>
+  <view class='swiper_box' wx:for="{{ allreserve }}" wx:key="index" wx:if="{{ item.status == status||status=='all'}}">
+    <view class='s_b_t'>
+      <view class='s_b_t_left'>
+        到访时间：{{ item.time }} ({{ item.week }})
+      </view>
+      <view class='s_b_t_right'>
+        {{ item.status==1?'已预约':item.status==2?'已到访':item.status==3?'已过期':item.status==4?'已取消':''}}
+      </view>
+    </view>
+    <view class='s_b_b'>
+      <image src='{{ item.pic_path?item.pic_path:rootUrl+"data/instManageImg/wuzhaop.png" }}' binderror='errorImg' data-i='{{index}}'></image>
+      <view class='s_b_b_right'>
+        <view class='schoolname van-ellipsis'>{{ item.inst_name }}</view>
+        <view class='schooladdress'>校区：{{ item.branch_name }}</view>
+        <view class='child'>备注信息: {{ item.comment }}</view>
+      </view>
+    </view>
+    <view class='booked' wx:if="{{ item.status == 1}}">
+      <!-- <image src='../../imgs/guwen.png' class='guwen'></image>机构顾问 -->
+      <!-- <button class='cancel' bindtap='cancelreserve' data-no="{{ item.no }}" data-inst_id="{{ item.inst_id }}">取消预约</button>
+      <button class='code' bindtap='showcode' data-qr_path='{{ item.qr_path }}'>二维码</button> -->
+      <view class='op'>
+        <button data-mobile='{{item.brance_mobile}}' bindtap='call'>
+          <image src='/imgs/phone1.png' class='circle'></image>联系校区</button>
+        <button bindtap='showcode' data-qr_path='{{ item.qr_path }}'>
+          <image src='/imgs/ewm.png' class='circle'></image>
+          {{item.book_time?'二维码':'到访二维码'}}
+        </button>
+      </view>
+    </view>
+  </view>
+  <block wx:if="{{!isHave||!allreserve.length}}">
+    <view class='noData'>~ 没有更多数据 ~</view>
+  </block>
+</template>
+
+<van-popup show="{{codeshow}}" bind:close="masktap">
+  <view class='box'>
+    <image src='../../imgs/close.png' class='close' catchtap='close'></image>
+    <view class='text1'>二维码</view>
+    <image class='code2' src='{{ qr_path }}'></image>
+    <view class='text2'>扫描二维码完成到访</view>
+  </view>
+</van-popup>

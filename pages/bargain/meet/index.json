@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "van-field": "../../../dist/field/index",
+    "van-button": "../../../dist/button/index",
+    "van-toast": "../../../dist/toast/index",
+    "van-popup": "../../../dist/popup/index",
+    "van-icon": "../../../dist/icon/index",
+    "van-datetime-picker": "../../../dist/datetime-picker/index"
+  },
+  "navigationBarTitleText": "预约信息"
+}

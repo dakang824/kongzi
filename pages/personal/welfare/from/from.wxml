@@ -1,0 +1,52 @@
+<image src='{{imageurl}}welfare_top.png' mode='widthFix' class='top'></image>
+<view class="box_from">
+	<view class="title">
+		请填写以下信息
+	</view>
+	<view class="flex">
+		<view class="left">学校名称</view>
+		<view class="right"><input placeholder="学校名称" placeholder-class='placeholder' bindinput='input' data-i="name"></input></view>
+	</view>
+	<view class="flex">
+		<view class="left">老师人数</view>
+		<view class="right"><input placeholder="老师人数" placeholder-class='placeholder' type="number" bindinput='input' data-i="tea_count"></input></view>
+	</view>
+	<view class="flex">
+		<view class="left">学生人数</view>
+		<view class="right"><input placeholder="学生人数" placeholder-class='placeholder' type="number" bindinput='input' data-i="stu_count"></input></view>
+	</view>
+	<view class="flex">
+		<view class="left">收件地址</view>
+		<view class="right"><input placeholder="xxx省xxx市xxx区xxx路xxx号" placeholder-class='placeholder' bindinput='input' data-i="address"></input></view>
+	</view>
+	<view class="flex">
+		<view class="left">收件姓名</view>
+		<view class="right"><input placeholder="收件人姓名" placeholder-class='placeholder' bindinput='input' data-i="contact"></input></view>
+	</view>
+	<view class="flex">
+		<view class="left">联系电话</view>
+		<view class="right"><input placeholder="联系电话" placeholder-class='placeholder' type="number" bindinput='input' data-i="mobile"></input></view>
+	</view>
+	<view class="flex agree">
+		<view class="left"></view>
+		<view class="right flex">
+			<van-checkbox icon-size="10px" value="{{ postData.checked }}" bind:change="onChange">我已阅读并同意</van-checkbox> <text bindtap="showModal">《申请条款》</text>
+		</view>
+	</view>
+	<view>
+		<button class="btn {{disabled?'':'disabled'}}" bindtap="sumit" disabled="{{!disabled}}">提交审核</button>
+	</view>
+</view>
+
+<van-dialog use-slot show="{{ showModal }}" bind:close="hideModal" confirmButtonText='我知道了' closeOnClickOverlay>
+	<view class='layBox'>
+		<view class='header'>
+			《防疫用品领取协议》
+		</view>
+		<van-icon name="close" custom-class='layClose' size='21px' bind:click='hideModal' />
+		<view class='lay_content'>
+			<text class='txt' text space='emsp' decode>  该防疫用品由上海孔紫教育科技有限公司免费提供，如果贵校想要领取，须同意以下条款：\n1. 保证填写真实的老师人数和学生人数；\n2. 保证我方为学校提供的防疫用品不会私用；\n3. 保证我方为老师提供的防疫用品能够到每一位老师的手中；\n4. 保证我方为学生提供的防疫用品能够被每一位学生领取，且每人只能领取一份；\n5. 如贵方有违反以上条款，或弄虚作假的行为，贵方须退还所有物资；且我方有权向社会公开贵方的行为。</text>
+		</view>
+	</view>
+</van-dialog>
+<van-dialog id="van-dialog" />

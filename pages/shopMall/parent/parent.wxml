@@ -1,0 +1,84 @@
+<pagePublic/>
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<page class='{{showChooseBox?"pageFiexed":""}}'>
+  <view class="serachbox">
+    <view style="height:10rpx;"></view>
+    <view class="item flex">
+      <view class="left">
+        <van-search custom-class="v" value="{{condition}}" placeholder="搜索商品名称" bind:search="serachMore" bind:change="inputContent" />
+      </view>
+      <!-- <view class="right flex">
+        <view class="allbox flex" bindtap="choose">
+          <image src="../../../imgs/new/chooseicon2.png" style="width:22rpx;height:20rpx;" />
+          <view class="all" style="{{showChooseBox?'color:#FF2C56':''}}">筛选</view>
+        </view>
+      </view> -->
+    </view>
+  </view>
+  <!-- <van-tabs active="{{ active }}" bind:change="onChange" custom-class="tabs" swipe-threshold="7">
+    <van-tab title="精选">
+      <template is="list" data="{{dataList,serverUrl}}"></template>
+    </van-tab>
+    <van-tab title="零食">
+      <template is="list" data="{{dataList,serverUrl}}"></template>
+    </van-tab>
+    <van-tab title="数码">
+      <template is="list" data="{{dataList,serverUrl}}"></template>
+    </van-tab>
+    <van-tab title="化妆">
+      <template is="list" data="{{dataList,serverUrl}}"></template>
+    </van-tab>
+    <van-tab title="日用">
+      <template is="list" data="{{dataList,serverUrl}}"></template>
+    </van-tab>
+    <van-tab title="办公">
+      <template is="list" data="{{dataList,serverUrl}}"></template>
+    </van-tab>
+    <van-tab title="其他">
+      <template is="list" data="{{dataList,serverUrl}}"></template>
+    </van-tab>
+  </van-tabs> -->
+  <!-- <template name='list'> -->
+    <view class="itembox flex">
+      <view class="item" wx:for="{{dataList}}" wx:key="{{index}}" bindtap="goDetail" data-id="{{item.id}}">
+        <view class="img">
+          <image style="{{item.lefts==0||item.lefts<0?'opacity:0.5':''}}" src="{{serverUrl}}{{item.list_pic}}"></image>
+          <view class="over" wx:if="{{item.lefts==0||item.lefts<0}}">已售罄</view>
+        </view>
+        <view class="intro van-multi-ellipsis--l2">{{item.name}}</view>
+        <view class="price flex">
+          <view class="left">￥{{item.price}}</view>
+          <view class="right">剩余{{item.lefts<0?"0":item.lefts}}件</view>
+        </view>
+      </view>
+    </view>
+  <!-- </template> -->
+
+
+  <block wx:if="{{!dataList.length}}">
+    <view class="nodatabox">
+      <view class="img">
+        <image src="/imgs/new/nodata.png" style="width:300rpx;height:300rpx;" />
+      </view>
+      <view class="tip">~没有更多数据~</view>
+    </view>
+  </block>
+  <van-popup show="{{showChooseBox}}" position="top" bind:close="onClose" custom-class='popup' z-index='10'>
+    <!-- <view class="type">
+      <view class="top">年龄</view>
+      <view class="btn flex">
+        <view class="item {{type1==index?'active':''}}" bindtap="choose1" data-index="{{index}}" wx:for="{{dataType1}}" wx:key="{{index}}" style="">{{item.title}}</view>
+      </view>
+    </view> -->
+    <view class="type" style="padding-bottom:60rpx">
+      <view class="top">性别</view>
+      <view class="btn flex">
+        <view class="item {{type2==index?'active':''}}" bindtap="choose2" data-index="{{index}}" wx:for="{{dataType2}}" wx:key="{{index}}" style="">{{item.name}}</view>
+      </view>
+    </view>
+    <view class='fiexed flex'>
+      <view bindtap='reset' class="reset">重置</view>
+      <view bindtap='searchBtn' class="sure">确定</view>
+    </view>
+  </van-popup>
+</page>

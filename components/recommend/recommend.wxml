@@ -1,0 +1,26 @@
+<view class='contxt'>
+	<navigator class='li' wx:for='{{data}}' url='/{{item.type==1?"pages/bargain/active/bargain?act_no="+item.prod_no+"&inst_id="+item.prod_id+"&ope_id="+ope_id+"&from_id=0&source=31":item.type==3?"pages/shopMall/localDetail/localDetail?id="+item.prod_id:item.type==4?"pages/shopMall/cardDetail/cardDetail?id="+item.prod_id:item.type==3||item.type==6?"pages/shopMall/cardDetail/cardDetail?type=&id="+item.prod_id:item.type==5?"pages/shopMall/detail/detail?id="+item.prod_id:item.type==2?"pages/bargain/bargain?act_no="+item.prod_no+"&inst_id="+item.prod_id+"&ope_id="+ope_id+"&from_id=0&source=31":""}}'>
+		<van-image width="100%" src="{{url+item.top_pic}}" radius='5rpx' use-loading-slot lazy-load fit="widthFix">
+			<van-loading slot="loading" type="spinner" size="20" vertical />
+		</van-image>
+		<view class='footer'>
+			<view class='txt van-multi-ellipsis--l2'>{{item.name}}</view>
+			<view class='between'>
+				<view class='lf'>
+					<view class="prize">{{item.is_deposit==1?'定金':''}}￥{{item.type==2?item.price/100:item.price}}</view>
+					<view class="ori_prize">
+						<block wx:if='{{item.type==5}}'>
+							<text wx:if='{{item.jd_price}}'>京东价￥{{item.jd_price}}</text>
+							<text class='marleft' wx:if='{{item.tm_price}}'>天猫价￥{{item.tm_price}}</text>
+						</block>
+						<block wx:else>
+							<text wx:if='{{item.price!=item.ori_price&&item.ori_price!=0}}'>{{item.type==3||item.type==4?'市场价':''}}￥{{item.type==2?item.ori_price/100:item.ori_price}}</text>
+						</block>
+					</view>
+				</view>
+				<view class='rt'>已售{{item.buy_count}}件</view>
+			</view>
+			<!-- <view class='backmoney'>代言人返￥30</view> -->
+		</view>
+	</navigator>
+</view>

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-popup": "../../dist/popup/index",
+    "van-datetime-picker": "../../dist/datetime-picker/index"
+  },
+  "navigationBarTitleText": "预约信息"
+}

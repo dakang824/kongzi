@@ -1,0 +1,82 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+ <pagePublic/>
+<view class='page'>
+  <block wx:if='{{list.length}}'>
+    <navigator class='box' wx:for="{{list}}" wx:key="{{index}}" url='{{"/pages/new/pullNewUser/pullNewUser?get=true&award_id="+item.award_id+"&prizeImg="+item.pic_path+"&prizeTitle="+item.name}}'>
+      <view class='flex van-hairline--bottom'>
+        <view class='img big_img'>
+          <image src="{{serverUrl+item.pic_path}}" mode="widthFix"></image>
+          <image class="big" wx:if="{{item.draw_type==2}}" src="/imgs/new/big_prize.png" style="width:62rpx;height:59rpx;" />
+        </view>
+        <view class='rt'>
+          <view class="isjoinbox">
+            <view class='van-ellipsis' style="width:350rpx;font-size:28rpx;color:#333;font-weight:bold;margin-bottom:20rpx;">{{item.name}}</view>
+          </view>
+          <view class='gray'>截止时间：{{filter.sLeng(item.end_time)}}</view>
+          <view class='gray'>需邀新人：{{item.get_limit==""?"0":item.get_limit}}个</view>
+          <view class='gray'>已邀新人：{{item.get_count}}个</view>
+        </view>
+      </view>
+    </navigator>
+  </block>
+  <block wx:if="{{list.length==0}}">
+    <view class="prizebox">
+      <view class="circle1"></view>
+      <view class="row1">如何直接拿奖品？</view>
+      <view class="line"></view>
+      <view class="step">1. 去首页，选择想要的奖品</view>
+      <view class="step">2. 点击进入详情页</view>
+      <view class="step">3. 点击“直接拿”按钮（如下图）</view>
+      <view class="row2">
+        <view class='between operation iconbox flex'>
+          <view class="iconitem flex">
+            <van-icon name="eye-o" size="38rpx" />
+            <view class="com">12次浏览</view>
+          </view>
+          <block>
+            <view class="iconitem flex">
+              <van-icon name="good-job" size="38rpx" color="#FF2C56" />
+              <view class="com" style="color:#FF2C56">20次点赞</view>
+            </view>
+          </block>
+
+          <block>
+            <view class="iconitem flex">
+              <van-icon name="like-o" size="38rpx" />
+              <view class="com">50次收藏</view>
+            </view>
+          </block>
+
+          <view class="iconitem flex">
+            <button class="sharebtn">
+              <image src="/imgs/new/share.png" style="width:30rpx;height:30rpx;" />
+              <view class="sharetitle">分享</view>
+            </button>
+          </view>
+        </view>
+        <block>
+          <form report-submit='true'>
+            <button class="newbox" form-type='submit'>
+              <view class="">参与抽奖</view>
+              <view class="num">（1202人参与)</view>
+            </button>
+          </form>
+          <view class="remindme">
+            <van-checkbox checked-color="#FF2C56" value="{{ true }}">开奖提醒我</van-checkbox>
+          </view>
+        </block>
+        <view class='coupon between' style="background:rgba(156,96,255,.1)">
+          <view class='vCenter'>
+            <view class='img' style="background:#9C60FF">
+              <image src='/imgs/new/renwu.png' mode="widthFix" style="width:18rpx;height:18rpx;"></image>
+            </view>
+            直接获得奖品（无需参与抽奖）
+          </view>
+          <van-button color="#9C60FF" type="default" round size="mini" custom-class='btn'>直接拿</van-button>
+          <image src="../../../imgs/new/hand.png" class="hand" />
+        </view>
+        <!-- <view class="circle2"></view> -->
+      </view>
+    </view>
+  </block>
+</view>

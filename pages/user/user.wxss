@@ -1,0 +1,562 @@
+page{
+  padding-bottom: 208rpx;
+}
+.perso image {
+  border-radius: 50px;
+}
+.active_in{
+  text-align: center;
+  width: 100%;
+}
+.active_in image{
+  display: block;
+  width: 702rpx;
+  margin:30rpx auto 15rpx;
+  vertical-align: middle;
+}
+.name1 {
+  max-width: 93rpx;
+  display: inline-block;
+}
+
+.myclass button {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  line-height: 45rpx;
+}
+
+.role {
+  margin-right: 20rpx;
+  font-size: 30rpx;
+}
+
+van-tag {
+  display: flex;
+  align-items: center;
+}
+
+.tag {
+  margin-right: 20rpx;
+  padding: 4rpx 13rpx !important;
+  color: #333 !important;
+}
+
+.childbox .flex {
+  width: 30rpx;
+  height: 30rpx;
+  background: #4ecb9f;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.childbox .flex image {
+  width: 18rpx;
+  height: 18rpx;
+}
+
+.nologin {
+  width: 690rpx;
+  height: 360rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 50rpx 0px rgba(153, 153, 153, 0.2);
+  border-radius: 20rpx;
+  margin: 30rpx auto 0;
+}
+
+.nologin .row1 {
+  height: 120rpx;
+  align-items: center;
+  padding: 30rpx;
+}
+
+.nologin .row1 .tip {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: rgba(17, 17, 17, 1);
+  margin-left: 20rpx;
+}
+
+.nologin .line {
+  width: 650rpx;
+  height: 1rpx;
+  background: rgba(238, 238, 238, 1);
+  margin: 15rpx auto 0;
+}
+
+.nologin .itembox {
+  justify-content: space-around;
+  margin-top: 30rpx;
+}
+
+.nologin .itembox .item {
+  text-align: center;
+}
+
+.nologin .itembox .num {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: rgba(255, 44, 86, 1);
+}
+
+.nologin .itembox .type {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+}
+
+.login {
+  width: 690rpx;
+  padding-bottom: 30rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 50rpx 0px rgba(153, 153, 153, 0.2);
+  border-radius: 20rpx;
+  margin: 30rpx auto 0;
+}
+
+.login .row1 {
+  height: 120rpx;
+  align-items: center;
+  padding: 30rpx 22rpx 0 30rpx;
+  justify-content: space-between;
+}
+
+.login .row1 .edit {
+  background: rgba(255, 233, 238, 1);
+  border-radius: 50px;
+  font-size: 20rpx;
+  font-weight: 400;
+  color: rgba(255, 44, 86, 1);
+  text-align: center;
+  margin-top: -48rpx;
+  padding: 7rpx 20rpx;
+}
+
+.login .row1 .persobox .namebox {
+  height: 120rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 30rpx;
+}
+
+.login .row1 .persobox .namebox .name {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: rgba(17, 17, 17, 1);
+  margin-bottom: 4rpx;
+}
+
+.login .row1 .persobox .namebox .tel {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+}
+
+.rowbox.flex .between {
+  width: 96%;
+}
+
+.rowbox.flex .m {
+  background: #fe5b9d;
+}
+
+.ro {
+  margin-left: 180rpx;
+}
+
+.rowbox.flex {
+  padding-left: 177rpx;
+  margin-top: 10rpx;
+}
+
+.login .row2 {
+  width: 350rpx;
+  height: 40rpx;
+  background: rgba(245, 245, 245, 1);
+  border-radius: 20rpx;
+  /* margin: 6rpx auto 0; */
+  line-height: 40rpx;
+}
+
+.login .row2 .title1 {
+  font-size: 22rpx;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  margin-left: 27rpx;
+}
+
+.login .row2 .title2 {
+  font-size: 22rpx;
+  font-weight: 400;
+  color: #111;
+  margin-left: 10rpx;
+  text-decoration: underline;
+}
+
+.login .childrow2 {
+  width: auto;
+  height: 40rpx;
+  background: rgba(254, 92, 158, 0.1);
+  border-radius: 20rpx;
+  padding: 0 20rpx 0 5rpx;
+  margin-left: 20rpx;
+}
+
+.login .childrow2 .childbox .name {
+  font-size: 22rpx;
+  font-weight: 400;
+  color: rgba(17, 17, 17, 1);
+  margin-left: 13rpx;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+}
+
+.login .row3 {
+  width: 690rpx;
+  height: 80rpx;
+  background: rgba(255, 238, 203, 1);
+  margin-top: 30rpx;
+  padding: 0rpx 20rpx 0rpx 30rpx;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.login .row3 .row3_left {
+  height: 100%;
+  align-items: center;
+}
+
+.login .row3 .row3_left .title {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: rgba(255, 174, 0, 1);
+  margin-left: 20rpx;
+}
+
+.login .row3 .row3_right {
+  width: 120rpx;
+  height: 40rpx;
+  background: linear-gradient(90deg, rgba(255, 162, 0, 1), rgba(248, 213, 92, 1));
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 40rpx;
+  text-align: center;
+}
+
+.login .itembox {
+  justify-content: space-around;
+  margin-top: 30rpx;
+}
+
+.login .itembox .item {
+  text-align: center;
+}
+
+.login .itembox .num {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: rgba(255, 44, 86, 1);
+}
+
+.login .itembox .type {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+}
+
+.moneybox {
+  width: 690rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  margin: 0 auto;
+  justify-content: space-between;
+  box-shadow: 0px 0px 50rpx 0px rgba(153, 153, 153, 0.2);
+  padding: 30rpx 0;
+  margin-bottom: 30rpx;
+}
+
+.moneybox .moneyleft {
+  padding-left: 30rpx;
+}
+
+.moneybox .moneyleft .row1 {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #333;
+  /* margin-top: 30rpx; */
+}
+
+.moneybox .moneyleft .row2 {
+  font-size: 40rpx;
+  font-family: STXihei;
+  font-weight: bold;
+  color: #111;
+  margin-top: 26rpx;
+}
+
+.moneybox .moneyleft .row3 {
+  font-size: 22rpx;
+  font-weight: 400;
+  color: #333;
+  margin-top: 23rpx;
+}
+
+.moneyright {
+  padding-right: 30rpx;
+  justify-content: space-between;
+  flex-direction: column;
+  display: flex;
+}
+
+.moneybox .moneyright .row1{
+  font-size: 24rpx;
+}
+.moneybox .moneyright .row1 van-icon{
+  display: flex;
+  align-items: center;
+}
+.myclass {
+  height: 200rpx;
+  position: relative;
+  border-top: 20rpx solid #f5f5f5;
+}
+
+.myclass .middle {
+  width: 100%;
+  background: #f5f5f5;
+  height: 20rpx;
+  position: absolute;
+  top: 250rpx;
+  left: 0;
+}
+
+.myclass .classbox {
+  width: 690rpx;
+  margin: 0 auto;
+}
+
+.myclass .classbox .title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+  margin-top: 50rpx;
+}
+
+.myclass .classbox .line {
+  width: 690rpx;
+  height: 1rpx;
+  background: rgba(238, 238, 238, 1);
+  margin-top: 30rpx;
+}
+
+.myclass .classbox .classlist {
+  height: 180rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.myclass .classbox .classlist .detail {
+  text-align: center;
+}
+
+.myclass .classbox .classlist .detail .value {
+  font-size: 24rpx;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  margin-top: 3rpx;
+}
+
+.mask {
+  width: 750rpx;
+  height: 100vh;
+  background: rgba(0, 0, 0, 1);
+  opacity: 0.7;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+}
+
+.get_tickets {
+  width: 650rpx;
+  height: 670rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 20px;
+  position: fixed;
+  z-index: 20;
+  left: 50%;
+  top: 200rpx;
+  transform: translate(-50%);
+}
+
+.get_tickets .img {
+  width: 353rpx;
+  height: 279rpx;
+  margin: -130rpx auto 0;
+}
+
+.get_tickets .send {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: rgba(17, 17, 17, 1);
+  line-height: 56rpx;
+  text-align: center;
+}
+
+.get_tickets .way {
+  font-size: 24rpx;
+  color: rgba(102, 102, 102, 1);
+  line-height: 56rpx;
+  text-align: center;
+}
+
+.get_tickets .detail {
+  width: 590rpx;
+  height: 200rpx;
+  background: linear-gradient(-30deg, rgba(254, 77, 88, 1), rgba(253, 79, 118, 1));
+  box-shadow: 0px 0px 30rpx 0px rgba(153, 153, 153, 0.2);
+  border-radius: 10rpx;
+  margin: 35rpx auto 0;
+  position: relative;
+}
+
+.get_tickets .detail .topicon {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 0 0 50% 50%;
+  background: rgba(255, 255, 255, 1);
+  position: absolute;
+  top: -20rpx;
+  right: 160rpx;
+}
+
+.get_tickets .detail .btnicon {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50% 50% 0 0;
+  background: rgba(255, 255, 255, 1);
+  position: absolute;
+  bottom: -20rpx;
+  right: 160rpx;
+}
+
+.get_tickets .detail .midicon {
+  /* width:1rpx; */
+  height: 129rpx;
+  border: 1rpx dashed rgba(255, 255, 255, 1);
+  position: absolute;
+  top: 50%;
+  right: 180rpx;
+  transform: translate(0, -50%);
+}
+
+.get_tickets .detail .left {
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 30rpx;
+}
+
+.get_tickets .detail .left .title {
+  font-size: 38rpx;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 1);
+}
+
+.get_tickets .detail .left .userway {
+  width: 290rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 40rpx;
+}
+
+.get_tickets .detail .right {
+  margin-left: 148rpx;
+  align-items: center;
+}
+
+.get_tickets .detail .right .rightbox {
+  align-items: baseline;
+}
+
+.get_tickets .detail .right .num {
+  font-size: 44rpx;
+  font-family: STXihei;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+}
+
+.get_tickets .detail .right .unit {
+  font-size: 24rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  margin-left: 12rpx;
+}
+
+.get_tickets .getbtn {
+  width: 500rpx;
+  height: 80rpx;
+  background: linear-gradient(90deg, rgba(255, 90, 144, 1), rgba(255, 44, 86, 1));
+  border-radius: 40rpx;
+  margin: 50rpx auto 0;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 80rpx;
+}
+
+.get_tickets .getbtn1 {
+  width: 500rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  margin: 50rpx auto 0;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #ff2c56;
+  line-height: 80rpx;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 44, 86, 1);
+}
+
+.get_tickets .close {
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+  width: 30rpx;
+  height: 30rpx;
+  color: #ccc;
+  z-index: 30;
+}
+
+.btns .row1 {
+  width: 120rpx;
+  height: 50rpx;
+  background: rgba(255, 44, 86, 0.1);
+  border-radius: 25rpx;
+  line-height: 50rpx;
+  font-size: 24rpx;
+  text-align: center;
+  display: inline-block;
+  color: #FF2C56;
+}
+.btns .row1.color{
+  background:linear-gradient(90deg,rgba(255,90,144,1),rgba(255,44,86,1));
+  color: #fff;
+  margin-left: 30rpx;
+}
+swiper{
+  height: 214rpx;
+}
+.loginTip{
+  text-align: center;
+  font-size: 28rpx;
+  padding: 20rpx 0;
+}

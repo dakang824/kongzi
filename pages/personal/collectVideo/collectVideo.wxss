@@ -1,0 +1,26 @@
+@import "/pages/video/video.wxss";
+
+.progress {
+  bottom: 102rpx;
+}
+.fixed{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9;
+}
+.box_view .title {
+  text-align: center;
+  padding-left: 0;
+  padding-right: 32px;
+}
+
+.left-info {
+  bottom: 160rpx;
+}
+
+.right-list {
+  bottom: 195rpx;
+}

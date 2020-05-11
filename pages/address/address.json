@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-swipe-cell": "../../dist/swipe-cell/index",
+    "van-search": "../../dist/search/index",
+    "van-dialog": "../../dist/dialog/index"
+  },
+  "navigationBarTitleText": "设置地址"
+}

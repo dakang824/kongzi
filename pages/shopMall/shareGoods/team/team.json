@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-search": "/dist/search/index",
+    "van-dropdown-menu": "/dist/dropdown-menu/index",
+    "van-dropdown-item": "/dist/dropdown-item/index"
+  },
+  "navigationBarTitleText": "我的团队",
+  "enablePullDownRefresh": true
+}

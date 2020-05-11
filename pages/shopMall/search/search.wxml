@@ -1,0 +1,125 @@
+<pagePublic/>
+<page class='{{showChooseBox?"pageFiexed":""}}'>
+  <view class="serachbox">
+    <view style="height:10rpx;"></view>
+    <view class="item flex">
+      <view class="left">
+        <van-search custom-class="v" value="{{condition}}" placeholder="搜索商品名称" bind:search="serachMore" bind:change="inputContent" />
+      </view>
+      <!-- <view class="right flex">
+        <view class="allbox flex" bindtap="choose">
+          <image src="../../../imgs/new/chooseicon2.png" style="width:22rpx;height:20rpx;" />
+          <view class="all" style="{{showChooseBox?'color:#FF2C56':''}}">筛选</view>
+        </view>
+      </view> -->
+    </view>
+  </view>
+  <view class="itembox" wx:if="{{!showChooseBox}}">
+    <view class="item flex">
+      <view class="default" bindtap="clickDefault" style="{{show4?'color:#FF2C56':''}}">综合</view>
+      <view class="default prize flex" bindtap="clickPrize">
+        <view class="key" style="{{show1?'color:#FF2C56':''}}">热度</view>
+        <block wx:if="{{show1}}">
+          <view class="value" wx:if="{{prizeSort}}">
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;transform:rotate(180deg)" />
+            <image src="../../../imgs/new/redsanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx;transform:rotate(180deg)" />
+          </view>
+          <view class="value" wx:else>
+            <image src="../../../imgs/new/redsanjiao.png" style="width:9rpx;height:6rpx;" />
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx" />
+          </view>
+        </block>
+        <block wx:else>
+          <view class="value">
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;transform:rotate(180deg)" />
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx;" />
+          </view>
+        </block>
+      </view>
+      <view class="default prize flex" bindtap="clickTime">
+        <view class="key" style="{{show2?'color:#FF2C56':''}}">最新</view>
+        <block wx:if="{{show2}}">
+          <view class="value" wx:if="{{timeSort}}">
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;transform:rotate(180deg)" />
+            <image src="../../../imgs/new/redsanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx;transform:rotate(180deg)" />
+          </view>
+          <view class="value" wx:else>
+            <image src="../../../imgs/new/redsanjiao.png" style="width:9rpx;height:6rpx;" />
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx" />
+          </view>
+        </block>
+        <block wx:else>
+          <view class="value">
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;transform:rotate(180deg)" />
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx;" />
+          </view>
+        </block>
+      </view>
+      <view class="default prize flex" bindtap="clickCount">
+        <view class="key" style="{{show3?'color:#FF2C56':''}}">价格</view>
+        <block wx:if="{{show3}}">
+          <view class="value" wx:if="{{countSort}}">
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;transform:rotate(180deg)" />
+            <image src="../../../imgs/new/redsanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx;transform:rotate(180deg)" />
+          </view>
+          <view class="value" wx:else>
+            <image src="../../../imgs/new/redsanjiao.png" style="width:9rpx;height:6rpx;" />
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx" />
+          </view>
+        </block>
+        <block wx:else>
+          <view class="value">
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;transform:rotate(180deg)" />
+            <image src="../../../imgs/new/sanjiao.png" style="width:9rpx;height:6rpx;margin-top:4rpx;" />
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class="shopitem">
+    <view class="item flex" wx:for="{{dataList}}" wx:key="{{index}}" bindtap="goDetail" data-status="{{item.status}}" data-lefts="{{item.lefts}}" data-id="{{item.id}}">
+      <view class="left">
+        <!-- <image style="{{(item.status==2||item.lefts==0||item.lefts<0)?'opacity:0.5':''}}" src="{{serverUrl}}{{item.list_pic}}" style="" /> -->
+        <image wx:if="{{(item.status==2||item.lefts==0||item.lefts<0)}}" src="{{serverUrl}}{{item.list_pic}}" style="opacity:0.5" />
+        <image wx:else  src="{{serverUrl}}{{item.list_pic}}" style="" />
+        <view wx:if="{{(item.status==2||item.lefts==0||item.lefts<0)}}" class="over">已售罄</view>
+      </view>
+      <view class="right">
+        <view class="row1">{{item.name}}</view>
+        <view class="row2 flex">
+          <view class="price">￥{{item.price}}</view>
+          <view class="count">剩余{{item.lefts<0?"0":item.lefts}}件</view>
+          <view class="buy" wx:if="{{item.lefts==0||item.lefts<0}}" style="background:#E5E5E5">购买</view>
+          <view class="buy"  wx:else  >购买</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <block wx:if="{{!dataList.length}}">
+    <view class="nodatabox">
+      <view class="img">
+        <image src="/imgs/new/nodata.png" style="width:300rpx;height:300rpx;" />
+      </view>
+      <view class="tip">~没有更多数据~</view>
+    </view>
+  </block>
+  <van-popup show="{{showChooseBox}}" position="top" bind:close="onClose" custom-class='popup' z-index='10'>
+    <view class="type">
+      <view class="top">开奖类别</view>
+      <view class="btn flex">
+        <view class="item {{type1==index?'active':''}}" bindtap="choose1" data-index="{{index}}" wx:for="{{dataType1}}" wx:key="{{index}}" style="">{{item.title}}</view>
+
+      </view>
+    </view>
+    <view class="type" style="padding-bottom:60rpx">
+      <view class="top">奖品类别</view>
+      <view class="btn flex">
+        <view class="item {{item.isChoose?'active':''}}" bindtap="choose2" data-index="{{index}}" wx:for="{{dataType2}}" wx:key="{{index}}" style="">{{item.name}}</view>
+      </view>
+    </view>
+    <view class='fiexed flex'>
+      <view bindtap='reset' class="reset">重置</view>
+      <view bindtap='searchBtn' class="sure">确定</view>
+    </view>
+  </van-popup>
+</page>

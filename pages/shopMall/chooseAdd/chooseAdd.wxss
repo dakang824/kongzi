@@ -1,0 +1,86 @@
+page{
+  padding-bottom: 100rpx;
+}
+.box{
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  background:#fff;
+  border-bottom: 20rpx solid rgba(238,238,238,.5)
+}
+.top{
+  padding: 50rpx 0rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.top .left{
+  align-items: center;
+  margin-left: 10rpx;
+}
+.top .left .common{
+  transform:scale(0.9);
+}
+.top .right{
+  flex: 1;
+  margin-left: 30rpx;
+}
+.top .right .row1{
+  justify-content: space-between;
+  font-size: 30rpx;
+}
+.top .right .row2{
+  font-size: 26rpx;
+  margin-top: 20rpx;
+}
+
+.btm{
+  justify-content: space-between;
+  align-items: center;
+}
+.btm .left{
+  align-items: center;
+  padding: 20rpx 0rpx;
+  margin-left: 80rpx;
+  
+}
+.btm .left .common{
+  transform:scale(0.7);
+}
+.btm .left .title{
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(255,44,86,1);
+}
+.btm .right{
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  padding:28rpx 0rpx;
+
+}
+.add{
+  width:750rpx;
+  height:98rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 0px 30rpx 0px rgba(153,153,153,0.2);
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  align-items: center;
+  justify-content: center;
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(255,44,86,1);
+}
+.add>view{
+  margin-left: 20rpx;
+}
+.nodata{
+  text-align: center;
+}
+.nodata image{
+  width: 360rpx;
+  height: 360rpx;
+  margin-top:257rpx;
+}

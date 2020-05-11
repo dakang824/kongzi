@@ -1,0 +1,72 @@
+<van-dialog id="van-dialog" />
+<pagePublic/>
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class="header">
+  <view class="top flex">
+    <view class="img flex">
+      <image src="/imgs/new/tz.png" />
+    </view>
+    <view class="tip">收到一张来自好友{{filter.decode(options.name)}}送给你的抽奖券</view>
+  </view>
+  <view class="btm flex">
+    <view class="left">
+      <view class="img flex">
+        <image src="{{serverUrl}}{{options.pic_path}}" style="border-radius:50%;" />
+      </view>
+    </view>
+    <view class="right">
+      <view class="name">{{filter.decode(options.name)}}</view>
+      <view class="note">我赠送给你一张抽奖券，记得领取呀~</view>
+    </view>
+  </view>
+</view>
+<view class="btmbox">
+  <view class="itembox flex">
+    <view class="leftbox">
+      <view class="top_icon"></view>
+      <view class="btm_icon"></view>
+      <view class="middle_icon"></view>
+      <view class="typebox">
+        <view class="type">通用券</view>
+        <block wx:if="{{cancelStatus}}">
+          <view class="getbtn">已取消</view>
+        </block>
+        <block wx:if="{{!cancelStatus}}">
+          <view class="getbtn" bindtap="getTicket" wx:if="{{result==0}}">领取</view>
+          <view class="getbtn" wx:else>已领取</view>
+        </block>
+      </view>
+    </view>
+    <view class="rightbox">
+      <view class="time1 com flex">
+        <view class="notice">过期时间：
+          <text>{{options.valid_time}}</text>
+        </view>
+      </view>
+      <view class="time2 com">领取时间：{{options.get_time}}</view>
+      <view class="range com">使用范围：除特定抽奖活动外，全场通用。</view>
+    </view>
+  </view>
+</view>
+
+<!-- 弹窗 -->
+<view class="mask" wx:if="{{showMask}}" bindtap="closeMask"></view>
+<view class="prizebox" wx:if="{{showMask}}">
+  <view class="img">
+    <image src="{{serverUrl}}{{imgStr}}getPrize.png" />
+  </view>
+  <view class="row1">已成功领取！</view>
+  <view class="titlebox">
+    <view class="title">奖天天每周上线数百件奖品</view>
+    <view class="title">免费抽！免费拿！</view>
+    
+  </view>
+  <view class="row2">现金、实物商品、网红物品，应有尽有！</view>
+  <navigator  url='/pages/new/waitPrizes/waitPrizes' hover-class='none'>
+    <view class="row3">点击抽奖</view>
+  </navigator>
+  <image src="../../../imgs/close.png" class="close" bindtap="closeMask" />
+</view>
+
+
+<backHome/>

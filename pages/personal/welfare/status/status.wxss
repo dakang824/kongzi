@@ -1,0 +1,183 @@
+.page {
+  background-color: #fff;
+  border-top: 1rpx solid #eee;
+}
+
+.txt1 {
+  font-size: 28rpx;
+  margin: 123rpx 50rpx 40rpx 50rpx;
+  line-height: 40rpx;
+}
+
+.inner {
+  margin: 0 50rpx;
+}
+
+.van-button {
+  display: block !important;
+}
+
+.customer {
+  position: absolute;
+  width: 120rpx;
+  height: 50rpx;
+  background: rgba(237, 246, 255, 1);
+  border-radius: 25rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #4da5fc;
+  line-height: 50rpx;
+  top: 50rpx;
+  right: 50rpx;
+}
+
+.red {
+  color: #ff2727;
+}
+
+.customer image {
+  width: 24rpx;
+  height: 24rpx;
+  vertical-align: middle;
+}
+
+.title {
+  margin-top: 138rpx;
+  display: flex;
+  align-items: center;
+}
+
+.title .inst_name {
+  font-size: 48rpx;
+  font-weight: 800;
+}
+
+.title .logo {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 31rpx;
+}
+
+.tip {
+  font-size: 24rpx;
+  color: #999;
+  display: flex;
+  margin: 23rpx 0;
+}
+
+.underline {
+  color: #4da5fc;
+  text-decoration: underline;
+  margin-left: 5rpx;
+}
+
+.txt {
+  font-size: 28rpx;
+  margin: 123rpx 50rpx 300rpx 50rpx;
+  text-indent: 58rpx;
+  line-height: 40rpx;
+}
+.btn_nav{
+  display: flex;
+  justify-content: flex-end;
+}
+.btn_sumit {
+  width: 500rpx;
+  height: 82rpx;
+  margin: 60rpx auto 100rpx;
+}
+
+.btn_sumit .btn_color {
+  height: 82rpx;
+  line-height: 80rpx;
+}
+
+.qrcode {
+  width: 100%;
+  text-align: center;
+}
+
+.qrcode .vCenter {
+  justify-content: center;
+  font-size: 27rpx;
+}
+
+van-button button {
+  margin-left: 30rpx;
+  min-width: 140rpx;
+  line-height: 46rpx;
+  height: 46rpx;
+  border-radius: 12rpx;
+}
+
+.qrcode .small {
+  color: #949494;
+  font-size: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.qrcode image {
+  width: 240rpx;
+  height: 240rpx;
+  display: block;
+  margin: auto;
+}
+
+.derivemodal-title .derivemodal-pic {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 690rpx;
+  height: 200rpx;
+}
+
+.derivemodal-content view {
+  height: 50rpx;
+  line-height: 50rpx;
+  width: 200rpx;
+  font-size: 32rpx;
+  font-family: PingFang-SC-Bold;
+  font-weight: bold;
+  color: rgba(153, 153, 153, 1);
+}
+
+.derivemodal-content {
+  display: flex;
+  padding: 50rpx 30rpx;
+}
+
+.linell {
+  padding: 10rpx 30rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  color: rgba(153, 153, 153, 1);
+}
+
+.btn {
+  width: 100%;
+}
+
+.van-button--small {
+  min-width: 135rpx !important;
+}
+
+.btn van-button button {
+  width: 80%;
+  margin: 45rpx auto;
+  height: 82rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+}
+
+.t .van-icon {
+  color: #fff;
+}
+
+.topmar {
+  padding: 100rpx 50rpx 0;
+  font-size: 28rpx;
+}
+
+.inner {
+  max-height: calc(100vh - 200rpx);
+}

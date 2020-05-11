@@ -1,0 +1,144 @@
+<import src="../../template/loading/loading.wxml" />
+<loading-top id="loading" />
+<!-- <dk-tabbar tabBar="{{tabBar}}"></dk-tabbar> -->
+<page class='{{show?"hide":""}}'>
+  <view class='headTopNav {{show?"fixed":""}}' id='headTopNav'>
+    <navigator url='/pages/address/address' hover-class="none">
+      <view class='address'>
+        <view class='vCenter t'>
+          <text class='text_hidden'>{{addressName}}</text>
+          <van-icon name="arrow" />
+        </view>
+        <view style='float:right;font-size:29rpx;' class='vCenter'>
+          <text>{{province}}</text>
+          <!-- <van-icon name="location-o" /> -->
+          <image src='/imgs/address_img.png' class='address_img' mode='widthFix'></image>
+        </view>
+      </view>
+    </navigator>
+    <van-search class='cancel' value="{{ getActsNearby.condition }}" placeholder="{{tabInd==0?'搜索机构名称':'搜索乐园名称'}}" use-action-slot background='transparent' bind:clear='clearSearch' bind:search='setSearchValue' bind:change='search'>
+      <view slot="action" bind:tap="togglePopup" class='screen'>
+        <view>
+          <image src='../../imgs/screen.png'></image>筛选</view>
+      </view>
+    </van-search>
+    <view class='triangle-up' wx:if="{{show}}"></view>
+  </view>
+  <pagePublic noFixed/>
+  <!-- <van-tabs border='{{!isFixed}}' active="{{ tabInd }}" swipeable color="{{isFixed?'#fff':'#FF2C56'}}" bind:change="onTab" sticky bind:scroll='scroll' custom-class='{{isFixed?"isFixed":""}}'>
+    <van-tab title="教育机构">
+      <view class='data_box'>
+        <template is="list" data="{{rootUrl:rootUrl,list:list,tabInd:tabInd,noData1:noData1,tab:1}}"></template>
+      </view>
+    </van-tab>
+    <van-tab title="儿童乐园">
+      <block wx:if='{{!show}}'>
+        <view class='data_box'>
+          <template is="list" data="{{rootUrl:rootUrl,list:parks,tabInd:tabInd,noData:noData,tab:2}}"></template>
+        </view>
+      </block>
+    </van-tab>
+  </van-tabs> -->
+  <block wx:if='{{tabInd}}'>
+    <template is="list" data="{{rootUrl:rootUrl,list:parks,tabInd:tabInd,noData:noData,tab:2}}"></template>
+  </block>
+  <block wx:else>
+    <template is="list" data="{{rootUrl:rootUrl,list:list,tabInd:tabInd,noData1:noData1,tab:1}}"></template>
+  </block>
+</page>
+
+<template name='list'>
+  <block wx:if="{{list.length}}">
+    <van-transition custom-class="block" name='fade-up' wx:for="{{ list }}" wx:key='{{index}}' duration="{{ { enter: 1000 } }}">
+      <navigator url='{{tabInd?"/pages/ticket/parkIndex/parkIndex?park_id="+item.id:"/pages/nearbydetail/nearbydetail?id="+item.inst_id+"&online="+item.online}}'>
+        <view class='box flex' wx:key="index">
+          <view class='list_lf'>
+            <image class="box_left" lazy-load src='{{ item.logo?item.logo:rootUrl+"data/instManageImg/wuzhaop.png" }}' binderror='{{tab==1?"errorImg":"errorImg1"}}' data-i='{{index}}'></image>
+            <view class='label' wx:if='{{!tabInd&&item.isUnionMember}}'>
+              <view class='arg'></view>
+              {{item.isUnionMember?'孔紫联盟成员':''}}
+            </view>
+          </view>
+          <view class='box_right'>
+            <view>
+              <text class='name'>{{ item.name }}</text>
+              <text class='num'>({{item.online==1?"线上机构":(item.branch_count||item.branches)+'个'+(tabInd==1?'园区':'校区')}})</text>
+            </view>
+            <view class='between box-t'>
+              <view class='flex'>
+                <view class='t' wx:if='{{!tabInd&&item.category_name!=null}}'>{{item.category_name}}</view>
+                <view class='t'>{{item.age_from}}~{{item.age_to}}岁</view>
+              </view>
+              <view>
+                <van-icon name="location-o" /> {{item.online==1?'0km':item.mindis+'~'+item.maxdis+'km'}}</view>
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </van-transition>
+    <block wx:if='{{tabInd}}'>
+      <block wx:if='{{noData}}'>
+        <van-divider contentPosition="center" dashed wx:if='{{list.length>3}}' customStyle='padding:20rpx 150rpx;'>已加载完毕</van-divider>
+      </block>
+      <block wx:else>
+        <view class='loading'>
+          <van-loading type="spinner" size='30rpx' /> 努力加载中...
+        </view>
+      </block>
+    </block>
+    <block wx:if='{{tabInd==0}}'>
+      <block wx:if='{{noData1}}'>
+        <van-divider contentPosition="center" dashed wx:if='{{list.length>3}}' customStyle='padding:20rpx 150rpx;'>已加载完毕</van-divider>
+      </block>
+      <block wx:else>
+        <view class='loading'>
+          <van-loading type="spinner" size='30rpx' /> 努力加载中...
+        </view>
+      </block>
+    </block>
+  </block>
+  <block wx:else>
+    <view class='noData'>~ 暂无更多数据 ~</view>
+  </block>
+</template>
+<van-popup show="{{show}}" position="top" bind:close="onClose" custom-class='popup' z-index='1'>
+  <scroll-view scroll-y style="height:{{!tabInd?scrollHeight-40+'px':'auto'}};">
+    <view style='padding:0 30rpx 100rpx;'>
+      <block wx:if='{{!tabInd}}'>
+        <view class='title'>距离范围</view>
+        <view>
+          <van-slider value="{{distance}}" use-button-slot bind:drag="onDrag" active-color="#FF2C56">
+            <view class="custom-button" slot="button">
+              <view class='white'></view>
+              <view class='txt'>{{getActsNearby.distance?getActsNearby.distance/1000+'公里':'全部'}}</view>
+            </view>
+          </van-slider>
+        </view>
+        <view class='title' style="margin-top:70rpx;">年龄阶段</view>
+        <view class='block clearfix'>
+          <view class='li {{item.checked?"active":""}}' wx:for='{{age}}' data-value='{{index}}' bindtap='ageChange'>
+            {{item.name}}
+          </view>
+        </view>
+        <view class='title' style='margin-top:32rpx;'>机构类型</view>
+        <view class='block clearfix'>
+          <view class='li {{item.value==getActsNearby.category?"active":""}}' data-category="{{ item.value }}" wx:for="{{ categorys }}" wx:key="index" bindtap='choose_inst'>
+            {{item.name}}
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class='title' style="margin-top:70rpx;">年龄阶段</view>
+        <view class='block clearfix'>
+          <view class='li {{item.checked?"active":""}}' wx:for='{{age1}}' data-value='{{index}}' bindtap='ageChange1'>
+            {{item.name}}
+          </view>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+  <view class='fiexed'>
+    <view bindtap='reset'>重置</view>
+    <view bindtap='confirm'>确定</view>
+  </view>
+</van-popup>

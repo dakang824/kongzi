@@ -1,0 +1,39 @@
+.layer {
+  border-radius: 20rpx;
+  position: relative;
+}
+
+.layer .tit {
+  text-align: center;
+  font-size: 35rpx;
+  color: #333;
+  font-weight: bold;
+  padding: 50rpx 0;
+}
+
+van-icon {
+  display: flex;
+  align-items: center;
+}
+
+.close {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  color: #eee;
+}
+
+.layer image {
+  width: 490rpx;
+  height: 490rpx;
+  padding: 0 55rpx 55rpx;
+}
+
+.gray {
+  color: #999 !important;
+}
+
+@import "/pages/user/cardTicket/cardTicket.wxss";
+.sendbox .right .send{
+  width: auto;
+}

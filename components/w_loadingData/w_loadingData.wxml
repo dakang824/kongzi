@@ -1,0 +1,8 @@
+<block wx:if='{{noData}}'>
+	<van-divider contentPosition="center" dashed customStyle='padding:0 150rpx 20rpx'>已加载完毕</van-divider>
+</block>
+<block wx:else>
+	<view class="flex">
+		<van-loading size="20px" type="spinner">加载中...</van-loading>
+	</view>
+</block>

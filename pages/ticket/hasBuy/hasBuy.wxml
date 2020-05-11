@@ -1,0 +1,38 @@
+<view class="chooseBox flex">
+    <view class="tic flex">
+        <view class="type">门票</view>
+        <van-icon name="arrow-down" custom-class='icon' color="#0096FF" size="12px" style="margin-left:10rpx;" />
+    </view>
+    <view class="middle"></view>
+    <view class="tic flex">
+        <view class="type">时间</view>
+        <van-icon name="arrow-down" custom-class='icon' color="#0096FF" size="12px" style="margin-left:10rpx;" />
+    </view>
+</view>
+<view class="listbox">
+    <view class="itembox" wx:for="{{3}}">
+        <view class="title flex">
+            <view class="left flex">
+                <image src="/imgs/new/rank_4.png" style="width:44rpx;height:44rpx;" />
+                <view class="name">《你看起来好像很好吃》</view>
+            </view>
+            <view class="right">已完成</view>
+            <!-- <view class="right no">未完成</view> -->
+        </view>
+        <view class='detailbox flex'>
+            <view class="imgbox">
+                <image src="/imgs/new/lottery.png" style="width:100rpx;height:100rpx;" />
+            </view>
+            <view class="detail">
+                <view class="value">类型：家庭套票</view>
+                <view class="value">总价：1000元</view>
+                <view class="value">套票：共5次，剩余3次</view>
+                <view class="value">使用期限：2019/9/23-2020/9/22</view>
+                <view class="value">两大一小3张票，一年内可用5次</view>
+                <view class="value">地址：上海市宝山区逸仙路华滋奔腾大厦A1302</view>
+                <!-- <van-button round type="info" custom-class="send">转赠</van-button> -->
+                <view class="send1">查看详情</view>
+            </view>
+        </view>
+    </view>
+</view>

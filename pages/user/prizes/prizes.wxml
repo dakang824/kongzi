@@ -1,0 +1,41 @@
+<pagePublic/>
+<van-dialog id="van-dialog" />
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<block wx:if='{{list.length>0}}'>
+  <view class='box' wx:for='{{list}}' wx:key="index">
+    <van-panel footer-class="footer" use-footer-slot>
+      <view class='content' bindtap='viewImg' data-img='{{rootUrl+item.qr_path}}'>
+        <image src='{{rootUrl+item.prize_pic_path}}'></image>
+        <view class='rt'>
+          <view>奖品名称:
+            <text>{{item.prize_name}}</text>
+          </view>
+          <view>获奖时间:
+            <text>{{filter.sliceTime(item.create_time)}}</text>
+          </view>
+          <view class='van-multi-ellipsis--l3'>有效时间:
+            <text>{{filter.sliceTime(item.valid_to)}}</text>
+          </view>
+          <view class='van-multi-ellipsis--l3' wx:if='{{item.get_time}}'>领取时间:
+            <text>{{filter.sliceTime(item.get_time)}}</text>
+          </view>
+        </view>
+      </view>
+      <view slot="footer">
+        <view class='flex'>
+          <view>奖品编号：{{item.code}}</view>
+          <van-button disabled='{{item.status==1?false:true}}' size="small" type="primary" bind:click='goLuck' data-i='{{index}}' round custom-class='{{item.status==1?"btn_color":"b_color"}}'>{{item.status==1?'去':'已'}}领取</van-button>
+        </view>
+      </view>
+    </van-panel>
+  </view>
+</block>
+<block wx:else>
+  <view class='noData'>~ 没有更多数据 ~</view>
+</block>
+<van-dialog use-slot title="领取介绍" show="{{ show }}" bind:close="onClose">
+  <view class='c'>
+    <view class='txt' wx:if='{{t.get_intro}}'>{{t.get_intro}}</view>
+    <image src="{{rootUrl+t.qr_path}}" />
+  </view>
+</van-dialog>

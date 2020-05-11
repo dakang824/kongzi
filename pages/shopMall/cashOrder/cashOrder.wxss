@@ -1,0 +1,113 @@
+@import "/pages/shopMall/shareGoods/shareGoods";
+@import "/pages/moneyDetail/moneyDetail.wxss";
+
+.picker {
+  border: 1px solid rgba(251, 39, 60, 1);
+  color: #fb273c;
+}
+
+.timeSelect {
+  padding: 30rpx;
+}
+
+.van-tab--active {
+  font-size: 36rpx !important;
+  font-weight: 500 !important;
+  color: rgba(17, 17, 17, 1) !important;
+  font-family: PingFang !important;
+}
+
+.van-tabs__line {
+  width: 47rpx !important;
+  left: 5% !important;
+  background: rgba(255, 162, 0, 1) !important;
+  border-radius: 5rpx !important;
+}
+
+.item {
+  width: 690rpx;
+  height: 216rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 20rpx;
+  margin: 25rpx auto 25rpx;
+  box-shadow: 0px 0px 30rpx 0px rgba(153, 153, 153, 0.3);
+}
+
+.top {
+  justify-content: space-between;
+  height: 83rpx;
+  align-items: center;
+  padding: 0 26rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.top .time {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: rgba(97, 97, 97, 1);
+}
+
+.top .status {
+  font-size: 28rpx;
+  color: rgba(250, 35, 53, 1);
+}
+
+.top .status.green {
+  color: green;
+}
+
+.btm {
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30rpx;
+  padding: 0 30rpx;
+}
+
+.btm .left {
+  align-items: center;
+}
+
+.btm .left .name {
+  margin-left: 25rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: rgba(44, 44, 44, 1);
+}
+
+.btm .mid {
+  font-size: 23rpx;
+  font-weight: 500;
+  color: #999;
+  margin:10rpx 0 0 25rpx;
+}
+
+.btm .right .money {
+  font-size: 26rpx;
+  font-weight: 800;
+  /* color: rgba(250, 35, 53, 1); */
+  color: #999;
+  text-align: right;
+}
+
+.btm .right .title {
+  font-size: 23rpx;
+  font-weight: 500;
+  
+  text-align: right;
+  margin: 10rpx 0 0;
+}
+
+.nodatabox .img {
+  text-align: center;
+  margin-top: 240rpx;
+  width: 100%;
+}
+
+.nodatabox .tip {
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 54rpx;
+  margin-top: 30rpx;
+}

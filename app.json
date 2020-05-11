@@ -1,0 +1,216 @@
+{
+  "pages": [
+    "pages/new/index/index",
+    "pages/unions/unions",
+    "pages/new/getPrize/getPrize",
+    "pages/new/getGift/list",
+    "pages/new/luckyDetail/luckyDetail",
+    "pages/new/waitPrizes/waitPrizes",
+    "pages/new/historyPrize/historyPrize",
+    "pages/new/lottery/lottery",
+    "pages/new/getTicket/getTicket",
+    "pages/new/subsidy/subsidy",
+    "pages/order/index/index",
+    "pages/order/share/share",
+    "pages/getPrize/prizeTicket/prizeTicket",
+    "pages/getPrize/ticketDetail/ticketDetail",
+    "pages/getPrize/ticketList/ticketList",
+    "pages/ticket/index/index",
+    "pages/ticket/myTickets/myTickets",
+    "pages/ticket/ticketSend/ticketSend",
+    "pages/ticket/ticketDetail/ticketDetail",
+    "pages/ticket/indexTicketDetail/indexTicketDetail",
+    "pages/ticket/parkIndex/parkIndex",
+    "pages/ticket/discountTicket/discountTicket",
+    "pages/ticket/cardTicket/cardTicket",
+    "pages/user/myDraws/myDraws",
+    "pages/user/myCollects/myCollects",
+    "pages/user/cardTicket/cardTicket",
+    "pages/user/cardTurn/cardTurn",
+    "pages/user/course/course",
+    "pages/user/edit/edit",
+    "pages/user/advert/advert",
+    "pages/user/cardSend/cardSend",
+    "pages/new/recharge/recharge",
+    "pages/new/pullNewUser/pullNewUser",
+    "pages/new/pullNewUser/directGet/directGet",
+    "pages/new/CashNewUser/CashNewUser",
+    "pages/new/sharePage/sharePage",
+    "pages/reservestatus/reservestatus",
+    "pages/index/index",
+    "pages/taskPage/taskPage",
+    "pages/setup/setup",
+    "pages/address/address",
+    "pages/select_city/select_city",
+    "pages/nearbydetail/nearbydetail",
+    "pages/nearby/nearby",
+    "pages/reserve/reserve",
+    "pages/user/user",
+    "pages/user/feedback/feedback",
+    "pages/user/prizes/prizes",
+    "pages/rebate/rebate",
+    "pages/rebate/rebate_detail/index",
+    "pages/rebate/rebate_detail/detail/index",
+    "pages/activity/activity",
+    "pages/moneyDetail/moneyDetail",
+    "pages/cash/cash",
+    "pages/cash/progress/progress",
+    "pages/video/video",
+    "pages/video/collect/collect",
+    "pages/video/virusDetail/virusDetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#FA2335",
+    "navigationBarTitleText": "孔紫家长社区",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f3f3f3"
+  },
+  "subpackages": [
+    {
+      "root": "pages/bargain",
+      "pages": [
+        "bargain",
+        "bargain_from/index",
+        "courses/courses",
+        "rebate/rebate",
+        "meet/index",
+        "active/bargain",
+        "tempfile/tempfile",
+        "select/select",
+        "tempfile/detail/detail",
+        "tempfile/previewImage/previewImage"
+      ]
+    },
+    {
+      "root": "pages/selCourseCard",
+      "pages": [
+        "selCourseCard",
+        "submitFrom/submitFrom",
+        "CourseList/CourseList",
+        "Cashback/Cashback",
+        "exchangeCard/exchangeCard"
+      ]
+    },
+    {
+      "root": "pages/personal",
+      "pages": [
+        "notice/notice",
+        "collectVideo/collectVideo",
+        "welfare/welfare",
+        "welfare/from/from",
+        "welfare/status/status"
+      ]
+    },
+    {
+      "root": "pages/shopMall",
+      "pages": [
+        "mother/baby",
+        "goodThings/goodThings",
+        "search/search",
+        "child/child",
+        "parent/parent",
+        "detail/detail",
+        "sureOrder/sureOrder",
+        "add/add",
+        "chooseAdd/chooseAdd",
+        "card/card",
+        "cardDetail/cardDetail",
+        "chooseCard/chooseCard",
+        "local/local",
+        "localDetail/localDetail",
+        "shareGoods/shareGoods",
+        "shareGoods/main/main",
+        "shareGoods/bonus/bonus",
+        "shareGoods/account/account",
+        "shareGoods/team/team",
+        "cash/cash",
+        "cashOrder/cashOrder"
+      ]
+    }
+  ],
+  "tabBar": {
+    "selectedColor": "#FF2C56",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/new/index/index",
+        "text": "首页",
+        "iconPath": "imgs/home.png",
+        "selectedIconPath": "imgs/home_active.png"
+      },
+      {
+        "pagePath": "pages/video/video",
+        "iconPath": "imgs/child.png",
+        "selectedIconPath": "imgs/child_active.png",
+        "text": "萌娃"
+      },
+      {
+        "pagePath": "pages/order/index/index",
+        "text": "订单",
+        "iconPath": "imgs/new/order.png",
+        "selectedIconPath": "imgs/new/order_active.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "imgs/user.png",
+        "selectedIconPath": "imgs/user_active.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "推荐最近的活动信息"
+    }
+  },
+  "usingComponents": {
+    "van-picker": "dist/picker/index",
+    "van-icon": "dist/icon/index",
+    "van-row": "dist/row/index",
+    "van-col": "dist/col/index",
+    "van-nav-bar": "dist/nav-bar/index",
+    "van-button": "dist/button/index",
+    "van-cell": "dist/cell/index",
+    "van-cell-group": "dist/cell-group/index",
+    "van-toast": "dist/toast/index",
+    "van-dialog": "dist/dialog/index",
+    "van-checkbox": "dist/checkbox/index",
+    "van-checkbox-group": "dist/checkbox-group/index",
+    "van-popup": "dist/popup/index",
+    "van-action-sheet": "dist/action-sheet/index",
+    "van-field": "dist/field/index",
+    "van-tab": "dist/tab/index",
+    "van-tabs": "dist/tabs/index",
+    "loading-top": "dist/loading_top/index",
+    "loading": "dist/loading_top/index",
+    "van-radio": "dist/radio/index",
+    "van-switch": "dist/switch/index",
+    "van-radio-group": "dist/radio-group/index",
+    "van-divider": "dist/divider/index",
+    "van-loading": "dist/loading/index",
+    "van-stepper": "dist/stepper/index",
+    "van-datetime-picker": "dist/datetime-picker/index",
+    "van-tag": "dist/tag/index",
+    "van-count-down": "dist/count-down/index",
+    "van-panel": "dist/panel/index",
+    "van-overlay": "dist/overlay/index",
+    "van-search": "/dist/search/index",
+    "van-transition": "dist/transition/index",
+    "van-collapse": "dist/collapse/index",
+    "van-collapse-item": "dist/collapse-item/index",
+    "van-image": "dist/image/index",
+    "pagePublic": "components/PagePublic/PagePublic",
+    "backHome": "components/backHome/backHome",
+    "share": "components/share/share",
+    "shareMoney": "components/shareMoney/shareMoney",
+    "dk-tabbar": "components/tabbar/index"
+  },
+  "networkTimeout": {
+    "request": 15000,
+    "downloadFile": 15000
+  },
+  "sitemapLocation": "sitemap.json"
+}

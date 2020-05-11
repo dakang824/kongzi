@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-search": "../../dist/search/index",
+    "w_loadingData": "../../components/w_loadingData/w_loadingData"
+  },
+  "navigationBarTitleText": "选择课程",
+  "enablePullDownRefresh": true
+}

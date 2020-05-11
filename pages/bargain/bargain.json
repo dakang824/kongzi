@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-slider": "../../dist/slider/index",
+    "van-popup": "../../dist/popup/index",
+    "van-notify": "../../dist/notify/index"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "课程详情"
+}

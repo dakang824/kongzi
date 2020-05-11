@@ -1,0 +1,13 @@
+<view class="box">
+  <view>通知管理</view>
+  <view class="between li" wx:for='{{d}}'>
+    <view class="vCenter">
+      <view class="circle"></view>
+      <view>{{item.name}}</view>
+    </view>
+    <view>
+      <van-switch size="24px" checked="{{item.istrue}}" active-color="#FE568C" inactive-color="#EEEEEE" bind:change="onChange" data-i="{{item}}"/>
+    </view>
+  </view>
+</view>
+<text class="tip" decode='{{true}}' space>注：只有勾选了“总保持以上选择，不再询问”才能长期通知，否则只能完成一次通知。\n如未勾选，可点击上方按钮，再次选择。</text>

@@ -1,0 +1,134 @@
+<pagePublic/>
+<view wx:if="{{ reserve_go }}">
+  <view class='headTopNav'>
+  </view>
+  <view class='com_address'>
+    <image src='{{ inst_logo }}' class='bg' mode='scaleToFill'></image>
+    <view class='com_address_right'>
+      <view class='com title van-multi-ellipsis--l2'>{{ inst_name }}</view>
+      <view class='address'>
+        <image src='../../imgs/address.png'></image>
+        {{ inst_address }}
+      </view>
+    </view>
+  </view>
+  <view class='content'>
+    <form bindsubmit='reservesubmit'>
+      <view class='session'>
+        <text><text class='red'>*</text> 联系电话:</text>
+        <!-- <view class='con'>{{ mobile }}</view> -->
+        <input wx:if='{{mobile||!errPhone}}' placeholder='请填写您的联系电话' value='{{mobile}}' class='con con1' style='margin-left:0' type='number' focus='{{true}}' bindinput='inputPhone'></input>
+        <button class='phone_btn' open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber" wx:else>授权手机号</button>
+      </view>
+      <view>
+        <view class='child'>
+          <text class='red'>*</text>孩子信息:
+          <text class='tip' wx:if='{{!children.length}}'>(请添加孩子信息)</text>
+          <text class='tip' wx:else>(请选择一个孩子)</text>
+        </view>
+        <view class='aboutchild'>
+          <view class="addchild childdata {{ child_no == item.no ? 'checked' : ''}}" wx:for="{{ children }}" wx:key="index" bindtap='choosechild' data-child="{{ item}}">
+            <text style='float: left;'>{{ item.name }}</text>
+            <text style='float: left; margin-left: 20rpx;'>({{ item.gender }})</text>
+            <text style='float: right;'>{{ item.age }}岁</text>
+            <!-- 
+            <van-icon name="close" custom-class='close' bind:click='delStudent'/>   -->
+          </view>
+          <view class='addchild' bindtap='gosetup' data-title="添加孩子" data-id='4'>
+            <image src='../../imgs/add.png'></image>
+            <text>添加孩子信息</text>
+          </view>
+        </view>
+      </view>
+
+      <view class='session xiaoqu relative'>
+        <text><text class='red'>*</text>到访校区:</text>
+        <view class='con' bindtap='changeschool'>
+          {{ schoolchange }}
+          <image src='../../imgs/down.png' class='down' style='transform: rotate({{ rotate_deg }}deg)'></image>
+        </view>
+        <!-- 弹出校区选择 -->
+        <view class='schoolchange' wx:if="{{ schoolshow }}" style='height: {{ Height }}rpx;'>
+          <view class='sch_box' wx:for="{{ branches }}" wx:key="index" bindtap='chooseschool' data-branch_no="{{ item.branch_no }}" data-name="{{ item.name }}">
+            {{ item.name }}
+          </view>
+        </view>
+      </view>
+
+      <view class='session'>
+        <text style='min-width:150rpx;'><text class='red'>*</text>到访时间:</text>
+        <view class='con' bindtap='changetime'>
+          {{ timechange }}
+          <image src='../../imgs/right.png' class='right'></image>
+        </view>
+      </view>
+      <view class='session beizhu'>
+        <text style='min-width:150rpx'>备注信息:</text>
+        <input placeholder='请填写备注信息' name="remark" bindinput="input"></input>
+      </view>
+      <button form-type='submit' class="btn_submit {{dis_status? '' : 'disabled_T'}}" disabled='{{ dis_status }}'>提交</button>
+    </form>
+  </view>
+</view>
+<view wx:if="{{ reserve_order }}">
+  <view class='headTopNav'>
+
+  </view>
+  <view class='com_address'>
+    <image src='{{ pic_path }}' class='bg' mode='scaleToFill'></image>
+    <view class='com_address_right'>
+      <view class='profile'>{{ title }}</view>
+      <view class='price'>￥{{ amount/100 }}</view>
+      <view class='com'>
+        <image src='../../imgs/yuan.png'></image>
+        {{ inst_name }}
+      </view>
+    </view>
+  </view>
+  <view class='content'>
+    <form bindsubmit='orderreservesubmit'>
+      <view class='session'>
+        <text>孩子姓名:</text>
+        <view class='con'>{{ child_name }}</view>
+      </view>
+      <view class='session xiaoqu relative'>
+        <text>孩子年龄:</text>
+        <view class='con'>{{ child_age }}</view>
+      </view>
+      <view class='session xiaoqu relative'>
+        <text>联系电话:</text>
+        <view class='con'>{{ mobile }}</view>
+      </view>
+      <view class='session xiaoqu relative'>
+        <text>到访校区:</text>
+        <view class='con'>{{data.branch_name }}</view>
+      </view>
+      <view class='session'>
+        <text style='min-width:150rpx;'><text class='red'>*</text> 到访时间:</text>
+        <view class='con' bindtap='changetime'>
+          {{ timechange?timechange:'请选择到访时间' }}
+          <image src='../../imgs/right.png' class='right'></image>
+        </view>
+      </view>
+      <view class='session'>
+        <text>备注信息:</text>
+        <input placeholder='请填写备注信息' name="remark" class='con' bindinput="input" style='margin-left:0;' />
+      </view>
+      <button form-type='submit' class="btn_submit btn_submit_order {{(timechange)?'disabled_T':''}}" disabled='{{ !(timechange)}}'>提交</button>
+    </form>
+  </view>
+</view>
+<van-popup show="{{ successshow}}" bind:close="onClose">
+  <view class='success'>
+    <image src='../../imgs/close.png' bindtap='close' class='close close1'></image>
+    <image src='../../imgs/success.png' class='success_img'></image>
+    <text>恭喜您 您已预约成功 ~</text>
+    <button class='btn_back' catchtap='backhome' wx:if="{{ reserve_go }}">回到机构主页</button>
+    <button class='btn_back' catchtap='backorder' wx:if="{{ reserve_order }}">返回订单记录</button>
+    <button class='btn_into' catchtap='intoreserve'>进入预约列表</button>
+  </view>
+</van-popup>
+<van-popup show="{{ timeshow}}" bind:close="onClose" position='bottom' custom-class='timeShow'>
+  <van-datetime-picker type="datetime" value="{{ currentDate }}" min-date="{{ minDate }}" max-date="{{ maxDate }}" bind:input="onInput" bind:confirm='confirm' bind:cancel='onClose' />
+</van-popup>
+<van-toast id="van-toast" />

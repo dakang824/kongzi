@@ -1,0 +1,20 @@
+<view class="form">
+  <van-cell-group border="{{ false }}">
+    <van-field value="{{ name }}" clearable label="收货人" placeholder="请输入收货人姓名" bind:input="childName" maxlength="7" />
+    <van-field value="{{mobile }}" clearable type="number " label="手机号码" placeholder="请输入手机号码" bind:input="childPhone" type="number" maxlength="11" />
+    <van-field value="{{ address }}" clearable label="详细地址" type="textarea" maxlength="90" placeholder="如街道、小区、门牌号等" bind:input="childAddress" autosize input-class='{{platform?"ios_textarea":child_address?"":"android_textarea"}}' />
+  </van-cell-group>
+</view>
+<!-- <van-switch
+  checked="{{ checked }}"
+  active-color="#07c160"
+  inactive-color="#ee0a24"
+/> -->
+<view class="set flex" wx:if='{{type!=3}}'>
+  <view class="left">设为默认地址</view>
+  <view class="right">
+    <van-switch checked="{{ isdefault }}" size="50rpx" bind:change="onChange" active-color="#FF2C56" inactive-color="#EEEEEE" />
+  </view>
+</view>
+<pagePublic noFixed/>
+<view class="subit active" bindtap="sure">保存</view>

@@ -1,0 +1,11 @@
+.flex{
+  display: flex;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #999;
+  padding: 25rpx 0;
+}
+.van-loading__spinner--spinner{
+  width: 15px;
+  height: 15px;
+}

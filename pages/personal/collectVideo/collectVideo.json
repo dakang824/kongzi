@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh": false,
+  "navigationBarBackgroundColor": "#000",
+  "navigationBarTitleText": "孔紫小视频",
+  "disableScroll": true,
+  "navigationStyle": "custom"
+}

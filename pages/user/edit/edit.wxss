@@ -1,0 +1,284 @@
+.flex {
+  display: flex;
+}
+
+.topline {
+  width: 750rpx;
+  height: 1px;
+  background: rgba(238, 238, 238, 1);
+}
+.box_save{
+  padding-bottom:80rpx; 
+}
+.close {
+  position: absolute !important;
+  right: 30rpx;
+  top: 30rpx;
+}
+.sendcolor{
+  background:#4DA5FC!important;
+  color: #fff!important;
+  border-radius: 5px!important;
+}
+.change {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 30rpx;
+}
+
+.sexImg {
+  width: 30rpx;
+  height: 30rpx;
+  background: #fd5b9e;
+  margin-left: 10rpx;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sexImg.bg {
+  background: #4ecb9f;
+}
+
+.sexImg image {
+  width: 18rpx;
+  height: 18rpx;
+}
+
+.change .p {
+  position: relative;
+}
+
+.change .circle {
+  width: 44rpx;
+  height: 44rpx;
+  background: #333;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.change .photo {
+  width: 35rpx;
+  height: 35rpx;
+}
+
+.change .pic {
+  width: 120rpx;
+  height: 120rpx;
+  background: #eee;
+  border-radius: 50px;
+}
+
+.change .title {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  margin-top: 20rpx;
+}
+
+.childImg {
+  width: 80rpx;
+  height: 80rpx;
+  background: #f7f7f7;
+  border-radius: 50px;
+  border: 1rpx silid #eee;
+}
+
+.infobox .item {
+  width: 690rpx;
+  margin: 0 auto;
+  padding: 25rpx 0;
+  border-bottom: 1rpx solid #eee;
+  align-items: center;
+  align-self:baseline;
+}
+
+.placeholder {
+  font-size: 28rpx;
+}
+
+.infobox .item .key {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+}
+
+.icon_del {
+  margin-right: 25rpx;
+}
+
+.infobox .item .value {
+  margin-left: 32rpx;
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(17, 17, 17, 1);
+}
+
+.infobox .childbox {
+  width: 690rpx;
+  margin: 0 auto;
+}
+
+.infobox .childbox .titlebox {
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 60rpx;
+}
+
+.infobox .childbox .titlebox .title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+}
+
+.infobox .childbox .titlebox .add {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+}
+
+.infobox .childbox .child {
+  width: 690rpx;
+  height: 120rpx;
+  background: rgba(255, 255, 255, 1);
+  border: 2rpx solid rgba(238, 238, 238, 1);
+  border-radius: 20rpx;
+  margin-top: 30rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.infobox .childbox .child .left {
+  margin-left: 20rpx;
+}
+
+.infobox .childbox .child .left .pic {
+  height: 100%;
+  align-items: center;
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(17, 17, 17, 1);
+}
+
+.infobox .childbox .child .left .pic .name {
+  margin-left: 50rpx;
+  width: 120rpx;
+}
+
+.infobox .childbox .child .left .pic .sex {
+  margin-left: 50rpx;
+}
+
+.infobox .childbox .child .right {
+  margin-right: 30rpx;
+}
+.van-cell__title{
+  font-weight: bold;
+}
+.infobox{
+  margin-top: 30rpx;
+}
+.infobox .btnbox {
+  width: 600rpx;
+  height: 80rpx;
+  background: linear-gradient(90deg, rgba(255, 90, 144, 1), rgba(255, 44, 86, 1));
+  border-radius: 40rpx;
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 80rpx;
+  text-align: center;
+  margin: 78rpx auto 0;
+}
+
+.mask {
+  width: 750rpx;
+  height: 100vh;
+  background: rgba(0, 0, 0, 1);
+  opacity: 0.7;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+}
+
+.layer {
+  position: relative;
+}
+
+.changebox {
+  background: rgba(255, 255, 255, 1);
+  border-radius: 20rpx;
+  position: fixed;
+  z-index: 11;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding-bottom: 80rpx;
+}
+
+.changebox .row1 {
+  margin-top: -118rpx;
+}
+
+.changebox .row2 {
+  font-size: 44rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: rgba(17, 17, 17, 1);
+  line-height: 56rpx;
+}
+
+.changebox .row3 {
+  width: 550rpx;
+  margin:0 30rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(153, 153, 153, 1);
+  text-align: left;
+  padding: 30rpx 0;
+}
+
+.changebox .row3 .sex {
+  width: 100rpx;
+  height: 50rpx;
+  background: rgba(255, 233, 238, 1);
+  border-radius: 25rpx;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(255, 44, 86, 1);
+  line-height: 50rpx;
+  text-align: center;
+}
+
+.changebox .row3 .active {
+  background: rgba(245, 245, 245, 1);
+  color: #333;
+}
+
+.changebox .row4 {
+  width: 500rpx;
+  height: 80rpx;
+  background: linear-gradient(90deg, rgba(255, 90, 144, 1), rgba(255, 44, 86, 1));
+  border-radius: 40rpx;
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 80rpx;
+  text-align: center;
+  margin: 50rpx auto 0;
+}

@@ -1,0 +1,73 @@
+.contxt .li {
+  border-radius: 15rpx;
+  overflow: hidden;
+  box-shadow: 0px 0px 30rpx 0px rgba(153, 153, 153, 0.2);
+  margin-bottom: 30rpx;
+}
+
+.contxt .li:nth-child(1) {
+  margin-top: 10rpx;
+}
+
+.contxt .li .img {
+  width: 100%;
+  /* height: 300rpx; */
+  vertical-align: middle;
+}
+
+.between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contxt .li .footer {
+  font-size: 28rpx;
+  padding: 25rpx 30rpx;
+}
+
+.contxt .li .txt {
+  font-weight: 500;
+  margin-bottom: 15rpx;
+  color: #333;
+}
+
+.contxt .li .between .lf {
+  color: #f3264f;
+  font-size: 25rpx;
+  display: flex;
+  align-items: baseline;
+}
+
+.contxt .li .between .rt {
+  color: #999;
+  font-size: 22rpx;
+}
+
+.contxt .li .backmoney {
+  width: 180rpx;
+  height: 44rpx;
+  background: #ffe9ee;
+  border-radius: 22rpx;
+  color: #ff2c56;
+  font-size: 22rpx;
+  text-align: center;
+  line-height: 44rpx;
+  margin-top: 25rpx;
+}
+
+.contxt .li .ori_prize {
+  color: rgba(153, 153, 153, 1);
+  text-decoration: line-through;
+  margin-left: 20rpx;
+  font-size: 22rpx;
+}
+
+.marleft {
+  padding-left: 25rpx;
+}
+
+.prize {
+  font-size: 30rpx;
+  font-weight: bold;
+}

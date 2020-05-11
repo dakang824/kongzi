@@ -1,0 +1,139 @@
+page{
+  padding-bottom: 120rpx;
+}
+.cash .head {
+  padding: 50rpx 30rpx;
+}
+
+.cash .head .lf {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.cash .head button {
+  color: #FF2E58 !important;
+}
+
+.cash .head .lf image {
+  width: 93rpx;
+  height: 93rpx;
+  background: rgba(250, 35, 53, 1);
+  border-radius: 13rpx;
+  margin-right: 40rpx;
+}
+
+.cash .tip {
+  margin: -25rpx 30rpx 0;
+  position: relative;
+}
+
+.cash .tip .txt {
+  background: #FA2335;
+  padding: 40rpx;
+  color: #fff;
+  font-size: 27rpx;
+  border-radius: 14rpx;
+  line-height: 37rpx;
+}
+
+.cash .box {
+  margin: 60rpx 40rpx;
+  color: #666666;
+  font-size: 27rpx;
+  line-height: 40rpx;
+}
+
+.cash .box .tit {
+  color: #1E1E1E;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.fixed .btn {
+  background: linear-gradient(90deg, rgba(255, 90, 144, 1), rgba(255, 44, 86, 1));
+  border-color: transparent;
+  border-radius: 0;
+}
+.fixed .grey{
+  color: #ccc!important;
+}
+
+.rotate {
+  transform: rotate(-90deg);
+  position: absolute !important;
+  top: -19rpx;
+  left: 35rpx;
+}
+
+.upload {
+  width: 273rpx;
+  height: 258rpx;
+  border: 2rpx dashed rgba(250, 35, 53, 1);
+  border-radius: 13rpx;
+  margin: 65rpx auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 233, 238, .24);
+}
+
+.upload .t {
+  color: #FA2335;
+}
+
+.upload .img {
+  width: 48rpx;
+  height: 47rpx;
+}
+
+.upload .imgs {
+  position: relative;
+  width: 161rpx;
+  height: 162rpx;
+  margin: auto;
+}
+.upload .imgs image{
+  width: 100%;
+  height: 100%;
+  vertical-align: bottom;
+  border: 1rpx solid #898989;
+  border-radius: 10rpx;
+}
+.upload .imgs .clear{
+  position: absolute;
+  top: -10rpx;
+  right: -10rpx;
+}
+.box .doing{
+  text-align: center;
+  color: #FF2E58;
+  font-size:29rpx;
+  font-weight:bold;
+  margin-top: 85rpx;
+}
+.box .doing image{
+  width:87rpx;
+  height:87rpx;
+  border-radius:50%;
+  margin-bottom: 20rpx;
+}
+.box .doing text{
+  color: #6E6E6E;
+  font-size: 27rpx;
+  font-weight: initial;
+  padding: 45rpx 0 40rpx;
+  display: block;
+}
+.box .doing .txt{
+  color: #2C2C2C;
+  font-size: 30rpx;
+}

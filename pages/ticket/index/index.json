@@ -1,0 +1,11 @@
+{
+    "usingComponents": {
+      "van-search": "../../../dist/search/index",
+      "van-tab": "../../../dist/tab/index",
+      "van-tabs": "../../../dist/tabs/index",
+      "van-popup": "../../../dist/popup/index",
+      "van-slider": "../../../dist/slider/index",
+      "van-loading": "../../../dist/loading/index"
+      },
+    "navigationBarTitleText": "乐园门票"
+}

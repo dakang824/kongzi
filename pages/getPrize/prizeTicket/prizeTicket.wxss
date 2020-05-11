@@ -1,0 +1,124 @@
+.flex {
+  display: flex;
+}
+
+.header {
+}
+
+.header .imgbox {
+  margin: 30rpx auto 0;
+  width: 690rpx;
+  height: 360rpx;
+  background: linear-gradient(-30deg, rgba(254, 77, 88, 1), rgba(253, 79, 118, 1));
+  box-shadow: 0px 0px 30rpx 0px rgba(153, 153, 153, 0.2);
+  border-radius: 20rpx;
+  position: relative;
+}
+
+.header .imgbox .day {
+  padding: 50rpx 30rpx 0 30rpx;
+  justify-content: space-between;
+}
+
+.header .imgbox .day .day_title {
+  font-size: 38rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+  line-height: 44rpx;
+}
+
+.header .imgbox .day .detail {
+  width: 120rpx;
+  height: 44rpx;
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 22rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 1);
+  line-height: 44rpx;
+}
+
+.header .imgbox .ticket {
+  align-items: baseline;
+  padding: 72rpx 30rpx 0 30rpx;
+}
+
+.header .imgbox .ticket .num {
+  font-size: 60rpx;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 1);
+  line-height: 44rpx;
+}
+
+.header .imgbox .ticket .unit {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 1);
+  line-height: 44rpx;
+}
+
+.header .imgbox .tip {
+  margin: 30rpx 30rpx 0 30rpx;
+  width: 420rpx;
+  height: 40rpx;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 1);
+  line-height: 44rpx;
+  text-align: center;
+}
+
+.header .imgbox .img image {
+  width: 214rpx;
+  height: 234rpx;
+  position: absolute;
+  right: 8rpx;
+  bottom: 15rpx;
+}
+
+.btmbox {
+  margin-top: 60rpx;
+  padding-bottom: 20rpx;
+}
+
+.btmbox .itembox {
+  width: 690rpx;
+  height: 120rpx;
+  background: rgba(255, 244, 246, 1);
+  border-radius: 10rpx;
+  margin: 30rpx auto 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.btmbox .itembox .left {
+  height: 100%;
+  align-items: center;
+}
+
+.btmbox .itembox .left image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.btmbox .itembox .left .title {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  margin-left: 20rpx;
+}
+
+.btmbox .itembox .right {
+  width: 130rpx;
+  height: 45rpx;
+  background: rgba(255, 44, 86, 1);
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  color: rgba(254, 254, 254, 1);
+  text-align: center;
+  line-height: 45rpx;
+}

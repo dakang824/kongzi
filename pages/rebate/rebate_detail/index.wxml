@@ -1,0 +1,78 @@
+ <pagePublic/>
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class='page'>
+  <view class='header'>
+    <view class='head'>
+      <image src='{{imgUrl+headTit.pic_path}}'></image>
+      <view class='rt'>
+        <text class='tit'>{{filter.decode(headTit.title)}} </text>
+        <view class='money'>活动时间：{{headTit.actTime}}</view>
+        <!-- <view class='flex'>
+          <view class='circle'></view>
+          <text>孔紫教育培训机构</text>
+        </view> -->
+      </view>
+    </view>
+  </view>
+  <view class='content'>
+    <view class='between'>
+      <view class='block'>
+        <text class='tit'>贡献人数</text>
+        <text class='num'>{{headTit.totalperson}}</text>
+        <text class='p'>人</text>
+      </view>
+      <view class='block'>
+        <text class='tit'>贡献总额</text>
+        <text class='num'>{{headTit.totlaMoney}}</text>
+        <text class='p'>元</text>
+      </view>
+    </view>
+
+    <view class='list'>
+      <block wx:for='{{list}}'>
+        <block wx:if="{{item.others.length>0}}">
+          <navigator bindtap='jump' data-item='{{item}}'>
+            <view class='li flex'>
+              <image src='{{imgUrl+item.pic_path}}' class='user'></image>
+              <view class='rt'>
+                <view class='flex'>
+                  <text class='tit'>{{item.nickname}}</text>
+                  <view class='time'>{{item.create_time}}</view>
+                </view>
+                <view class='flex footer'>
+                  <view class='txt'>
+                    <view>此人贡献
+                      <text>{{item.up1_amount/100}}</text>元</view>
+                    <view>他人贡献
+                      <text>{{item.up2_total_amount/100}}</text>元</view>
+                  </view>
+                  <view class='link'>
+                    他人列表
+                    <van-icon name="arrow" />
+                  </view>
+                </view>
+              </view>
+            </view>
+          </navigator>
+        </block>
+        <block wx:else>
+          <view class='li flex'>
+            <image src='{{imgUrl+item.pic_path}}' class='user'></image>
+            <view class='rt'>
+              <view class='flex'>
+                <text class='tit'>{{item.nickname}}</text>
+                <view class='time'>{{item.create_time}}</view>
+              </view>
+              <view class='flex footer'>
+                <view class='txt'>
+                  <view>此人贡献
+                    <text>{{item.up1_amount/100}}</text>元</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </block>
+    </view>
+  </view>
+</view>

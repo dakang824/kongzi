@@ -1,0 +1,29 @@
+<pagePublic/>
+<view class="header">
+  <view class="row1 flex">
+    <view class="title">可提现余额</view>
+    <view class="money">￥{{d.available}}</view>
+  </view>
+  <view class="row2">每日限额200元</view>
+  <view class="line"></view>
+  <view class="row3 flex">
+    <view class="left flex">
+      <view>￥</view>
+      <input placeholder="请输入提现金额" bindinput='onInput' value='{{amount}}' type='digit'/>
+    </view>
+    <view class="right" bindtap='allApply'>全部</view>
+  </view>
+</view>
+<view class="midline">提现金额不得少于10元</view>
+<view class="content">
+  <view class="title">提现方式</view>
+  <view class="method between">
+    <view class="money {{type==3?'checked':''}}" bindtap='onSelType' data-i='3'>转入微信零钱</view>
+    <view class="money {{type==4?'checked':''}}" style="margin-left:98rpx" bindtap='onSelType' data-i='4'>转入平台账户</view>
+  </view>
+  <view class="tip flex">
+    <view>可获得一定数量的抽奖券</view>
+  </view>
+</view>
+<!-- <view class="tip1">注：提现到平台账户，每提现10元，会获得1张抽奖券；但只可消费，不可再提现。</view> -->
+<button class="btn {{amount!==''?'active':''}}" disabled="{{amount<10}}" bindtap='cashOut'>立即提现</button>

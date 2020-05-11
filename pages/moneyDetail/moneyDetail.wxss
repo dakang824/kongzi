@@ -1,0 +1,95 @@
+.head {
+  background: linear-gradient(-30deg, rgba(98, 109, 253, 1), rgba(77, 165, 252, 1));
+  color: #fff;
+  padding: 50rpx 40rpx;
+}
+
+.tab_active {
+  color: #4ba1f5;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.fixed {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 80rpx;
+  background: #fff;
+}
+
+.noData {
+  text-align: center;
+  font-size: 28rpx;
+  color: #999;
+  margin-top: 200rpx;
+}
+
+.head .txt {
+  font-size: 28rpx;
+}
+
+.head .money {
+  padding: 30rpx 0;
+  font-size: 60rpx;
+}
+
+.timeSelect {
+  display: flex;
+  align-items: center;
+  padding: 45rpx;
+}
+
+.timeSelect text {
+  font-size: 28rpx;
+  color: rgba(51, 51, 51, 1);
+  padding: 0 13rpx;
+}
+
+.picker {
+  width: 200rpx;
+  height: 60rpx;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(75, 161, 245, 1);
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  color: #4ba1f5;
+  line-height: 60rpx;
+  text-align: center;
+}
+
+.list {
+  padding: 0 42rpx;
+}
+
+.list .li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.list .li .tit {
+  font-size: 28rpx;
+  margin-bottom: 5rpx;
+}
+.list .li .img{
+  min-width: 60rpx;
+  max-width: 60rpx;
+  height: 60rpx;
+  margin-right: 50rpx;
+}
+.list .li .money {
+  color: #999;
+  font-size: 24rpx;
+}
+
+.list .li .rt {
+  font-size: 32rpx;
+}
+.list .li .rt.active{
+  color: #FA2335;
+}

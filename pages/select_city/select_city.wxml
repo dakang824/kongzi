@@ -1,0 +1,4 @@
+<pagePublic/>
+<view class='wrapper'> 
+  <list-html data="{{city}}" my-city="北京" binddetail="binddetail" config="{{config}}"></list-html>
+</view> 

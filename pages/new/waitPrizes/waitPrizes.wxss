@@ -1,0 +1,318 @@
+.li {
+  width: 690rpx;
+  background: #fff;
+  box-shadow: 0px 0px 30rpx 0px rgba(153, 153, 153, 0.3);
+  border-radius: 20rpx;
+  margin: auto;
+  overflow: hidden;
+  margin-top: 25rpx;
+  padding-bottom: 20rpx;
+}
+
+.li:nth-last-of-type(1) {
+  margin-bottom: 40rpx;
+}
+
+.li .top {
+  background: #f7d9bf;
+  position: relative;
+}
+
+.li .top .bigprize {
+  position: absolute;
+  top: -2rpx;
+  left: -1rpx;
+}
+
+.li .top .img {
+  width: 100%;
+  height: 300rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.li .top image {
+  width: 100%;
+  height: 100%;
+}
+
+.li .top .lf, .li .top .rt {
+  position: absolute;
+  left: 20rpx;
+  bottom: 20rpx;
+  height: 40rpx;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 20rpx;
+  font-size: 20rpx;
+  color: #fff;
+  line-height: 40rpx;
+  padding: 0 20rpx;
+}
+
+.li .top .rt {
+  right: 20rpx;
+  bottom: 20rpx;
+  left: inherit;
+}
+
+.li .red {
+  color: #ff2c56;
+}
+
+.li .footer {
+  padding: 40rpx 30rpx;
+}
+
+.li .footer .tit {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 30rpx;
+}
+
+.li .footer .tit text {
+  color: #ff2c56;
+  font-size: 20rpx;
+}
+
+.li .footer .box {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.li .footer .box>view {
+  line-height: 40rpx;
+}
+
+.li .footer .box .btn, .li .footer .active_btn {
+  width: 160rpx;
+  height: 60rpx;
+  background: #e5e5e5;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  color: #fff;
+  line-height: 60rpx;
+}
+
+.li .footer .active_btn {
+  background: linear-gradient(90deg, rgba(255, 90, 144, 1), rgba(255, 44, 86, 1));
+  color: #fff;
+}
+
+.nodatabox .img {
+  text-align: center;
+  margin-top: 400rpx;
+}
+
+.nodatabox .tip {
+  text-align: center;
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 54rpx;
+  margin-top: 49rpx;
+}
+
+.nomore {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 44rpx;
+  text-align: center;
+  margin-top: 20rpx;
+}
+
+.join {
+  width: 160rpx;
+  height: 60rpx;
+  background: linear-gradient(90deg, rgba(255, 90, 144, 1), rgba(255, 44, 86, 1));
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 60rpx !important;
+  text-align: center;
+}
+
+.active_join {
+  background: rgba(229, 229, 229, 1);
+  color: #fff;
+}
+
+.serachbox {
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  width: 100%;
+  z-index: 11;
+  background: #fff;
+  height: 100rpx;
+}
+
+.serachbox .item {
+  width: 690rpx;
+  justify-content: space-between;
+  margin: 20rpx auto;
+}
+
+.serachbox .item .left {
+  width: 550rpx;
+  height: 60rpx;
+  background: rgba(245, 245, 245, 1);
+  border-radius: 30rpx;
+}
+
+.serachbox .item .left input {
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  height: 100%;
+  line-height: 100%;
+}
+
+.serachbox .item .left .v {
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  text-align: center;
+  height: 100%;
+  line-height: 100%;
+  width: 550rpx;
+  height: 60rpx;
+  background: rgba(245, 245, 245, 1) !important;
+  border-radius: 30rpx;
+}
+
+.v .van-cell {
+  background: rgba(245, 245, 245, 1) !important;
+}
+
+.serachbox .item .right {
+  width: 160rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  justify-content: center;
+  align-items: center;
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(17, 17, 17, 1);
+  position: relative;
+}
+
+.serachbox .item .right .allbox {
+  justify-content: center;
+  align-items: center;
+}
+
+.serachbox .item .right .allbox .all {
+  margin-left: 7rpx;
+}
+
+.itembox {
+  /* margin-top: 100rpx; */
+  position: fixed;
+  top: 100rpx;
+  left: 0rpx;
+  height: 84rpx;
+  z-index: 11;
+  width: 100%;
+  background: #fff;
+}
+
+.itembox .item {
+  height: 84rpx;
+  border-bottom: 1rpx solid #eee;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.itembox .item .default {
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(153, 153, 153, 1);
+}
+
+.itembox .item .default .value {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 7rpx;
+}
+
+.popup {
+  top: 100rpx !important;
+}
+
+.reset {
+  background: #f6f6f6;
+  font-size: 32rpx;
+  color: #ccc;
+  width: 50%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+
+.sure {
+  background: linear-gradient(90deg, rgba(255, 90, 144, 1), rgba(255, 44, 86, 1));
+  font-size: 32rpx;
+  color: #fff;
+  width: 50%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+
+.type {
+  padding: 0 30rpx;
+}
+
+.type .top {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+  margin-top: 40rpx;
+}
+
+.type .btn {
+  flex-wrap: wrap;
+}
+
+.type .btn .item {
+  background: rgba(255, 255, 255, 1);
+  border: 1rpx solid rgba(204, 204, 204, 1);
+  border-radius: 27rpx;
+  padding: 10rpx 30rpx;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  margin-right: 30rpx;
+  margin-top: 30rpx;
+}
+.type .btn .item:nth-child(5n){
+  margin-right: 0;
+}
+.type .btn .active {
+  color: #ff2c56;
+  border: 1rpx solid #ff2c56;
+}
+
+.pageFiexed {
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}

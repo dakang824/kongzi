@@ -1,0 +1,120 @@
+page {
+  background: linear-gradient(120deg, rgba(255, 102, 102, 1) 0%, rgba(231, 49, 51, 1) 100%);
+}
+image{
+  vertical-align: middle;
+}
+.header {
+  position: relative;
+  color: #fff;
+}
+
+.header .box {
+  position: absolute;
+  top: 63rpx;
+  left: 30rpx;
+  margin: auto;
+}
+
+.header .box text {
+  font-size: 24rpx;
+}
+
+.header .box view {
+  font-size: 44rpx;
+  margin-bottom: 15rpx;
+}
+
+.header .img {
+  width: 100%;
+}
+
+.form {
+  background: #fff;
+  margin: 0 30rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  padding: 60rpx 30rpx;
+}
+
+.van-cell::after {
+  left: 0 !important;
+}
+
+.form .row {
+  margin-bottom: 30rpx;
+  /* padding-left: 20rpx; */
+}
+
+.form .row .tit {
+  font-size: 14px;
+  color: #333;
+  min-width: 90px;
+}
+
+.form .row .switch {
+  width: 460rpx;
+  height: 70rpx;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid #ff2c56;
+  border-radius: 35rpx;
+  color: #ff2c56;
+  font-size: 28rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.form .row .switch>view {
+  flex: .5;
+  text-align: center;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+
+.form .row .switch>view.active {
+  background: #ff2c56;
+  color: #fff;
+  border-radius: 35rpx;
+}
+
+.form .btn {
+  width: 500rpx;
+  height: 80rpx;
+  background: #eee;
+  border-radius: 40rpx;
+  color: #fff;
+  font-size: 32rpx;
+  margin: 300rpx auto 0;
+  display: block;
+}
+.form .btn1 {
+  width: 500rpx;
+  height: 80rpx;
+  background: #eee;
+  border-radius: 40rpx;
+  color: #fff;
+  font-size: 32rpx;
+  margin: 212rpx auto 0;
+  display: block;
+}
+.submit{
+  width:500rpx;
+  height:80rpx;
+  background:linear-gradient(90deg,rgba(255,90,144,1),rgba(255,44,86,1));
+  border-radius:40rpx;
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  line-height: 80rpx;
+  text-align: center;
+  margin: 300rpx auto 0;
+}
+.van-cell{
+  padding: 15px 0 !important;
+}
+.van-cell__title{
+  color:#333 !important;
+}

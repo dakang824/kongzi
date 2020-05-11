@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "选择市区",
+  "usingComponents": {
+    "list-html": "../../components/wx-index-list/wx-index-list"
+  }
+}
