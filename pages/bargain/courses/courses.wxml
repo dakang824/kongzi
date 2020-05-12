@@ -7,8 +7,8 @@
   <view class='list'>
     <van-checkbox-group value="{{ school }}" bind:change="onChange" max="{{data.order_limit}}">
       <van-cell-group>
-        <van-cell wx:for="{{ data.act_members }}" wx:key="index" title="{{item.mem_course?item.mem_course:item.name}}" clickable data-name="{{index}}" bind:click="toggle" samllTip='{{item.address}}' courseName='{{item.branch_name}}' data-disabled='{{selected===index||(!(age>=item.age_min&&age<=item.age_max))}}'>
-          <van-checkbox catch:tap="noop" catchtap="checkboxClick" name="{{ index }}" class="checkboxes-{{ index }}" data-name="{{index}}" disabled='{{selected===index||(!(age>=item.age_min&&age<=item.age_max))}}' data-disabled='{{selected===index||(!(age>=item.age_min&&age<=item.age_max))}}'/>
+        <van-cell wx:for="{{ data.act_members }}" wx:key="index" title="{{item.mem_course?item.mem_course:item.name}}" clickable data-name="{{index}}" bind:click="toggle" samllTip='{{item.address}}' courseName='{{item.branch_name}}' data-disabled='{{item.mast_select==1||selected===index||(!(age>=item.age_min&&age<=item.age_max))}}' data-yx='{{(item.mast_select==1||selected===index)?"此课程为必选课程":(!(age>=item.age_min&&age<=item.age_max))?"年龄不符合":""}}'>
+          <van-checkbox catch:tap="noop" catchtap="checkboxClick" name="{{ index }}" class="checkboxes-{{ index }}" data-name="{{index}}" disabled='{{ item.mast_select==1||selected===index||(!(age>=item.age_min&&age<=item.age_max))}}' data-disabled='{{item.mast_select==1||selected===index||(!(age>=item.age_min&&age<=item.age_max))}}' data-yx='{{(item.mast_select==1||selected===index)?"此课程为必选课程":(!(age>=item.age_min&&age<=item.age_max))?"年龄不符合":""}}'/>
         </van-cell>
       </van-cell-group>
     </van-checkbox-group>

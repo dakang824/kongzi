@@ -63,8 +63,8 @@
     </view>
     <block wx:if='{{!isFromShare}}'>
       <van-cell-group custom-class='ce' wx:if='{{order.get_gift_type==2}}'>
-        <van-field required readonly value="{{ province+' '+city+' '+area }}" bindtap='showCity' label="选择城区:" icon="arrow" placeholder="选择省和城市" />
-        <van-field required value="{{ order.gift_address }}" label="邮寄地址:" placeholder="请填写礼品邮寄地址" input-class='placeholder' bind:change="input" data-id='4' />
+        <van-field required readonly value="{{ province+' '+city+' '+area }}" bindtap='showCity' label="选择省市:" icon="arrow" placeholder="选择省和城市" />
+        <van-field required value="{{ order.gift_address }}" label="相信地址:" placeholder="请填写礼品邮寄地址" input-class='placeholder' bind:change="input" data-id='4' />
         <!-- input-class='{{platform?"ios_textarea":order.gift_address?"":"android_textarea"}}' -->
       </van-cell-group>
       <view wx:if='{{order.get_gift_type==1}}' class='gift_txt'>
@@ -140,7 +140,7 @@
   </view>
 </van-popup>
 <van-popup show="{{ cityShow }}" bind:close="showCity" position='bottom'>
-  <van-area area-list="{{ areaList }}" columns-placeholder="{{ ['请选择', '请选择', '请选择'] }}" bind:confirm='seleCity' bind:cancel='showCity'  title="选择城区"/></van-popup>
+  <van-area area-list="{{ areaList }}" columns-placeholder="{{ ['请选择', '请选择', '请选择'] }}" bind:confirm='seleCity' bind:cancel='showCity'  title="选择省市"/></van-popup>
 <van-popup show="{{ show }}" custom-class='layer'>
   <view class='close' bindtap="layerClose">
     <van-icon name="cross" />

@@ -16,15 +16,17 @@ Page({
     },
     isFromShare: false
   },
-  backClose(){
+  backClose() {
     wx.navigateBack({
       delta: 1
     })
   },
   onChange1(event) {
     let {
-      pay_amount1,ticket,pay_amount
-    } = this.data,pay=ticket.id?pay_amount1:pay_amount/100;
+      pay_amount1,
+      ticket,
+      pay_amount
+    } = this.data, pay = ticket.id ? pay_amount1 : pay_amount / 100;
     console.log(pay);
     this.setData({
       'pay_type': pay == 0 ? '2' : event.detail
@@ -34,17 +36,20 @@ Page({
     const {
       name
     } = event.currentTarget.dataset, {
-      pay_amount1,ticket,pay_amount
-    } = this.data,pay=ticket.id?pay_amount1:pay_amount/100;
+      pay_amount1,
+      ticket,
+      pay_amount
+    } = this.data, pay = ticket.id ? pay_amount1 : pay_amount / 100;
     this.setData({
       'pay_type': pay == 0 ? '2' : name
     });
   },
   toggle(event) {
-    event.currentTarget.dataset.disabled?wx.showToast({
-      title: '年龄不符合',
-      icon:'none'
-    }):'';
+    let {disabled,yx}=event.currentTarget.dataset;
+    disabled? wx.showToast({
+      title: yx,
+      icon: 'none'
+    }) : '';
     const {
       name
     } = event.currentTarget.dataset;
@@ -52,7 +57,7 @@ Page({
     checkbox.toggle();
   },
   onChange(event) {
-    if (event.detail.length){
+    if (event.detail.length) {
       let members = this.data.data.act_members,
         ind = event.detail[event.detail.length - 1];
       if (members[ind].need_num && members[ind].need_num <= members[ind].num) {
@@ -68,21 +73,26 @@ Page({
         });
         this.ver();
       }
-    }else{
-      this.setData({school:[]})
+    } else {
+      this.setData({
+        school: []
+      })
       this.ver();
     }
   },
-  checkboxClick(e){
-    e.currentTarget.dataset.disabled ? wx.showToast({
-      title: '年龄不符合',
+  checkboxClick(e) {
+    let {disabled,yx}=event.currentTarget.dataset;
+    disabled ? wx.showToast({
+      title: yx,
       icon: 'none'
     }) : '';
   },
   ver() {
-    let {order_limit_min}=this.data.data;
-     this.setData({
-       disabled: !(this.data.school.length >= order_limit_min)
+    let {
+      order_limit_min
+    } = this.data.data;
+    this.setData({
+      disabled: !(this.data.school.length >= order_limit_min)
     })
   },
   sign() {
@@ -100,8 +110,9 @@ Page({
         })
       }
       data.branches = arr;
-      http.postReq("/community/user/", data, res=> {
-        let pages = getCurrentPages(),t=this.data.shareData,
+      http.postReq("/community/user/", data, res => {
+        let pages = getCurrentPages(),
+          t = this.data.shareData,
           prevPage = pages[pages.length - 2];
         if (prevPage.__route__ == 'pages/order/orderDetail/orderDetail') {
           prevPage.setData({
@@ -110,7 +121,7 @@ Page({
           prevPage.getCourse(data.union_id, data.order_no)
         }
         //判断是否是先选课后付款
-        if (!('pb_code' in t&&t.pb_code==1)&&that.data.coursePay) {
+        if (!('pb_code' in t && t.pb_code == 1) && that.data.coursePay) {
           that.setData({
             isFromShare: true
           });
@@ -143,7 +154,7 @@ Page({
             });
           }
         } else {
-          ('pb_code' in t&&t.pb_code==1)?this.balancePay():this.tip();
+          ('pb_code' in t && t.pb_code == 1) ? this.balancePay(): this.tip();
         }
         prevPage.setData({
           'd.selected_course': 1
@@ -175,9 +186,9 @@ Page({
     http.postReq("/community/user/", {
       cmd: 'payOrderWithBalance',
       trade_no: this.data.trade_no
-    }, res=> {
-      app.login(this, ()=> {
-        res.status == 1 ?  this.paySuccessCallBack() : this.payErrorCallBack();
+    }, res => {
+      app.login(this, () => {
+        res.status == 1 ? this.paySuccessCallBack() : this.payErrorCallBack();
       })
     })
   },
@@ -197,7 +208,7 @@ Page({
     this.onClose();
   },
   payErrorCallBack() {
-    setTimeout(()=> {
+    setTimeout(() => {
       wx.navigateBack({
         delta: 1
       })
@@ -205,8 +216,18 @@ Page({
     this.onClose();
   },
 
-  pay: Util.throttle(function(e) {
-    let {type,trade_no}=this.data.shareData,{ticket,catCardMoney,pay_amount,reduce,discount,pay_type}=this.data,m = pay_amount / 100,
+  pay: Util.throttle(function (e) {
+    let {
+      type,
+      trade_no
+    } = this.data.shareData, {
+        ticket,
+        catCardMoney,
+        pay_amount,
+        reduce,
+        discount,
+        pay_type
+      } = this.data, m = pay_amount / 100,
       v = reduce + discount;
     if ('id' in ticket) {
       http.postReq("/community/user/", {
@@ -247,16 +268,24 @@ Page({
     wx.removeStorageSync('shareData');
   },
   onLoad(e) {
-    let that = this,{coursePay,shared,pay_type,trade_no,order_no,act_no}=e;
+    let that = this,
+      {
+        coursePay,
+        shared,
+        pay_type,
+        trade_no,
+        order_no,
+        act_no
+      } = e;
     this.setData({
       'postData.union_id': e.union_id || e.inst_id,
       coursePay,
       shared,
       pay_type,
       trade_no,
-      age:Number(e.age),
-      'postData.order_no':order_no,
-      'postData.act_no':act_no,
+      age: Number(e.age),
+      'postData.order_no': order_no,
+      'postData.act_no': act_no,
     });
     if (wx.getStorageSync('shareData')) {
       let pay = wx.getStorageSync('pay');
@@ -273,7 +302,7 @@ Page({
       "cmd": "getOrderCouldCHooseCourses",
       union_id: e.union_id || e.inst_id,
       order_no: e.order_no
-    }, res=> {
+    }, res => {
       if (res.data) {
         let data = {};
         data.order_limit = res.data[0].order_limit;
@@ -286,6 +315,15 @@ Page({
         let select_inst = res.select_inst || wx.getStorageSync('select_inst'),
           members = data.act_members,
           school = [];
+
+        for (let i = 0; i < members.length; i++) {
+          if (members[i].mast_select == 1) {
+            school.push(String(i));
+            that.setData({
+              school: school,
+            })
+          }
+        }
         if (select_inst) {
           for (let i = 0; i < members.length; i++) {
             if (members[i].inst_id == select_inst) {
@@ -293,23 +331,27 @@ Page({
               that.setData({
                 school: school,
                 selected: i,
-                disabled:false
+                disabled: false
               })
-              break;
             }
           }
         }
+
+        this.ver();
       }
     })
     this.getMyCoupon();
   },
   getMyCoupon() {
-    let { shareData, postData} = this.data;
+    let {
+      shareData,
+      postData
+    } = this.data;
     http.postReq("/community/product/", {
       cmd: 'getMyCoupon',
-      prod_type:1,
-      prod_id: shareData ? shareData.inst_id: postData.union_id,
-      prod_no: shareData ? shareData.act_no:postData.act_no
+      prod_type: 1,
+      prod_id: shareData ? shareData.inst_id : postData.union_id,
+      prod_no: shareData ? shareData.act_no : postData.act_no
     }, res => {
       this.setData({
         ticketsLen: res.data
