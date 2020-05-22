@@ -1,9 +1,9 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
-<block wx:hidden='{{hiddenPage}}'>
+<view hidden='{{hiddenPage}}'>
 	<view class="card">
 		<view class="title between">
 			<view class="lf">孔紫选课卡</view>
-			<view class="rt">{{cards.use_status===0?'未使用':cards.use_status===1?'已上'+(cards.select_count-cards.left_count)+'个课':cards.use_status===2?'已出席':cards.use_status===3?'已签单':'未兑换'}}</view>
+			<view class="rt">{{cards.use_status===0?'未使用':cards.use_status===1?'已上'+(cards.select_count-cards.left_count)+'个课程':cards.use_status===2?'已出席':cards.use_status===3?'已签单':'未兑换'}}</view>
 		</view>
 		<block wx:if='{{hasCard}}'>
 			<view class="info">
@@ -99,7 +99,7 @@
 			</view>
 		</block>
 	</view>
-</block>
+</view>
 
 
 <van-popup show="{{ show }}" bind:close="onClose" position="bottom">
