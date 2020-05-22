@@ -3,6 +3,7 @@ let app = getApp(),
   import Util from '../../utils/util';
 Page({
   data: {
+    hiddenPage:true,
     hasCard: 0,
     url: app.globalData.serverUrl,
     imageurl: app.globalData.imageurl,
@@ -10,12 +11,14 @@ Page({
     minHour: 10,
     maxHour: 20,
     minDate: new Date().getTime()-1000*60*60*24*360,
-    currentDate: new Date().getTime()
+    currentDate: new Date().getTime(),
+    card_code:''
   },
   onLoad(e) {
     this.setData({
       card_code: e.card_code
     })
+    this.getData();
   },
   showTime(e) {
     let {
@@ -71,10 +74,15 @@ Page({
       cmd: "getMyCardInfo",
       card_code
     }, res => {
-      this.setData({
-        cards: res.data,
-        hasCard: res.hasCard
-      });
+      if(res.hasCard){
+        let cardNumber=res.data.code;
+        this.setData({
+          cardNumber:[cardNumber.slice(0,3),cardNumber.slice(3,6),cardNumber.slice(6,9),cardNumber.slice(9)],
+          cards: res.data,
+          hasCard: res.hasCard,
+        });
+      }
+      this.setData({hiddenPage:false})
     })
   },
   onPullDownRefresh() {

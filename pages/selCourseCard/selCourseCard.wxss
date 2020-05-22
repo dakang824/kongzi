@@ -88,7 +88,7 @@ page {
 
 .Selected .block .head .img {
   min-width: 93rpx;
-  margin-right: 33rpx;
+  margin-right: 29rpx;
 }
 
 .Selected .block .head>.rt {
@@ -97,12 +97,13 @@ page {
 
 .Selected .block .head .rt .between {
   margin-bottom: 20rpx;
+  align-items: flex-start;
 }
 
 .Selected .block .head .rt .tit {
-  font-size: 30rpx;
+  font-size: 28rpx;
   font-weight: bold;
-  width: 400rpx;
+  width: 420rpx;
 }
 
 .Selected .block .head .rt .tag {
@@ -136,6 +137,9 @@ page {
   font-weight: bold;
   color: #242424;
 }
+.Selected .block .info .row1 .rt{
+  color: #999;
+}
 .Selected .block .info .footer{
   padding: 40rpx 0 20rpx;
   color: #767676;
@@ -163,6 +167,10 @@ van-tag{
   font-size: 27rpx;
   color: #707070;
 }
-.noData{
-  margin-top: 250rpx;
+.info .van-cell{
+  padding: 10px 0;
+  font-size: 27rpx;
+}
+.hover-class{
+  background-color:#eee;
 }

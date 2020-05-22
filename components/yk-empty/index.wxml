@@ -1,0 +1,6 @@
+<view>
+	<view class="nodata" wx:if="{{isShow}}">
+		<image src="{{baseImg}}" mode="widthFix" class="empty_image"></image>
+		<text style="color:{{textColor}}">{{text}}</text>
+	</view>
+</view>

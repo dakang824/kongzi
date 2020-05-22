@@ -1,0 +1,10 @@
+<block wx:if='{{img.length}}'>
+	<block wx:for='{{img}}'>
+		<van-transition show name="fade-up" duration='{{50*index}}'>
+			<image style='width:100%' src="{{serverUrl+item.path}}" mode="widthFix" lazy-load/>
+		</van-transition>
+	</block>
+</block>
+<block wx:else>
+	<yk-empty isShow text='暂无介绍' />
+</block>

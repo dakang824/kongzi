@@ -1,0 +1,15 @@
+.nodata {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 400rpx;
+  width: 100%;
+  align-items: center;
+  color: #555555;
+  font-size: 24rpx;
+}
+
+.empty_image {
+  width: 200rpx !important;
+  margin-bottom: 50rpx;
+}

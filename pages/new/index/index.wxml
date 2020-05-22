@@ -1,6 +1,6 @@
 <wxs module="filter" src="../../../utils/filter.wxs"></wxs>
 <dk-tabbar tabBar="{{tabBar}}"></dk-tabbar>
-<fixed show='{{getLoginMoney}}' bind:close='closeNewUserMoney' money='{{login.get_bonus}}' />
+<!-- <fixed show='{{getLoginMoney}}' bind:close='closeNewUserMoney' money='{{login.get_bonus}}' /> -->
 <page>
 	<view class="new">
 		<view class="bg"></view>
@@ -154,7 +154,7 @@
 	<block wx:if='{{show_virus}}'>
 		<virus box-shadow='boxShadow' class='virus' />
 	</block>
-	<view class="welfare_title flex vCenter"><text></text> 孔紫选课好评卡 
+	<view class="welfare_title flex vCenter"><text></text> 孔紫选课卡 
 	<!-- <image src="/imgs/welfare_icon.png"></image> -->
 	</view>
 	<view class="welfare middlebox" hover-class='hover'>

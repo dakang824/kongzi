@@ -2,7 +2,7 @@
 <view class="dynamic box-shadow">
   <view class="between">
     <view class="tit">{{showMore?'国内疫情':'疫情动态'}}</view>
-    <navigator url="/pages/video/virusDetail/virusDetail" class="vCenter" wx:if='{{!showMore}}'>查看更多
+    <navigator url="/pages/other/virusDetail/index" class="vCenter" wx:if='{{!showMore}}'>查看更多
       <van-icon name="arrow" />
     </navigator>
   </view>

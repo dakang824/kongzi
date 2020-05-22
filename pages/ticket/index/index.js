@@ -1,6 +1,5 @@
 let http = require('../../../common/request.js'),
-  APP = getApp(),
-  config = require('../../../config.js');
+  APP = getApp();
 Page({
   data: {
     serverUrl: APP.globalData.serverUrl, //服务器地址

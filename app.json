@@ -56,8 +56,7 @@
     "pages/cash/cash",
     "pages/cash/progress/progress",
     "pages/video/video",
-    "pages/video/collect/collect",
-    "pages/video/virusDetail/virusDetail"
+    "pages/video/collect/collect"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -83,13 +82,20 @@
       ]
     },
     {
+      "root": "pages/other",
+      "pages": [
+        "virusDetail/index"
+      ]
+    },
+    {
       "root": "pages/selCourseCard",
       "pages": [
         "selCourseCard",
         "submitFrom/submitFrom",
         "CourseList/CourseList",
         "Cashback/Cashback",
-        "exchangeCard/exchangeCard"
+        "exchangeCard/exchangeCard",
+        "imgs/imgs"
       ]
     },
     {
@@ -206,7 +212,8 @@
     "backHome": "components/backHome/backHome",
     "share": "components/share/share",
     "shareMoney": "components/shareMoney/shareMoney",
-    "dk-tabbar": "components/tabbar/index"
+    "dk-tabbar": "components/tabbar/index",
+    "yk-empty": "../../components/yk-empty/index"
   },
   "networkTimeout": {
     "request": 15000,

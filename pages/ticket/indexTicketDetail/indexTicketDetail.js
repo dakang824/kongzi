@@ -1,6 +1,5 @@
 let http = require('../../../common/request.js'),
-  APP = getApp(),
-  config = require('../../../config.js');
+  APP = getApp();
 import Dialog from '../../../dist/dialog/dialog';
 import Util from '../../../utils/util.js';
 Page({

@@ -13,7 +13,7 @@ Page({
     let {card_code}=this.data;
     http.postReq("/community/industry/", {
       cmd: "useCodeToCard",
-      card_code
+      card_code:card_code.replace(/\s+/g, "")
     }, res => {
       wx.showToast({
         title: '兑换成功',

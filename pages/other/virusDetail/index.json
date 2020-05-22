@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "virus": "../../components/virus/virus"
+  }
+}

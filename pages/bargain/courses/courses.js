@@ -97,10 +97,7 @@ Page({
   },
   sign() {
     let that = this,
-      data = that.data.postData;
-    Dialog.confirm({
-      message: '课程一旦选定将不可更改， 您确定要提交吗？ '
-    }).then(() => {
+      data = that.data.postData,order_limit=this.data.order_limit;
       let act_members = that.data.data.act_members,
         arr = [];
       for (let item of that.data.school) {
@@ -110,6 +107,10 @@ Page({
         })
       }
       data.branches = arr;
+
+    Dialog.confirm({
+      message: order_limit==arr.length?'提交后，教育机构会在3个工作日内与您电话联系，请注意接听；有任何问题，请随时联系孔紫客服。':`您知道吗，您最多可以选择${order_limit}个课程！您确定要提交吗，或是再看一下？`
+    }).then(() => {
       http.postReq("/community/user/", data, res => {
         let pages = getCurrentPages(),
           t = this.data.shareData,

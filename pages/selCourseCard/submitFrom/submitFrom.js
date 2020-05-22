@@ -54,20 +54,24 @@ Page({
       cmd: "getMyCardInfo",
       card_code
     }, res => {
-      for (let key of res.data.select_course) {
-        key.t = new Date(key.select_time.slice(0, 19).replace(/-/g, "/")).getTime();
+      if(res.data.select_course.length){
+        for (let key of res.data.select_course) {
+          key.t = new Date(key.select_time.slice(0, 19).replace(/-/g, "/")).getTime();
+        }
+        let lately = res.data.select_course.sort((a, b) => {
+          return b.t - a.t
+        });
+        this.setData({
+          'postData.name':lately[0].name,
+          'postData.mobile':lately[0].mobile,
+          'postData.gender':lately[0].gender,
+          'postData.age':lately[0].age,
+          ageInd:lately[0].age-1>0?lately[0].age-1:0
+        })
       }
-      let lately = res.data.select_course.sort((a, b) => {
-        return b.t - a.t
-      });
       this.setData({
         cards: res.data,
         'postData.limit_count': res.data.left_count,
-        'postData.name':lately[0].name,
-        'postData.mobile':lately[0].mobile,
-        'postData.gender':lately[0].gender,
-        'postData.age':lately[0].age,
-        ageInd:lately[0].age-1>0?lately[0].age-1:0
       })
       this.verify();
     })
