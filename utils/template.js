@@ -10,13 +10,13 @@ const tabBar = {
       "selectedIconPath": "/imgs/home_active.png",
       "text": "首页"
     },
-    {
-      "active": false,
-      "pagePath": "/pages/video/video",
-      "iconPath": "/imgs/child.png",
-      "selectedIconPath": "/imgs/child_active.png",
-      "text": "萌娃"
-    },
+    // {
+    //   "active": false,
+    //   "pagePath": "/pages/video/video",
+    //   "iconPath": "/imgs/child.png",
+    //   "selectedIconPath": "/imgs/child_active.png",
+    //   "text": "萌娃"
+    // },
     // {
     //   "active": false,
     //   "pagePath": "/pages/nearby/nearby",

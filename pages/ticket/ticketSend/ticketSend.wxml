@@ -1,5 +1,4 @@
 <pagePublic/>
-<loading-top id="loading" />
 <van-dialog id="van-dialog" />
 <wxs module="filter" src="../../../utils/filter.wxs"></wxs>
 <view class="header">

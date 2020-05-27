@@ -1,6 +1,7 @@
 let app = getApp(),
   http = require('../../common/request.js');
   import Util from '../../utils/util';
+  import Loading from '../../dist/loading_top/loading';
 Page({
   data: {
     hiddenPage:true,
@@ -67,6 +68,7 @@ Page({
     })
   },
   getData() {
+    Loading.start();
     let {
       card_code
     } = this.data;
@@ -83,6 +85,7 @@ Page({
         });
       }
       this.setData({hiddenPage:false})
+      Loading.close();
     })
   },
   onPullDownRefresh() {

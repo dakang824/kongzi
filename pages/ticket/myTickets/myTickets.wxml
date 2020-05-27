@@ -1,6 +1,5 @@
 <pagePublic noFixed/>
 <wxs module="filter" src="../../../utils/filter.wxs"></wxs>
-<loading-top id="loading" />
 <view class='page'>
   <van-tabs sticky swipeable color="#FF2C56" swipe-threshold='6' bind:change="onChange">
     <van-tab title="全部">

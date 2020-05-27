@@ -1,4 +1,3 @@
-<loading-top id="loading" />
 <view class='top_tip'>
   <view class='c'>
     <image src='{{imageurl+(t==1?"person_c.png":"person_z.png")}}'></image>

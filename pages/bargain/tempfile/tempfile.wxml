@@ -1,6 +1,5 @@
 <import src="../../../template/loading/loading.wxml" />
 <wxs module="filter" src="../../../utils/filter.wxs"></wxs>
-<loading-top id="loading" />
 <page class='{{show?"hide":""}}'>
   <view class='headTopNav {{show?"fixed":""}}' id='headTopNav'>
     <navigator url='/pages/address/address' hover-class="none">

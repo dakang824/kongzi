@@ -1,4 +1,5 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<loading-top id="loading" />
 <view hidden='{{hiddenPage}}'>
 	<view class="card">
 		<view class="title between">
@@ -7,15 +8,20 @@
 		</view>
 		<block wx:if='{{hasCard}}'>
 			<view class="info">
-				<navigator class="between cardNumber" url="/pages/selCourseCard/Cashback/Cashback?id={{cards.id}}" hover-class="none">
+				<view class="between cardNumber">
 					<view class="txt">卡号：{{cardNumber[0]+' '+cardNumber[1]+' '+cardNumber[2]+' '+cardNumber[3]}}</view>
-					<view class="rt" wx:if='{{cards.hasreview}}'>
+					<navigator class="rt" url="/pages/selCourseCard/imgs/imgs?type=3">
+						福利说明
+						<van-icon name="arrow" />
+					</navigator>
+				</view>
+				<view class="between cardNumber">
+					<view class="txt">有效期限：{{filter.spot(filter.slice(cards.valid_time,10))}}-{{filter.spot(filter.slice(cards.valid_to,10))}}</view>
+					<navigator class="rt" wx:if='{{cards.hasreview}}' url="/pages/selCourseCard/Cashback/Cashback?id={{cards.id}}">
 						好评返现
 						<van-icon name="arrow" />
-					</view>
-				</navigator>
-
-				<view class="txt">有效期限：{{filter.spot(filter.slice(cards.valid_time,10))}}-{{filter.spot(filter.slice(cards.valid_to,10))}}</view>
+					</navigator>
+				</view>
 				<view class="footer between">
 					<view class="lf">已选{{cards.select_count}}个课程，还可选{{cards.left_count}}个课程</view>
 					<van-button bind:click='go' disabled="{{cards.left_count==0}}">立即选课</van-button>
@@ -65,7 +71,7 @@
 								<!-- {{item.stock>=10000?'剩余N个名额':'剩余'+item.stock+'个名额'}} -->
 							</view>
 							<view class="rt" hover-class="hover-class">课程介绍
-								<van-icon name="arrow" size="16px" />
+								<van-icon name="arrow"/>
 							</view>
 						</navigator>
 						<navigator class="between row1 van-hairline--bottom" hover-class="none" url="/pages/selCourseCard/imgs/imgs?type=2&id={{item.course_id}}">
@@ -74,7 +80,7 @@
 								{{item.inst_name}}
 							</view>
 							<view class="rt" hover-class="hover-class">机构介绍
-								<van-icon name="arrow" size="16px" />
+								<van-icon name="arrow" />
 							</view>
 						</navigator>
 						<view class="footer between">

@@ -191,7 +191,6 @@
     "van-tab": "dist/tab/index",
     "van-tabs": "dist/tabs/index",
     "loading-top": "dist/loading_top/index",
-    "loading": "dist/loading_top/index",
     "van-radio": "dist/radio/index",
     "van-switch": "dist/switch/index",
     "van-radio-group": "dist/radio-group/index",

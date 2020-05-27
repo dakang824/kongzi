@@ -277,11 +277,20 @@ function editTabbar() {
       })
     }).then((res) => {
       let {setting,tabBar}=getApp().globalData;
-      console.log(setting.showVideo2);
-      if(setting.showVideo2==0){
-        tabBar.list.splice(1,1);
+      if(setting.showVideo2){
+        tabBar.list.splice(1,0,{
+          "active": false,
+          "pagePath": "/pages/video/video",
+          "iconPath": "/imgs/child.png",
+          "selectedIconPath": "/imgs/child_active.png",
+          "text": "萌娃"
+        }) 
         getApp().globalData.tabBar=tabBar;
       }
+      // if(setting.showVideo2==0){
+      //   tabBar.list.splice(1,1);
+      //   getApp().globalData.tabBar=tabBar;
+      // }
       setTar();
     })
 

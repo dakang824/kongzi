@@ -1,5 +1,4 @@
 <import src="../../template/loading/loading.wxml" />
-<loading-top id="loading" />
 <!-- <dk-tabbar tabBar="{{tabBar}}"></dk-tabbar> -->
 <page class='{{show?"hide":""}}'>
   <view class='headTopNav {{show?"fixed":""}}' id='headTopNav'>

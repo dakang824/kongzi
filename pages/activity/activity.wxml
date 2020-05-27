@@ -1,6 +1,5 @@
 <import src="../../template/activeList.wxml" />
 <van-dialog id="van-dialog" />
-<loading-top id="loading" />
 <pagePublic/>
 <van-tabs type='line' border="{{false}}" active="{{ active }}" bind:change="onChange" custom-class='tabs' color="#fff" swipeable animated sticky>
   <van-tab title="全部">

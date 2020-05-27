@@ -1,5 +1,4 @@
 <pagePublic noFixed/>
-<loading-top id="loading" />
 <van-dialog id="van-dialog" />
 <view class="header">
   <view class="topline"></view>

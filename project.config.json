@@ -68,8 +68,8 @@
 				},
 				{
 					"id": 1,
-					"name": "pages/user/cardSend/cardSend",
-					"pathName": "pages/user/cardSend/cardSend",
+					"name": "pages/video/video",
+					"pathName": "pages/video/video",
 					"query": "",
 					"scene": null
 				},

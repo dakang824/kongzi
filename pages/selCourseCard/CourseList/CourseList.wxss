@@ -261,6 +261,12 @@ van-field,van-cell{
 }
 .Selected .block .info .row1 .rt{
   color: #999;
+  display: flex;
+  align-items: center;
+}
+van-icon{
+  display: flex;
+  align-items: center;
 }
 .Selected .block .head>.rt {
   flex: 1;

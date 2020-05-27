@@ -8,19 +8,22 @@ page {
   border-radius: 20rpx;
   overflow: hidden;
 }
-.card .btn{
+
+.card .btn {
   padding: 90rpx 0;
   display: flex;
   justify-content: center;
 }
-.card .btn button{
-  width:249rpx;
-  height:82rpx;
+
+.card .btn button {
+  width: 249rpx;
+  height: 82rpx;
   line-height: 82rpx;
-  font-weight:bold;
+  font-weight: bold;
   font-size: 32rpx;
   border-radius: 15rpx;
 }
+
 .card .title {
   background: #FF2D58;
   padding: 30rpx;
@@ -39,13 +42,10 @@ page {
   padding: 35rpx 40rpx;
 }
 
-.card .info .txt {
-  margin-bottom: 15rpx;
-}
-
 .card .info .footer {
   color: #FF2E58;
   font-size: 24rpx;
+  margin-top: 20rpx;
 }
 
 .card .info .footer button {
@@ -127,50 +127,75 @@ page {
   height: 31rpx;
   margin-right: 20rpx;
 }
-.Selected .block .info .row1{
+
+.Selected .block .info .row1 {
   color: #707070;
   font-size: 27rpx;
   padding: 30rpx 0 20rpx;
 }
+
 .Selected .block .info .row1 .vCenter {
   font-size: 27rpx;
   font-weight: bold;
   color: #242424;
 }
-.Selected .block .info .row1 .rt{
+
+.Selected .block .info .row1 .rt {
   color: #999;
+  display: flex;
+  align-items: center;
 }
-.Selected .block .info .footer{
+
+.Selected .block .info .footer {
   padding: 40rpx 0 20rpx;
   color: #767676;
   font-size: 24rpx;
 }
-.Selected .block .info .footer .txt{
+
+.Selected .block .info .footer .txt {
   margin-bottom: 10rpx;
 }
-.Selected .block .info .footer button{
-  height:60rpx;
+
+.Selected .block .info .footer button {
+  height: 60rpx;
   line-height: 60rpx;
 }
-.bg{
-  background:linear-gradient(87deg,rgba(255,90,144,1) 0%,rgba(255,44,86,1) 98%);
+
+.bg {
+  background: linear-gradient(87deg, rgba(255, 90, 144, 1) 0%, rgba(255, 44, 86, 1) 98%);
   color: #fff;
 }
-van-tag{
+
+van-tag {
   margin-right: 28rpx;
 }
-.imgs image{
+
+.imgs image {
   width: 100%;
   margin-bottom: 30rpx;
 }
-.cardNumber .rt{
+
+.cardNumber {
+  margin-bottom: 20rpx;
+}
+
+.cardNumber .rt {
   font-size: 27rpx;
   color: #707070;
+  display: flex;
+  align-items: center;
 }
-.info .van-cell{
+
+van-icon {
+  display: flex;
+  align-items: center;
+}
+
+.info .van-cell {
   padding: 10px 0;
   font-size: 27rpx;
 }
-.hover-class{
-  background-color:#eee;
+
+.hover-class {
+  background-color: #eee;
 }

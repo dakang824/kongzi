@@ -1,4 +1,5 @@
 <pagePublic />
+<loading-top id="loading" />
 <view class='headTopNav' id='headTopNav'>
 	<view class='address'>
 		<view class='vCenter t'>
@@ -10,19 +11,10 @@
 			<template is="list" data="{{item,rootUrl,submitData}}"></template>
 		</van-tab>
 	</van-tabs>
-
-	<!-- <van-search class='cancel' value="{{ postData.condition }}" placeholder="搜索机构名称、课程名称" use-action-slot background='transparent' bind:clear='clearSearch' bind:search='setSearchValue' bind:change='search'>
-		<view slot="action" bind:tap="togglePopup" class='screen'>
-			<view>
-				<image src='/imgs/screen.png'></image>筛选
-			</view>
-		</view>
-	</van-search>
-	<view class='triangle-up' wx:if="{{show}}"></view> -->
 </view>
 
 <template name="list">
-	<view class='bar'>
+	<view class='bar' hidden="{{!item.show}}">
 		<block wx:if="{{item.data.length}}">
 			<view class='Selected'>
 				<view class="block" wx:for='{{item.data}}' wx:key="index">
@@ -38,9 +30,9 @@
 								</view>
 							</view>
 							<view class="flex">
-							  <van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.type==1?'少儿英语':item.type==2?'思维训练':
-								item.type==3?'国学教育':item.type==4?'美术培训':item.type==5?'音乐培训':item.type==6?'舞蹈培训':item.type==7?'体育运动':
-								item.type==8?'少儿编程':item.type==9?'课外辅导':item.type==99?'其他培训':''}}</van-tag>
+							  <van-tag type="primary" text-color='#fff' type="danger">{{item.category==1?'少儿英语':item.category==2?'思维训练':
+								item.category==3?'国学教育':item.category==4?'美术培训':item.category==5?'音乐培训':item.category==6?'舞蹈培训':item.category==7?'体育运动':
+								item.category==8?'少儿编程':item.category==9?'课外辅导':item.category==99?'其他培训':''}}</van-tag>
 								<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.min_age}}-{{item.max_age}}岁</van-tag>
 								<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.type==1?'体验课':item.type==2?'短课包':item.type==3?'正式课':''}}</van-tag>
 								<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.online==0?'线上':item.online==1?'线下':''}}</van-tag>
@@ -53,7 +45,7 @@
 								{{item.stock>=10000?'剩余N个名额':'剩余'+(item.stock>0?item.stock:0)+'个名额'}}
 							</view>
 							<view class="rt" hover-class="hover-class">课程介绍
-								<van-icon name="arrow" size="16px" />
+								<van-icon name="arrow"/>
 							</view>
 						</navigator>
 						<navigator class="between row1 {{item.need_address==1?'van-hairline--bottom':''}}" hover-class="none" url="/pages/selCourseCard/imgs/imgs?type=2&id={{item.course_id}}">
@@ -62,7 +54,7 @@
 								{{item.inst_name}}
 							</view>
 							<view class="rt" hover-class="hover-class">机构介绍
-								<van-icon name="arrow" size="16px" />
+								<van-icon name="arrow"/>
 							</view>
 						</navigator>
 						<view wx:if='{{item.checked&&item.options.length}}' class="radio">
@@ -92,32 +84,3 @@
 	<van-button type="primary" block color='#FFE9EE' custom-class='pre' bind:click="preClick">上一步</van-button>
 	<van-button type="primary" block custom-class='submit' bind:click='submit'>提交</van-button>
 </view>
-
-<!-- <van-popup show="{{show}}" position="top" bind:close="onClose" custom-class='popup' z-index='10'>
-	<scroll-view scroll-y >
-		<view style='padding:0 30rpx 100rpx;'>
-			<view class='title'>课程类别</view>
-			<view class='block clearfix'>
-				<view class='li {{postData.type==index?"active":""}}' wx:for='{{activeStatus}}' data-value='{{index}}' bindtap='typeChange'>
-					{{item}}
-				</view>
-			</view>
-			<view class='title' style="margin-top:35rpx;">教培类别</view>
-			<view class='block clearfix'>
-				<view class='li {{postData.category==index?"active":""}}' wx:for='{{category}}' data-value='{{index}}' bindtap='categoryChange'>
-					{{item}}
-				</view>
-			</view>
-			<view class='title' style="margin-top:35rpx;">授课方式</view>
-			<view class='block clearfix'>
-				<view class='li {{postData.online==index?"active":""}}' wx:for='{{online}}' data-value='{{index}}' bindtap='onlineChange'>
-					{{item}}
-				</view>
-			</view>
-		</view>
-	</scroll-view>
-	<view class='fiexed'>
-		<view bindtap='reset'>重置</view>
-		<view bindtap='onPullDownRefresh'>确定</view>
-	</view>
-</van-popup> -->

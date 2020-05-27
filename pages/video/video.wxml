@@ -1,68 +1,70 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <dk-tabbar tabBar="{{tabBar}}" transparent></dk-tabbar>
 <van-dialog id="van-dialog" />
-<view style="top:{{globalData.Custom.top+(globalData.Custom.height/5)}}px" class="box_view">
-	<view class="title">孔紫小视频</view>
-	<view class="between">
-		<view class="li {{typeInd==index?'active':''}}" wx:for='{{type}}' wx:key="index" bindtap="typeActive" data-i="{{index}}">{{item}}</view>
+<view wx:if='{{showPage}}'>
+	<view style="top:{{globalData.Custom.top+(globalData.Custom.height/5)}}px" class="box_view">
+		<view class="title">孔紫小视频</view>
+		<view class="between">
+			<view class="li {{typeInd==index?'active':''}}" wx:for='{{type}}' wx:key="index" bindtap="typeActive" data-i="{{index}}">{{item}}</view>
+		</view>
+	</view>
+	<view wx:if='{{hide}}'>
+		<swiper bindchange='swiperChange' class='video-box' vertical skip-hidden-item-layout circular='{{oldData.length}}' bindtransition='swiperItem' bindanimationfinish='animationfinish'>
+			<swiper-item class='video-box' wx:for='{{data}}' wx:key="index" data-i='{{video_id}}' item-id='video{{index}}'>
+				<view class='right-list'>
+					<view class='list-icon'>
+						<image src="/imgs/eye.png" style="width:42rpx;height:33rpx"></image>
+						<!-- <van-icon name="eye-o" color="#fff" size="52rpx" /> -->
+						<view>{{item.view_count}}</view>
+					</view>
+					<view class='list-icon' catchtap="toLike">
+						<image src="/imgs/{{item.liked==1?'zan_active':'zan'}}.png" style="width:37rpx;height:37rpx"></image>
+						<!-- <van-icon name="{{item.liked==1?'good-job':'good-job-o'}}" color="{{item.liked?'#fb2235':'#fff'}}" size="52rpx" /> -->
+						<view>{{item.like_count}}</view>
+					</view>
+					<view class='list-icon' catchtap="toDisLike">
+						<!-- <van-icon name="{{item.disliked==1?'good-job':'good-job-o'}}" color="{{item.disliked?'#fb2235':'#fff'}}" size="52rpx" custom-class='transform-90' /> -->
+						<image src="/imgs/{{item.disliked==1?'zan_active':'zan'}}.png" class='transform-90' style="width:37rpx;height:37rpx"></image>
+						<view>{{item.dislike_count}}</view>
+					</view>
+					<button class='list-icon' open-type="share">
+						<!-- <van-icon name="share" color="#fff" size="52rpx" bind:click='toDisLike' /> -->
+						<image src="/imgs/share.png" style="width:36rpx;height:32rpx"></image>
+						<text class="txt">分享</text>
+					</button>
+				</view>
+				<view class='left-info'>
+					<view class="vCenter">
+						<image class='headImg' src='{{globalData.serverUrl+item.logo_path}}'></image>
+						<view class='info-name'>{{item.source_name}}</view>
+						<view catchtap="toCollect">
+							<van-button icon="{{item.collected?'':'plus'}}" type="primary" plain size="mini" custom-class='transparent' color="{{item.collected?'#fb2235':'#fff'}}">{{item.collected?'已收藏':'收藏'}}</van-button>
+						</view>
+					</view>
+					<view class='info-detail van-multi-ellipsis--l2'>{{item.name}}</view>
+				</view>
+				<view class="bottom"></view>
+				<video wx:if='{{index!==hideIndex}}' id="video{{index}}" custom-cache="{{cache}}" src="{{item.video_url}}" controls="{{false}}" show-center-play-btn='{{false}}' loop enable-progress-gesture="{{false}}" show-fullscreen-btn="{{false}}" objectFit="contain" bindended='ended' bindtimeupdate='timeupdate' poster="{{globalData.serverUrl+item.list_pic}}" catchtap="play" bindplay='bindPlay' bindpause='bindPause' />
+				<view wx:if='{{showBtn}}' class='cover-pause' catchtap="play">
+					<van-icon name="play" color='#fff' size='70rpx' />
+				</view>
+
+				<view class="textarea {{keyBoardHeight?'transition':''}}" style="bottom:{{keyBoardHeight?(keyBoardHeight)+'px':'108rpx'}}">
+					<progress class="progress" color="#fff" backgroundColor='#454545' activeColor='#fb2235' percent='{{percent}}' stroke-width='1' bindactiveend='videoOver' />
+					<van-cell-group border="{{ false }}">
+						<van-field type="text" placeholder="说两句.." show-confirm-bar='{{false}}' bind:focus='onFocus' bind:blur='onBlur' adjust-position='{{false}}' use-button-slot border="{{ false }}" bind:confirm='onSend' value='{{commentInfo}}'>
+							<block wx:if='{{!keyBoardHeight}}'>
+								<van-button slot="button" size="small" type="primary" color='#171717' custom-class='margin-left' bind:click='showComment'>评论({{item.comment_count}})</van-button>
+								<van-button slot="button" size="small" type="primary" color='#171717' custom-class='margin-left' bind:click='showCollect'>收藏夹({{collect_count}})</van-button>
+							</block>
+						</van-field>
+					</van-cell-group>
+				</view>
+			</swiper-item>
+		</swiper>
 	</view>
 </view>
 
-<view wx:if='{{hide}}'>
-	<swiper bindchange='swiperChange' class='video-box' vertical skip-hidden-item-layout circular='{{oldData.length}}' bindtransition='swiperItem' bindanimationfinish='animationfinish'>
-		<swiper-item class='video-box' wx:for='{{data}}' wx:key="index" data-i='{{video_id}}' item-id='video{{index}}'>
-			<view class='right-list'>
-				<view class='list-icon'>
-					<image src="/imgs/eye.png" style="width:42rpx;height:33rpx"></image>
-					<!-- <van-icon name="eye-o" color="#fff" size="52rpx" /> -->
-					<view>{{item.view_count}}</view>
-				</view>
-				<view class='list-icon' catchtap="toLike">
-					<image src="/imgs/{{item.liked==1?'zan_active':'zan'}}.png" style="width:37rpx;height:37rpx"></image>
-					<!-- <van-icon name="{{item.liked==1?'good-job':'good-job-o'}}" color="{{item.liked?'#fb2235':'#fff'}}" size="52rpx" /> -->
-					<view>{{item.like_count}}</view>
-				</view>
-				<view class='list-icon' catchtap="toDisLike">
-					<!-- <van-icon name="{{item.disliked==1?'good-job':'good-job-o'}}" color="{{item.disliked?'#fb2235':'#fff'}}" size="52rpx" custom-class='transform-90' /> -->
-					<image src="/imgs/{{item.disliked==1?'zan_active':'zan'}}.png" class='transform-90' style="width:37rpx;height:37rpx"></image>
-					<view>{{item.dislike_count}}</view>
-				</view>
-				<button class='list-icon' open-type="share">
-					<!-- <van-icon name="share" color="#fff" size="52rpx" bind:click='toDisLike' /> -->
-					<image src="/imgs/share.png" style="width:36rpx;height:32rpx"></image>
-					<text class="txt">分享</text>
-				</button>
-			</view>
-			<view class='left-info'>
-				<view class="vCenter">
-					<image class='headImg' src='{{globalData.serverUrl+item.logo_path}}'></image>
-					<view class='info-name'>{{item.source_name}}</view>
-					<view catchtap="toCollect">
-						<van-button icon="{{item.collected?'':'plus'}}" type="primary" plain size="mini" custom-class='transparent' color="{{item.collected?'#fb2235':'#fff'}}">{{item.collected?'已收藏':'收藏'}}</van-button>
-					</view>
-				</view>
-				<view class='info-detail van-multi-ellipsis--l2'>{{item.name}}</view>
-			</view>
-			<view class="bottom"></view>
-			<video wx:if='{{index!==hideIndex}}' id="video{{index}}" custom-cache="{{cache}}" src="{{item.video_url}}" controls="{{false}}" show-center-play-btn='{{false}}' loop enable-progress-gesture="{{false}}" show-fullscreen-btn="{{false}}" objectFit="contain" bindended='ended' bindtimeupdate='timeupdate' poster="{{globalData.serverUrl+item.list_pic}}" catchtap="play" bindplay='bindPlay' bindpause='bindPause' />
-			<view wx:if='{{showBtn}}' class='cover-pause' catchtap="play">
-				<van-icon name="play" color='#fff' size='70rpx' />
-			</view>
-
-			<view class="textarea {{keyBoardHeight?'transition':''}}" style="bottom:{{keyBoardHeight?(keyBoardHeight)+'px':'108rpx'}}">
-				<progress class="progress" color="#fff" backgroundColor='#454545' activeColor='#fb2235' percent='{{percent}}' stroke-width='1' bindactiveend='videoOver' />
-				<van-cell-group border="{{ false }}">
-					<van-field type="text" placeholder="说两句.." show-confirm-bar='{{false}}' bind:focus='onFocus' bind:blur='onBlur' adjust-position='{{false}}' use-button-slot border="{{ false }}" bind:confirm='onSend' value='{{commentInfo}}'>
-						<block wx:if='{{!keyBoardHeight}}'>
-							<van-button slot="button" size="small" type="primary" color='#171717' custom-class='margin-left' bind:click='showComment'>评论({{item.comment_count}})</van-button>
-							<van-button slot="button" size="small" type="primary" color='#171717' custom-class='margin-left' bind:click='showCollect'>收藏夹({{collect_count}})</van-button>
-						</block>
-					</van-field>
-				</van-cell-group>
-			</view>
-		</swiper-item>
-	</swiper>
-</view>
 
 <van-popup show="{{ show }}" position="bottom" custom-style="border-radius:30rpx 30rpx 0 0;background: rgba(0, 0, 0, 0.9);" bind:close="toggleShow">
 	<view class="head">全部评论({{videosArr[current].comment_count}})</view>

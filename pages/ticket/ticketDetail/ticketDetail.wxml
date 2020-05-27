@@ -1,6 +1,5 @@
 <pagePublic/>
 <wxs module="filter" src="../../../utils/filter.wxs"></wxs>
-<loading-top id="loading" />
 <view class="detailbox">
   <view class="itembox">
     <view class="top flex">

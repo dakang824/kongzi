@@ -1,6 +1,5 @@
  <pagePublic/>
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
-<loading-top id="loading" />
 <view class='list'>
   <block wx:if='{{list.length}}'>
     <navigator class='li' wx:for="{{list}}" url='/pages/rebate/rebate_detail/index?act_no={{item.act_no}}&inst_id={{item.inst_id}}&pic_path={{item.pic_path}}&title={{item.title}}&actTime={{item.actTime}}&totalperson={{item.gx}}&totlaMoney={{item.totalmoney}}'>

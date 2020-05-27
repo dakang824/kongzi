@@ -1,6 +1,6 @@
 <view class="Selected">
 	<view class="between title">
-		<view class="lf">孔紫选课好评卡</view>
+		<view class="lf">孔紫选课卡</view>
 		<van-button type="primary" size="small" color='#FFE9EE' bind:click='call'>联系客服</van-button>
 	</view>
 	<view class="box">

@@ -1,6 +1,6 @@
 let http = require('../../../common/request.js'),
   app = getApp();
-  import Util from '../../../utils/util.js';
+  import Loading from '../../../dist/loading_top/loading';
 Page({
   data: {
     fixed:false,
@@ -35,56 +35,67 @@ Page({
       name: '全部',
       page_no:1,
       noData: false,
+      show:false,
     },{
       data: [],
       name: '少儿英语',
       page_no:1,
       noData: false,
+      show:false,
     },{
       data: [],
       name: '少儿编程',
       page_no:1,
       noData: false,
+      show:false,
     }, {
       data: [],
       name: '思维训练', 
       page_no:1,
       noData: false,
+      show:false,
     }, {
       data: [],
       name: '国学教育',
       page_no:1,
       noData: false,
+      show:false,
     }, {
       data: [],
       name: '美术培训',
       page_no:1,
       noData: false,
+      show:false,
     }, {
       data: [],
       name: '音乐培训',
       page_no:1,
       noData: false,
+      show:false,
     }, {
       data: [],
       name: '舞蹈培训',
       page_no:1,
       noData: false,
+      show:false,
     }, {
       data: [],
       name: '体育运动',
       page_no:1,
       noData: false,
+      show:false,
     }, {
       data: [],
       name: '课外辅导',
       page_no:1,
       noData: false,
+      show:false,
     }, {
       data: [],
       name: '其他培训',
       page_no:1,
       noData: false,
+      show:false,
     }]
   },
   preClick() {
@@ -262,6 +273,7 @@ Page({
     });
   },
   getData() {
+    Loading.start();
     let {
       list,
       postData,
@@ -279,12 +291,15 @@ Page({
         }
         this.setData({
           [`list[${active}].data`]: list[active].data.concat(data),
-          [`list[${active}].page_no`]: list[active].page_no + 1
+          [`list[${active}].page_no`]: list[active].page_no + 1,
         })
       }
       this.setData({
-        [`list[${active}].noData`]: data.length == postData.page_size
+        [`list[${active}].noData`]: data.length == postData.page_size,
+        [`list[${active}].show`]: true
       })
+
+      Loading.close();
     })
   },
   getHeight(ele, fun) {

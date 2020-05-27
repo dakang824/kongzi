@@ -6,6 +6,7 @@ import Dialog from '../../dist/dialog/dialog';
 var start;
 Page({
   data: {
+    showPage:false,
     overlay:false,
     hide:true,
     hideIndex:'',
@@ -214,9 +215,10 @@ Page({
       data.push(d);
       this.setData({
         data,
-        isShare: 'b' in o
+        isShare: 'b' in o,
       });
     }
+    this.setData({showPage:app.globalData.setting.showVideo2})
     let first = true;
     this.loadData(first);
   },

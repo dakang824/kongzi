@@ -9,8 +9,8 @@
       <!-- <view class="tip">请点击登录</view> -->
       <button class="tip" style="background:#fff" open-type="getUserInfo" bindgetuserinfo="getInfo">请点击登录</button>
     </view>
-    <view class="line"></view>
-    <view class="itembox flex">
+    <!-- <view class="line"></view> -->
+    <view class="itembox flex" wx:if='{{false}}'>
       <navigator url='/pages/getPrize/prizeTicket/prizeTicket' class="item" hover-class='none'>
         <view class="num">{{cardInfo.drawTicketCount}}</view>
         <view class="type">奖券</view>
@@ -74,7 +74,7 @@
       </view>
       <view class="row3_right">签到+N</view>
     </navigator> -->
-    <view class="itembox flex">
+    <view class="itembox flex" wx:if='{{false}}'>
       <navigator url='/pages/getPrize/prizeTicket/prizeTicket' class="item" hover-class='none'>
         <view class="num">{{cardInfo.drawTicketCount}}</view>
         <view class="type">奖券</view>
