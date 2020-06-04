@@ -29,8 +29,12 @@
 									<van-checkbox disabled="{{!(submitData.age>=item.min_age&&submitData.age<=item.max_age)}}" value="{{ item.checked }}" shape="square" checked-color="#FA2335"></van-checkbox>
 								</view>
 							</view>
+							<view class="flex comment" wx:if='{{item.comment}}'>
+								<view style="min-width:90rpx;width:90rpx;font-size:26rpx">备注：</view>
+								<text>{{item.comment}}</text>
+							</view>
 							<view class="flex">
-							  <van-tag type="primary" text-color='#fff' type="danger">{{item.category==1?'少儿英语':item.category==2?'思维训练':
+							  <van-tag type="danger">{{item.category==1?'少儿英语':item.category==2?'思维训练':
 								item.category==3?'国学教育':item.category==4?'美术培训':item.category==5?'音乐培训':item.category==6?'舞蹈培训':item.category==7?'体育运动':
 								item.category==8?'少儿编程':item.category==9?'课外辅导':item.category==99?'其他培训':''}}</van-tag>
 								<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.min_age}}-{{item.max_age}}岁</van-tag>

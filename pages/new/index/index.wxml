@@ -1,6 +1,6 @@
 <wxs module="filter" src="../../../utils/filter.wxs"></wxs>
 <dk-tabbar tabBar="{{tabBar}}"></dk-tabbar>
-<fixed show='{{getLoginMoney}}' bind:close='closeNewUserMoney' money='{{login.get_bonus}}' />
+<!-- <fixed show='{{getLoginMoney}}' bind:close='closeNewUserMoney' money='{{login.get_bonus}}' /> -->
 <page>
 	<view class="new">
 		<view class="bg"></view>

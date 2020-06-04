@@ -250,6 +250,7 @@ van-field,van-cell{
 
 .Selected .block .head {
   margin-bottom: 35rpx;
+  align-items: flex-start;
 }
 .info .van-cell {
   padding: 10px 0;
@@ -282,7 +283,11 @@ van-icon{
   font-weight: bold;
   width: 438rpx;
 }
-
+.Selected .block .head .rt .comment{
+  color: #A8A8A8;
+  font-size: 24rpx;
+  margin-bottom: 20rpx;
+}
 .Selected .block .head .rt .tag {
   color: #A8A8A8;
   font-size: 27rpx;
@@ -317,6 +322,9 @@ van-icon{
 .Selected .block .info .footer{
   color: #767676;
   font-size: 24rpx;
+}
+.Selected .block .info .footer .van-cell__title{
+  color: #FF4444;
 }
 .Selected .block .info .footer .txt{
   margin-bottom: 10rpx;

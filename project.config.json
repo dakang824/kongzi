@@ -212,6 +212,12 @@
 					"pathName": "pages/selCourseCard/CourseList/CourseList",
 					"query": "d=%7B%22cmd%22%3A%22selectCourses%22%2C%22card_code%22%3A%22128839777772%22%2C%22courses%22%3A%5B%5D%2C%22name%22%3A%22%E7%A6%B9%E5%BA%B7%22%2C%22age%22%3A3%2C%22gender%22%3A%22%E7%94%B7%22%2C%22mobile%22%3A%2218790336164%22%2C%22limit_count%22%3A1%7D&code=128839777772",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/shopMall/shareGoods/shareGoods",
+					"pathName": "pages/shopMall/shareGoods/shareGoods",
+					"scene": null
 				}
 			]
 		}

@@ -54,7 +54,7 @@
 								<view class="tag">{{item.course_type==1?'体验课':item.course_type==2?'短课包':item.course_type==3?'正式课':''}}</view>
 							</view>
 							<view class="flex">
-								<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.course_type==1?'少儿英语':item.course_type==2?'思维训练':
+								<van-tag type="primary" type="danger">{{item.course_type==1?'少儿英语':item.course_type==2?'思维训练':
 								item.course_type==3?'国学教育':item.course_type==4?'美术培训':item.course_type==5?'音乐培训':item.course_type==6?'舞蹈培训':item.course_type==7?'体育运动':item.course_type==8?'少儿编程':item.course_type==9?'课外辅导':item.course_type==99?'其他培训':''}}</van-tag>
 								<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.min_age}}-{{item.max_age}}岁</van-tag>
 								<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.online==0?'线上':item.online==1?'线下':''}}</van-tag>
