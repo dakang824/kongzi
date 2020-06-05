@@ -1,19 +1,20 @@
 let http = require('../../../common/request.js'),
   app = getApp();
-  import Loading from '../../../dist/loading_top/loading';
+import Loading from '../../../dist/loading_top/loading';
 Page({
   data: {
-    fixed:false,
+    onlineType: 1,
+    fixed: false,
     selected: 0,
     show: false,
     loading: false,
     rootUrl: app.globalData.serverUrl,
-   
+
     postData: {
       cmd: 'queryCardCourses',
       type: '',
       category: '',
-      online: '',
+      online: 0,
       condition: '',
       page_size: 10,
       page_no: 1
@@ -33,70 +34,92 @@ Page({
     list: [{
       data: [],
       name: '全部',
-      page_no:1,
+      page_no: 1,
       noData: false,
-      show:false,
-    },{
-      data: [],
-      name: '少儿英语',
-      page_no:1,
-      noData: false,
-      show:false,
-    },{
-      data: [],
-      name: '少儿编程',
-      page_no:1,
-      noData: false,
-      show:false,
+      show: false,
     }, {
       data: [],
-      name: '思维训练', 
-      page_no:1,
+      name: '少儿英语',
+      page_no: 1,
       noData: false,
-      show:false,
+      show: false,
+    }, {
+      data: [],
+      name: '少儿编程',
+      page_no: 1,
+      noData: false,
+      show: false,
+    }, {
+      data: [],
+      name: '思维训练',
+      page_no: 1,
+      noData: false,
+      show: false,
     }, {
       data: [],
       name: '国学教育',
-      page_no:1,
+      page_no: 1,
       noData: false,
-      show:false,
+      show: false,
     }, {
       data: [],
       name: '美术培训',
-      page_no:1,
+      page_no: 1,
       noData: false,
-      show:false,
+      show: false,
     }, {
       data: [],
       name: '音乐培训',
-      page_no:1,
+      page_no: 1,
       noData: false,
-      show:false,
+      show: false,
     }, {
       data: [],
       name: '舞蹈培训',
-      page_no:1,
+      page_no: 1,
       noData: false,
-      show:false,
+      show: false,
     }, {
       data: [],
       name: '体育运动',
-      page_no:1,
+      page_no: 1,
       noData: false,
-      show:false,
+      show: false,
     }, {
       data: [],
       name: '课外辅导',
-      page_no:1,
+      page_no: 1,
       noData: false,
-      show:false,
+      show: false,
     }, {
       data: [],
       name: '其他培训',
-      page_no:1,
+      page_no: 1,
       noData: false,
-      show:false,
-    }]
+      show: false,
+    }],
+  },
+  lookMore(e){
+    let {active,list}=this.data,i=e.currentTarget.dataset.i;
+    this.setData({
+      [`list[${active}].data[${i}].collapsed`]:!list[active].data[i].collapsed
+    })
+  },
+  switchOnline(e) {
+    let list=this.data.list;
+    for(let key of list){
+      key.data=[];
+      key.page_no=1;
+      key.noData=false;
+      key.show=false;
+    }
+    this.setData({
+      'postData.online': e.currentTarget.dataset.i,
+      list,
+      selected:0
+    })
+
+    this.onPullDownRefresh(); 
   },
   preClick() {
     wx.navigateBack({
@@ -104,17 +127,17 @@ Page({
     })
   },
   TabChange(e) {
-    let value=e.detail.index;
+    let value = e.detail.index;
     this.setData({
       // 1 少儿英语，2 思维训练，3 国学教育，4 美术培训，5 音乐培训，6 舞蹈培训，7 体育运动，8 少儿编程，9 课外辅导，99 其他培训
-      'postData.category': value ?(value==9?value:value==1?value:value==2?8:value==10?99:value-1): '',
-      active:value,
+      'postData.category': value ? (value == 9 ? value : value == 1 ? value : value == 2 ? 8 : value == 10 ? 99 : value - 1) : '',
+      active: value,
     });
     this.getData();
   },
   OnInput(e) {
     this.setData({
-     [`list[${this.data.active}].data[${e.currentTarget.dataset.i}].address`]: e.detail
+      [`list[${this.data.active}].data[${e.currentTarget.dataset.i}].address`]: e.detail
     })
   },
   getSelCourse() {
@@ -134,17 +157,18 @@ Page({
     let {
       submitData,
       selected,
-      select_course,active
+      select_course,
+      active
     } = this.data, num = 0, age = submitData.age, ind = e.currentTarget.dataset.i;
-    let list=this.data.list[active].data;
-    if (list[ind].checked) {//取消选中项
+    let list = this.data.list[active].data;
+    if (list[ind].checked) { //取消选中项
       list[ind].checked = false;
       this.setData({
-        [`list[${active}].data`]:list,
+        [`list[${active}].data`]: list,
         selected: this.computerSelectCourse().length
       })
       return;
-    } else if(list[ind].stock<=0){
+    } else if (list[ind].stock <= 0) {
       wx.showModal({
         title: '温馨提示',
         content: '该课程暂时没有名额。',
@@ -152,7 +176,7 @@ Page({
         success(res) {}
       })
       return;
-    }else if (submitData.limit_count <= selected) {
+    } else if (submitData.limit_count <= selected) {
       wx.showToast({
         title: '所选课程不能大于' + submitData.limit_count + '个',
         icon: 'none'
@@ -176,7 +200,7 @@ Page({
               if (res.confirm) {
                 list[ind].checked = !list[ind].checked;
                 this.setData({
-                  [`list[${active}].data`]:list,
+                  [`list[${active}].data`]: list,
                   selected: this.computerSelectCourse().length
                 })
               }
@@ -189,15 +213,17 @@ Page({
 
     list[ind].checked = !list[ind].checked;
     this.setData({
-      [`list[${active}].data`]:list,
+      [`list[${active}].data`]: list,
       selected: this.computerSelectCourse().length
     })
   },
-  computerSelectCourse(){
-    let {list}=this.data,arr=[];
-    for(let key of list){
-      for(let item of key.data){
-        item.checked?arr.push(item):'';
+  computerSelectCourse() {
+    let {
+      list
+    } = this.data, arr = [];
+    for (let key of list) {
+      for (let item of key.data) {
+        item.checked ? arr.push(item) : '';
       }
     }
     return arr;
@@ -211,11 +237,13 @@ Page({
     this.onPullDownRefresh();
   },
   onPullDownRefresh() {
-    let {active}=this.data;
+    let {
+      active
+    } = this.data;
     this.setData({
-      [`list[${active}].data`]:[], 
-      [`list[${active}].page_no`]:1,
-      [`list[${active}]noData`]:false,
+      [`list[${active}].data`]: [],
+      [`list[${active}].page_no`]: 1,
+      [`list[${active}]noData`]: false,
       show: false
     })
     this.getData();
@@ -233,7 +261,6 @@ Page({
     } = this.data;
     postData.type = '';
     postData.category = '';
-    postData.online = '';
     postData.condition = '';
     postData.page_no = 1;
     this.setData({
@@ -255,13 +282,29 @@ Page({
       value
     } = e.currentTarget.dataset;
     this.setData({
-      'postData.category': value ?(value==10?99:value): ''
+      'postData.category': value ? (value == 10 ? 99 : value) : ''
     });
   },
-  onClick(e){
-    let {active}=this.data,{name,i}=e.currentTarget.dataset;
+  selChool(e){
+    let {
+      active
+    } = this.data, {
+      name,
+      i
+    } = e.currentTarget.dataset;
     this.setData({
-      [`list[${active}].data[${i}].selectOption`]:name, 
+      [`list[${active}].data[${i}].selectSchool`]: name,
+    })
+  },
+  onClick(e) {
+    let {
+      active
+    } = this.data, {
+      name,
+      i
+    } = e.currentTarget.dataset;
+    this.setData({
+      [`list[${active}].data[${i}].selectOption`]: name,
     })
   },
   onlineChange(e) {
@@ -281,13 +324,16 @@ Page({
     } = this.data;
     http.postReq("/community/industry/", {
       ...postData,
-      page_no:list[active].page_no
+      ...wx.getStorageSync('position'),
+      page_no: list[active].page_no
     }, res => {
       let data = res.data.records;
       if (data.length) {
         for (let item of data) {
           item.checked = false;
-          item.selectOption='';
+          item.collapsed= true;
+          item.selectOption = '';
+          item.selectSchool='';
         }
         this.setData({
           [`list[${active}].data`]: list[active].data.concat(data),
@@ -347,16 +393,20 @@ Page({
     } = this.data, arr = [], {
       submitData
     } = this.data;
-    let t=this.computerSelectCourse();
+    let t = this.computerSelectCourse();
     for (let key of t) {
       arr.push({
         course_name: key.course_name,
         course_id: key.course_id,
         address: key.address ? key.address : '',
         need_address: key.need_address,
-        options:key.selectOption,
-        selOptions:key.options.length
-      }) 
+        options: key.selectOption,
+        selOptions: key.options.length,
+
+        inst_id: key.selectSchool.split('_')[1],
+        branch_no: key.selectSchool.split('_')[0],
+        branchLength: key.branch.length,
+      })
     }
     if (arr.length == 0) {
       wx.showToast({
@@ -365,23 +415,32 @@ Page({
       })
       return;
     }
+
     for (let key of arr) {
       if (key.need_address && key.address == '') {
         wx.showToast({
-          title:'请填写邮寄地址',
+          title: '请填写邮寄地址',
           icon: 'none'
         })
         return;
       }
-      if(key.selOptions&&key.options==''){
+      if (key.selOptions && key.options == '') {
         wx.showToast({
-          title:'请选择课程选项',
+          title: '请选择课程选项',
+          icon: 'none'
+        })
+        return;
+      }
+      if(key.branchLength&&key.branch_no==''){
+        wx.showToast({
+          title: '请选择校区',
           icon: 'none'
         })
         return;
       }
     }
     submitData.courses = arr;
+
     http.postReq("/community/industry/", submitData, res => {
       wx.showToast({
         title: '提交成功',

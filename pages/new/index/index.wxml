@@ -1,5 +1,6 @@
 <wxs module="filter" src="../../../utils/filter.wxs"></wxs>
 <dk-tabbar tabBar="{{tabBar}}"></dk-tabbar>
+<van-dialog id="van-dialog" />
 <!-- <fixed show='{{getLoginMoney}}' bind:close='closeNewUserMoney' money='{{login.get_bonus}}' /> -->
 <page>
 	<view class="new">
@@ -174,8 +175,6 @@
 		</swiper>
 	</view>
 
-
-	<!-- {{show_virus?"":""}} -->
 	<view class='tabs'>
 		<!-- <view class='tabs marTop'> -->
 		<view class='flex tab {{fixed?"fixed":""}}' id='tabs'>
@@ -195,14 +194,14 @@
 				线上课程
 				<view class='line' wx:if='{{tabs==4}}'></view>
 			</view>
+			<view bindtap='tabsClick' data-index='5' class='{{tabs==5?"active":""}}'>
+        线下课程
+        <view class='line' wx:if='{{tabs==5}}'></view>
+      </view>
 			<view class='{{tabs==6?"active":""}}' bindtap='tabsClick' data-index='6'>
 				儿童用品
 				<view class='line' wx:if='{{tabs==6}}'></view>
 			</view>
-			<!-- <view bindtap='tabsClick' data-index='5' class='{{tabs==5?"active":""}}'>
-        线下教育
-        <view class='line' wx:if='{{tabs==5}}'></view>
-      </view> -->
 		</view>
 		<view class='box'>
 			<view hidden='{{!(tabs==1)}}'>
@@ -221,6 +220,7 @@
 			</view>
 			<view hidden='{{!(tabs==5)}}'>
 				<template is="li" data="{{data:lineDown,ope_id:ope_id}}"></template>
+				<van-divider contentPosition="center" dashed customStyle='padding:0 150rpx 20rpx'>已加载完毕</van-divider>
 			</view>
 			<view hidden='{{!(tabs==6)}}'>
 				<w_childList list='{{childData}}' />

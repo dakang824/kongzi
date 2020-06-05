@@ -1,5 +1,7 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <dk-tabbar tabBar="{{tabBar}}"></dk-tabbar>
+<van-dialog id="van-dialog" />
+
 <view class="header">
   <view class="nologin" wx:if="{{!userInfo.nickname}}">
     <view class="row1 flex">
@@ -227,6 +229,3 @@
 <van-dialog use-slot title="授权用户信息" show="{{ show }}" show-cancel-button confirm-button-open-type="getUserInfo" bind:close="onClose" bind:getuserinfo="getInfo">
   <view class='loginTip'>检测到您还未登录，请确认授权。</view>
 </van-dialog>
-
-
-<van-dialog id="van-dialog" />

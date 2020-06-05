@@ -34,6 +34,13 @@ const tabBar = {
     // },
     {
       "active": false,
+      "pagePath": "/pages/tabBar/endorsing/index",
+      "iconPath": "/imgs/new/order.png",
+      "selectedIconPath": "/imgs/new/order_active.png",
+      "text": "代言"
+    },
+    {
+      "active": false,
       "pagePath": "/pages/order/index/index",
       "iconPath": "/imgs/new/order.png",
       "selectedIconPath": "/imgs/new/order_active.png",

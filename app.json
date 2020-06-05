@@ -23,6 +23,7 @@
     "pages/ticket/parkIndex/parkIndex",
     "pages/ticket/discountTicket/discountTicket",
     "pages/ticket/cardTicket/cardTicket",
+
     "pages/user/myDraws/myDraws",
     "pages/user/myCollects/myCollects",
     "pages/user/cardTicket/cardTicket",
@@ -56,7 +57,9 @@
     "pages/cash/cash",
     "pages/cash/progress/progress",
     "pages/video/video",
-    "pages/video/collect/collect"
+    "pages/video/collect/collect",
+
+    "pages/tabBar/endorsing/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -152,6 +155,12 @@
         "iconPath": "imgs/child.png",
         "selectedIconPath": "imgs/child_active.png",
         "text": "萌娃"
+      },
+      {
+        "pagePath": "pages/tabBar/endorsing/index",
+        "iconPath": "imgs/child.png",
+        "selectedIconPath": "imgs/child_active.png",
+        "text": "代言"
       },
       {
         "pagePath": "pages/order/index/index",

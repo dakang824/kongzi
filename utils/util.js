@@ -278,13 +278,13 @@ function editTabbar() {
     }).then((res) => {
       let {setting,tabBar}=getApp().globalData;
       if(setting.showVideo2){
-        tabBar.list.splice(1,0,{
-          "active": false,
-          "pagePath": "/pages/video/video",
-          "iconPath": "/imgs/child.png",
-          "selectedIconPath": "/imgs/child_active.png",
-          "text": "萌娃"
-        }) 
+        // tabBar.list.splice(1,0,{
+        //   "active": false,
+        //   "pagePath": "/pages/video/video",
+        //   "iconPath": "/imgs/child.png",
+        //   "selectedIconPath": "/imgs/child_active.png",
+        //   "text": "萌娃"
+        // }) 
         getApp().globalData.tabBar=tabBar;
       }
       // if(setting.showVideo2==0){

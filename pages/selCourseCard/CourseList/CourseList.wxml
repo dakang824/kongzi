@@ -1,14 +1,21 @@
 <pagePublic />
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
 <loading-top id="loading" />
 <view class='headTopNav' id='headTopNav'>
 	<view class='address'>
 		<view class='vCenter t'>
 			<text class='text_hidden'>本次最多可选{{submitData.limit_count}}个课程，已选{{selected}}个</text>
 		</view>
+		<view class="between top_btn">
+			<van-button type="{{postData.online==0?'default':'danger'}}" size="small" square bind:click='switchOnline' data-i="0">线上</van-button>
+			<van-button type="{{postData.online==1?'default':'danger'}}" size="small" square bind:click='switchOnline' data-i="1">线下</van-button>
+		</view>
 	</view>
-	<van-tabs active="{{ active }}" bind:change="TabChange" color='#FA2335' z-index='9999' sticky>
+
+
+	<van-tabs active="{{ active }}" bind:change="TabChange" color='#FA2335' z-index='9999' sticky swipeable>
 		<van-tab title='{{item.name}}' wx:for='{{list}}' wx:key='*this'>
-			<template is="list" data="{{item,rootUrl,submitData}}"></template>
+			<template is="list" data="{{item,rootUrl,submitData,onlineType:postData.online}}"></template>
 		</van-tab>
 	</van-tabs>
 </view>
@@ -34,7 +41,7 @@
 								<text>{{item.comment}}</text>
 							</view>
 							<view class="flex">
-							  <van-tag type="danger">{{item.category==1?'少儿英语':item.category==2?'思维训练':
+								<van-tag type="danger">{{item.category==1?'少儿英语':item.category==2?'思维训练':
 								item.category==3?'国学教育':item.category==4?'美术培训':item.category==5?'音乐培训':item.category==6?'舞蹈培训':item.category==7?'体育运动':
 								item.category==8?'少儿编程':item.category==9?'课外辅导':item.category==99?'其他培训':''}}</van-tag>
 								<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.min_age}}-{{item.max_age}}岁</van-tag>
@@ -49,7 +56,7 @@
 								{{item.stock>=10000?'剩余N个名额':'剩余'+(item.stock>0?item.stock:0)+'个名额'}}
 							</view>
 							<view class="rt" hover-class="hover-class">课程介绍
-								<van-icon name="arrow"/>
+								<van-icon name="arrow" />
 							</view>
 						</navigator>
 						<navigator class="between row1 {{item.need_address==1?'van-hairline--bottom':''}}" hover-class="none" url="/pages/selCourseCard/imgs/imgs?type=2&id={{item.course_id}}">
@@ -58,8 +65,13 @@
 								{{item.inst_name}}
 							</view>
 							<view class="rt" hover-class="hover-class">机构介绍
-								<van-icon name="arrow"/>
+								<van-icon name="arrow" />
 							</view>
+						</navigator>
+						<navigator class="between row1 van-hairline--bottom" hover-class="none" wx:if='{{onlineType==1}}'>
+							<view class="rt">{{item.branch.length}}个校区</view>
+							<view class="rt">
+								<van-icon name="location-o" /> {{filter.fixed(item.mindis/1000,1)}}-{{filter.fixed(item.maxdis/1000,1)}}km</view>
 						</navigator>
 						<view wx:if='{{item.checked&&item.options.length}}' class="radio">
 							<van-radio-group value="{{ item.selectOption }}">
@@ -69,6 +81,21 @@
 									</van-cell>
 								</van-cell-group>
 							</van-radio-group>
+						</view>
+						<view class="radio {{item.branch.length>3&&item.collapsed?'height':''}}">
+							<van-radio-group value="{{ item.selectSchool }}">
+								<van-cell-group>
+									<van-cell title="{{it.name}}" clickable data-i='{{index}}' data-name="{{it.no+'_'+it.inst_id}}" bind:click="selChool" wx:for='{{item.branch}}' wx:for-index="ind" wx:for-item='it' samllTip='{{it.address}}'>
+										<view>
+											<van-radio slot="right-icon" name="{{it.no+'_'+it.inst_id}}" checked-color='#FF598F' />
+											<view style="color: #ccc;font-size: 22rpx;">{{filter.fixed(it.dis/1000,1)}}km</view>
+										</view>
+									</van-cell>
+								</van-cell-group>
+							</van-radio-group>
+							<view class="more" bindtap="lookMore" data-i="{{index}}" wx:if='{{item.branch.length>3&&item.collapsed}}'>
+								查看更多<van-icon name="arrow-down" />
+							</view>
 						</view>
 						<view class="footer between" wx:if='{{item.need_address==1}}'>
 							<van-field title-width='75px' value="{{ item.address}}" label="邮寄地址：" placeholder="该课程需要您填写邮寄地址" data-i='mobile' bind:input='OnInput' border='{{false}}' data-i='{{index}}' placeholder-style='font-size:25rpx' />

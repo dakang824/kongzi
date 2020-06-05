@@ -27,7 +27,7 @@
 		"bundle": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.3",
+	"libVersion": "2.11.0",
 	"appid": "wxe5236886ca6a4905",
 	"projectname": "%E5%AD%94%E7%B4%AB%E5%AE%B6%E9%95%BF%E7%A4%BE%E5%8C%BA2.0-%E5%BC%80%E5%8F%91%E7%89%88",
 	"debugOptions": {
@@ -61,9 +61,9 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/other/virusDetail/index",
-					"pathName": "pages/other/virusDetail/index",
-					"query": "card_code=128839639611",
+					"name": "pages/shopMall/shareGoods/shareGoods",
+					"pathName": "pages/shopMall/shareGoods/shareGoods",
+					"query": "",
 					"scene": null
 				},
 				{
@@ -217,6 +217,7 @@
 					"id": -1,
 					"name": "pages/shopMall/shareGoods/shareGoods",
 					"pathName": "pages/shopMall/shareGoods/shareGoods",
+					"query": "",
 					"scene": null
 				}
 			]

@@ -84,6 +84,7 @@ page {
 
 .Selected .block .head {
   margin-bottom: 35rpx;
+  align-items: flex-start;
 }
 
 .Selected .block .head .img {

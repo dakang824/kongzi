@@ -17,6 +17,10 @@
 				</view>
 				<view class="between cardNumber">
 					<view class="txt">有效期限：{{filter.spot(filter.slice(cards.valid_time,10))}}-{{filter.spot(filter.slice(cards.valid_to,10))}}</view>
+					<!-- <navigator class="rt" url="/pages/selCourseCard/Cashback/Cashback?id={{cards.id}}">
+						好评返现
+						<van-icon name="arrow" />
+					</navigator> -->
 					<navigator class="rt" wx:if='{{cards.hasreview}}' url="/pages/selCourseCard/Cashback/Cashback?id={{cards.id}}">
 						好评返现
 						<van-icon name="arrow" />
@@ -54,7 +58,7 @@
 								<view class="tag">{{item.course_type==1?'体验课':item.course_type==2?'短课包':item.course_type==3?'正式课':''}}</view>
 							</view>
 							<view class="flex">
-								<van-tag type="primary" type="danger">{{item.course_type==1?'少儿英语':item.course_type==2?'思维训练':
+								<van-tag type="danger">{{item.course_type==1?'少儿英语':item.course_type==2?'思维训练':
 								item.course_type==3?'国学教育':item.course_type==4?'美术培训':item.course_type==5?'音乐培训':item.course_type==6?'舞蹈培训':item.course_type==7?'体育运动':item.course_type==8?'少儿编程':item.course_type==9?'课外辅导':item.course_type==99?'其他培训':''}}</van-tag>
 								<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.min_age}}-{{item.max_age}}岁</van-tag>
 								<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.online==0?'线上':item.online==1?'线下':''}}</van-tag>
@@ -71,7 +75,7 @@
 								<!-- {{item.stock>=10000?'剩余N个名额':'剩余'+item.stock+'个名额'}} -->
 							</view>
 							<view class="rt" hover-class="hover-class">课程介绍
-								<van-icon name="arrow"/>
+								<van-icon name="arrow" />
 							</view>
 						</navigator>
 						<navigator class="between row1 van-hairline--bottom" hover-class="none" url="/pages/selCourseCard/imgs/imgs?type=2&id={{item.course_id}}">

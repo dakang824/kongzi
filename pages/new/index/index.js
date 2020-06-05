@@ -423,7 +423,7 @@ Page({
     };
     data.course_online = 0;
     this.getCourseData(getActsNearby);
-    // this.getCourseData(data);//线下课程
+    this.getCourseData(data);//线下课程
     this.getChildData();
   },
   getCourseData(d) {
