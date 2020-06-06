@@ -45,19 +45,17 @@ Component({
                 delta: 1
               })
             }
-          }) : res.data.status == 3 ? wx.redirectTo({
+          }) : res.data.status == 3 ? wx.navigateTo({
             url: '/pages/shopMall/shareGoods/main/main',
           }) : wx.switchTab({
-            url: url,
+            url
           });
         })
       } else {
         wx.switchTab({
-          url: url,
+          url,
           complete: res => {
-            // let view = getCurrentPages();
-            // getCurrentPages().length - 1
-            // console.log(view);
+
           }
         })
       }

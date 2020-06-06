@@ -21,6 +21,12 @@ Page({
     })
     this.getData();
   },
+  applyMoney(e){
+    let {i}=e.currentTarget.dataset;
+    wx.navigateTo({
+      url: `/pages/selCourseCard/applyMoney/index?card_id=${i.card_id}&course_id=${i.course_id}`,
+    })
+  },
   showTime(e) {
     let {
       cardid,

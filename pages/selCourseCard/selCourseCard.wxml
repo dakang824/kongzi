@@ -17,10 +17,6 @@
 				</view>
 				<view class="between cardNumber">
 					<view class="txt">有效期限：{{filter.spot(filter.slice(cards.valid_time,10))}}-{{filter.spot(filter.slice(cards.valid_to,10))}}</view>
-					<!-- <navigator class="rt" url="/pages/selCourseCard/Cashback/Cashback?id={{cards.id}}">
-						好评返现
-						<van-icon name="arrow" />
-					</navigator> -->
 					<navigator class="rt" wx:if='{{cards.hasreview}}' url="/pages/selCourseCard/Cashback/Cashback?id={{cards.id}}">
 						好评返现
 						<van-icon name="arrow" />
@@ -92,7 +88,7 @@
 								<view class="txt">选课日期：{{filter.spot(filter.slice(item.select_time,10))}}</view>
 								<view wx:if='{{item.status==2}}'>首次上课：{{filter.spot(filter.slice(item.arrive_time,10))}}</view>
 							</view>
-							<van-button round type="info" color='#FF2D58' custom-class='bg' wx:if='{{item.status==2}}'>已上课</van-button>
+							<van-button round type="info" color='#FF2D58' custom-class='bg' wx:if='{{item.status==2}}' bindtap="applyMoney" data-i="{{item}}">申请福利</van-button>
 							<van-button round type="info" color='#FF2D58' plain wx:if='{{item.status==1}}' bind:click='showTime' data-courseId="{{item.course_id}}" data-cardId="{{item.card_id}}">标记上课</van-button>
 						</view>
 					</view>

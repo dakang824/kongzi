@@ -98,6 +98,7 @@
         "CourseList/CourseList",
         "Cashback/Cashback",
         "exchangeCard/exchangeCard",
+        "applyMoney/index",
         "imgs/imgs"
       ]
     },

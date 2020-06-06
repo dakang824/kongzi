@@ -28,7 +28,7 @@
 			</view>
 			<van-field value="{{ postData.mobile }}" type='number' clearable label="联系电话：" placeholder="请填写联系电话"  data-i='mobile' bind:input='OnInput'/>
 		</van-cell-group>
-		<view class="tip">注：该信息在选课提交后会发送给教育机构，提交前不会被保存。</view>
+		<view class="tip">注：该信息在选课提交后会发送给教育机构，教育机构或孔紫客服会在3个工作日内与您电话联系，提交前该信息不会被保存。</view>
 	</view>
 	<view class="sumit">
 		<van-button size="large" bind:click="next" custom-class='{{disabled?"ok":"disabled"}}' disabled="{{!disabled}}">下一步</van-button>

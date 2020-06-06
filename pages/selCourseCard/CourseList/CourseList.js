@@ -332,8 +332,8 @@ Page({
         for (let item of data) {
           item.checked = false;
           item.collapsed= true;
-          item.selectOption = '';
-          item.selectSchool='';
+          item.selectOption='';
+          item.selectSchool=item.branch.length?item.branch[0].no+'_'+item.branch[0].inst_id:'';
         }
         this.setData({
           [`list[${active}].data`]: list[active].data.concat(data),
@@ -417,16 +417,16 @@ Page({
     }
 
     for (let key of arr) {
-      if (key.need_address && key.address == '') {
+      if (key.selOptions && key.options == '') {
         wx.showToast({
-          title: '请填写邮寄地址',
+          title: '请选择课程选项',
           icon: 'none'
         })
         return;
       }
-      if (key.selOptions && key.options == '') {
+      if (key.need_address && key.address == '') {
         wx.showToast({
-          title: '请选择课程选项',
+          title: '请填写邮寄地址',
           icon: 'none'
         })
         return;

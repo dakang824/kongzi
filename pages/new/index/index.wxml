@@ -155,8 +155,8 @@
 	<block wx:if='{{show_virus}}'>
 		<virus box-shadow='boxShadow' class='virus' />
 	</block>
-	<view class="welfare_title flex vCenter"><text></text> 孔紫选课卡 
-	<!-- <image src="/imgs/welfare_icon.png"></image> -->
+	<view class="welfare_title flex vCenter"><text></text> 孔紫选课卡
+		<!-- <image src="/imgs/welfare_icon.png"></image> -->
 	</view>
 	<view class="welfare middlebox" hover-class='hover'>
 		<swiper autoplay class="swiper_block" circular>
@@ -195,9 +195,9 @@
 				<view class='line' wx:if='{{tabs==4}}'></view>
 			</view>
 			<view bindtap='tabsClick' data-index='5' class='{{tabs==5?"active":""}}'>
-        线下课程
-        <view class='line' wx:if='{{tabs==5}}'></view>
-      </view>
+				线下课程
+				<view class='line' wx:if='{{tabs==5}}'></view>
+			</view>
 			<view class='{{tabs==6?"active":""}}' bindtap='tabsClick' data-index='6'>
 				儿童用品
 				<view class='line' wx:if='{{tabs==6}}'></view>
@@ -216,15 +216,21 @@
 			</view>
 			<view hidden='{{!(tabs==4)}}'>
 				<template is="li" data="{{data:lineUp,ope_id:ope_id}}"></template>
-				<w_loadingData noData='{{uplineData}}' />
+				<block wx:if='{{lineUp.length}}'>
+					<w_loadingData noData='{{uplineData}}' />
+				</block>
 			</view>
 			<view hidden='{{!(tabs==5)}}'>
 				<template is="li" data="{{data:lineDown,ope_id:ope_id}}"></template>
-				<van-divider contentPosition="center" dashed customStyle='padding:0 150rpx 20rpx'>已加载完毕</van-divider>
+				<block wx:if='{{lineDown.length}}'>
+					<w_loadingData noData />
+				</block>
 			</view>
 			<view hidden='{{!(tabs==6)}}'>
 				<w_childList list='{{childData}}' />
-				<w_loadingData noData='{{childNoData}}' />
+				<block wx:if='{{childData.length}}'>
+					<w_loadingData noData='{{childNoData}}' />
+				</block>
 			</view>
 		</view>
 	</view>
