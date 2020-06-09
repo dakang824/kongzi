@@ -1,0 +1,52 @@
+<van-dialog id="van-dialog" />
+<!-- <pagePublic/> -->
+<wxs module="filter" src="../../../../utils/filter.wxs"></wxs>
+<view class='page'>
+  <van-tabs sticky swipeable color=" #FF2C56" swipe-threshold='5' bind:change="onChange">
+    <van-tab title="收藏">
+      <template is="list" data="{{url:url,list:collectData}}"></template>
+    </van-tab>
+    <van-tab title="点赞">
+      <template is="list" data="{{url:url,list:likeData}}"></template>
+    </van-tab>
+    <van-tab title="点怼">
+      <template is="list" data="{{url:url,list:dislikeData}}"></template>
+    </van-tab>
+  </van-tabs>
+</view>
+<template name='list'>
+  <block wx:if='{{list.length}}'>
+    <view class='box'>
+      <view class='li' wx:for='{{list}}' bindtap="showVideo" data-i="{{item}}">
+        <image src="{{url+item.list_pic}}"></image>
+        <view class="time">{{filter.slice(item.my_time,16)}}</view>
+        <view catchtap>
+          <van-icon name="delete" custom-class='delete' color="#fff" bind:click='onDelete' data-i="{{item}}" data-ind='{{index}}' />
+        </view>
+        <view class="txt van-multi-ellipsis--l2">{{item.name}}</view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='noData'>~ 没有更多数据 ~</view>
+  </block>
+
+
+  <block wx:if='{{!noData}}'>
+    <van-divider contentPosition="center" dashed wx:if='{{list.length>2}}' customStyle='padding:0 150rpx;'>已加载完毕</van-divider>
+  </block>
+  <block wx:else>
+    <view class='loading'>
+      <van-loading type="spinner" size='30rpx' />
+    </view>
+  </block>
+</template>
+
+<van-popup show="{{ show }}" position="bottom" custom-style="background: rgba(0, 0, 0, 0.9);" bind:close="toggleShow" closeable>
+  <view class="box1">
+    <progress class="progress" color='#fb2235' activeColor='#fb2235' percent='{{percent}}' stroke-width='2' />
+    <video id="myVideo" src="{{target.video_url}}" controls="{{false}}" autoplay="{{true}}" show-center-play-btn="{{false}}" loop='{{true}}' enable-progress-gesture="{{false}}" show-fullscreen-btn="{{false}}" duration='{{timeLen}}' catchtap="play" objectFit="contain" bindtimeupdate='timeupdate' bindplay='bindPlay' bindpause='bindPause' bindended='ended' custom-cache="{{cache}}">
+    </video>
+  </view>
+  <!-- bindtouchstart='touchstart' bindtouchmove='touchmove' bindtouchend='touchend' bindtouchcancel='touchcancel' -->
+</van-popup>

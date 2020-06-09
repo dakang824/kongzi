@@ -105,6 +105,11 @@ Page({
       [`list[${active}].data[${i}].collapsed`]:!list[active].data[i].collapsed
     })
   },
+  showGift(e){
+    wx.previewImage({
+      urls: [app.globalData.serverUrl+e.currentTarget.dataset.img],
+    })
+  },
   switchOnline(e) {
     let list=this.data.list;
     for(let key of list){

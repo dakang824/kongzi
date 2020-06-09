@@ -63,7 +63,8 @@
 					</view>
 					<view class="info">
 						<view class="vCenter row" wx:if='{{item.address}}'>
-							<image src="/imgs/selCourse_address.png" class="address_img"></image>
+							<text class="address">邮寄地址</text>
+							<!-- <image src="/imgs/selCourse_address.png" class="address_img"></image> -->
 							<view>{{item.address}}</view>
 						</view>
 						<navigator class="between van-hairline--bottom row1" hover-class="none" url="/pages/selCourseCard/imgs/imgs?type=1&id={{item.course_id}}">

@@ -104,10 +104,10 @@
       </view>
       <image src='{{rootUrl+data.act_info.gift_path}}'></image>
     </view>
-    <view class='yh_row' wx:if='{{data.act_info.type==6||data.act_info.type==5}}'>
+    <!-- <view class='yh_row' wx:if='{{data.act_info.type==6||data.act_info.type==5}}'>
       <view class='t'>优惠</view>
       {{ data.act_info.deposit_intro ||data.act_info.bound_intro }}
-    </view>
+    </view> -->
 
     <view class='barInfo' wx:if='{{false}}'>
       <view style='position:relative'>

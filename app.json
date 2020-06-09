@@ -56,8 +56,8 @@
     "pages/moneyDetail/moneyDetail",
     "pages/cash/cash",
     "pages/cash/progress/progress",
-    "pages/video/video",
-    "pages/video/collect/collect",
+    "pages/tabBar/smallVideo/index",
+    "pages/tabBar/smallVideo/collect/collect",
 
     "pages/tabBar/endorsing/index"
   ],
@@ -150,12 +150,6 @@
         "text": "首页",
         "iconPath": "imgs/home.png",
         "selectedIconPath": "imgs/home_active.png"
-      },
-      {
-        "pagePath": "pages/video/video",
-        "iconPath": "imgs/child.png",
-        "selectedIconPath": "imgs/child_active.png",
-        "text": "萌娃"
       },
       {
         "pagePath": "pages/tabBar/endorsing/index",

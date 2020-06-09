@@ -280,7 +280,7 @@ function editTabbar() {
       if(setting.showVideo2){
         // tabBar.list.splice(1,0,{
         //   "active": false,
-        //   "pagePath": "/pages/video/video",
+        //   "pagePath": "/pages/tabBar/smallVideo/index",
         //   "iconPath": "/imgs/child.png",
         //   "selectedIconPath": "/imgs/child_active.png",
         //   "text": "萌娃"

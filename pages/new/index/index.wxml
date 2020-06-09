@@ -215,15 +215,15 @@
 				<template is="li" data="{{data:recom3,ope_id:ope_id}}"></template>
 			</view>
 			<view hidden='{{!(tabs==4)}}'>
-				<template is="li" data="{{data:lineUp,ope_id:ope_id}}"></template>
-				<block wx:if='{{lineUp.length}}'>
-					<w_loadingData noData='{{uplineData}}' />
+				<template is="li" data="{{data:list[0].data,ope_id:ope_id}}"></template>
+				<block wx:if='{{list[0].data.length}}'>
+					<w_loadingData noData='{{!list[0].noData}}' />
 				</block>
 			</view>
 			<view hidden='{{!(tabs==5)}}'>
-				<template is="li" data="{{data:lineDown,ope_id:ope_id}}"></template>
-				<block wx:if='{{lineDown.length}}'>
-					<w_loadingData noData />
+				<template is="li" data="{{data:list[1].data,ope_id:ope_id}}"></template>
+				<block wx:if='{{list[1].data.length}}'>
+					<w_loadingData noData='{{!list[1].noData}}' />
 				</block>
 			</view>
 			<view hidden='{{!(tabs==6)}}'>

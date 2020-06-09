@@ -12,7 +12,7 @@ const tabBar = {
     },
     // {
     //   "active": false,
-    //   "pagePath": "/pages/video/video",
+    //   "pagePath": "/pages/tabBar/smallVideo/index",
     //   "iconPath": "/imgs/child.png",
     //   "selectedIconPath": "/imgs/child_active.png",
     //   "text": "萌娃"

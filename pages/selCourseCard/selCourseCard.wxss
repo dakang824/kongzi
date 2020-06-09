@@ -116,6 +116,12 @@ page {
   color: #242424;
   font-size: 24rpx;
 }
+.Selected .block .info .row text.address{
+  color: #FF4444;
+  font-size: 27rpx;
+  max-width: 122rpx;
+  min-width: 122rpx;
+}
 
 .Selected .block .info .address_img {
   width: 25rpx;

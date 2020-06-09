@@ -1,4 +1,4 @@
-@import "/pages/video/video.wxss";
+@import "/pages/tabBar/smallVideo/index.wxss";
 
 .progress {
   bottom: 102rpx;

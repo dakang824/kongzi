@@ -1,0 +1,55 @@
+.van-tab--active {
+  color: #ff2c56 !important;
+}
+.loading{
+  text-align: center;
+}
+video{
+  width: 100%;
+  height: calc(100vh - 10rpx);
+}
+.box1{
+  position: relative;
+}
+.progress{
+  position: absolute;
+  bottom: 4rpx;
+  left: 0;
+  right: 0;
+  z-index: 9;
+}
+.box {
+  margin: 30rpx;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+}
+.box .li {
+  position: relative;
+  width: 326rpx;
+  margin-bottom: 50rpx;
+}
+.box .li .time{
+  position: absolute;
+  top: 20rpx;
+  font-size: 24rpx;
+  left: 20rpx;
+  color: #fff;
+}
+.box .li .txt {
+  font-size: 24rpx;
+  color: #1C1C1C;
+}
+
+.box .li image {
+  width: 326rpx;
+  height: 477rpx;
+  border-radius: 28rpx;
+  margin-bottom: 25rpx;
+}
+
+.box .li .delete {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+}

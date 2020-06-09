@@ -13,14 +13,11 @@ import http from '../../../common/request.js';
 Page({
   data: {
     show_courseOnline:0,
-    uplineData:false,
     childNoData: false,
     childData: [],
     page_no: 1,
     getLoginMoney: false,
     show_virus: false,
-    lineUp: [],
-    lineDown: [],
     tabBar,
     login: {},
     isNeed: true,
@@ -65,7 +62,6 @@ Page({
       latitude: '',
       longitude: '',
       page_size: 10,
-      page_no: 1,
       course_online: 1
     },
     card: [{
@@ -138,7 +134,16 @@ Page({
       //   url: '/pages/shopMall/mother/baby',
       //   name: '母婴代购'
       // }
-    ]
+    ],
+    list:[{
+      data:[],
+      page_no:1,
+      noData:false,
+    },{
+      data:[],
+      page_no:1,
+      noData:false,
+    }]
   },
   closeNewUserMoney() {
     this.setData({
@@ -155,48 +160,11 @@ Page({
     })
   },
   tabsClick(e) {
+    let tabs=e.currentTarget.dataset.index;
     this.setData({
-      tabs: e.currentTarget.dataset.index
-    })
-  },
-  getMessage() {
-    let that = this;
-    that.setData({
-      messageList: []
-    })
-    clearInterval(that.data.timer1);
-    http.postReq("/community/award/", {
-      cmd: "getjoinDrawMessages",
-    }, res => {
-      if (that.data.boxNum == 1) {
-        let timer2 = setTimeout(() => {
-          that.setData({
-            messageList: res.data,
-            showbox: false,
-          })
-          res.data.length ? that.setData({
-            boxNum: 2
-          }) : '';
-        }, 5000);
-        that.setData({
-          timer2
-        })
-      } else {
-        that.setData({
-          messageList: res.data,
-        })
-      }
-    })
-    that.showMessage();
-  },
-  showMessage() {
-    let that = this;
-    let timer1 = setInterval(() => {
-      that.getMessage();
-    }, 35000)
-    that.setData({
-      timer1
-    })
+      tabs
+    });
+    (tabs==4||tabs==5)?this.onReachBottom():'';
   },
   call() {
     wx.makePhoneCall({
@@ -305,7 +273,6 @@ Page({
           for (let key of res.awards_today) {
             key.draw_time ? key.draw_second = parseInt(new Date(key.draw_time.slice(0, 19).replace(/-/g, "/")).getTime() - new Date().getTime()) : '';
           }
-          this.getMessage()
           this.isPrize();
           let {
             awards_today,
@@ -416,22 +383,17 @@ Page({
     })
   },
   onReady() {
-    let {
-      getActsNearby
-    } = this.data, data = {
-      ...getActsNearby
-    };
-    data.course_online = 0;
-    this.getCourseData(getActsNearby);
-    this.getCourseData(data);//线下课程
     this.getChildData();
   },
   getCourseData(d) {
     let {
-      lineUp,
-      lineDown,
-      getActsNearby
+      list,
+      tabs
     } = this.data;
+
+    let active=(tabs==4?0:1);
+    d.page_no=list[active].page_no;
+    d.course_online=(tabs==4?1:0);
     http.postReq("/community/user/", d, res => {
       let data = res.data.records;
       for (let key of data) {
@@ -442,12 +404,12 @@ Page({
         key.price = key.act_price;
         key.name = key.title;
       }
-      d.course_online == 1 ? this.setData({
-        lineUp: lineUp.concat(data),
-        uplineData: data.length != getActsNearby.page_size
-      }) : this.setData({
-        lineDown: lineDown.concat(data)
-      });
+
+      this.setData({
+        [`list[${active}].data`]: list[active].data.concat(data),
+        [`list[${active}].page_no`]: list[active].page_no + 1,
+        [`list[${active}].noData`]: data.length == d.page_size,
+      })
     })
   },
   know() {
@@ -522,16 +484,17 @@ Page({
   },
   onPullDownRefresh() {
     this.data.login.status == 5 ? '' : this.homePageInit();
+    let {tabs}=this.data;
     this.setData({
-      lineUp: [],
+      ['list[0].data']: [],
+      ['list[1].data']: [],
+      [`list[${tabs==4?0:1}].page_no`]: 1,
       childNoData: false,
-      uplineData:false,
       childData: [],
       page_no: 1,
-      'getActsNearby.page_no':1
     });
-    this.onReady();
     this.getChildData();
+    this.onReachBottom();
   },
   onReachBottom() {
     let {
@@ -539,18 +502,16 @@ Page({
       page_no,
       getActsNearby
     } = this.data;
+    console.log(tabs);
     if (tabs == 6) {
       this.setData({
         page_no: page_no + 1
       })
       this.getChildData();
-    } else if (tabs == 4) {
-      let {getActsNearby} = this.data;
-      getActsNearby.page_no += 1;
-      this.getCourseData(getActsNearby);
-      this.setData({
-        getActsNearby
-      })
+    } else if (tabs == 4||tabs ==5) {
+      this.getCourseData(getActsNearby)
+      // this.data.list[(tabs == 4?0:1)].noData ? '': ;
+     ;
     }
   },
   onShareAppMessage() {

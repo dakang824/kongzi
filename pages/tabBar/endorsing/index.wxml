@@ -1,2 +1,2 @@
-<image src="https://dev.kongzikeji.com/data/plat/community/ad/1/1586486744420.jpg" style='width:100%' mode='widthFix'></image>
+<!-- <image src="https://dev.kongzikeji.com/data/plat/community/ad/1/1586486744420.jpg" style='width:100%' mode='widthFix'></image> -->
 <dk-tabbar tabBar="{{tabBar}}"></dk-tabbar>

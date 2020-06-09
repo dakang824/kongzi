@@ -24,7 +24,8 @@
 	<view class='bar' hidden="{{!item.show}}">
 		<block wx:if="{{item.data.length}}">
 			<view class='Selected'>
-				<view class="block" wx:for='{{item.data}}' wx:key="index">
+				<view class="block {{item.enable_gift?'marginTop':''}}" wx:for='{{item.data}}' wx:key="index">
+					<image src="/imgs/have_gift.png" class="have_gift" wx:if='{{item.enable_gift}}' bindtap="showGift" data-img="{{item.gift_path}}" mode="widthFix"></image>
 					<view class="head between" bindtap="checkedChange" data-i="{{index}}">
 						<van-image width="93rpx" height='93rpx' src="{{rootUrl+item.cover_image}}" radius='7rpx' use-loading-slot lazy-load class="img">
 							<van-loading slot="loading" type="spinner" size="16" vertical />
@@ -84,7 +85,8 @@
 								</van-cell-group>
 							</van-radio-group>
 							<view class="more" bindtap="lookMore" data-i="{{index}}">
-								查看校区<van-icon name="{{item.collapsed?'arrow-down':'arrow-up'}}" />
+								查看校区
+								<van-icon name="{{item.collapsed?'arrow-down':'arrow-up'}}" />
 							</view>
 						</view>
 						<view wx:if='{{item.checked&&item.options.length}}' class="radio">

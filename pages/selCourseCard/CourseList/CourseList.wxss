@@ -91,17 +91,21 @@ van-cell {
   padding: 10px 0 !important;
   font-size: 27rpx;
 }
-.info .radio{
+
+.info .radio {
   position: relative;
 }
+
 .info .radio.height {
-  height:0;
+  height: 0;
   overflow: hidden;
   transition: all 2s linear 200ms;
 }
-.top_btn .van-button--default{
-  border:0;
+
+.top_btn .van-button--default {
+  border: 0;
 }
+
 .info .radio .more {
   position: absolute;
   bottom: 0;
@@ -279,6 +283,15 @@ van-cell {
   box-shadow: 0px 0px 50px 0px rgba(153, 153, 153, 0.2);
   border-radius: 20rpx;
   padding: 40rpx 30rpx 20rpx;
+  position: relative;
+}
+.Selected .block .have_gift{
+  position: absolute;
+  width: 138rpx;
+  height: 0;
+  z-index: 999;
+  top: -12rpx;
+  left: 30rpx;
 }
 
 .Selected .block .head {
@@ -311,10 +324,12 @@ van-icon {
 }
 
 .Selected .block .head .rt .between {
-  margin-bottom: 20rpx;
+  margin-bottom: 2rpx;
   align-items: flex-start;
 }
-
+.Selected .block.marginTop{
+  padding-top: 50rpx;
+}
 .Selected .block .head .rt .tit {
   font-size: 28rpx;
   font-weight: bold;
