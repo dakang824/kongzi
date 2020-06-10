@@ -484,11 +484,11 @@ Page({
   },
   onPullDownRefresh() {
     this.data.login.status == 5 ? '' : this.homePageInit();
-    let {tabs}=this.data;
     this.setData({
       ['list[0].data']: [],
       ['list[1].data']: [],
-      [`list[${tabs==4?0:1}].page_no`]: 1,
+      ['list[0].page_no']: 1,
+      ['list[1].page_no']: 1,
       childNoData: false,
       childData: [],
       page_no: 1,
@@ -502,7 +502,6 @@ Page({
       page_no,
       getActsNearby
     } = this.data;
-    console.log(tabs);
     if (tabs == 6) {
       this.setData({
         page_no: page_no + 1

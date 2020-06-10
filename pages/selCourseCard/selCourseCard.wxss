@@ -97,7 +97,7 @@ page {
 }
 
 .Selected .block .head .rt .between {
-  margin-bottom: 20rpx;
+  margin-bottom: 10rpx;
   align-items: flex-start;
 }
 

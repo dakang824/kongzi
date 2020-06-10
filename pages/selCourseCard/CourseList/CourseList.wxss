@@ -324,7 +324,7 @@ van-icon {
 }
 
 .Selected .block .head .rt .between {
-  margin-bottom: 2rpx;
+  margin-bottom: 10rpx;
   align-items: flex-start;
 }
 .Selected .block.marginTop{
