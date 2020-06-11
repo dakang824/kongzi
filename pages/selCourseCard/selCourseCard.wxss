@@ -39,7 +39,7 @@ page {
 .card .info {
   color: #242424;
   font-size: 27rpx;
-  padding: 35rpx 40rpx;
+  padding: 35rpx 30rpx;
 }
 
 .card .info .footer {

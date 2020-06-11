@@ -124,6 +124,7 @@ van-cell {
 
 .info .radio .van-cell__title {
   font-size: 24rpx;
+  min-width: 500rpx;
 }
 
 .van-field_clear-root {

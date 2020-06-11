@@ -63,8 +63,8 @@
 					</view>
 					<view class="info">
 						<view class="vCenter row" wx:if='{{item.address}}'>
+							<image src="/imgs/selCourse_address.png" class="address_img"></image>
 							<text class="address">邮寄地址</text>
-							<!-- <image src="/imgs/selCourse_address.png" class="address_img"></image> -->
 							<view>{{item.address}}</view>
 						</view>
 						<navigator class="between van-hairline--bottom row1" hover-class="none" url="/pages/selCourseCard/imgs/imgs?type=1&id={{item.course_id}}">
@@ -89,6 +89,7 @@
 								<view class="txt">选课日期：{{filter.spot(filter.slice(item.select_time,10))}}</view>
 								<view wx:if='{{item.status==2}}'>首次上课：{{filter.spot(filter.slice(item.arrive_time,10))}}</view>
 							</view>
+							<!-- <van-button round type="info" color='#FF2D58' custom-class='bg' bindtap="applyMoney" data-i="{{item}}">评论有奖</van-button> -->
 							<van-button round type="info" color='#FF2D58' custom-class='bg' wx:if='{{item.status==2}}' bindtap="applyMoney" data-i="{{item}}">申请福利</van-button>
 							<van-button round type="info" color='#FF2D58' plain wx:if='{{item.status==1}}' bind:click='showTime' data-courseId="{{item.course_id}}" data-cardId="{{item.card_id}}">标记上课</van-button>
 						</view>

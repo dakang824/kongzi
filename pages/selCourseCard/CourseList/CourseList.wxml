@@ -68,27 +68,30 @@
 								<van-icon name="arrow" />
 							</view>
 						</navigator>
-						<navigator class="between row1 row2" hover-class="none" wx:if='{{onlineType==1}}'>
-							<view class="rt">{{item.branch.length}}个校区</view>
-							<view class="rt">
-								<van-icon name="location-o" /> {{filter.fixed(item.mindis/1000,1)}}-{{filter.fixed(item.maxdis/1000,1)}}km</view>
-						</navigator>
-						<view class="radio {{item.collapsed?'height':''}}" style="padding: 0 0 50rpx;margin-bottom: 20rpx;" wx:if='{{item.branch.length}}'>
-							<van-radio-group value="{{ item.selectSchool }}">
-								<van-cell-group>
-									<van-cell title="{{it.name}}" clickable data-i='{{index}}' data-name="{{it.no+'_'+it.inst_id}}" bind:click="selChool" wx:for='{{item.branch}}' wx:for-index="ind" wx:for-item='it' samllTip='{{it.address}}'>
-										<view>
-											<van-radio slot="right-icon" name="{{it.no+'_'+it.inst_id}}" checked-color='#FF598F' />
-											<view style="color: #ccc;font-size: 22rpx;">{{filter.fixed(it.dis/1000,1)}}km</view>
-										</view>
-									</van-cell>
-								</van-cell-group>
-							</van-radio-group>
-							<view class="more" bindtap="lookMore" data-i="{{index}}">
-								查看校区
-								<van-icon name="{{item.collapsed?'arrow-down':'arrow-up'}}" />
+						<block wx:if='{{onlineType==1}}'>
+							<navigator class="between row1 row2" hover-class="none">
+								<view class="rt">上海（{{item.branch.length}}个校区）</view>
+								<view class="rt">
+									<van-icon name="location-o" /> {{filter.fixed(item.mindis/1000,1)}}-{{filter.fixed(item.maxdis/1000,1)}}km</view>
+							</navigator>
+							<view class="radio {{item.collapsed?'height':''}}" style="padding: 0 0 50rpx;margin-bottom: 20rpx;" wx:if='{{item.branch.length}}'>
+								<van-radio-group value="{{ item.selectSchool }}">
+									<van-cell-group>
+										<van-cell title="{{it.name}}" clickable data-i='{{index}}' data-name="{{it.no+'_'+it.inst_id}}" bind:click="selChool" wx:for='{{item.branch}}' wx:for-index="ind" wx:for-item='it' samllTip='{{it.address}}'>
+											<view>
+												<van-radio slot="right-icon" name="{{it.no+'_'+it.inst_id}}" checked-color='#FF598F' />
+												<view style="color: #ccc;font-size: 22rpx;">{{filter.fixed(it.dis/1000,1)}}km</view>
+											</view>
+										</van-cell>
+									</van-cell-group>
+								</van-radio-group>
+								<view class="more" bindtap="lookMore" data-i="{{index}}">
+									查看校区
+									<van-icon name="{{item.collapsed?'arrow-down':'arrow-up'}}" />
+								</view>
 							</view>
-						</view>
+						</block>
+
 						<view wx:if='{{item.checked&&item.options.length}}' class="radio">
 							<van-radio-group value="{{ item.selectOption }}">
 								<van-cell-group>
