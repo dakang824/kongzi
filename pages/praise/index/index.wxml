@@ -1,0 +1,50 @@
+ <view class='headTop'>
+ 	<van-search value="{{ value }}" background='#FA2335' placeholder="搜索机构名称、类型" use-action-slot bind:change="onChange" bind:search="onSearch">
+ 		<view slot="action" bind:tap="onClick" class="right between">
+ 			<image src='/imgs/screen.png' class="img" />筛选</view>
+ 	</van-search>
+ </view>
+ <van-tabs active="{{ active }}" bind:change="TabChange" color='#FA2335' z-index='9999' sticky swipeable>
+ 	<van-tab title='{{item.name}}' wx:for='{{list}}' wx:key='*this'>
+ 		<view class="item between van-hairline--bottom">
+ 			<view class="default prize flex" bindtap="tabsClick" data-i='{{index}}' wx:for='{{screenData}}'>
+ 				<view class="key {{sc_active==index?'active':''}}">{{item.name}}</view>
+ 				<view class='flex flip'>
+ 					<van-icon name="play" color="{{postData.orderby==2?'#ff2c56':'#999'}}" custom-class='transform-270' size='21rpx' />
+ 					<van-icon name="play" color="{{postData.orderby==3?'#ff2c56':'#999'}}" custom-class='transform-90' size='21rpx' />
+ 				</view>
+ 			</view>
+ 		</view>
+ 		<template is="list" data="{{item,rootUrl,submitData,onlineType:postData.online}}"></template>
+ 	</van-tab>
+ </van-tabs>
+
+ <template name="list">
+ 	<view class="box">
+ 		<view class="head between">
+ 			<view class="lf">
+ 				<image src="/imgs/shop.png" class="shop_img" />
+ 			</view>
+ 			<view class="rt">
+ 				<view class="text van-multi-ellipsis--l2">51talk青少儿英语1V1外教课+中教课2课时51talk青少儿英语1V1外教课+中教课2课时51talk青少儿英语1V1外教课+中教课2课时</view>
+ 				<view class="flex">
+ 					<van-tag type="danger">{{item.category==1?'少儿英语':item.category==2?'思维训练':
+								item.category==3?'国学教育':item.category==4?'美术培训':item.category==5?'音乐培训':item.category==6?'舞蹈培训':item.category==7?'体育运动':
+								item.category==8?'少儿编程':item.category==9?'课外辅导':item.category==99?'其他培训':'是的范'}}</van-tag>
+ 					<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.min_age||5}}-{{item.max_age||12}}岁</van-tag>
+ 					<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.online==0?'线上':item.online==1?'线下':'地方'}}</van-tag>
+ 					<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.type==1?'体验课':item.type==2?'短课包':item.type==3?'正式课':'萨达'}}</van-tag>
+ 				</view>
+ 				<view class="rate between">
+ 					<view class="lf between">
+ 						<van-rate value="{{ 2.5 }}" size="{{ 22 }}" allow-half color="#FFBF00" void-color="#EDEDED" void-icon="star" bind:change="onChange" readonly />
+ 						<text>9.7分</text>
+ 					</view>
+ 					<view class="rt">
+ 						1200-8000元/年
+ 					</view>
+ 				</view>
+ 			</view>
+ 		</view>
+ 	</view>
+ </template>

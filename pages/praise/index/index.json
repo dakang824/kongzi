@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "search": "../../dist/search/index",
+    "van-tab": "../../dist/tab/index",
+    "van-tabs": "../../dist/tabs/index"
+  },
+  "navigationBarTitleText": "口碑"
+}

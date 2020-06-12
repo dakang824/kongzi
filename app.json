@@ -89,6 +89,13 @@
       "pages": [
         "virusDetail/index"
       ]
+    }, {
+      "root": "pages/praise",
+      "pages": [
+        "index/index",
+        "submitComment/index",
+        "CourseComment/index"
+      ]
     },
     {
       "root": "pages/selCourseCard",
@@ -177,6 +184,7 @@
     }
   },
   "usingComponents": {
+    "van-rate": "dist/rate/index",
     "van-picker": "dist/picker/index",
     "van-icon": "dist/icon/index",
     "van-row": "dist/row/index",

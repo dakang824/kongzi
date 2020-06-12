@@ -1,0 +1,49 @@
+<view class="header">
+	<view class="between">
+		<view class="lf">5节少儿编程课+1节外教...</view>
+		<van-button type="primary" size="small" color='#FFE9EE' bind:click='call'>联系客服</van-button>
+	</view>
+	<view class="txt">如果您的孩子上完体验课，您评论一下这个课程的好坏，并上传至少<text>2张图片</text>和<text>1个上课小视频</text>，您会获得 <text>20元</text>的奖励，之后还可以申请奖学金。(平台会审核真实性)</view>
+</view>
+<view class="box">
+	<view class="between" wx:for='{{d}}'>
+		<view class="flex">
+			<text>{{item.name}}</text>
+			<van-rate value='{{postData[item.value]/2}}' size="{{ 25 }}" allow-half color="#FFBF00" void-color="#eee" void-icon="star" bind:change="onChange" data-i='{{item.value}}'/>
+		</view>
+		<view wx:if='{{postData[item.value]!==0}}'>
+			<van-tag round type="primary" color='{{postData[item.value]>5?"#FF2C56":postData[item.value]==5?"#9A36FC":"#959595"}}' >{{postData[item.value]>5?'好评':postData[item.value]==5?'中评':'差评'}}</van-tag>
+		</view>
+	</view>
+	<view class="van-hairline--top">
+		<van-field bind:input='input' value="{{ postData.content }}" type="textarea" placeholder="请在此填写您的体验评论(最少20个字，最多200个字)" placeholder-style='font-size:26rpx' autosize border="{{ false }}" />
+	</view>
+</view>
+<view class="box padBottom">
+	<van-uploader file-list="{{ fileList }}" accept='media' max-count='9' multiple bind:delete='delete' bind:after-read='afterRead'/>
+</view>
+<view class="box" wx:if='{{show}}'>
+	<view class="doing">
+		<block wx:if='{{data.audit_status==0}}'>
+			<image src="/imgs/review.png"></image>
+			<view>已提交，审核中</view>
+		</block>
+		<block wx:if='{{data.audit_status==1}}'>
+			<image src="/imgs/Card_success.png"></image>
+			<view>您的申请已通过</view>
+			<view>返现已转入您的微信零钱</view>
+		</block>
+
+		<block wx:if='{{data.audit_status==2}}'>
+			<image src="/imgs/Card_stop.png"></image>
+			<view>您的申请已被拒绝，原因如下</view>
+			<text space='emsp' decode>{{cards.reason}} dsfsdfds </text>
+			<view class="txt">您可以重新上传并提交。</view>
+		</block>
+	</view>
+</view>
+
+<view class="fixed {{disable?'':'disable'}}">
+	<view class="lf" hover-class="hover" bindtap="save">保存</view>
+	<view class="rt" hover-class="hover" bindtap="submit">提交</view>
+</view>

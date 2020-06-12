@@ -194,10 +194,10 @@
 				线上课程
 				<view class='line' wx:if='{{tabs==4}}'></view>
 			</view>
-			<view bindtap='tabsClick' data-index='5' class='{{tabs==5?"active":""}}'>
+			<!-- <view bindtap='tabsClick' data-index='5' class='{{tabs==5?"active":""}}'>
 				线下课程
 				<view class='line' wx:if='{{tabs==5}}'></view>
-			</view>
+			</view> -->
 			<view class='{{tabs==6?"active":""}}' bindtap='tabsClick' data-index='6'>
 				儿童用品
 				<view class='line' wx:if='{{tabs==6}}'></view>

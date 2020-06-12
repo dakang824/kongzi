@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "van-uploader": "../../dist/uploader-new/index"
+  }
+}

@@ -1,0 +1,88 @@
+page{
+  background: #F8F6F6;
+}
+.headTop {
+  background: #FA2335;
+}
+
+.headTop .right {
+  color: #fff;
+}
+
+.headTop .right .img {
+  width: 16px;
+  height: 14px;
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+
+.item {
+  height: 84rpx;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 26rpx;
+  background: #fff;
+}
+
+.item .default {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: rgba(153, 153, 153, 1);
+}
+
+.item .default .value {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 7rpx;
+}
+
+.item .active {
+  color: #FA2335;
+}
+
+.transform-90 {
+  transform: rotate(90deg);
+  position: absolute !important;
+  bottom: -1rpx;
+}
+
+.transform-270 {
+  transform: rotate(270deg);
+  position: absolute !important;
+  top: 4rpx;
+}
+
+.flip {
+  flex-flow: column-reverse;
+  position: relative;
+}
+.box{
+  margin: 0 0 30rpx;
+  padding:50rpx 30rpx;
+  background: #fff;
+}
+.box .head{
+  align-items: flex-start;
+}
+.box .rt{
+  margin-left:38rpx;
+}
+.box .rt .text{
+  font-size:30rpx;
+  font-weight:bold;
+}
+.box .van-tag {
+  margin-right: 20rpx;
+  text-align: center;
+  max-height: 30rpx;
+}
+.box .shop_img {
+  width: 149rpx;
+  height: 150rpx;
+  border-radius: 7rpx;
+}
+.box .rate{
+  font-size: 21rpx;
+  color: #212121;
+}

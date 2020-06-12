@@ -1,0 +1,100 @@
+	<view class="box">
+		<view class="head between van-hairline--bottom">
+			<view class="lf">
+				<image src="/imgs/shop.png" class="shop_img" />
+			</view>
+			<view class="rt">
+				<view class="text van-multi-ellipsis--l2">51talk青少儿英语1V1外教课+中教课2课时51talk青少儿英语1V1外教课+中教课2课时51talk青少儿英语1V1外教课+中教课2课时</view>
+				<view class="flex middle">
+					<van-tag type="danger">{{item.category==1?'少儿英语':item.category==2?'思维训练':
+								item.category==3?'国学教育':item.category==4?'美术培训':item.category==5?'音乐培训':item.category==6?'舞蹈培训':item.category==7?'体育运动':
+								item.category==8?'少儿编程':item.category==9?'课外辅导':item.category==99?'其他培训':'是的范'}}</van-tag>
+					<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.min_age||5}}-{{item.max_age||12}}岁</van-tag>
+					<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.online==0?'线上':item.online==1?'线下':'地方'}}</van-tag>
+					<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.type==1?'体验课':item.type==2?'短课包':item.type==3?'正式课':'萨达'}}</van-tag>
+				</view>
+				<view class="rate between">
+					<view class="lf between">
+						<van-rate value="{{ 2.5 }}" size="{{ 22 }}" allow-half color="#FFBF00" void-color="#EDEDED" void-icon="star" bind:change="onChange" readonly />
+						<text>9.7分</text>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="between tab van-hairline--bottom">
+			<view wx:for='{{list}}' class="block {{active==index?'active':''}}" bindtap="tabSwitch" data-i="{{index}}">
+				<view class="flex">{{item.name}} <text>({{item.value}})</text></view>
+				<view class="line"></view>
+			</view>
+		</view>
+
+		<view class="tags">
+			<view wx:for='{{tags}}' bindtap="tagsClick" data-i="{{index}}">
+				<van-tag type="primary" color='{{tagsActive==index?"#FFE9EE":"#F3F3F3"}}' text-color='{{tagsActive==index?"#FF2E58":"#838383"}}'>{{item.name}}({{item.value}})</van-tag>
+			</view>
+		</view>
+	</view>
+	<view class="list" wx:for='{{3}}'>
+		<view class="block">
+			<view class="li between">
+				<view class="lf flex">
+					<image src="/imgs/success.png" class="headImg" />
+					<view class="info">
+						<view class="nickname">汤姆猫</view>
+						<text class="time">2020.06.09 15:30</text>
+					</view>
+				</view>
+				<navigator class="more">查看更多
+					<van-icon name="arrow" />
+				</navigator>
+			</view>
+			<view class="between star">
+				<view class="rate between ">
+					<view class="lf between">
+						<van-rate value="{{ 2.5 }}" size="{{ 22 }}" allow-half color="#FFBF00" void-color="#EDEDED" void-icon="star" bind:change="onChange" readonly />
+						<text>评分9.7分</text>
+					</view>
+				</view>
+				<view class="flex">
+					<van-icon name="good-job" color="#DBDBDB" size="17px" />
+					<van-icon name="good-job" color="#DBDBDB" custom-class='rotate' size="17px" />
+				</view>
+			</view>
+			<view class="txt">
+				终于收到我bai需要的宝贝了，东西很好，价美物廉du，谢zhi谢掌柜的!说实在，这是我淘宝购物来让我最满意的一次购物。无论是掌柜的态度还是对物品，我都非常满意的。掌柜态度很专业热情，有问必答，回复也很快，我问了不少问题，他都不觉得烦，都会认真回答我，这点我向掌柜表示由衷的敬意，这样的好掌柜可不多。
+			</view>
+			<view class="imgs between">
+				<image src="/imgs/swpier.png" class="img" mode="aspectFill" />
+			</view>
+			<view class="between footer" wx:if='{{false}}'>
+				<view class="lf flex">
+					<view>点赞 <text>(10)</text></view>
+					<view>点怼 <text>(10)</text></view>
+					<view>追评 <text>(10)</text></view>
+				</view>
+				<van-button type="primary" size="mini">我要追评</van-button>
+			</view>
+			<view wx:else>
+				<view class="title">追加评论</view>
+				<view class="li between">
+					<view class="lf flex">
+						<image src="/imgs/success.png" class="headImg" />
+						<view class="info">
+							<view class="nickname">JEMMY</view>
+							<text class="time">刚刚</text>
+							<view class="txt">看着可以的样子...看着可以的样子...看着可以的样子......看着可以的样子...看着可以的样子... </view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<view class="fixed between">
+		<van-field value="{{ value }}" placeholder="我说两句.." border="{{ false }}" bind:change="onChange" />
+		<view class="flex">
+			<van-icon name="good-job" color="#DBDBDB" size="17px" />
+			<van-icon name="good-job" color="#DBDBDB" custom-class='rotate' size="17px" />
+		</view>
+		<button class="shareBtn between"><image src="/imgs/share1.png" class="share" mode="widthFix"/> 分享好友</button>
+	</view>

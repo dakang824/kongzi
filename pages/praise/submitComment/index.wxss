@@ -1,0 +1,115 @@
+page {
+  background: #F8F6F6;
+  padding-bottom: 100rpx;
+}
+
+.header {
+  margin: 48rpx 30rpx;
+}
+
+.header .lf {
+  font-size: 39rpx;
+  color: #151515;
+  font-weight: bold;
+}
+
+.header .van-button {
+  background: rgba(255, 233, 238, 1) !important;
+  color: #FF2E58 !important;
+}
+
+.header .txt {
+  font-size: 25rpx;
+  margin: 45rpx 0 50rpx;
+  line-height: 40rpx;
+}
+
+.header .txt text {
+  color: #FA2335;
+}
+
+.box {
+  background: #fff;
+  margin: 0 30rpx;
+  border-radius: 20rpx;
+  padding: 40rpx 40rpx;
+  margin-bottom: 28rpx;
+}
+
+.box .flex text {
+  padding-right: 60rpx;
+  font-weight: bold;
+  font-size: 30rpx;
+}
+
+.box .between {
+  padding-bottom: 30rpx;
+}
+
+.box .flex {
+  align-items: center;
+}
+
+.box .van-cell {
+  padding: 0;
+}
+
+.box .van-hairline--top {
+  padding: 30rpx 0 10rpx;
+}
+
+.fixed {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+}
+
+.fixed .lf,
+.fixed .rt {
+  flex: 1;
+  text-align: center;
+  font-size: 32rpx;
+  color: #fff;
+  background: linear-gradient(176deg, rgba(255, 204, 0, 1) 0%, rgba(255, 157, 2, 1) 100%);
+  padding: 25rpx 0;
+}
+
+.fixed .rt {
+  background: linear-gradient(176deg, rgba(255, 90, 144, 1) 0%, rgba(255, 44, 86, 1) 100%);
+}
+.fixed.disable .lf{
+  background: #E6E6E6;
+  pointer-events:none;
+}
+.fixed.disable .rt{
+  background: #CDCDCD;
+  pointer-events:none;
+}
+
+.box.padBottom{
+  padding-bottom: 30rpx;
+}
+.box .doing {
+  text-align: center;
+  font-size: 30rpx;
+  color: #FF2E58;
+  font-weight:bold;
+}
+
+.box .doing image {
+  width: 87rpx;
+  height: 87rpx;
+  margin-bottom: 20rpx;
+}
+.box .doing text{
+  color: #6E6E6E;
+  font-size: 27rpx;
+  padding:47rpx 0 39rpx;
+  display: block;
+}
+.box .doing .txt{
+  font-size: 30rpx;
+  color: #2C2C2C;
+}
