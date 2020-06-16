@@ -2,4 +2,4 @@
 	<course-top courseInfo='{{courseInfo}}' imgUrl='{{imgUrl}}' />
 </view>
 
-<comment-block list='{{list}}' isDetail/>
+<comment-block list='{{list}}' isDetail bind:changeLike='changeLike' bind:changAppends='changAppends'/>

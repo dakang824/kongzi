@@ -12,11 +12,11 @@
 							<text class="time">{{filter.sliceMunite(item.create_time)}}</text>
 						</view>
 					</view>
-					<navigator class="more" bindtap='goReview' data-i="{{item}}" wx:if='{{!isDetail}}'>查看更多
+					<navigator class="more" bindtap='goReview' data-i="{{item}}" wx:if='{{!isDetail}}' data-ind="{{index}}">查看更多
 						<van-icon name="arrow" />
 					</navigator>
 					<view wx:if='{{isDetail}}'>
-						<button class="shareBtn between">
+						<button class="shareBtn between" open-type="share">
 							<image src="/imgs/share1.png" class="share" mode="widthFix" /> 分享好友</button>
 					</view>
 				</view>
@@ -28,8 +28,8 @@
 						</view>
 					</view>
 					<view class="flex">
-						<van-icon name="good-job" color="{{item.my_like_count>0?'#FB2133':'#DBDBDB'}}" size="17px" bind:click='like' data-i='{{item}}' />
-						<van-icon name="good-job" color="{{item.my_dislike_count>0?'#FB2133':'#DBDBDB'}}" custom-class='rotate' size="17px" bind:click='dislike' data-i='{{item}}' />
+						<van-icon name="good-job" color="{{item.my_like_count>0?'#FB2133':'#DBDBDB'}}" size="17px" bind:click='like' data-i='{{item}}' data-ind='{{index}}'/>
+						<van-icon name="good-job" color="{{item.my_dislike_count>0?'#FB2133':'#DBDBDB'}}" custom-class='rotate' size="17px" bind:click='dislike' data-i='{{item}}' data-ind='{{index}}'/>
 					</view>
 				</view>
 				<view wx:if='{{isDetail}}' class="score">
@@ -58,14 +58,14 @@
 						<view>点怼 <text>({{item.dislike_count}})</text></view>
 						<view>追评 <text>({{item.append_count}})</text></view>
 					</view>
-					<van-button type="primary" size="mini" bind:click='goReview' data-i="{{item}}">我要追评</van-button>
+					<van-button type="primary" size="mini" bind:click='goReview' data-i="{{item}}"  data-ind="{{index}}">我要追评</van-button>
 				</view>
 				<view wx:else>
 					<view class="title">追加评论</view>
 					<block wx:if='{{item.appends.length}}'>
 						<view class="li between" wx:for='{{item.appends}}' wx:for-item="it">
 							<view class="lf flex">
-								<van-image custom-class='headImg' width="100%" src="{{url+it.pic_path}}" radius='5rpx' use-loading-slot lazy-load fit="widthFix">
+								<van-image custom-class='headImg' width="100%" src="{{url+it.pic_path}}" use-loading-slot lazy-load fit="widthFix" round>
 									<van-loading slot="loading" type="spinner" size="20" vertical />
 								</van-image>
 								<view class="info">
@@ -82,6 +82,9 @@
 				</view>
 			</view>
 		</view>
+		<block wx:if='{{!isDetail}}'>
+			<w_loadingData noData='{{!noData}}' />
+		</block>
 	</block>
 	<block wx:else>
 		<yk-empty isShow text='暂无数据' />
@@ -90,11 +93,12 @@
 	<imageViewer show="{{show}}" imgs="{{imgs}}" current='{{current}}'></imageViewer>
 
 	<view class="fixed between" wx:if='{{isDetail}}'>
-		<van-field value="{{ value }}" placeholder="我说两句.." border="{{ false }}" bind:change="onChange" bind:confirm='confirm' />
+		<input class="van-field__input" value='{{content}}' placeholder="我说两句.." bindconfirm='confirm' bindinput="onChange" placeholder-class='placeholder'></input>
+		<!-- <van-field value="{{ content }}" placeholder="" border="{{ false }}" bind:change="" bind:confirm=' /> -->
 		<view class="flex">
-			<van-icon name="good-job" color="{{list[0].my_like_count>0?'#FB2133':'#DBDBDB'}}" size="17px" bind:click='like' data-i='{{item}}' />
-			<van-icon name="good-job" color="{{list[0].my_dislike_count>0?'#FB2133':'#DBDBDB'}}" custom-class='rotate' size="17px" bind:click='dislike' data-i='{{item}}' />
+			<van-icon name="good-job" color="{{list[0].my_like_count>0?'#FB2133':'#DBDBDB'}}" size="17px" bind:click='like' data-i='{{list[0]}}'  data-ind='0'/>
+			<van-icon name="good-job" color="{{list[0].my_dislike_count>0?'#FB2133':'#DBDBDB'}}" custom-class='rotate' size="17px" bind:click='dislike' data-i='{{list[0]}}'  data-ind='0'/>
 		</view>
-		<button class="shareBtn between">
+		<button class="shareBtn between" open-type="share">
 			<image src="/imgs/share1.png" class="share" mode="widthFix" /> 分享好友</button>
 	</view>

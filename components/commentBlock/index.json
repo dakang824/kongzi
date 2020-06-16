@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "imageViewer": "../imageViewer/index"
+    "imageViewer": "../imageViewer/index",
+    "w_loadingData": "../components/w_loadingData/w_loadingData"
   }
 }

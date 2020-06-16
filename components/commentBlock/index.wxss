@@ -154,3 +154,15 @@
   width: 30rpx;
   margin-right: 10rpx;
 }
+.van-field__input{
+  background: #F4F4F4!important;
+  height:49rpx;
+  border-radius:30px;
+  width:300rpx;
+  padding: 10rpx 30rpx;
+  margin: 15rpx 0;
+  color: #8B8B8B;
+}
+.placeholder{
+  font-size: 28rpx;
+}

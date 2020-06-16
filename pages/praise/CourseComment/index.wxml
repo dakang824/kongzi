@@ -19,7 +19,7 @@
 
 	<view class="temp">
 		<view hidden="{{!(active==index)}}" wx:for='{{list}}'>
-			<template is="list" data="{{url,imgurl:imgUrl}}"></template>
-			<comment-block list='{{list[active].data}}' courseInfo='{{courseInfo}}' />
+			<!-- <template is="list" data="{{url,imgurl:imgUrl}}"></template> -->
+			<comment-block list='{{list[active].data}}' courseInfo='{{courseInfo}}' noData='{{list[active].noData}}' bind:changeLike='changeLike' />
 		</view>
 	</view>
