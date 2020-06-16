@@ -10,7 +10,7 @@
  		<view class="intro van-multi-ellipsis--l2">{{item.name}}</view>
  		<view class="price flex">
  			<view class="left">￥{{item.price}}</view>
- 			<view class="right">剩余{{item.lefts<0?"0":item.lefts}}件</view>
+ 			<view class="right">已售{{item.buy_count<0?"0":item.buy_count}}件</view>
  		</view>
  	</navigator>
  </view>

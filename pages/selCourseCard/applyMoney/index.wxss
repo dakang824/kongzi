@@ -1,8 +1,16 @@
 page{
+  min-height:100vh;
+}
+.page{
   padding-bottom: 120rpx;
+  display: flex;
+  flex-flow: wrap-reverse;
 }
 .cash .head {
   padding: 50rpx 30rpx;
+}
+.van-dialog__header{
+  padding-top: 20px!important;
 }
 
 .cash .head .lf {
@@ -136,4 +144,25 @@ page{
 .box .doing .txt{
   color: #2C2C2C;
   font-size: 30rpx;
+}
+.conter{
+  width: 100%;
+  padding: 60rpx 0;
+}
+.content .tip{
+  font-size: 14px;
+  color: #333;
+  padding: 10px 15px 0rpx;
+  color: #FF976A;
+}
+.super_code{
+  text-align: center;
+  padding-top: 30rpx;
+  font-size: 15px;
+}
+.tips{
+  font-size: 26rpx;
+  margin-top: 20rpx;
+  color: #666666;
+  font-weight: initial;
 }

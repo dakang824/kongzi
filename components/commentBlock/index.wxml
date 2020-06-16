@@ -1,0 +1,100 @@
+	<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+	<block wx:if='{{list.length}}'>
+		<view class="list" wx:for='{{list}}'>
+			<view class="block">
+				<view class="li between">
+					<view class="lf flex">
+						<van-image custom-class='headImg' width="100%" src="{{url+item.pic_path}}" radius='5rpx' use-loading-slot lazy-load fit="widthFix">
+							<van-loading slot="loading" type="spinner" size="20" vertical />
+						</van-image>
+						<view class="info">
+							<view class="nickname">{{item.nickname||'匿名'}}</view>
+							<text class="time">{{filter.sliceMunite(item.create_time)}}</text>
+						</view>
+					</view>
+					<navigator class="more" bindtap='goReview' data-i="{{item}}" wx:if='{{!isDetail}}'>查看更多
+						<van-icon name="arrow" />
+					</navigator>
+					<view wx:if='{{isDetail}}'>
+						<button class="shareBtn between">
+							<image src="/imgs/share1.png" class="share" mode="widthFix" /> 分享好友</button>
+					</view>
+				</view>
+				<view class="between star">
+					<view class="rate between ">
+						<view class="lf between">
+							<van-rate value="{{item.score/2}}" size="{{ 22 }}" allow-half color="#FFBF00" void-color="#EDEDED" void-icon='{{imgurl+"small_start_a.png"}}' icon='{{imgurl+"small_start.png"}}' readonly />
+							<text>评分{{item.score}}分</text>
+						</view>
+					</view>
+					<view class="flex">
+						<van-icon name="good-job" color="{{item.my_like_count>0?'#FB2133':'#DBDBDB'}}" size="17px" bind:click='like' data-i='{{item}}' />
+						<van-icon name="good-job" color="{{item.my_dislike_count>0?'#FB2133':'#DBDBDB'}}" custom-class='rotate' size="17px" bind:click='dislike' data-i='{{item}}' />
+					</view>
+				</view>
+				<view wx:if='{{isDetail}}' class="score">
+					<text>效果：{{item.eff_score}}分</text>
+					<text>师资：{{item.tea_score}}分</text>
+					<text>环境：{{item.env_score}}分</text>
+					<text>服务：{{item.ser_score}}分</text>
+				</view>
+				<view class="txt">{{item.content}}</view>
+				<view class="imgs between">
+					<view wx:for='{{item.pics}}' wx:for-item="it" bindtap="lookImg" data-i="{{index}}" wx:for-index="idx" data-current="{{idx}}">
+						<block wx:if='{{it.type==0}}'>
+							<van-image custom-class='img' width="100%" src="{{url+it.path}}" radius='5rpx' use-loading-slot lazy-load fit="aspectFill">
+								<van-loading slot="loading" type="spinner" size="20" vertical />
+							</van-image>
+						</block>
+						<view wx:if='{{it.type==1}}' class="position img">
+							<video src="{{url+it.path}}" class="widthFix" show-center-play-btn='{{false}}' show-fullscreen-btn='{{false}}' show-play-btn='{{false}}' />
+							<van-icon name="play" custom-class='play' color="#fff" size="24px" />
+						</view>
+					</view>
+				</view>
+				<view class="between footer" wx:if='{{!isDetail}}'>
+					<view class="lf flex">
+						<view>点赞 <text>({{item.like_count}})</text></view>
+						<view>点怼 <text>({{item.dislike_count}})</text></view>
+						<view>追评 <text>({{item.append_count}})</text></view>
+					</view>
+					<van-button type="primary" size="mini" bind:click='goReview' data-i="{{item}}">我要追评</van-button>
+				</view>
+				<view wx:else>
+					<view class="title">追加评论</view>
+					<block wx:if='{{item.appends.length}}'>
+						<view class="li between" wx:for='{{item.appends}}' wx:for-item="it">
+							<view class="lf flex">
+								<van-image custom-class='headImg' width="100%" src="{{url+it.pic_path}}" radius='5rpx' use-loading-slot lazy-load fit="widthFix">
+									<van-loading slot="loading" type="spinner" size="20" vertical />
+								</van-image>
+								<view class="info">
+									<view class="nickname">{{it.nickname||'匿名'}}</view>
+									<text class="time">{{it.timeFrom}}</text>
+									<view class="txt">{{it.content}}</view>
+								</view>
+							</view>
+						</view>
+					</block>
+					<view wx:else>
+						<yk-empty isShow text='暂无追评' />
+					</view>
+				</view>
+			</view>
+		</view>
+	</block>
+	<block wx:else>
+		<yk-empty isShow text='暂无数据' />
+	</block>
+
+	<imageViewer show="{{show}}" imgs="{{imgs}}" current='{{current}}'></imageViewer>
+
+	<view class="fixed between" wx:if='{{isDetail}}'>
+		<van-field value="{{ value }}" placeholder="我说两句.." border="{{ false }}" bind:change="onChange" bind:confirm='confirm' />
+		<view class="flex">
+			<van-icon name="good-job" color="{{list[0].my_like_count>0?'#FB2133':'#DBDBDB'}}" size="17px" bind:click='like' data-i='{{item}}' />
+			<van-icon name="good-job" color="{{list[0].my_dislike_count>0?'#FB2133':'#DBDBDB'}}" custom-class='rotate' size="17px" bind:click='dislike' data-i='{{item}}' />
+		</view>
+		<button class="shareBtn between">
+			<image src="/imgs/share1.png" class="share" mode="widthFix" /> 分享好友</button>
+	</view>

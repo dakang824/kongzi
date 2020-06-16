@@ -1,0 +1,5 @@
+<view class="van-hairline--bottom marBottom">
+	<course-top courseInfo='{{courseInfo}}' imgUrl='{{imgUrl}}' />
+</view>
+
+<comment-block list='{{list}}' isDetail/>

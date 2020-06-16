@@ -4,6 +4,8 @@ import Util from '../../utils/util';
 import Loading from '../../dist/loading_top/loading';
 Page({
   data: {
+    show_review:false,
+    alreadyTotal:0,
     hiddenPage: true,
     hasCard: 0,
     url: app.globalData.serverUrl,
@@ -45,7 +47,7 @@ Page({
       i
     } = e.currentTarget.dataset;
     wx.navigateTo({
-      url: `/pages/selCourseCard/applyMoney/index?card_id=${i.card_id}&course_id=${i.course_id}`,
+      url: `/pages/selCourseCard/applyMoney/index?card_id=${i.card_id}&course_id=${i.course_id}&inst_id=${i.inst_id}`,
     })
   },
   showTime(e) {
@@ -106,11 +108,17 @@ Page({
       card_code
     }, res => {
       if (res.hasCard) {
-        let cardNumber = res.data.code;
+        let cardNumber = res.data.code,alreadyTotal=0;
+        for(let key of res.data.select_course){
+          key.status==2?alreadyTotal=alreadyTotal+1:'';
+        }
         this.setData({
           cardNumber: [cardNumber.slice(0, 3), cardNumber.slice(3, 6), cardNumber.slice(6, 9), cardNumber.slice(9)],
           cards: res.data,
           hasCard: res.hasCard,
+          alreadyTotal,
+          enable_review:res.sysSetting.enable_review,
+          show_review:res.sysSetting.show_review,
         });
       }
       this.setData({

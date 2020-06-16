@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "van-uploader": "../../dist/uploader-new/index"
+    "van-uploader": "../../dist/uploader-new/index",
+    "imageViewer": "../../components/imageViewer/index"
   }
 }

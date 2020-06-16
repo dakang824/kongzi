@@ -95,7 +95,18 @@ van-cell {
 .info .radio {
   position: relative;
 }
-
+.info .evaluate{
+  font-size: 27rpx;
+  font-weight: bold;
+  color: #242424!important;
+}
+.info .evaluate view{
+  margin-right: 25rpx;
+}
+.info .evaluate view text{
+  font-weight: initial;
+  font-size: 24rpx;
+}
 .info .radio.height {
   height: 0;
   overflow: hidden;
@@ -325,7 +336,7 @@ van-icon {
 }
 
 .Selected .block .head .rt .between {
-  margin-bottom: 10rpx;
+  margin-bottom: 5rpx;
   align-items: flex-start;
 }
 .Selected .block.marginTop{
@@ -368,7 +379,7 @@ van-icon {
 .Selected .block .info .row1 {
   color: #707070;
   font-size: 27rpx;
-  padding: 30rpx 0 20rpx;
+  padding: 25rpx 0 25rpx;
 }
 
 .Selected .block .info .row1.row2 {

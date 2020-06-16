@@ -2,51 +2,6 @@ page {
   background: #F8F6F6;
 }
 
-.box {
-  padding: 50rpx 30rpx 30rpx;
-  background: #fff;
-}
-
-.box .head {
-  align-items: flex-start;
-  padding-bottom: 30rpx;
-}
-
-.box .rt {
-  margin-left: 38rpx;
-}
-
-.box .rt .text {
-  font-size: 30rpx;
-  font-weight: bold;
-}
-
-.box .van-tag {
-  margin-right: 20rpx;
-  text-align: center;
-  max-height: 30rpx;
-}
-
-.box .shop_img {
-  width: 149rpx;
-  height: 150rpx;
-  border-radius: 7rpx;
-}
-
-.box .rate {
-  font-size: 21rpx;
-  color: #212121;
-}
-
-.box .middle {
-  margin: 10rpx 0;
-}
-
-.box .rate text {
-  margin-left: 20rpx;
-  display: block;
-}
-
 .tab text {
   font-size: 21rpx;
   color: #767676;
@@ -58,6 +13,7 @@ page {
   font-size: 30rpx;
   font-weight: bold;
   color: #0C0C0C;
+  background: #fff;
 }
 
 .tab .flex {
@@ -88,119 +44,13 @@ page {
 }
 
 .tags {
-  margin: 10rpx 10rpx;
+  margin: 0;
   display: flex;
   flex-wrap: wrap;
+  background: #fff;
+  padding: 10rpx 29rpx 25rpx;
 }
 
 .tags .van-tag {
   margin-top: 15rpx;
-}
-
-.list {
-  padding: 40rpx 30rpx;
-  background: #fff;
-  margin-top: 15rpx;
-}
-
-.list .headImg {
-  width: 76rpx;
-  min-width: 76rpx;
-  height: 77rpx;
-  border-radius: 50%;
-  margin-right: 30rpx;
-}
-
-.list .info .nickname {
-  color: #242424;
-  font-size: 27rpx;
-  font-weight: bold;
-}
-
-.list .info .time,
-.list .more {
-  color: #818181;
-  font-size: 24rpx;
-}
-
-.list .star {
-  margin: 20rpx 0 0 102rpx;
-}
-
-.list .star text {
-  margin-left: 10rpx;
-  color: #FFB401;
-  font-size: 23rpx;
-  font-weight: bold;
-}
-
-.rotate {
-  transform: rotate(180deg) scaleX(-1);
-  margin-left: 30rpx;
-}
-
-.list .txt {
-  color: #393939;
-  font-size: 27rpx;
-  margin: 20rpx 0;
-}
-
-.list .imgs {
-  flex-wrap: wrap;
-}
-
-.list .imgs .img {
-  width: 220rpx;
-  height: 220rpx;
-  border-radius: 10rpx;
-  margin-bottom: 20rpx;
-}
-
-.list .footer {
-  color: #818181;
-  font-size: 24rpx;
-}
-
-.list .footer text {
-  color: #FA2335;
-  margin-right: 30rpx;
-}
-
-.list .footer button {
-  background: linear-gradient(172deg, rgba(255, 90, 144, 1) 0%, rgba(255, 44, 86, 1) 100%);
-  border-color: transparent;
-  min-width: 138rpx;
-}
-
-.list .title {
-  color: #242424;
-  font-size: 27rpx;
-  font-weight: bold;
-  margin: 20rpx 0 30rpx;
-}
-
-.fixed {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  background: #fff;
-  padding: 5rpx 30rpx;
-  border-top: 1rpx solid #eee;
-}
-
-.shareBtn {
-  height: 55rpx;
-  background:#FA2335;
-  border-radius: 50px;
-  font-size: 24rpx;
-  color: #fff;
-  margin:0;
-  line-height:55rpx;
-}
-
-.share {
-  width: 30rpx;
-  margin-right: 10rpx;
 }

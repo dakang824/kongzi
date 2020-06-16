@@ -1,0 +1,14 @@
+page{
+  background: #F8F6F7;
+  padding-bottom: 100rpx;
+}
+
+.marBottom{
+  margin-bottom: 15rpx;
+}
+
+.rotate {
+  transform: rotate(180deg) scaleX(-1);
+  margin-right: 30rpx;
+  margin-left: 30rpx;
+}

@@ -1,0 +1,54 @@
+.between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.box {
+  padding: 50rpx 30rpx 30rpx;
+  background: #fff;
+}
+
+.box .head {
+  align-items: flex-start;
+  padding-bottom: 30rpx;
+}
+
+.box .rt {
+  margin-left: 38rpx;
+  flex: 1;
+}
+
+.box .rt .text {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.box .van-tag {
+  margin-right: 20rpx;
+  text-align: center;
+  max-height: 30rpx;
+}
+
+.box .shop_img {
+  width: 149rpx;
+  height: 150rpx;
+  border-radius: 7rpx;
+}
+
+.box .rate {
+  font-size: 21rpx;
+  color: #212121;
+}
+
+.box .middle {
+  margin: 10rpx 0;
+}
+
+.box .rate text {
+  margin-left: 20rpx;
+  display: block;
+}
+
+van-tag {
+  margin-right: 25rpx;
+}

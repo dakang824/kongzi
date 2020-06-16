@@ -1,0 +1,24 @@
+<view class="box">
+	<view class="head between van-hairline--bottom">
+		<view class="lf">
+			<image src="{{url+courseInfo.cover_image}}" class="shop_img" />
+		</view>
+		<view class="rt">
+			<view class="text van-multi-ellipsis--l2">{{courseInfo.name}}</view>
+			<view class="flex middle">
+				<van-tag type="danger">{{courseInfo.category==1?'少儿英语':courseInfo.category==2?'思维训练':
+								courseInfo.category==3?'国学教育':courseInfo.category==4?'美术培训':courseInfo.category==5?'音乐培训':courseInfo.category==6?'舞蹈培训':courseInfo.category==7?'体育运动':
+								courseInfo.category==8?'少儿编程':courseInfo.category==9?'课外辅导':courseInfo.category==99?'其他培训':''}}</van-tag>
+				<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{courseInfo.min_age}}-{{courseInfo.max_age}}岁</van-tag>
+				<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{courseInfo.online==0?'线上':courseInfo.online==1?'线下':''}}</van-tag>
+				<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{courseInfo.type==1?'体验课':courseInfo.type==2?'短课包':courseInfo.type==3?'正式课':''}}</van-tag>
+			</view>
+			<view class="rate between">
+				<view class="lf between">
+					<van-rate void-icon='{{imgUrl+"shop_stars.png"}}' icon='{{imgUrl+"shop_stars_a.png"}}' value="{{ courseInfo.score/2 }}" size="{{ 22 }}" allow-half color="#FFBF00" void-color="#EDEDED" readonly />
+					<text>{{courseInfo.score}}分</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

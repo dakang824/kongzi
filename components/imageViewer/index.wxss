@@ -1,0 +1,29 @@
+swiper{
+  background: rgba(0,0,0,.7);
+  z-index: 99;
+}
+swiper,swiper-item{
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slide-image{
+  width: 100%;
+}
+.slide-video{
+  width: 100%;
+  height: 100vh;
+}
+.close{
+  position: fixed;
+  top: 30rpx;
+  left: 30rpx;
+  color: #eee;
+  z-index: 100;
+}

@@ -35,7 +35,10 @@ page {
   padding: 40rpx 40rpx;
   margin-bottom: 28rpx;
 }
-
+.box .flex .rt{
+  font-size: 26rpx;
+  margin-left: 16rpx;
+}
 .box .flex text {
   padding-right: 60rpx;
   font-weight: bold;
@@ -64,6 +67,7 @@ page {
   right: 0;
   bottom: 0;
   display: flex;
+  z-index: 10;
 }
 
 .fixed .lf,
@@ -76,8 +80,14 @@ page {
   padding: 25rpx 0;
 }
 
-.fixed .rt {
+.fixed .rt,.bg_btn{
   background: linear-gradient(176deg, rgba(255, 90, 144, 1) 0%, rgba(255, 44, 86, 1) 100%);
+}
+.bg_btn{
+  width: 100%;
+  padding: 25rpx 0;
+  color: #fff;
+  text-align: center;
 }
 .fixed.disable .lf{
   background: #E6E6E6;

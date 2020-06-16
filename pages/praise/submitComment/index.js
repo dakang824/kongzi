@@ -2,8 +2,11 @@ let http = require('../../../common/request.js'),
   app = getApp();
 Page({
   data: {
+    showImg:false,
     show: false,
     disable: false,
+    data:{},
+    medias:[],
     postData: {
       cmd: 'addCourseReview',
       env_score: 0,
@@ -27,6 +30,14 @@ Page({
       name: '服务态度',
       value: 'ser_score',
     }]
+  },
+  preview(e){
+    let imgs=[...this.data.postData.medias];
+    for(let key of imgs){
+      key.type=key.media_type;
+      key.path=key.url;
+    }
+    this.setData({showImg:true,current:e.detail.index,imgs})
   },
   afterRead(event) {
     const {
@@ -60,7 +71,7 @@ Page({
           fileList,
           'postData.medias': medias
         });
-        // this.verify();
+        this.verify();
       },
     });
   },
@@ -92,16 +103,17 @@ Page({
         let fileList = JSON.parse(JSON.stringify(res.pics)),
           arr = [];
         for (let key of fileList) {
-          key.url = app.globalData.serverUrl + key.path;
           arr.push({
             media_type: key.type,
             url: key.path
           });
+          key.url = app.globalData.serverUrl + key.path;
+          key.type=key.type==0?'image':'video';
         }
         postData.medias = arr;
         this.setData({
-          postData,
           fileList,
+          medias:fileList,
           data: res.data,
           show: 'audit_status' in res.data
         })
@@ -112,12 +124,13 @@ Page({
     })
   },
   onReady() {
-    // this.verify();
+    this.verify();
   },
   input(e) {
     this.setData({
       'postData.content': e.detail
     })
+    this.verify();
   },
   onChange(e) {
     let {
@@ -126,6 +139,7 @@ Page({
     this.setData({
       [`postData.${i}`]: e.detail * 2
     })
+    this.verify();
   },
   delete(e) {
     let {
@@ -147,10 +161,12 @@ Page({
   save() {
     let {
       postData,
-      data
+      data,
     } = this.data;
-    postData.review_id = data.id;
-    http.postReq("/community/industry/", postData, res => {
+    'id' in data?postData.review_id = data.id:'';
+    let d={...postData};
+
+    http.postReq("/community/industry/", d, res => {
       wx.showToast({
         title: '保存成功',
         icon: 'success',
@@ -177,7 +193,12 @@ Page({
       data
     } = this.data;
     if ('id' in data) {
-      postData.cmd = 'commitMyCourseReview';
+      if(data.audit_status==2){
+        postData.cmd ='addCourseReview';
+        postData.reset_submit=1;
+      }else{
+        postData.cmd ='commitMyCourseReview';
+      }
       postData.review_id = data.id;
     } else {
       postData.submit = 1;

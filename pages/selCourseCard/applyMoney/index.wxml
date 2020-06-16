@@ -1,49 +1,62 @@
-<view class="cash">
-	<view class="head between">
-		<view class="lf vCenter">
-			<image src="/imgs/shop.png"></image>
-			<text>孔紫奖学金</text>
+<page class='page' bind:touchstart='touchstart' bind:touchend='touchend'>
+	<view class="cash">
+		<view class="head between">
+			<view class="lf vCenter">
+				<image src="/imgs/shop.png"></image>
+				<text>孔紫奖学金</text>
+			</view>
+			<van-button type="primary" size="small" color='#FFE9EE' bind:click='call'>联系客服</van-button>
 		</view>
-		<van-button type="primary" size="small" color='#FFE9EE' bind:click='call'>联系客服</van-button>
-	</view>
-	<view class="tip">
-		<van-icon name="play" custom-class='rotate' color='#FA2335' />
-		<view class="txt">如果您上完选课卡里的某个体验课，然后报名了机构正式课，您有可能会获得由孔紫提供的奖学金（金额从100元到5000元不等）。 </view>
-	</view>
-	<view class="box">
-		<view class="tit">操作步骤：</view>
-		<text space='emsp' decode>1. 截图或拍照支付凭证 \n2. 上传凭证并提交 \n3. 平台人工审核真实性 \n4. 直接转入微信零钱（如果通过）</text>
-		<view>
-			<view class="doing" wx:if='{{cards.audit_status==2}}'>
-				<image src="/imgs/Card_stop.png"></image>
-				<view>您的申请已被拒绝，原因如下</view>
-				<text space='emsp' decode>{{cards.reason}}</text>
-				<view class="txt">您可以重新上传凭证并提交。</view>
-			</view>
-			<view class="upload" wx:if='{{cards.audit_status===""||cards.audit_status==2}}'>
-				<view class="t" wx:if='{{image==""}}' bindtap="uploadImg">
-					<image src="/imgs/upload.png" class="img"></image>
-					<view>上传凭证</view>
+		<view class="tip">
+			<van-icon name="play" custom-class='rotate' color='#FA2335' />
+			<view class="txt">如果您上完选课卡里的某个体验课，然后报名了机构正式课，您有可能会获得由孔紫提供的奖学金（金额从100元到5000元不等，获得概率大于95%）。 </view>
+		</view>
+		<view class="box">
+			<view class="tit">操作步骤：</view>
+			<text space='emsp' decode>1. 截图或拍照支付凭证 \n2. 上传凭证并提交 \n3. 平台人工审核真实性 \n4. 直接转入微信零钱（如果通过）</text>
+			<view>
+				<view class="doing" wx:if='{{cards.audit_status==2}}'>
+					<image src="/imgs/Card_stop.png"></image>
+					<view>您的申请已被拒绝，原因如下</view>
+					<text space='emsp' decode>{{cards.reason}}</text>
+					<view class="txt">您可以重新上传凭证并提交。</view>
 				</view>
-				<view class="imgs" wx:else>
-					<image src="{{image}}" mode="aspectFit" bindtap="lookImg"></image>
-					<van-icon name="clear" custom-class="clear" color="#FA2335" bind:click='clearImg' />
+				<block wx:if='{{cards.audit_status===""||cards.audit_status==2}}'>
+					<view class="upload" catchtap>
+						<view class="t" wx:if='{{image==""}}' catchtap="uploadImg">
+							<image src="/imgs/upload.png" class="img"></image>
+							<view>上传凭证</view>
+						</view>
+						<view class="imgs" wx:else>
+							<image src="{{image}}" mode="aspectFit" catchtap="lookImg"></image>
+							<van-icon name="clear" custom-class="clear" color="#FA2335" bind:click='clearImg' />
+						</view>
+					</view>
+					<view wx:if='{{super_code}}' class="super_code">超级福利码：{{super_code}}</view>
+					<!-- <view class="conter"  wx:else></view> -->
+				</block>
+				<view wx:else class="doing">
+					<block wx:if='{{cards.audit_status===0}}'>
+						<image src="/imgs/review.png"></image>
+						<view>已提交，审核中</view>
+						<view class="tips">注：孔紫客服会在3个工作日内与您电话联系，核实信息，请注意接听。</view>
+					</block>
+					<block wx:elif='{{cards.audit_status==1}}'>
+						<image src="/imgs/Card_success.png"></image>
+						<view>您的申请已通过</view>
+						<view>返现已转入您的微信零钱</view>
+					</block>
 				</view>
-			</view>
-			<view wx:else class="doing">
-				<block wx:if='{{cards.audit_status===0}}'>
-					<image src="/imgs/review.png"></image>
-					<view>已提交，审核中</view>
-				</block>
-				<block wx:elif='{{cards.audit_status==1}}'>
-					<image src="/imgs/Card_success.png"></image>
-					<view>您的申请已通过</view>
-					<view>返现已转入您的微信零钱</view>
-				</block>
 			</view>
 		</view>
+		<view class="fixed" wx:if='{{cards.audit_status===""||cards.audit_status==2}}'>
+			<van-button type="primary" block custom-class='{{image?"btn":"grey"}}' color='#F6F6F6' bind:click='submit' disabled="{{image==''}}">提交</van-button>
+		</view>
 	</view>
-	<view class="fixed" wx:if='{{cards.audit_status===""||cards.audit_status==2}}'>
-		<van-button type="primary" block custom-class='{{image?"btn":"grey"}}' color='#F6F6F6' bind:click='submit' disabled="{{image==''}}">提交</van-button>
+</page>
+<van-dialog use-slot title="超级福利" show="{{ show }}" show-cancel-button bind:close="onClose" bind:confirm='onConfirm'>
+	<view class="content">
+		<view class="tip">该功能仅限公司内部员工使用</view>
+		<van-field type='number' value="{{ value }}" label="福利码" placeholder="请输入超级福利码" border="{{ false }}" bind:change="onChange" title-width='60px' />
 	</view>
-</view>
+</van-dialog>

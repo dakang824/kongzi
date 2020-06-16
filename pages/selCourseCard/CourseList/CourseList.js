@@ -3,6 +3,7 @@ let http = require('../../../common/request.js'),
 import Loading from '../../../dist/loading_top/loading';
 Page({
   data: {
+    show_review:false,
     onlineType: 1,
     fixed: false,
     selected: 0,
@@ -347,7 +348,8 @@ Page({
       }
       this.setData({
         [`list[${active}].noData`]: data.length == postData.page_size,
-        [`list[${active}].show`]: true
+        [`list[${active}].show`]: true,
+        show_review:res.sysSetting.show_review
       })
 
       Loading.close();

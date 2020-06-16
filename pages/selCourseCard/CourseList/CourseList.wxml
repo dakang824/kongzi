@@ -15,7 +15,7 @@
 
 	<van-tabs active="{{ active }}" bind:change="TabChange" color='#FA2335' z-index='9999' sticky swipeable border='{{false}}'>
 		<van-tab title='{{item.name}}' wx:for='{{list}}' wx:key='*this'>
-			<template is="list" data="{{item,rootUrl,submitData,onlineType:postData.online}}"></template>
+			<template is="list" data="{{item,rootUrl,submitData,onlineType:postData.online,show_review}}"></template>
 		</van-tab>
 	</van-tabs>
 </view>
@@ -59,6 +59,17 @@
 								<van-icon name="arrow" />
 							</view>
 						</navigator>
+						<navigator class="between row1 van-hairline--bottom" hover-class="none" url="/pages/praise/CourseComment/index?course_id={{item.course_id}}" wx:if='{{show_review}}'>
+							<view class="rt evaluate">
+								<view>好评 <text>({{item.good_count}})</text></view>
+								<view>中评 <text>({{item.med_count}})</text></view>
+								<view>差评 <text>({{item.bad_count}})</text></view>
+							</view>
+							<view class="rt" hover-class="hover-class">查看详情
+								<van-icon name="arrow" />
+							</view>
+						</navigator>
+
 						<navigator class="between row1 {{item.need_address==1&&onlineType==0?'van-hairline--bottom':''}}" hover-class="none" url="/pages/selCourseCard/imgs/imgs?type=2&id={{item.course_id}}">
 							<view class="vCenter">
 								<image src="/imgs/selCourse_type.jpg" class="address_img"></image>
@@ -101,7 +112,7 @@
 								</van-cell-group>
 							</van-radio-group>
 						</view>
-						<view class="footer between" wx:if='{{item.need_address==1}}'>
+						<view class="footer between van-hairline--top" wx:if='{{item.need_address==1}}'>
 							<van-field title-width='75px' value="{{ item.address}}" label="邮寄地址：" placeholder="该课程需要您填写邮寄地址" data-i='mobile' bind:input='OnInput' border='{{false}}' data-i='{{index}}' placeholder-style='font-size:25rpx' />
 						</view>
 					</view>

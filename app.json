@@ -94,7 +94,8 @@
       "pages": [
         "index/index",
         "submitComment/index",
-        "CourseComment/index"
+        "CourseComment/index",
+        "CourseCommentDetail/index"
       ]
     },
     {

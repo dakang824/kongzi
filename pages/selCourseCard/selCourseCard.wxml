@@ -4,7 +4,7 @@
 	<view class="card">
 		<view class="title between">
 			<view class="lf">孔紫选课卡</view>
-			<view class="rt">{{cards.use_status===0?'未使用':cards.use_status===1?'已上'+(cards.select_count-cards.left_count)+'个课程':cards.use_status===2?'已出席':cards.use_status===3?'已签单':'未兑换'}}</view>
+			<view class="rt">{{cards.use_status===0?'未使用':cards.use_status===1?'已上'+(alreadyTotal)+'个课程':cards.use_status===2?'已出席':cards.use_status===3?'已签单':'未兑换'}}</view>
 		</view>
 		<block wx:if='{{hasCard}}'>
 			<view class="info">
@@ -44,6 +44,7 @@
 		<block wx:if='{{hasCard}}'>
 			<block wx:if='{{cards.select_course.length}}'>
 				<view class="block" wx:for='{{cards.select_course}}'>
+					<image src="/imgs/have_gift.png" class="have_gift" wx:if='{{item.enable_gift}}' bindtap="showGift" data-img="{{item.gift_path}}" mode="widthFix"></image>
 					<view class="head between" style="margin-bottom: {{item.address?'35rpx':'0'}};">
 						<van-image width="93rpx" height='93rpx' src="{{url+item.cover_image}}" radius='7rpx' use-loading-slot lazy-load class="img">
 							<van-loading slot="loading" type="spinner" size="16" vertical />
@@ -53,9 +54,12 @@
 								<view class="tit van-multi-ellipsis--l3">{{item.course_name}}</view>
 								<view class="tag">{{item.course_type==1?'体验课':item.course_type==2?'短课包':item.course_type==3?'正式课':''}}</view>
 							</view>
+							<view class="flex comment" wx:if='{{item.comment}}'>
+								<text>{{item.comment}}</text>
+							</view>
 							<view class="flex">
-								<van-tag type="danger">{{item.course_type==1?'少儿英语':item.course_type==2?'思维训练':
-								item.course_type==3?'国学教育':item.course_type==4?'美术培训':item.course_type==5?'音乐培训':item.course_type==6?'舞蹈培训':item.course_type==7?'体育运动':item.course_type==8?'少儿编程':item.course_type==9?'课外辅导':item.course_type==99?'其他培训':''}}</van-tag>
+								<van-tag type="danger">{{item.course_category==1?'少儿英语':item.course_category==2?'思维训练':
+								item.course_category==3?'国学教育':item.course_category==4?'美术培训':item.course_category==5?'音乐培训':item.course_category==6?'舞蹈培训':item.course_category==7?'体育运动':item.course_category==8?'少儿编程':item.course_category==9?'课外辅导':item.course_category==99?'其他培训':''}}</van-tag>
 								<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.min_age}}-{{item.max_age}}岁</van-tag>
 								<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.online==0?'线上':item.online==1?'线下':''}}</van-tag>
 							</view>
@@ -75,6 +79,16 @@
 								<van-icon name="arrow" />
 							</view>
 						</navigator>
+						<navigator class="between row1 van-hairline--bottom" hover-class="none" url="/pages/praise/CourseComment/index?course_id={{item.course_id}}" wx:if='{{show_review}}'>
+							<view class="rt evaluate">
+								<view>好评 <text>({{item.good_count}})</text></view>
+								<view>中评 <text>({{item.med_count}})</text></view>
+								<view>差评 <text>({{item.bad_count}})</text></view>
+							</view>
+							<view class="rt" hover-class="hover-class">查看详情
+								<van-icon name="arrow" />
+							</view>
+						</navigator>
 						<navigator class="between row1 van-hairline--bottom" hover-class="none" url="/pages/selCourseCard/imgs/imgs?type=2&id={{item.course_id}}">
 							<view class="vCenter">
 								<image src="/imgs/selCourse_type.jpg" class="address_img"></image>
@@ -89,7 +103,7 @@
 								<view class="txt">选课日期：{{filter.spot(filter.slice(item.select_time,10))}}</view>
 								<view wx:if='{{item.status==2}}'>首次上课：{{filter.spot(filter.slice(item.arrive_time,10))}}</view>
 							</view>
-							<van-button round type="info" color='#FF2D58' custom-class='bg' bindtap="goComment" data-i="{{item}}">评论有奖</van-button>
+							<van-button round type="info" color='#FF2D58' custom-class='bg' bindtap="goComment" data-i="{{item}}" wx:if='{{enable_review}}'>评论有奖</van-button>
 							<van-button round type="info" color='#FF2D58' custom-class='bg' wx:if='{{item.status==2}}' bindtap="applyMoney" data-i="{{item}}">申请福利</van-button>
 							<van-button round type="info" color='#FF2D58' plain wx:if='{{item.status==1}}' bind:click='showTime' data-courseId="{{item.course_id}}" data-cardId="{{item.card_id}}">标记上课</van-button>
 						</view>
