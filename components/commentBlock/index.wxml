@@ -24,7 +24,7 @@
 					<view class="rate between ">
 						<view class="lf between">
 							<van-rate value="{{item.score/2}}" size="{{ 22 }}" allow-half color="#FFBF00" void-color="#EDEDED" void-icon='{{imgurl+"small_start_a.png"}}' icon='{{imgurl+"small_start.png"}}' readonly />
-							<text>评分{{item.score}}分</text>
+							<text>{{item.score}}分</text>
 						</view>
 					</view>
 					<view class="flex">

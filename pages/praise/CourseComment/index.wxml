@@ -1,25 +1,26 @@
+	<loading-top id="loading" />
 	<view class="box">
 		<view class="van-hairline--bottom">
 			<course-top courseInfo='{{courseInfo}}' imgUrl='{{imgUrl}}' />
 		</view>
-
-		<view class="between tab van-hairline--bottom">
-			<view wx:for='{{list}}' class="block {{active==index?'active':''}}" bindtap="tabSwitch" data-i="{{index}}">
-				<view class="flex">{{item.name}} <text>({{item.value}})</text></view>
-				<view class="line"></view>
+		<van-sticky>
+			<view class="between tab van-hairline--bottom">
+				<view wx:for='{{list}}' class="block {{active==index?'active':''}}" bindtap="tabSwitch" data-i="{{index}}">
+					<view class="flex">{{item.name}} <text>({{item.value}})</text></view>
+					<view class="line"></view>
+				</view>
 			</view>
-		</view>
+		</van-sticky>
 
-		<view class="tags">
-			<view wx:for='{{tags}}' bindtap="tagsClick" data-i="{{index}}">
+		<view class="tags" wx:if='{{active==0}}'>
+			<view wx:for='{{tags}}' bindtap="tagsClick" data-i="{{index}}" style="pointer-events:none;">
 				<van-tag type="primary" color='{{tagsActive==index?"#FFE9EE":"#F3F3F3"}}' text-color='{{tagsActive==index?"#FF2E58":"#838383"}}'>{{item.name}}({{item.value}})</van-tag>
 			</view>
 		</view>
 	</view>
 
 	<view class="temp">
-		<view hidden="{{!(active==index)}}" wx:for='{{list}}'>
-			<!-- <template is="list" data="{{url,imgurl:imgUrl}}"></template> -->
+		<view hidden="{{!(active==index)}}" wx:for='{{4}}'>
 			<comment-block list='{{list[active].data}}' courseInfo='{{courseInfo}}' noData='{{list[active].noData}}' bind:changeLike='changeLike' />
 		</view>
 	</view>

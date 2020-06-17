@@ -7,6 +7,7 @@ Page({
     disable: false,
     data:{},
     medias:[],
+    imgUrl: app.globalData.imageurl,
     postData: {
       cmd: 'addCourseReview',
       env_score: 0,
@@ -121,6 +122,8 @@ Page({
       this.setData({
         postData,
       })
+
+      this.verify();
     })
   },
   onReady() {

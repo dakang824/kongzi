@@ -1,5 +1,4 @@
-let http = require('../../../common/request.js'),
-  app = getApp();
+let app = getApp();
 import $ from '../../../utils/timeFrom.js';
 Page({
   data: {
@@ -32,6 +31,13 @@ Page({
       [`list[0].my_like_count`]: e.detail.type == 1 ? 1 : 0,
       [`list[0].my_dislike_count`]: e.detail.type == 2 ? 1 : 0,
     })
+
+    let pages = getCurrentPages(),prepage = pages[pages.length - 2];
+    let {active}=prepage.data,{ind}=this.data;
+    prepage.setData({
+      [`list[${active}].data[${ind}].my_like_count`]:e.detail.type == 1 ? 1 : 0,
+      [`list[${active}].data[${ind}].my_dislike_count`]:e.detail.type == 2 ? 1 : 0,
+    });
   },
   onShareAppMessage() {
 

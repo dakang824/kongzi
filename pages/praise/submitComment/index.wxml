@@ -11,19 +11,19 @@
 	<view class="between" wx:for='{{d}}'>
 		<view class="flex">
 			<text>{{item.name}}</text>
-			<van-rate value='{{postData[item.value]/2}}' size="{{ 25 }}" allow-half color="#FFBF00" void-color="#eee" void-icon="star" bind:change="onChange" data-i='{{item.value}}'/>
+			<van-rate value='{{postData[item.value]/2}}' size="{{ 25 }}" allow-half color="#FFBF00" void-color="#eee" void-icon="{{imgUrl+'start_active.png'}}"  icon="{{imgUrl+'start.png'}}" bind:change="onChange" data-i='{{item.value}}'/>
 			<view class="rt">{{postData[item.value]}}分</view>
 		</view>
 		<view wx:if='{{postData[item.value]!==0}}'>
-			<van-tag round type="primary" color='{{postData[item.value]>5?"#FF2C56":postData[item.value]==5?"#9A36FC":"#959595"}}' >{{postData[item.value]>5?'好评':postData[item.value]==5?'中评':'差评'}}</van-tag>
+			<van-tag round type="primary" color='{{postData[item.value]>5?"#FF2C56":postData[item.value]==5?"#9A36FC":"#959595"}}' >{{postData[item.value]>6?'好评':postData[item.value]==5?'中评':'差评'}}</van-tag>
 		</view>
 	</view>
 	<view class="van-hairline--top">
-		<van-field bind:input='input' value="{{ postData.content }}" type="textarea" placeholder="请在此填写您的体验评论(最少20个字，最多200个字)" placeholder-style='font-size:26rpx' autosize border="{{ false }}" />
+		<van-field bind:input='input' type='text' value="{{ postData.content }}" placeholder="请在此填写您的体验评论(最少20个字，最多200个字)" placeholder-style='font-size:26rpx' border="{{ false }}" />
 	</view>
 </view>
 <view class="box padBottom">
-	<van-uploader bind:click-preview='preview' file-list="{{ fileList }}" accept='media' max-count='9' multiple bind:delete='delete' bind:after-read='afterRead' preview-full-image='{{false}}'/>
+	<van-uploader bind:click-preview='preview' file-list="{{ fileList }}" accept='media' max-count='9' multiple bind:delete='delete' bind:after-read='afterRead' preview-full-image='{{false}}' preview-size='185rpx'/>
 </view>
 <view class="box" wx:if='{{show&&data.audit_status!==3}}'>
 	<view class="doing">

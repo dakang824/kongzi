@@ -1,7 +1,7 @@
 <view class="box">
 	<view class="head between van-hairline--bottom">
 		<view class="lf">
-			<image src="{{url+courseInfo.cover_image}}" class="shop_img" />
+			<image src="{{url+courseInfo.cover_image}}" class="shop_img" mode="aspectFit"/>
 		</view>
 		<view class="rt">
 			<view class="text van-multi-ellipsis--l2">{{courseInfo.name}}</view>

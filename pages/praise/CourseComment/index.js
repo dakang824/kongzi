@@ -1,5 +1,6 @@
 let http = require('../../../common/request.js'),
   app = getApp();
+  import Loading from '../../../dist/loading_top/loading';
 Page({
   data: {
     tagsActive: 0,
@@ -76,6 +77,7 @@ Page({
     this.getAllData();
   },
   getAllData() {
+    Loading.start();
     let {
       list,
       course_id,
@@ -87,6 +89,7 @@ Page({
       page_no: list[0].page_no,
       page_size
     }, res => {
+      wx.stopPullDownRefresh({});
       let {
         courseInfo,
         reviews
@@ -106,9 +109,11 @@ Page({
         [`tags[3].value`]:courseInfo.like_count,
         [`tags[4].value`]:courseInfo.dislike_count,
       });
+      Loading.close();
     })
   },
   getData(){
+    Loading.start();
     let {
       list,
       course_id,active,
@@ -118,34 +123,31 @@ Page({
       cmd: 'queryCardCourseReview',
       course_id,
       page_no: list[active].page_no,
+      type:active,
       page_size
     }, res => {
+      wx.stopPullDownRefresh({});
       let {
-        courseInfo,
         reviews
       } = res;
       this.setData({
-        courseInfo,
         [`list[${active}].data`]:list[active].data.concat(reviews),
         [`list[${active}].noData`]:reviews.length==page_size,
-
-        [`list[0].value`]:courseInfo.review_count,
-        [`list[1].value`]:courseInfo.good_count,
-        [`list[2].value`]:courseInfo.med_count,
-        [`list[3].value`]:courseInfo.bad_count,
-
-        [`tags[0].value`]:courseInfo.pic_count,
-        [`tags[1].value`]:courseInfo.video_count,
-        [`tags[2].value`]:courseInfo.append_count,
-        [`tags[3].value`]:courseInfo.like_count,
-        [`tags[4].value`]:courseInfo.dislike_count,
       });
+      Loading.close();
     })
-    
   },
   onReachBottom(){
    let {active,list}=this.data;
    list[active].noData?(active==0?this.getAllData():this.getData()):'';
+  },
+  onPullDownRefresh(){
+    let {active}=this.data;
+    this.setData({
+      [`list[${active}].data`]:[],
+      [`list[${active}].noData`]:true,
+    })
+    this.onReachBottom();
   },
   onShareAppMessage() {
 

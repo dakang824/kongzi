@@ -2,7 +2,7 @@
 	<view class="close" bindtap="onClose">
 		<van-icon name="cross" size="22px"/>
 	</view>
-	<swiper interval="5000" duration="1000" current='{{current}}' bindanimationfinish='onChange'>
+	<swiper interval="5000" duration="1000" current='{{current}}' bindanimationfinish='onChange' catchtouchmove='true'>
 		<block wx:for="{{imgs}}" wx:key="index">
 			<swiper-item>
 				<block wx:if='{{item.type==0}}'>

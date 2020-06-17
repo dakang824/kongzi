@@ -46,7 +46,7 @@
 				<view class="block" wx:for='{{cards.select_course}}'>
 					<image src="/imgs/have_gift.png" class="have_gift" wx:if='{{item.enable_gift}}' bindtap="showGift" data-img="{{item.gift_path}}" mode="widthFix"></image>
 					<view class="head between" style="margin-bottom: {{item.address?'35rpx':'0'}};">
-						<van-image width="93rpx" height='93rpx' src="{{url+item.cover_image}}" radius='7rpx' use-loading-slot lazy-load class="img">
+						<van-image width="93rpx" height='93rpx' src="{{url+item.cover_image}}" radius='7rpx' use-loading-slot lazy-load class="img" fit='contain'>
 							<van-loading slot="loading" type="spinner" size="16" vertical />
 						</van-image>
 						<view class="rt">
@@ -85,7 +85,7 @@
 								<view>中评 <text>({{item.med_count}})</text></view>
 								<view>差评 <text>({{item.bad_count}})</text></view>
 							</view>
-							<view class="rt" hover-class="hover-class">查看详情
+							<view class="rt" hover-class="hover-class">查看评论
 								<van-icon name="arrow" />
 							</view>
 						</navigator>

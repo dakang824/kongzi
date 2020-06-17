@@ -1,6 +1,8 @@
 {
   "usingComponents": {
     "comment-block": "../../components/commentBlock/index",
-    "course-top": "../../components/courseTop/index"
-  }
+    "course-top": "../../components/courseTop/index",
+    "van-sticky": "../../dist/sticky/index"
+  },
+  "enablePullDownRefresh": true
 }
