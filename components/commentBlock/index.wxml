@@ -28,11 +28,11 @@
 						</view>
 					</view>
 					<view class="flex">
-						<van-icon name="good-job" color="{{item.my_like_count>0?'#FB2133':'#DBDBDB'}}" size="17px" bind:click='like' data-i='{{item}}' data-ind='{{index}}'/>
-						<van-icon name="good-job" color="{{item.my_dislike_count>0?'#FB2133':'#DBDBDB'}}" custom-class='rotate' size="17px" bind:click='dislike' data-i='{{item}}' data-ind='{{index}}'/>
+						<van-icon name="good-job" color="{{item.my_like_count>0?'#FB2133':'#DBDBDB'}}" size="20px" bind:click='like' data-i='{{item}}' data-ind='{{index}}' />
+						<van-icon name="good-job" color="{{item.my_dislike_count>0?'#FB2133':'#DBDBDB'}}" custom-class='rotate' size="20px" bind:click='dislike' data-i='{{item}}' data-ind='{{index}}' />
 					</view>
 				</view>
-				<view wx:if='{{isDetail}}' class="score">
+				<view class="score">
 					<text>效果：{{item.eff_score}}分</text>
 					<text>师资：{{item.tea_score}}分</text>
 					<text>环境：{{item.env_score}}分</text>
@@ -58,7 +58,7 @@
 						<view>点怼 <text>({{item.dislike_count}})</text></view>
 						<view>追评 <text>({{item.append_count}})</text></view>
 					</view>
-					<van-button type="primary" size="mini" bind:click='goReview' data-i="{{item}}"  data-ind="{{index}}">我要追评</van-button>
+					<van-button type="primary" size="mini" bind:click='goReview' data-i="{{item}}" data-ind="{{index}}">我要追评</van-button>
 				</view>
 				<view wx:else>
 					<view class="title">追加评论</view>
@@ -93,12 +93,15 @@
 	<imageViewer show="{{show}}" imgs="{{imgs}}" current='{{current}}'></imageViewer>
 
 	<view class="fixed between" wx:if='{{isDetail}}'>
-		<input class="van-field__input" value='{{content}}' placeholder="我说两句.." bindconfirm='confirm' bindinput="onChange" placeholder-class='placeholder'></input>
+		<input class="van-field__input" bindfocus="focus" bindblur="blur" value='{{content}}' placeholder="我说两句.." bindconfirm='confirm' bindinput="onChange" placeholder-class='placeholder' confirm-type='done' style="width:{{keyBoardHeight?'100%':'300rpx'}};"></input>
 		<!-- <van-field value="{{ content }}" placeholder="" border="{{ false }}" bind:change="" bind:confirm=' /> -->
-		<view class="flex">
-			<van-icon name="good-job" color="{{list[0].my_like_count>0?'#FB2133':'#DBDBDB'}}" size="17px" bind:click='like' data-i='{{list[0]}}'  data-ind='0'/>
-			<van-icon name="good-job" color="{{list[0].my_dislike_count>0?'#FB2133':'#DBDBDB'}}" custom-class='rotate' size="17px" bind:click='dislike' data-i='{{list[0]}}'  data-ind='0'/>
+		<view class="flex" wx:if='{{!keyBoardHeight}}' style="flex:1;margin-left:15rpx">
+			<van-icon name="good-job" color="{{list[0].my_like_count>0?'#FB2133':'#DBDBDB'}}" size="20px" bind:click='like' data-i='{{list[0]}}' data-ind='0' />
+			<van-icon name="good-job" color="{{list[0].my_dislike_count>0?'#FB2133':'#DBDBDB'}}" custom-class='rotate' size="20px" bind:click='dislike' data-i='{{list[0]}}' data-ind='0' />
+			<button class="shareBtn between" open-type="share">
+				<image src="/imgs/share1.png" class="share" mode="widthFix" /> 分享好友</button>
 		</view>
-		<button class="shareBtn between" open-type="share">
-			<image src="/imgs/share1.png" class="share" mode="widthFix" /> 分享好友</button>
+		<view wx:else class="btn_submit"  bindtap="confirm">
+			提交
+		</view>
 	</view>

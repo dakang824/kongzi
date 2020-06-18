@@ -139,7 +139,17 @@
   padding: 5rpx 30rpx;
   border-top: 1rpx solid #eee;
 }
-
+.btn_submit{
+  background:#FA2335;
+  height: 66rpx;
+  line-height: 66rpx;
+  font-size: 28rpx;
+  text-align: center;
+  min-width: 127rpx;
+  color: #fff;
+  border-radius: 50rpx;
+  margin-left: 20rpx;
+}
 .shareBtn {
   height: 55rpx;
   background:#FA2335;
@@ -148,6 +158,8 @@
   color: #fff;
   margin:0;
   line-height:55rpx;
+  padding: 0 20rpx;
+  margin-left: 30rpx;
 }
 
 .share {
@@ -158,7 +170,6 @@
   background: #F4F4F4!important;
   height:49rpx;
   border-radius:30px;
-  width:300rpx;
   padding: 10rpx 30rpx;
   margin: 15rpx 0;
   color: #8B8B8B;

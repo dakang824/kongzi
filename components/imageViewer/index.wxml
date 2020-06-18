@@ -1,16 +1,18 @@
 <block wx:if='{{show}}'>
 	<view class="close" bindtap="onClose">
-		<van-icon name="cross" size="22px"/>
+		<van-icon name="cross" size="22px" />
 	</view>
-	<swiper interval="5000" duration="1000" current='{{current}}' bindanimationfinish='onChange' catchtouchmove='true'>
+	<view class="current">{{cur+1}}/{{imgs.length}}</view>
+
+	<swiper interval="5000" duration="500" current='{{current}}' bindanimationfinish='onChange' catchtouchmove='true'>
 		<block wx:for="{{imgs}}" wx:key="index">
 			<swiper-item>
 				<block wx:if='{{item.type==0}}'>
 					<image src="{{url+item.path}}" class="slide-image" mode="widthFix" bindtap='previewImg' data-previewurl='{{picList}}' data-currenturl='{{item}}' />
 				</block>
-        <block wx:if='{{item.type==1}}'>
-          <video src="{{url+item.path}}" class="slide-video" wx:if='{{current==index}}'/>
-        </block>
+				<block wx:if='{{item.type==1}}'>
+					<video src="{{url+item.path}}" class="slide-video" hidden='{{!(cur==index)}}' />
+				</block>
 			</swiper-item>
 		</block>
 	</swiper>

@@ -1,5 +1,6 @@
 const app = getApp(),
   http = require('../../../../common/request.js');
+  import Util from '../../../../utils/util.js';
 Page({
   data: {
     isNeed: true,
@@ -50,6 +51,7 @@ Page({
     })
   },
   onLoad() {
+    Util.editTabbar();
     let that = this;
     wx.hideShareMenu()
     http.postReq("/community/user/", {

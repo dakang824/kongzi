@@ -1,1 +1,305 @@
-/* pages/tabBar/user/user.wxss */
+.share {
+  background: #fff;
+  height: 102rpx;
+  border-radius: 20rpx;
+}
+
+.vCenter {
+  display: flex;
+  align-items: center;
+}
+
+.share button {
+  margin-right: 17rpx;
+}
+
+.share .left {
+  min-width: 102rpx;
+  height: 102rpx;
+  background: linear-gradient(0deg, rgba(255, 175, 0, 1) 0%, rgba(255, 209, 0, 1) 100%);
+  border-radius: 20rpx;
+  font-size: 30rpx;
+  font-weight: 800;
+  color: #0e0e0e;
+  position: relative;
+}
+
+.share .left view {
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  top: 12rpx;
+  left: 22rpx;
+}
+
+.share .middle {
+  font-size: 22rpx;
+  color: #424242;
+  margin: 0 30rpx 0 25rpx;
+  text-align: left;
+}
+
+.share .middle text {
+  color: #fb3438;
+}
+
+.page .contxt .tit {
+  font-size: 35rpx;
+  color: #111;
+  font-weight: bold;
+  margin-top: 40rpx;
+}
+
+.page .contxt .t {
+  color: #a7a7a7;
+  font-size: 25rpx;
+  margin: 15rpx 0 30rpx 0;
+}
+page{
+  background: #f1f1f1;
+}
+.head {
+  position: relative;
+  z-index: 9999;
+}
+.head .img {
+  width: 100%;
+}
+
+.head .box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 690rpx;
+  margin: 25rpx auto 0;
+}
+
+.head .between .lf image {
+  min-width: 100rpx;
+  max-width: 100rpx;
+  height: 100rpx;
+  margin-right: 28rpx;
+  border-radius: 50%;
+}
+
+.head .between .lf text {
+  font-size: 32rpx;
+  color: #fff;
+  font-weight: bold;
+}
+
+.head .between .rt {
+  text-align: center;
+}
+
+.head .between .rt image {
+  width: 72rpx;
+  height: 71rpx;
+  border-radius: 6rpx;
+}
+
+.head .between .rt view {
+  color: #fff;
+  font-size: 18rpx;
+}
+
+.head .content {
+  margin: 59rpx 77rpx 0;
+}
+
+.head .content .money1 .left>text {
+  font-size: 28rpx;
+  color: #2c2c2c;
+  margin-left: 30rpx;
+}
+
+.head .content .money1 .left>view {
+  color: #ba8f3b;
+  font-size: 60rpx;
+}
+
+.head .content .money1 .left>view text {
+  font-size: 30rpx;
+}
+
+.head .content .money1 .right {
+  width: 161rpx;
+  height: 68rpx;
+  border: 2rpx solid #2c2c2c;
+  border-radius: 50rpx;
+  text-align: center;
+  line-height: 68rpx;
+  font-weight: bold;
+}
+
+.detailMoney {
+  width: 698rpx;
+  border-radius: 0 0 20rpx 20rpx;
+  margin: -35rpx auto 0;
+  box-shadow: 0px 0px 30px 0px rgba(153, 153, 153, 0.2);
+  padding-top: 97rpx;
+  padding-bottom: 35rpx;
+  justify-content: center;
+   background: #fff;
+}
+
+.detailMoney .left {
+  flex: 0.5;
+  text-align: center;
+}
+
+.detailMoney .left .t, .detailMoney .right .t {
+  font-size: 36rpx;
+  color: #262626;
+  margin-bottom: 12rpx;
+}
+
+.detailMoney .left text, .detailMoney .right text {
+  font-size: 38rpx;
+  color: #fe0435;
+}
+
+.detailMoney .right {
+  flex: 0.5;
+  text-align: center;
+  position: relative;
+}
+
+.detailMoney .middle {
+  width: 3rpx;
+  height: 134rpx;
+  background: #e8e8e8;
+  border-radius: 2rpx;
+}
+
+.detailMoney .tip1 {
+  font-size: 18rpx;
+  color: #a4a4a4;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: -20rpx;
+}
+
+.page .gf {
+  width: 698rpx;
+  box-shadow: 0px 0px 30px 0px rgba(153, 153, 153, 0.2);
+  border-radius: 20rpx;
+  margin: 20rpx auto 0;
+  padding: 40rpx 0;
+  justify-content: center;
+  background: #fff;
+}
+
+.page .gf>view {
+  flex: 0.333;
+  text-align: center;
+}
+
+.page .gf .b {
+  margin: 0 70rpx;
+}
+
+.page .gf .img {
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+}
+
+.page .gf .b .t {
+  color: #424242;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.page .gf .b view text {
+  font-size: 20rpx;
+  color: #fe0435;
+}
+
+.page .gf .b view.s {
+  color: #5a5a5a;
+  font-size: 20rpx;
+}
+
+.page .gf .btn {
+  width: 621rpx;
+  height: 87rpx;
+  background: linear-gradient(180deg, rgba(255, 210, 0, 1) 0%, rgba(255, 174, 0, 1) 99%);
+  border-radius: 44rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  margin: 53rpx auto 0;
+}
+
+.page .gf .btn image {
+  width: 52rpx;
+  height: 66rpx;
+}
+
+.surplus {
+  margin: 20rpx 0 30rpx;
+  color: #fe0435;
+  font-size: 21rpx;
+}
+
+.tip2 {
+  height: 51rpx;
+  background: #fed519;
+  border-radius: 26rpx;
+  font-size: 23rpx;
+  color: #333;
+  text-align: center;
+  margin: 42rpx 30rpx 0;
+  font-weight: 500;
+  justify-content: center;
+}
+
+.detailMoney text .txt {
+  color: #333;
+  font-size: 28rpx;
+  margin: 0 10rpx 0 -10rpx;
+  font-weight: inherit;
+}
+
+.tip2 image {
+  min-width: 26rpx;
+  max-width: 26rpx;
+  height: 26rpx;
+  margin-right: 12rpx;
+}
+
+.swiper {
+  position: absolute;
+  top: 135rpx;
+  left: 60rpx;
+  z-index: 9999;
+  width: 630rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+  border-radius: 21rpx;
+  overflow: hidden;
+  font-size: 21rpx;
+  color: #fff;
+  border-radius: 20rpx;
+}
+
+.swiper image {
+  width: 25rpx;
+  height: 25rpx;
+  vertical-align: middle;
+  margin: 0 11rpx 0 7rpx;
+}
+
+.swiper_bg {
+  background: rgba(125, 0, 0, 0.36);
+  border-radius: 21rpx;
+  padding: 0 15rpx 0;
+  max-width: 672rpx;
+  display: flex;
+  align-items: center;
+}

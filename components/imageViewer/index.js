@@ -2,7 +2,10 @@ Component({
   properties: {
     show: {
       type: Boolean,
-      value: false
+      value: false,
+      observer:function(newVal,oldVal,change){
+        newVal?this.setData({cur:this.data.current}):'';
+      }
     },
     onClass: {
       type: Boolean,
@@ -21,14 +24,16 @@ Component({
     url: getApp().globalData.serverUrl,
   },
 
-  attached() {},
+  attached() {
+   
+  },
 
   methods: {
     onClose(e) {
       this.setData({show:false})
     },
     onChange(e){
-      this.setData({current:e.detail.current})
+      this.setData({cur:e.detail.current})
     },
   }
 })

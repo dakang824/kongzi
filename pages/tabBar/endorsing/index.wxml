@@ -1,2 +1,124 @@
-<!-- <image src="https://dev.kongzikeji.com/data/plat/community/ad/1/1586486744420.jpg" style='width:100%' mode='widthFix'></image> -->
+<pagePublic/>
 <dk-tabbar tabBar="{{tabBar}}"></dk-tabbar>
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class='page'>
+  <view class='head'>
+    <image src='{{imageurl}}share_main_bg.png' class='img' mode='widthFix'></image>
+    <view class='box'>
+      <view class='between vCenter'>
+        <view class='lf vCenter' bindtap='{{user.pic_path?"":"showAutho"}}'>
+          <image src='{{user.pic_path?url+user.pic_path:"/imgs/boy.png"}}'></image>
+          <view class="recbox" style="color:#fff">
+            <view class="left">{{user.nickname?filter.decode(user.nickname):'点击授权'}}</view>
+            <view class="rec_name" wx:if="{{user.nickname}}" style='font-size:22rpx;font-weight:normal'>推荐人:{{filter.decode(recom_name)}}</view>
+          </view>
+        </view>
+        <view class='rt' bindtap='showCode'>
+          <image src='{{imageurl}}share_qr.jpg'></image>
+          <view>点击分享专属二维码</view>
+        </view>
+      </view>
+      <view class='content'>
+        <view class='between vCenter money1'>
+          <view class='left'>
+            <text>代言账户余额</text>
+            <view>
+              <text>￥</text>{{data.balance}}</view>
+          </view>
+          <view class='right' data-url='/pages/shopMall/cash/cash' bindtap='jump' data-i='1'>提现</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='detailMoney between vCenter'>
+    <view class='left'>
+      <view class='t'>推广收益</view>
+      <text><text class='txt'>累计</text>{{data.sub_profit}}元</text>
+    </view>
+    <view class='middle'></view>
+    <view class='right'>
+      <view class='t'>团队分红</view>
+      <text><text class='txt'>累计</text>{{data.team_profit}}元</text>
+      <view class='tip1' wx:if='{{data.team_leader==0||data.team_leader==1}}'>（暂未开启）</view>
+    </view>
+  </view>
+  <view style="margin:30rpx">
+    <view class="vCenter share">
+      <view class="left">
+        <view>分享有礼</view>
+      </view>
+      <view class="middle">每分享一个新用户，双方都可获得最高
+        <text>88元</text>红包哦！</view>
+      <van-button type="primary" size="small" color="#FA3331" round bind:click='showCode'>去分享</van-button>
+    </view>
+  </view>
+
+  <view class='gf'>
+    <view class='b between vCenter'>
+      <view data-url='/pages/shopMall/cashOrder/cashOrder' hover-class='none' bindtap='jump' data-i='2'>
+        <image src='{{imageurl}}share_main_task.png' class='img'></image>
+        <view class='t'>代言订单</view>
+        <view class='s'>
+          三个月
+          <text>{{data.orders}}</text>单</view>
+      </view>
+      <view data-url='/pages/shopMall/shareGoods/account/account' hover-class='none' bindtap='jump' data-i='3'>
+        <image src='{{imageurl}}share_file.png' class='img'></image>
+        <view class='t'>账户明细</view>
+        <view class='s'>
+          三个月
+          <text>{{data.accounts}}</text>笔</view>
+      </view>
+      <view data-url='/pages/shopMall/shareGoods/team/team' hover-class='none' bindtap='jump' data-i='4'>
+        <image src='{{imageurl}}share_team.png' class='img'></image>
+        <view class='t'>我的团队</view>
+        <view class='s'>
+          共
+          <text>{{data.team}}</text>人</view>
+      </view>
+    </view>
+    <view>
+      <block wx:if='{{data.team_leader==0||data.team_leader==1||data.team_leader==3}}'>
+        <view data-url='/pages/shopMall/shareGoods/bonus/bonus' class='btn' bindtap='jump' data-i='5' hover-class='hover'>
+          {{data.team_leader==0?'开启团队分红赚大钱':data.team_leader==1?'马上开启团队分红':data.team_leader==3?'重新开启团队分红赚大钱':''}}
+          <image src='{{imageurl}}share_fire.png'></image>
+        </view>
+        <view class='surplus'>({{data.team_need
+          <data.team_count? '已达到开启条件': '还差'+(data.team_need-data.down_agents<0?0:data.team_need-data.down_agents)+ '位代言人即可开启'}})</view>
+      </block>
+      <!-- <block wx:elif='{{data.team_leader==2}}'>
+        <view class='tip2 vCenter'>
+          <image src='/imgs/new/tip.png'></image> 当分红团队中的直接分享代言人不足{{data.team_need}}人时将失去队长资格！</view>
+      </block> -->
+      </view>
+    </view>
+  </view>
+  <view class='page' style='padding:0 30rpx;'>
+    <view class="contxt {{data.team_leader==2?'':'top'}}">
+      <view class='tit'>推荐给好友</view>
+      <view class='t'>以下商品都卖爆了，赶紧推荐给你的朋友吧</view>
+      <recommend data='{{recom1}}' ope_id='{{ope_id}}' />
+      <w_loadingData noData/>
+    </view>
+  </view>
+
+  <share shareImg='{{shareImg}}' qrPath='{{data.qr_path}}' />
+
+  <van-dialog use-slot title="授权用户信息" show="{{ showAutho }}" show-cancel-button confirm-button-open-type="getUserInfo" bind:close="onClose" bind:getuserinfo="getInfo" zIndex='99999'>
+    <view style='font-size:28rpx;text-align:center;padding:30rpx 0;'>检测到您还未登录，请确认授权。</view>
+  </van-dialog>
+
+  <view class='swiper' wx:if="{{messageList.length}}">
+    <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+      <block wx:for="{{messageList}}" wx:key="index">
+        <swiper-item>
+          <view class="vCenter">
+            <view class="swiper_bg van-ellipsis">
+              <!-- <image src='../../../../imgs/new/laba.png' class='user'></image> -->
+              <view class="item-text">{{item.msg}}</view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>

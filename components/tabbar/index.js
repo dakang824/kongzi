@@ -45,11 +45,11 @@ Component({
                 delta: 1
               })
             }
-          }) : res.data.status == 3 ? wx.navigateTo({
-            url: '/pages/shopMall/shareGoods/main/main',
-          }) : wx.switchTab({
-            url
-          });
+          }) : res.data.status == 3 ? wx.switchTab({
+            url: '/pages/tabBar/endorsing/index',
+          }) : wx.navigateTo({
+            url: '/pages/shopMall/shareGoods/shareGoods',
+          })
         })
       } else {
         wx.switchTab({

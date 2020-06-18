@@ -41,7 +41,7 @@
           <view class="name">{{userInfo.nickname}}</view>
           <view class='vCenter'>
             <!-- <van-tag round custom-class='tag' color='#E5E5E5' wx:if='{{userInfo.role}}'>{{userInfo.role}}</van-tag> -->
-            <view class='role' wx:if="{{userInfo.name}}">{{userInfo.name}}
+            <view class='role van-ellipsis' wx:if="{{userInfo.name}}">{{userInfo.name}}
               <text style="font-size:24rpx;" wx:if="{{userInfo.role}}">({{userInfo.role}})</text>
             </view>
             <view class="tel">{{userInfo.mobile}}</view>

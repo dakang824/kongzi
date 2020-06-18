@@ -24,9 +24,20 @@ Component({
     show: false,
     imgs: [],
     current: 0,
-    content:''
+    content:'',
+    keyBoardHeight: ''
   },
   methods: {
+    focus(e){
+      this.setData({
+        keyBoardHeight: e.detail.height
+      })
+    }, 
+    blur(){
+      this.setData({
+        keyBoardHeight: ''
+      })
+    },
     goReview(e){
       let {i,ind}=e.currentTarget.dataset,{courseInfo}=this.data;
       wx.navigateTo({

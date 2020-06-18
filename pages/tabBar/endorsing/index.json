@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "w_loadingData": "../../components/w_loadingData/w_loadingData",
+    "recommend": "../../components/recommend/recommend"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "代言"
 }

@@ -29,6 +29,7 @@ page{
 .role {
   margin-right: 20rpx;
   font-size: 30rpx;
+  max-width: 174rpx;
 }
 
 van-tag {

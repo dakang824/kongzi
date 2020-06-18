@@ -65,7 +65,7 @@
 								<view>中评 <text>({{item.med_count}})</text></view>
 								<view>差评 <text>({{item.bad_count}})</text></view>
 							</view>
-							<view class="rt" hover-class="hover-class">查看评论
+							<view class="rt" hover-class="hover-class">评论详情
 								<van-icon name="arrow" />
 							</view>
 						</navigator>

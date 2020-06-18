@@ -10,13 +10,16 @@
 					<view class="line"></view>
 				</view>
 			</view>
+
+			<block wx:for='{{list}}'>
+				<view class="tags"  wx:if='{{active==index}}'>
+					<view wx:for='{{item.tags}}' catchtap="tagsClick" data-i="{{index+'_'+idx}}" wx:for-item="it" wx:for-index="idx">
+						<van-tag type="primary" color='{{it.active?"#FFE9EE":"#F3F3F3"}}' text-color='{{it.active?"#FF2E58":"#838383"}}'>{{it.name}}({{it.value}})</van-tag>
+					</view>
+				</view>
+			</block>
 		</van-sticky>
 
-		<view class="tags" wx:if='{{active==0}}'>
-			<view wx:for='{{tags}}' bindtap="tagsClick" data-i="{{index}}" style="pointer-events:none;">
-				<van-tag type="primary" color='{{tagsActive==index?"#FFE9EE":"#F3F3F3"}}' text-color='{{tagsActive==index?"#FF2E58":"#838383"}}'>{{item.name}}({{item.value}})</van-tag>
-			</view>
-		</view>
 	</view>
 
 	<view class="temp">

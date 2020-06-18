@@ -27,8 +27,8 @@
 		"bundle": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.11.0",
-	"appid": "wxe5236886ca6a4905",
+	"libVersion": "2.9.5",
+	"appid": "wxe9a115181036f5b7",
 	"projectname": "%E5%AD%94%E7%B4%AB%E5%AE%B6%E9%95%BF%E7%A4%BE%E5%8C%BA2.0-%E5%BC%80%E5%8F%91%E7%89%88",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -61,8 +61,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/praise/CourseComment/index",
-					"pathName": "pages/praise/CourseComment/index",
+					"name": "pages/shopMall/shareGoods/shareGoods",
+					"pathName": "pages/shopMall/shareGoods/shareGoods",
 					"query": "",
 					"scene": null
 				},
@@ -102,9 +102,9 @@
 					"scene": null
 				},
 				{
-					"id": 7,
-					"name": "pages/video/video",
-					"pathName": "pages/video/video",
+					"id": 6,
+					"name": "pages/tabBar/smallVideo/index",
+					"pathName": "pages/tabBar/smallVideo/index",
 					"query": "",
 					"scene": null
 				},

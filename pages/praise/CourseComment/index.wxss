@@ -11,7 +11,6 @@ page {
 
 .tab {
   font-size: 30rpx;
-  font-weight: bold;
   color: #0C0C0C;
   background: #fff;
 }
@@ -19,7 +18,7 @@ page {
 .tab .flex {
   align-items: baseline;
   justify-content: center;
-  padding: 30rpx 0;
+  padding: 26rpx 0;
 }
 
 .tab .active {
