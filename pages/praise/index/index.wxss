@@ -1,8 +1,10 @@
-page{
+page {
   background: #F8F6F6;
 }
+
 .headTop {
   background: #FA2335;
+  z-index: 999999;
 }
 
 .headTop .right {
@@ -57,32 +59,110 @@ page{
   flex-flow: column-reverse;
   position: relative;
 }
-.box{
-  margin: 0 0 30rpx;
-  padding:50rpx 30rpx;
+
+.box {
+  margin: 0 0 15rpx;
+  padding: 40rpx 30rpx;
   background: #fff;
 }
-.box .head{
+
+.box .head {
   align-items: flex-start;
 }
-.box .rt{
-  margin-left:38rpx;
+
+.box .rt {
+  margin-left: 38rpx;
+  flex: 1;
 }
-.box .rt .text{
-  font-size:30rpx;
-  font-weight:bold;
+
+.box .rt .text {
+  font-size: 30rpx;
+  font-weight: bold;
 }
+
 .box .van-tag {
   margin-right: 20rpx;
   text-align: center;
   max-height: 30rpx;
 }
+
 .box .shop_img {
   width: 149rpx;
   height: 150rpx;
   border-radius: 7rpx;
 }
-.box .rate{
+
+.box .rate {
   font-size: 21rpx;
   color: #212121;
+}
+
+.box .rate text {
+  margin-left: 20rpx;
+}
+
+.box .middle {
+  margin: 10rpx 0;
+}
+
+.box .foot {
+  color: #818181;
+  font-size: 25rpx;
+  margin: 20rpx 40rpx 0;
+}
+
+.layer {
+  padding: 20rpx 30rpx 140rpx;
+  position: relative;
+  background: #fff;
+}
+
+.layer .title {
+  color: #333333;
+  font-size: 28rpx;
+  font-weight: bold;
+  margin:20rpx 0 30rpx;
+}
+.layer .btns{
+  flex-wrap: wrap;
+}
+.layer .btns .btn.active {
+  color: #FF2C56;
+  border-color: #FF2C56;
+}
+.layer .btns .btn {
+  min-width: 80rpx;
+  height: 50rpx;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(238, 238, 238, 1);
+  border-radius: 25px;
+  text-align: center;
+  margin-bottom: 25rpx;
+  line-height: 50rpx;
+  font-size: 26rpx;
+  color: #333;
+  padding: 0 20rpx;
+}
+.layer .btns .width_25{
+  min-width: 100rpx;
+}
+.layer .footer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 32rpx;
+}
+.layer .footer button{
+  flex:.5;
+  color: #CACACA;
+  border-radius: 0;
+  background: #F6F6F6;
+}
+.layer .footer button.bg{
+  background:linear-gradient(90deg,rgba(255,90,144,1),rgba(255,44,86,1));
+  color: #fff;
+}
+.van-popup{
+  background-color: transparent!important;
 }

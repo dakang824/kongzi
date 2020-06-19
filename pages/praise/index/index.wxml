@@ -1,6 +1,7 @@
- <view class='headTop'>
+ <loading-top id="loading" />
+ <view class='headTop' catchtouchmove="true">
  	<van-search value="{{ value }}" background='#FA2335' placeholder="搜索机构名称、类型" use-action-slot bind:change="onChange" bind:search="onSearch">
- 		<view slot="action" bind:tap="onClick" class="right between">
+ 		<view slot="action" bind:tap="onClick" class="right between" bindtap="showLayer">
  			<image src='/imgs/screen.png' class="img" />筛选</view>
  	</van-search>
  </view>
@@ -10,8 +11,8 @@
  			<view class="default prize flex" bindtap="tabsClick" data-i='{{index}}' wx:for='{{screenData}}'>
  				<view class="key {{sc_active==index?'active':''}}">{{item.name}}</view>
  				<view class='flex flip'>
- 					<van-icon name="play" color="{{postData.orderby==2?'#ff2c56':'#999'}}" custom-class='transform-270' size='21rpx' />
- 					<van-icon name="play" color="{{postData.orderby==3?'#ff2c56':'#999'}}" custom-class='transform-90' size='21rpx' />
+ 					<van-icon name="play" color="{{postData.order_type==item.value[0]?'#ff2c56':'#999'}}" custom-class='transform-270' size='21rpx' />
+ 					<van-icon name="play" color="{{postData.order_type==item.value[1]?'#ff2c56':'#999'}}" custom-class='transform-90' size='21rpx' />
  				</view>
  			</view>
  		</view>
@@ -20,31 +21,73 @@
  </van-tabs>
 
  <template name="list">
- 	<view class="box">
- 		<view class="head between">
- 			<view class="lf">
- 				<image src="/imgs/shop.png" class="shop_img" />
- 			</view>
- 			<view class="rt">
- 				<view class="text van-multi-ellipsis--l2">51talk青少儿英语1V1外教课+中教课2课时51talk青少儿英语1V1外教课+中教课2课时51talk青少儿英语1V1外教课+中教课2课时</view>
- 				<view class="flex">
- 					<van-tag type="danger">{{item.category==1?'少儿英语':item.category==2?'思维训练':
-								item.category==3?'国学教育':item.category==4?'美术培训':item.category==5?'音乐培训':item.category==6?'舞蹈培训':item.category==7?'体育运动':
-								item.category==8?'少儿编程':item.category==9?'课外辅导':item.category==99?'其他培训':'是的范'}}</van-tag>
- 					<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.min_age||5}}-{{item.max_age||12}}岁</van-tag>
- 					<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.online==0?'线上':item.online==1?'线下':'地方'}}</van-tag>
- 					<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.type==1?'体验课':item.type==2?'短课包':item.type==3?'正式课':'萨达'}}</van-tag>
- 				</view>
- 				<view class="rate between">
- 					<view class="lf between">
- 						<van-rate value="{{ 2.5 }}" size="{{ 22 }}" allow-half color="#FFBF00" void-color="#EDEDED" void-icon="star" bind:change="onChange" readonly />
- 						<text>9.7分</text>
+ 	<view hidden="{{!item.show}}">
+ 		<block wx:if='{{item.data.length}}'>
+ 			<view class="box" wx:for='{{item.data}}'>
+ 				<view class="head between">
+ 					<view class="lf">
+ 						<van-image custom-class="shop_img" src="{{rootUrl+item.logo_path}}" radius='7rpx' use-loading-slot lazy-load fit='contain'>
+ 							<van-loading slot="loading" type="spinner" size="16" vertical />
+ 						</van-image>
  					</view>
  					<view class="rt">
- 						1200-8000元/年
+ 						<view class="text van-multi-ellipsis--l2">{{item.name}}</view>
+ 						<view class="flex middle">
+ 							<van-tag type="danger">{{item.category==1?'少儿英语':item.category==2?'思维训练':
+								item.category==3?'国学教育':item.category==4?'美术培训':item.category==5?'音乐培训':item.category==6?'舞蹈培训':item.category==7?'体育运动':
+								item.category==8?'少儿编程':item.category==9?'课外辅导':item.category==99?'其他培训':''}}</van-tag>
+ 							<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.min_age}}-{{item.max_age}}岁</van-tag>
+ 							<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.online==0?'线上':item.online==1?'线下':''}}</van-tag>
+ 							<!-- <van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.type==1?'体验课':item.type==2?'短课包':item.type==3?'正式课':''}}</van-tag> -->
+ 						</view>
+ 						<view class="rate between">
+ 							<view class="lf between">
+ 								<van-rate size='35rpx' value="{{ item.score/2 }}" size="{{ 22 }}" allow-half color="#FFBF00" void-color="#EDEDED" void-icon="star" readonly />
+ 								<text>{{item.score}}分</text>
+ 							</view>
+ 							<view class="money">
+ 								{{item.min_fee}}-{{item.max_fee}}元/年
+ 							</view>
+ 						</view>
  					</view>
  				</view>
+ 				<view class="foot between">
+ 					<view>评论({{item.item.good_count+item.medium_count+item.bad_count}})</view>
+ 					<view>好评({{item.good_count}})</view>
+ 					<view>中评({{item.medium_count}})</view>
+ 					<view>差评({{item.bad_count}})</view>
+ 				</view>
  			</view>
- 		</view>
+ 		</block>
+ 		<block wx:else>
+ 			<yk-empty isShow text='暂无数据' />
+ 		</block>
  	</view>
  </template>
+ <view catchtouchmove="true">
+ 	<van-popup show="{{ show }}" bind:close="onClose" position='bottom' z-index='99999' overlay-style='top:44px;z-index:99999' custom-style='top:44px'>
+ 		<view class="layer">
+ 			<view class="title">学龄范围</view>
+ 			<view class="btns between">
+ 				<view class="btn {{postData.age==index?'active':''}}" wx:for='{{19}}' bindtap="ageChange" data-i="{{index}}">{{item==0?'全部':item+'岁'}}</view>
+ 				<view style="min-width:120rpx"></view>
+ 			</view>
+
+ 			<view class="title">售课方式</view>
+ 			<view class="btns between">
+ 				<view class="btn width_25 {{postData.online===item.value?'active':''}}" wx:for='{{teachStyle}}' data-i="{{item.value}}" bindtap="onlineChange">{{item.name}}</view>
+ 			</view>
+
+ 			<view class="title">评论属性</view>
+ 			<view class="btns between">
+ 				<view class="btn width_25 {{item.active?'active':''}}" wx:for='{{comment_attr}}' data-i="{{index}}" bindtap="reviewChange">{{item.name}}</view>
+ 				<view style="flex:.8"></view>
+ 			</view>
+
+ 			<view class="footer between">
+ 				<button type="default" bindtap="onReset">重置</button>
+ 				<button type="default" class="bg" bindtap="onConfirm">确定</button>
+ 			</view>
+ 		</view>
+ 	</van-popup>
+ </view>

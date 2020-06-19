@@ -4,5 +4,6 @@
     "van-tab": "../../dist/tab/index",
     "van-tabs": "../../dist/tabs/index"
   },
-  "navigationBarTitleText": "口碑"
+  "navigationBarTitleText": "口碑",
+  "enablePullDownRefresh": true
 }

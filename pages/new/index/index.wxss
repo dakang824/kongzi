@@ -38,6 +38,9 @@ page {
   display: flex;
   justify-content: center;
 }
+.dots_bottom{
+  bottom: 25rpx;
+}
 
 .dots view {
   width: 6px;
@@ -371,7 +374,7 @@ swiper {
 
 .middlebox .itembox {
   justify-content: space-between;
-  padding: 0 30rpx;
+  padding: 0 73rpx;
 }
 
 .middlebox .itembox .item {
@@ -1016,7 +1019,7 @@ swiper {
   width: 100%;
 }
 
-.tabs.marTop {
+.marTop {
   /* margin-top: 260rpx; */
   margin-top: 40rpx;
 }
@@ -1027,7 +1030,7 @@ swiper {
   padding: 0 30rpx;
   border-bottom: 1rpx solid #eee;
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
 }
 
 .tabs .tab>view {
@@ -1037,7 +1040,7 @@ swiper {
   font-size: 32rpx;
   text-align: center;
   box-sizing: border-box;
-  flex: 1;
+  flex: .3;
 }
 
 .tabs .tab .active {

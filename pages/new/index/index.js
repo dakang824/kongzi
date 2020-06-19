@@ -12,7 +12,7 @@ import Util from '../../../utils/util.js';
 import http from '../../../common/request.js';
 Page({
   data: {
-    show_courseOnline:0,
+    show_courseOnline: 0,
     childNoData: false,
     childData: [],
     page_no: 1,
@@ -65,30 +65,52 @@ Page({
       course_online: 1
     },
     card: [{
-        img: 'home_icon1.png',
-        url: '/pages/nearby/nearby?tabInd=0',
-        name: '教培优选'
+        img: 'middle_card.png',
+        url: '/pages/selCourseCard/selCourseCard',
+        name: '选课卡'
       },
       {
-        img: 'home_icon2.png',
-        url: '/pages/bargain/tempfile/tempfile?type=2',
-        name: '亲子玩乐'
+        img: 'middle_video.png',
+        url: '/pages/tabBar/smallVideo/index',
+        name: '小视频'
       },
       {
-        img: 'home_icon3.png',
-        url: '/pages/bargain/tempfile/tempfile?type=3',
-        name: '健康医疗'
+        img: 'middle_childUse.png',
+        url: '/pages/shopMall/mother/baby',
+        name: '儿童用品'
       },
       {
-        img: 'home_icon4.png',
-        url: '/pages/bargain/tempfile/tempfile?type=4',
-        name: '美食餐饮'
+        img: 'middle_praise.png',
+        url: '/pages/praise/index/index',
+        name: '教育口碑'
       },
-      {
-        img: 'home_icon5.png',
-        url: '/pages/bargain/tempfile/tempfile?type=5',
-        name: '学校排名'
-      },
+
+      
+      // {
+      //   img: 'home_icon1.png',
+      //   url: '/pages/nearby/nearby?tabInd=0',
+      //   name: '教培优选'
+      // },
+      // {
+      //   img: 'home_icon2.png',
+      //   url: '/pages/bargain/tempfile/tempfile?type=2',
+      //   name: '亲子玩乐'
+      // },
+      // {
+      //   img: 'home_icon3.png',
+      //   url: '/pages/bargain/tempfile/tempfile?type=3',
+      //   name: '健康医疗'
+      // },
+      // {
+      //   img: 'home_icon4.png',
+      //   url: '/pages/bargain/tempfile/tempfile?type=4',
+      //   name: '美食餐饮'
+      // },
+      // {
+      //   img: 'home_icon5.png',
+      //   url: '/pages/bargain/tempfile/tempfile?type=5',
+      //   name: '学校排名'
+      // },
       //   {
       //     img: 'class.png',
       //     // url: '/pages/index/index',
@@ -129,20 +151,15 @@ Page({
       //   url: '/pages/shopMall/goodThings/goodThings',
       //   name: '精选好物'
       // },
-      // {
-      //   img: 'ticket.png',
-      //   url: '/pages/shopMall/mother/baby',
-      //   name: '母婴代购'
-      // }
     ],
-    list:[{
-      data:[],
-      page_no:1,
-      noData:false,
-    },{
-      data:[],
-      page_no:1,
-      noData:false,
+    list: [{
+      data: [],
+      page_no: 1,
+      noData: false,
+    }, {
+      data: [],
+      page_no: 1,
+      noData: false,
     }]
   },
   closeNewUserMoney() {
@@ -160,11 +177,11 @@ Page({
     })
   },
   tabsClick(e) {
-    let tabs=e.currentTarget.dataset.index;
+    let tabs = e.currentTarget.dataset.index;
     this.setData({
       tabs
     });
-    (tabs==4||tabs==5)?this.onReachBottom():'';
+    (tabs == 4 || tabs == 5) ? this.onReachBottom(): '';
   },
   call() {
     wx.makePhoneCall({
@@ -242,9 +259,11 @@ Page({
       ad_id: e.currentTarget.dataset.i,
     }, res => {})
   },
-  swiperJump(e){
-    let {url}=e.currentTarget.dataset,start=url.indexOf('?'),t=JSON.parse('{"' + url.substr(start+1).replace(/&/g, '","').replace(/=/g, '":"')+ '"}');
-    'id' in t&&t.id==''?'':wx.navigateTo({
+  swiperJump(e) {
+    let {
+      url
+    } = e.currentTarget.dataset, start = url.indexOf('?'), t = JSON.parse('{"' + url.substr(start + 1).replace(/&/g, '","').replace(/=/g, '":"') + '"}');
+    'id' in t && t.id == '' ? '' : wx.navigateTo({
       url,
     })
   },
@@ -286,6 +305,7 @@ Page({
             awards_unDraw: arr,
             show_virus: res.show_virus
           })
+          console.log(wx.getStorageSync('position') === '');
           wx.getStorageSync('position') === '' ? APP.getAddress(() => {
             that.setData({
               province: wx.getStorageSync('address').ad_info.province
@@ -305,7 +325,7 @@ Page({
           my_count: d.my_count,
           isNewUser: d.isNewUser,
           holiday: 'notify' in d,
-          getLoginMoney:false,
+          getLoginMoney: false,
           // d.get_bonus.get_bonus == 0
         })
         if (d.status == 5) {
@@ -346,21 +366,21 @@ Page({
         })
       })
 
-      // http.postReq("/community/user/", {
-      //   cmd: "getHomeRecommend2",
-      // }, res => {
-      //   that.setData({
-      //     recom2: res.recom2
-      //   })
-      // })
-      // http.postReq("/community/user/", {
-      //   cmd: "getHomeRecommend3",
-      // }, res => {
-      //   that.setData({
-      //     recom3: res.recom3,
-      //     province: wx.getStorageSync('address').ad_info.province,
-      //   })
-      // })
+      http.postReq("/community/user/", {
+        cmd: "getHomeRecommend2",
+      }, res => {
+        that.setData({
+          recom2: res.recom2
+        })
+      })
+      http.postReq("/community/user/", {
+        cmd: "getHomeRecommend3",
+      }, res => {
+        that.setData({
+          recom3: res.recom3,
+          province: wx.getStorageSync('address').ad_info.province,
+        })
+      })
     })
   },
   getChildData() {
@@ -391,9 +411,9 @@ Page({
       tabs
     } = this.data;
 
-    let active=(tabs==4?0:1);
-    d.page_no=list[active].page_no;
-    d.course_online=(tabs==4?1:0);
+    let active = (tabs == 4 ? 0 : 1);
+    d.page_no = list[active].page_no;
+    d.course_online = (tabs == 4 ? 1 : 0);
     http.postReq("/community/user/", d, res => {
       let data = res.data.records;
       for (let key of data) {
@@ -507,10 +527,10 @@ Page({
         page_no: page_no + 1
       })
       this.getChildData();
-    } else if (tabs == 4||tabs ==5) {
+    } else if (tabs == 4 || tabs == 5) {
       this.getCourseData(getActsNearby)
       // this.data.list[(tabs == 4?0:1)].noData ? '': ;
-     ;
+      ;
     }
   },
   onShareAppMessage() {
@@ -527,9 +547,9 @@ Page({
     clearInterval(this.data.timer1);
     clearTimeout(this.data.timer2);
   },
-  onPageScroll(e) {
+  scroll(e) {
     this.setData({
-      fixed: e.scrollTop > this.data.top
+      fixed: e.detail.isFixed
     })
   },
 })

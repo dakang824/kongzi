@@ -103,7 +103,7 @@
       </view>
       <template is="list" data="{{data:cashData}}"></template>
     </van-tab>
-    <van-tab title="平台补贴">
+    <!-- <van-tab title="平台补贴">
       <view class='timeSelect van-hairline--bottom  {{fixed?"fixed":""}}'>
         <picker mode="date" value="{{subsidy.start}}" end="{{nowTime}}" bindchange="timeChange" data-id='11'>
           <view class="picker">
@@ -134,7 +134,7 @@
         </picker>
       </view>
       <template is="list" data="{{data:allBackData}}"></template>
-    </van-tab>
+    </van-tab> -->
   </van-tabs>
 </view>
 <van-notify id="van-notify" />

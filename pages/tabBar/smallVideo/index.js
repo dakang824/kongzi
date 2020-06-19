@@ -44,6 +44,11 @@ Page({
     showBtn: false,
     navCurrent: 0,
   },
+  back(){
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   typeActive(e){
     let first=true;
     this.setData({ hide:false,showBtn:false,percent:0,typeInd: e.currentTarget.dataset.i,page_no:1,videosArr:[],oldData:[],data:[]});
@@ -205,7 +210,7 @@ Page({
     this.changeSubject(newcurrent);
   },
   onLoad(o) {
-    Util.editTabbar();
+    // Util.editTabbar();
     if ('b' in o) {
       let d = JSON.parse(o.b),
         {

@@ -229,8 +229,8 @@
 				},
 				{
 					"id": 24,
-					"name": "pages/praise/CourseComment/index",
-					"pathName": "pages/praise/CourseComment/index",
+					"name": "pages/praise/index/index",
+					"pathName": "pages/praise/index/index",
 					"query": "course_id=45",
 					"scene": null
 				},

@@ -1,13 +1,14 @@
 <wxs module="filter" src="../../../utils/filter.wxs"></wxs>
-<dk-tabbar tabBar="{{tabBar}}" transparent></dk-tabbar>
+<!-- <dk-tabbar tabBar="{{tabBar}}" transparent></dk-tabbar> -->
 <van-dialog id="van-dialog" />
-<view wx:if='{{showPage}}'>
-	<view style="top:{{globalData.Custom.top+(globalData.Custom.height/5)}}px" class="box_view">
-		<view class="title">孔紫小视频</view>
-		<view class="between">
-			<view class="li {{typeInd==index?'active':''}}" wx:for='{{type}}' wx:key="index" bindtap="typeActive" data-i="{{index}}">{{item}}</view>
-		</view>
+<view style="top:{{globalData.Custom.top+(globalData.Custom.height/5)}}px" class="box_view">
+	<van-icon name="arrow-left" color='#fff' size="34rpx" bind:click='back' />
+	<view class="title">孔紫小视频</view>
+	<view class="between">
+		<view class="li {{typeInd==index?'active':''}}" wx:for='{{type}}' wx:key="index" bindtap="typeActive" data-i="{{index}}">{{item}}</view>
 	</view>
+</view>
+<view wx:if='{{showPage}}'>
 	<view wx:if='{{hide}}'>
 		<swiper bindchange='swiperChange' class='video-box' vertical skip-hidden-item-layout circular='{{oldData.length}}' bindtransition='swiperItem' bindanimationfinish='animationfinish'>
 			<swiper-item class='video-box' wx:for='{{data}}' wx:key="index" data-i='{{video_id}}' item-id='video{{index}}'>
@@ -49,7 +50,8 @@
 					<van-icon name="play" color='#fff' size='70rpx' />
 				</view>
 
-				<view class="textarea {{keyBoardHeight?'transition':''}}" style="bottom:{{keyBoardHeight?(keyBoardHeight)+'px':'108rpx'}}">
+				<view class="textarea {{keyBoardHeight?'transition':''}}" style="bottom:{{keyBoardHeight?(keyBoardHeight)+'px':'0'}}">
+					<!-- '108rpx' -->
 					<progress class="progress" color="#fff" backgroundColor='#454545' activeColor='#fb2235' percent='{{percent}}' stroke-width='1' bindactiveend='videoOver' />
 					<van-cell-group border="{{ false }}">
 						<van-field type="text" placeholder="说两句.." show-confirm-bar='{{false}}' bind:focus='onFocus' bind:blur='onBlur' adjust-position='{{false}}' use-button-slot border="{{ false }}" bind:confirm='onSend' value='{{commentInfo}}'>

@@ -12,7 +12,7 @@
       <button class="tip" style="background:#fff" open-type="getUserInfo" bindgetuserinfo="getInfo">请点击登录</button>
     </view>
     <!-- <view class="line"></view> -->
-    <view class="itembox flex" wx:if='{{false}}'>
+    <view class="itembox flex">
       <navigator url='/pages/getPrize/prizeTicket/prizeTicket' class="item" hover-class='none'>
         <view class="num">{{cardInfo.drawTicketCount}}</view>
         <view class="type">奖券</view>
@@ -69,14 +69,14 @@
         </view>
       </scroll-view>
     </view>
-    <!-- <navigator class="row3 flex" url='/pages/user/advert/advert'>
+    <navigator class="row3 flex" url='/pages/user/advert/advert'>
       <view class="row3_left flex">
         <image src="/imgs/new/sign.png" style="width:46rpx;height:44rpx;" />
         <view class="title">签到获取抽奖券~</view>
       </view>
       <view class="row3_right">签到+N</view>
-    </navigator> -->
-    <view class="itembox flex" wx:if='{{false}}'>
+    </navigator>
+    <view class="itembox flex">
       <navigator url='/pages/getPrize/prizeTicket/prizeTicket' class="item" hover-class='none'>
         <view class="num">{{cardInfo.drawTicketCount}}</view>
         <view class="type">奖券</view>
@@ -97,16 +97,16 @@
   </view>
 </view>
 <swiper class="swiper_container" autoplay="true" circular="true" interval="3000">
-  <swiper-item>
+  <!-- <swiper-item>
     <view class='vCenter active_in' data-url='/pages/shopMall/shareGoods/shareGoods' bindtap='jump' data-i='1'>
       <image src='{{imageurl}}share_adv.png' mode='widthFix'></image>
     </view>
-  </swiper-item>
-  <!-- <swiper-item>
+  </swiper-item> -->
+  <swiper-item>
     <view class='vCenter active_in' data-url='/pages/new/getGift/list' bindtap='jump' data-i='2'>
       <image src='{{imageurl}}active_mine.png' mode='widthFix'></image>
     </view>
-  </swiper-item> -->
+  </swiper-item>
 </swiper>
 
 <view class="moneybox flex" wx:if="{{userInfo.nickname}}">
@@ -153,18 +153,18 @@
         </view>
         <view class="value">分享返利</view>
       </navigator>
-      <!-- <navigator url='/pages/user/myDraws/myDraws' class="detail" hover-class='none'>
+      <navigator url='/pages/user/myDraws/myDraws' class="detail" hover-class='none'>
         <view class="icon">
           <image src="/imgs/new/myicon6.png" style="width:41rpx;height:40rpx;" />
         </view>
         <view class="value">抽奖列表</view>
-      </navigator> -->
-      <navigator url='/pages/personal/notice/notice' class="detail" hover-class='none'>
+      </navigator>
+      <!-- <navigator url='/pages/personal/notice/notice' class="detail" hover-class='none'>
         <view class="icon">
           <image src="/imgs/notice.png" style="width:39rpx;height:39rpx;" />
         </view>
         <view class="value">通知管理</view>
-      </navigator>
+      </navigator> -->
     </view>
     <view class="classlist flex" style="padding:0 40rpx;margin-top:-40rpx">
       <navigator url='/pages/user/myCollects/myCollects' class="detail" hover-class='none'>

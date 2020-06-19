@@ -199,7 +199,7 @@ page {
 .right-list {
   position: absolute;
   right: 10rpx;
-  bottom: 310rpx;
+  bottom: 202rpx;
   overflow: hidden;
   z-index: 155;
 }
@@ -370,7 +370,7 @@ button.margin-left {
   width: 60%;
   position: absolute;
   left: 30rpx;
-  bottom: 238rpx;
+  bottom: 130rpx;
   overflow: hidden;
   z-index: 15;
   font-size: 32rpx;
