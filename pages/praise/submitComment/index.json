@@ -2,5 +2,6 @@
   "usingComponents": {
     "van-uploader": "../../dist/uploader-new/index",
     "imageViewer": "../../components/imageViewer/index"
-  }
+  },
+  "enablePullDownRefresh": true
 }

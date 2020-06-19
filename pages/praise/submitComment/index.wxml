@@ -11,7 +11,7 @@
 	<view class="between" wx:for='{{d}}'>
 		<view class="flex">
 			<text>{{item.name}}</text>
-			<van-rate value='{{postData[item.value]/2}}' size="{{ 25 }}" allow-half color="#FFBF00" void-color="#eee" void-icon="{{imgUrl+'start_active.png'}}"  icon="{{imgUrl+'start.png'}}" bind:change="onChange" data-i='{{item.value}}'/>
+			<van-rate value='{{postData[item.value]/2}}' size="{{ 25 }}" allow-half color="#FFBF00" void-color="#eee" void-icon="{{imgUrl+'start_active.png'}}"  icon="{{imgUrl+'start.png'}}" bind:change="onChange" data-i='{{item.value}}' readonly='{{data.audit_status==0||data.audit_status==1}}'/>
 			<view class="rt">{{postData[item.value]}}分</view>
 		</view>
 		<view wx:if='{{postData[item.value]!==0}}'>

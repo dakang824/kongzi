@@ -25,12 +25,14 @@ Page({
       course_name,
       inst_id,
       course_type,
+      id
     } = e.currentTarget.dataset.i;
     let d={user_id,
       card_id,
       course_id,
       course_name,
       inst_id,
+      id,
       course_type};
     wx.navigateTo({
       url: `/pages/praise/submitComment/index?d=${encodeURI(JSON.stringify(d))}`,
@@ -47,17 +49,19 @@ Page({
       i
     } = e.currentTarget.dataset;
     wx.navigateTo({
-      url: `/pages/selCourseCard/applyMoney/index?card_id=${i.card_id}&course_id=${i.course_id}&inst_id=${i.inst_id}`,
+      url: `/pages/selCourseCard/applyMoney/index?card_id=${i.card_id}&course_id=${i.course_id}&inst_id=${i.inst_id}&id=${i.id}`,
     })
   },
   showTime(e) {
     let {
-      cardid,
-      courseid
-    } = e.currentTarget.dataset;
+      card_id,
+      course_id,
+      id
+    } = e.currentTarget.dataset.item;
     this.setData({
-      cardid,
-      courseid,
+      cardid:card_id,
+      courseid:course_id,
+      id,
       show: true
     })
   },
@@ -69,12 +73,14 @@ Page({
   markCourse(e) {
     let {
       cardid,
-      courseid
+      courseid,
+      id
     } = this.data;
     http.postReq("/community/industry/", {
       cmd: "markCourseArrive",
       card_id: cardid,
       course_id: courseid,
+      id,
       arrive_time: Util.getTime(e.detail).slice(0, 16)
     }, res => {
       this.cancel();

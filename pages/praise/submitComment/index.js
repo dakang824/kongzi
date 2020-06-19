@@ -81,11 +81,12 @@ Page({
       postData
     } = this.data, d = JSON.parse(decodeURI(options.d));
     Object.assign(postData, d)
-
+    postData.id=d.id;
     http.postReq("/community/industry/", {
       cmd: 'getMyCourseReview',
       ...d
     }, res => {
+      wx.stopPullDownRefresh();
       if ('id' in res.data) {
         let {
           env_score,
@@ -121,6 +122,7 @@ Page({
       }
       this.setData({
         postData,
+        options
       })
 
       this.verify();
@@ -189,6 +191,9 @@ Page({
       disable
     })
     return disable;
+  },
+  onPullDownRefresh(){
+    this.onLoad(this.data.options);
   },
   submit() {
     let {

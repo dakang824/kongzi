@@ -89,7 +89,8 @@ Page({
   submit() {
     let {
       e,
-      super_code
+      super_code,
+      cards
     } = this.data;
     wx.uploadFile({
       url: app.globalData.serverUrl + "community/industry/",
@@ -99,6 +100,7 @@ Page({
         cmd: 'commitCardCourseComment',
         ope_id: wx.getStorageSync('userInfo').id,
         super_code,
+        id:cards.id,
         ...e
       },
       success: res => {
