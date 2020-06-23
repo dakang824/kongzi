@@ -1,15 +1,16 @@
 let http = require('../../../common/request.js'),
   app = getApp();
+import Dialog from '../../../dist/dialog/dialog';
 Page({
   data: {
-    showImg:false,
+    showImg: false,
     show: false,
     disable: false,
-    data:{},
-    medias:[],
+    data: {},
+    medias: [],
     imgUrl: app.globalData.imageurl,
     postData: {
-      cmd: 'addCourseReview',
+      cmd: 'reviewCardInst',
       env_score: 0,
       tea_score: 0,
       eff_score: 0,
@@ -32,13 +33,34 @@ Page({
       value: 'ser_score',
     }]
   },
-  preview(e){
-    let imgs=[...this.data.postData.medias];
-    for(let key of imgs){
-      key.type=key.media_type;
-      key.path=key.url;
+  delect() {
+    Dialog.confirm({
+      title: '温馨提示',
+      message: '是否确定删除！',
+    }).then(() => {
+      http.postReq("/review/front/", {
+        cmd: 'deleteInstReview',
+        review_id: this.data.data.review_id
+      }, res => {
+        this.setData({
+          'data.status':3
+        })
+      })
+    }).catch(() => {
+      // on cancel
+    });
+  },
+  preview(e) {
+    let imgs = [...this.data.postData.medias];
+    for (let key of imgs) {
+      key.type = key.media_type;
+      key.path = key.url;
     }
-    this.setData({showImg:true,current:e.detail.index,imgs})
+    this.setData({
+      showImg: true,
+      current: e.detail.index,
+      imgs
+    })
   },
   afterRead(event) {
     const {
@@ -50,7 +72,7 @@ Page({
   },
   uploadFile(file) {
     wx.uploadFile({
-      url: app.globalData.serverUrl + 'community/industry/',
+      url: app.globalData.serverUrl + 'review/front/',
       filePath: file.tempFilePath,
       name: 'file',
       formData: {
@@ -81,13 +103,14 @@ Page({
       postData
     } = this.data, d = JSON.parse(decodeURI(options.d));
     Object.assign(postData, d)
-    postData.id=d.id;
     this.setData({
-      'd[2].name':d.online==0?'上课体验':'上课环境',
+      'd[2].name': d.online == 0 ? '上课体验' : '上课环境',
+      'postData.user_id': wx.getStorageSync('userInfo').id,
     })
-    http.postReq("/community/industry/", {
-      cmd: 'getMyCourseReview',
-      ...d,
+    http.postReq("/review/front/", {
+      cmd: 'getMyReview',
+      user_id: wx.getStorageSync('userInfo').id,
+      ...d
     }, res => {
       wx.stopPullDownRefresh();
       if ('id' in res.data) {
@@ -113,12 +136,12 @@ Page({
             url: key.path
           });
           key.url = app.globalData.serverUrl + key.path;
-          key.type=key.type==0?'image':'video';
+          key.type = key.type == 0 ? 'image' : 'video';
         }
         postData.medias = arr;
         this.setData({
           fileList,
-          medias:fileList,
+          medias: fileList,
           data: res.data,
           show: 'audit_status' in res.data
         })
@@ -171,10 +194,12 @@ Page({
       postData,
       data,
     } = this.data;
-    'id' in data?postData.review_id = data.id:'';
-    let d={...postData};
+    'id' in data ? postData.review_id = data.id : '';
+    let d = {
+      ...postData
+    };
 
-    http.postReq("/community/industry/", d, res => {
+    http.postReq("/review/front/", d, res => {
       wx.showToast({
         title: '保存成功',
         icon: 'success',
@@ -195,7 +220,7 @@ Page({
     })
     return disable;
   },
-  onPullDownRefresh(){
+  onPullDownRefresh() {
     this.onLoad(this.data.options);
   },
   submit() {
@@ -204,18 +229,16 @@ Page({
       data
     } = this.data;
     if ('id' in data) {
-      if(data.audit_status==2){
-        postData.cmd ='addCourseReview';
-        postData.reset_submit=1;
-      }else{
-        postData.cmd ='commitMyCourseReview';
+      if (data.audit_status == 2) {
+        postData.reset_submit = 1;
       }
       postData.review_id = data.id;
+      postData.submit = 1;
     } else {
       postData.submit = 1;
     }
 
-    http.postReq("/community/industry/", postData, res => {
+    http.postReq("/review/front/", postData, res => {
       wx.showToast({
         title: '提交成功',
         icon: 'success',

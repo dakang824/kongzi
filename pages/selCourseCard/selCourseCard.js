@@ -13,6 +13,7 @@ Page({
     show: false,
     minHour: 10,
     maxHour: 20,
+    maxDate:new Date().getTime(),
     minDate: new Date().getTime() - 1000 * 60 * 60 * 24 * 360,
     currentDate: new Date().getTime(),
     card_code: ''
@@ -25,6 +26,7 @@ Page({
       course_name,
       inst_id,
       course_type,
+      online,
       id
     } = e.currentTarget.dataset.i;
     let d={user_id,
@@ -33,6 +35,7 @@ Page({
       course_name,
       inst_id,
       id,
+      online,
       course_type};
     wx.navigateTo({
       url: `/pages/praise/submitComment/index?d=${encodeURI(JSON.stringify(d))}`,

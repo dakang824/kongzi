@@ -95,7 +95,9 @@
         "index/index",
         "submitComment/index",
         "CourseComment/index",
-        "CourseCommentDetail/index"
+        "CourseCommentDetail/index",
+        "Inst_comment/index",
+        "Inst_submitComment/index"
       ]
     },
     {

@@ -2,7 +2,7 @@
 <imageViewer show="{{showImg}}" imgs="{{imgs}}" current='{{current}}'></imageViewer>
 <view class="header">
 	<view class="between">
-		<view class="lf">5节少儿编程课+1节外教...</view>
+		<view class="lf">{{postData.course_name}}</view>
 		<van-button type="primary" size="small" color='#FFE9EE' bind:click='call'>联系客服</van-button>
 	</view>
 	<view class="txt">如果您的孩子上完体验课，您评论一下这个课程的好坏，并上传至少<text>2张图片</text>和<text>1个上课小视频</text>，您会获得 <text>20元</text>的奖励，之后还可以申请奖学金。(平台会审核真实性)</view>
@@ -12,9 +12,9 @@
 		<view class="flex">
 			<text>{{item.name}}</text>
 			<van-rate value='{{postData[item.value]/2}}' size="{{ 25 }}" allow-half color="#FFBF00" void-color="#eee" void-icon="{{imgUrl+'start_active.png'}}"  icon="{{imgUrl+'start.png'}}" bind:change="onChange" data-i='{{item.value}}' readonly='{{data.audit_status==0||data.audit_status==1}}'/>
-			<view class="rt">{{postData[item.value]}}分</view>
 		</view>
-		<view wx:if='{{postData[item.value]!==0}}'>
+		<view wx:if='{{postData[item.value]!==0}}' class="flex">
+			<view class="rt">{{postData[item.value]}}分</view>
 			<van-tag round type="primary" color='{{postData[item.value]>6?"#FF2C56":postData[item.value]>=5&&postData[item.value]<=6?"#9A36FC":"#959595"}}' >{{postData[item.value]>6?'好评':postData[item.value]>=5&&postData[item.value]<=6?'中评':'差评'}}</van-tag>
 		</view>
 	</view>

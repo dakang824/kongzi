@@ -129,6 +129,7 @@ Page({
     }],
     postData: {
       cmd: 'queryCardInsts',
+      condition:'',
       category: "",
       order_type: 1, //1:综合升  2：综合降  3：评分升  4：评分降  5：好评升  6：好评降  7：价格升  8：价格降
       online: "", //0 线下，1 线上,2 线下 + 线上
@@ -140,6 +141,24 @@ Page({
       formal_count: '', //1正式课  未选中时传递‘’
       page_size: 10
     }
+  },
+  onChange(e){
+    this.setData({'postData.condition':e.detail})
+  },
+  onSearch(){
+    let {
+      list
+    } = this.data;
+    for (let key of list) {
+      key.data = [];
+      key.page_no = 1;
+      key.noData = false;
+      key.show = false;
+    }
+    this.setData({
+      list
+    })
+    this.getData();
   },
   reviewChange(e) {
     let {
@@ -237,7 +256,6 @@ Page({
       wx.stopPullDownRefresh();
       let data = res.data.records;
       if (data.length) {
-        console.log( list[active].data.concat(data));
         this.setData({
           [`list[${active}].data`]: list[active].data.concat(data),
           [`list[${active}].page_no`]: list[active].page_no + 1,
@@ -255,6 +273,16 @@ Page({
     this.setData({
       copyPostData: JSON.parse(JSON.stringify(this.data.postData))
     })
+  },
+  onPullDownRefresh(){
+    let {active}=this.data;
+    this.setData({
+      [`list[${active}].data`]:[],
+      [`list[${active}].page_no`]:1,
+      [`list[${active}].noData`]:false,
+      [`list[${active}].show`]:false,
+    })
+    this.getData();
   },
   onShareAppMessage() {
 

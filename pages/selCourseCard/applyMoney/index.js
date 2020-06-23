@@ -46,6 +46,7 @@ Page({
       cmd: 'getMyCardCourseComment',
       ...e
     }, res => {
+      wx.stopPullDownRefresh();
       this.setData({
         cards: res.data
       });
@@ -119,6 +120,9 @@ Page({
         }
       }
     })
+  },
+  onPullDownRefresh(){
+    this.onLoad(this.data.e);
   },
   onShareAppMessage() {
 

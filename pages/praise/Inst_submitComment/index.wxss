@@ -128,3 +128,7 @@ page {
   font-size: 30rpx;
   color: #2C2C2C;
 }
+.Txt{
+  text-align: left;
+  font-size: 27rpx;
+}

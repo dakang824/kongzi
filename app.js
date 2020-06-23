@@ -118,8 +118,6 @@ App({
     systemInfo: '', //手机设备信息
     serverUrl: "https://dev.kongzikeji.com/",
     imageurl: "https://dev.kongzikeji.com/data/instManageImg/",
-    // serverUrl: "http://106.14.124.162:8088/",
-    // imageurl: "http://106.14.124.162:8088/data/instManageImg/",
     servPhone: '400 859 0900',
     isNewUser: false, //这三个变量只针对新用户，只用一次
     ticket_count: 0,

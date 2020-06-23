@@ -1,0 +1,72 @@
+	<loading-top id="loading" />
+	<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+	<view class="box">
+		<view class="van-hairline--bottom">
+			<course-top courseInfo='{{courseInfo}}' imgUrl='{{imgUrl}}' hideCourse='{{false}}' showShare />
+		</view>
+		<view class="level van-hairline--bottom">
+			<view class="between " wx:for='{{stars}}' wx:key='index'>
+				<view class="flex">
+					<text>{{item.name}}</text>
+					<van-rate value='{{item.value/2}}' size="{{ 25 }}" allow-half color="#FFBF00" void-color="#eee" void-icon="{{imgUrl+'start_active.png'}}" icon="{{imgUrl+'start.png'}}" readonly />
+				</view>
+				<view class="flex">
+					<view class="rt">{{item.value}}分</view>
+					<van-tag round type="primary" color='{{item.value>6?"#FF2C56":item.value>=5&&item.value<=6?"#9A36FC":"#959595"}}'>{{item.value>6?'好评':item.value>=5&&item.value<=6?'中评':'差评'}}</van-tag>
+				</view>
+			</view>
+		</view>
+		<view class="between btns  van-hairline--bottom">
+			<view class="lf flex">
+				<button bindtap="goIntroduce">机构介绍
+					<van-icon name="arrow" /></button>
+				<button class="green" bindtap="goComment">我要评论
+					<van-icon name="arrow" /></button>
+			</view>
+			<view class="rt">
+				<button class="red" bindtap="callPhone">预约试听</button>
+			</view>
+		</view>
+		<view class="branches">
+			<view class="between">
+				<view class="lf">上海（{{branches.length}}个校区）</view>
+				<view class="rt">{{filter.fixed(courseInfo.mindis/1000,1)}}-{{filter.fixed(courseInfo.maxdis/1000,1)}}km</view>
+			</view>
+			<view class="{{collapsed?'hideHeight':''}}">
+				<view class="van-hairline--bottom box_branches" wx:for='{{branches}}' wx:key='{{index}}'>
+					<view class="title">{{item.name}}</view>
+					<view class="between">
+						<view class="address">{{item.address}}</view>
+						<view class="min">{{filter.fixed(item.distance/1000,1)}}km</view>
+					</view>
+				</view>
+			</view>
+			<view class="more" bindtap="lookMore" data-i="{{index}}">
+				查看校区
+				<van-icon name="{{collapsed?'arrow-down':'arrow-up'}}" />
+			</view>
+		</view>
+
+		<van-sticky>
+			<view class="between tab van-hairline--bottom">
+				<view wx:for='{{list}}' class="block {{active==index?'active':''}}" bindtap="tabSwitch" data-i="{{index}}" wx:key='{{index}}'>
+					<view class="flex">{{item.name}} <text>({{item.value}})</text></view>
+					<view class="line"></view>
+				</view>
+			</view>
+
+			<block wx:for='{{list}}' wx:key='{{index}}'>
+				<view class="tags" wx:if='{{active==index}}'>
+					<view wx:for='{{item.tags}}' catchtap="tagsClick" data-i="{{index+'_'+idx}}" wx:for-item="it" wx:for-index="idx" wx:key='{{index}}'>
+						<van-tag type="primary" color='{{it.active?"#FFE9EE":"#F3F3F3"}}' text-color='{{it.active?"#FF2E58":"#838383"}}'>{{it.name}}({{it.value}})</van-tag>
+					</view>
+				</view>
+			</block>
+		</van-sticky>
+	</view>
+
+	<view class="temp">
+		<view hidden="{{!(active==index)}}" wx:for='{{4}}' wx:key='index'>
+			<comment-block list='{{list[active].data}}' courseInfo='{{courseInfo}}' noData='{{list[active].noData}}' bind:changeLike='changeLike' />
+		</view>
+	</view>

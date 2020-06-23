@@ -130,7 +130,6 @@ van-cell {
   margin-top: -50rpx;
   display: flex;
   justify-content: center;
-
 }
 
 .info .radio .van-cell__title {

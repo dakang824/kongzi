@@ -1,5 +1,5 @@
 <view class="van-hairline--bottom marBottom">
-	<course-top courseInfo='{{courseInfo}}' imgUrl='{{imgUrl}}' />
+	<course-top courseInfo='{{courseInfo}}' imgUrl='{{imgUrl}}' hideCourse='{{false}}'/>
 </view>
 
 <comment-block list='{{list}}' isDetail bind:changeLike='changeLike' bind:changAppends='changAppends'/>

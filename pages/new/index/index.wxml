@@ -171,7 +171,7 @@
 				<van-transition custom-class="block" name='{{index==0||index==1?"slide-left":index==2||index==3?"slide-right":"slide-down"}}' wx:for='{{card}}' wx:key='{{index}}' duration="{{ { enter: 800 } }}">
 					<navigator class="item fromId" hover-class='none' url='{{item.url}}'>
 						<view class="img flexbox">
-							<image src='/imgs/{{item.img}}' style="width:40rpx;height:40rpx;" mode="aspectFit"/>
+							<image src='/imgs/{{item.img}}' style="width:76rpx;height:76rpx;" mode="widthFix"/>
 						</view>
 						<view class='title'>{{item.name}}</view>
 					</navigator>

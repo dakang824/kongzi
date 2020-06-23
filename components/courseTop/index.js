@@ -5,6 +5,14 @@ Component({
     },
     imgUrl:{
       type:String
+    },
+    hideCourse:{
+      type:Boolean,
+      value:true
+    },
+    showShare:{
+      type:Boolean,
+      value:false
     }
   },
   data: {

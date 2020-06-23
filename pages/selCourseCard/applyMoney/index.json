@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "申请福利"
+  "navigationBarTitleText": "申请福利",
+  "enablePullDownRefresh": true
 }

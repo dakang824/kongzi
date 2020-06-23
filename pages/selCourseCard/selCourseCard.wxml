@@ -125,5 +125,5 @@
 
 
 <van-popup show="{{ show }}" bind:close="onClose" position="bottom">
-	<van-datetime-picker type="date" value="{{ currentDate }}" min-date="{{ minDate }}" bind:confirm='markCourse' title='选择上课日期' bind:cancel='cancel' />
+	<van-datetime-picker type="date" value="{{ currentDate }}" min-date="{{ minDate }}"  max-date="{{ maxDate }}"  bind:confirm='markCourse' title='选择上课日期' bind:cancel='cancel' />
 </van-popup>

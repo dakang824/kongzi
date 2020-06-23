@@ -1,6 +1,6 @@
  <loading-top id="loading" />
  <view class='headTop' catchtouchmove="true">
- 	<van-search value="{{ value }}" background='#FA2335' placeholder="搜索机构名称、类型" use-action-slot bind:change="onChange" bind:search="onSearch">
+ 	<van-search value="{{ postData.condition }}" background='#FA2335' placeholder="搜索机构名称" use-action-slot bind:change="onChange" bind:search='onSearch'>
  		<view slot="action" bind:tap="onClick" class="right between" bindtap="showLayer">
  			<image src='/imgs/screen.png' class="img" />筛选</view>
  	</van-search>
@@ -21,9 +21,9 @@
  </van-tabs>
 
  <template name="list">
- 	<view hidden="{{!item.show}}">
+ 	<view hidden="{{!item.show}}" class="min-height">
  		<block wx:if='{{item.data.length}}'>
- 			<view class="box" wx:for='{{item.data}}'>
+ 			<navigator class="box" wx:for='{{item.data}}' url='/pages/praise/Inst_comment/index?id={{item.id}}'>
  				<view class="head between">
  					<view class="lf">
  						<van-image custom-class="shop_img" src="{{rootUrl+item.logo_path}}" radius='7rpx' use-loading-slot lazy-load fit='contain'>
@@ -37,7 +37,7 @@
 								item.category==3?'国学教育':item.category==4?'美术培训':item.category==5?'音乐培训':item.category==6?'舞蹈培训':item.category==7?'体育运动':
 								item.category==8?'少儿编程':item.category==9?'课外辅导':item.category==99?'其他培训':''}}</van-tag>
  							<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.min_age}}-{{item.max_age}}岁</van-tag>
- 							<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.online==0?'线上':item.online==1?'线下':''}}</van-tag>
+ 							<van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.type==0?'线上':item.type==1?'线下':item.type==2?'线下+线上':''}}</van-tag>
  							<!-- <van-tag type="primary" color='#F8F8F8' text-color='#525252'>{{item.type==1?'体验课':item.type==2?'短课包':item.type==3?'正式课':''}}</van-tag> -->
  						</view>
  						<view class="rate between">
@@ -52,12 +52,12 @@
  					</view>
  				</view>
  				<view class="foot between">
- 					<view>评论({{item.item.good_count+item.medium_count+item.bad_count}})</view>
+ 					<view>评论({{item.good_count+item.medium_count+item.bad_count}})</view>
  					<view>好评({{item.good_count}})</view>
  					<view>中评({{item.medium_count}})</view>
  					<view>差评({{item.bad_count}})</view>
  				</view>
- 			</view>
+ 			</navigator>
  		</block>
  		<block wx:else>
  			<yk-empty isShow text='暂无数据' />

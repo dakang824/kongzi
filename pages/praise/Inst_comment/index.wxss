@@ -1,0 +1,163 @@
+page {
+  background: #F8F6F6;
+}
+
+.tab text {
+  font-size: 21rpx;
+  color: #767676;
+  font-weight: initial;
+  padding-left: 5rpx;
+}
+
+.tab {
+  font-size: 30rpx;
+  color: #0C0C0C;
+  background: #fff;
+}
+
+.tab .flex {
+  align-items: baseline;
+  justify-content: center;
+  padding: 26rpx 0;
+}
+
+.tab .active {
+  color: #FA2335;
+}
+
+.tab .active .line {
+  width: 53rpx;
+  height: 8rpx;
+  background: #FA2335;
+  border-radius: 5rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.tab .block {
+  flex: 1;
+  position: relative;
+}
+
+.tags {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  background: #fff;
+  padding: 10rpx 29rpx 25rpx;
+}
+
+.tags .van-tag {
+  margin-top: 15rpx;
+}
+
+.level {
+  background: #fff;
+  padding:30rpx 30rpx 20rpx;
+}
+
+.level .flex .rt {
+  font-size: 26rpx;
+  margin-right: 26rpx;
+  color: #A0A0A0;
+  font-size: 20rpx;
+}
+
+.level .flex text {
+  padding-right: 60rpx;
+  font-weight: bold;
+  font-size: 30rpx;
+}
+
+.level .between {
+  padding-bottom: 30rpx;
+}
+
+.level .flex {
+  align-items: center;
+}
+
+.level .van-cell {
+  padding: 0;
+}
+
+.level .van-hairline--top {
+  padding: 30rpx 0 10rpx;
+}
+
+.level van-tag {
+  margin-right: 0;
+}
+
+.btns {
+  background-color: #fff;
+  padding: 25rpx 30rpx;
+}
+
+.btns button {
+  padding: 0;
+  margin: 0;
+  font-size: 27rpx;
+  width: 186rpx;
+  height: 58rpx;
+  line-height: 58rpx;
+  background: #FF9415;
+  color: #fff;
+  border-radius: 29rpx;
+  text-align: center;
+  margin-right: 18rpx;
+}
+
+.btns button.green {
+  background: #08CFBA;
+}
+
+.btns button.red {
+  background: transparent;
+  border: 1rpx solid #E60012;
+  color: #FA2335;
+}
+
+.branches {
+  position: relative;
+  background: #fff;
+  padding: 20rpx 30rpx;
+  color: #878787;
+  font-size: 24rpx;
+}
+
+.box_branches {
+  padding: 25rpx 0;
+}
+
+.branches .title {
+  color: #333;
+  font-size: 26rpx;
+  margin-bottom: 10rpx;
+}
+
+.branches .adaress {
+  color: #ccc;
+  font-size: 22rpx;
+}
+.branches .more {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #999;
+  text-align: center;
+  font-size: 24rpx;
+  background-image: linear-gradient(-180deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 80%);
+  padding-top: 50rpx;
+  margin-top: -50rpx;
+  display: flex;
+  justify-content: center;
+}
+.branches .hideHeight{
+  height: 30rpx;
+  overflow: hidden;
+}

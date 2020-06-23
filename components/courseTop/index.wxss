@@ -21,6 +21,7 @@
 .box .rt .text {
   font-size: 30rpx;
   font-weight: bold;
+  width: 303rpx;
 }
 
 .box .van-tag {
@@ -31,6 +32,7 @@
 
 .box .shop_img {
   width: 149rpx;
+  min-width: 149rpx;
   height: 150rpx;
   border-radius: 7rpx;
 }
@@ -51,4 +53,19 @@
 
 van-tag {
   margin-right: 25rpx;
+}
+
+.shareBtn {
+  height: 55rpx;
+  background:#FA2335;
+  border-radius: 50px;
+  font-size: 24rpx;
+  color: #fff;
+  margin:0;
+  line-height:55rpx;
+}
+
+.share {
+  width: 30rpx;
+  margin-right: 10rpx;
 }

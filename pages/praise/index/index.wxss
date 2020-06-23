@@ -166,3 +166,6 @@ page {
 .van-popup{
   background-color: transparent!important;
 }
+.min-height{
+  min-height: calc(100vh - 250rpx);
+}

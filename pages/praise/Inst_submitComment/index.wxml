@@ -1,0 +1,63 @@
+<imageViewer show="{{showImg}}" imgs="{{imgs}}" current='{{current}}'></imageViewer>
+<van-dialog id="van-dialog" />
+<view class="header">
+	<view class="between">
+		<view class="lf">{{postData.name}}</view>
+		<van-button type="primary" size="small" color='#FFE9EE' bind:click='call'>联系客服</van-button>
+	</view>
+	<view class="txt">如果您上过该机构的课程，可以把上课体验分享一下，供其他家长参考，但请客观评价，以免误导他人，恶意评论会被删除，且会导致账号被封。</view>
+</view>
+<view class="box">
+	<view class="between" wx:for='{{d}}'>
+		<view class="flex">
+			<text>{{item.name}}</text>
+			<van-rate value='{{postData[item.value]/2}}' size="{{ 25 }}" allow-half color="#FFBF00" void-color="#eee" void-icon="{{imgUrl+'start_active.png'}}" icon="{{imgUrl+'start.png'}}" bind:change="onChange" data-i='{{item.value}}' readonly='{{data.audit_status==0||data.audit_status==1}}' />
+		</view>
+		<view wx:if='{{postData[item.value]!==0}}' class="flex">
+			<view class="rt">{{postData[item.value]}}分</view>
+			<van-tag round type="primary" color='{{postData[item.value]>6?"#FF2C56":postData[item.value]>=5&&postData[item.value]<=6?"#9A36FC":"#959595"}}'>{{postData[item.value]>6?'好评':postData[item.value]>=5&&postData[item.value]<=6?'中评':'差评'}}</van-tag>
+		</view>
+	</view>
+	<view class="van-hairline--top">
+		<van-field bind:input='input' type='text' value="{{ postData.content }}" placeholder="请在此填写您的体验评论(最少20个字，最多200个字)" placeholder-style='font-size:26rpx' border="{{ false }}" readonly='{{data.audit_status==0||data.audit_status==1}}' />
+	</view>
+</view>
+<view class="box padBottom">
+	<van-uploader bind:click-preview='preview' file-list="{{ fileList }}" accept='media' max-count='{{data.audit_status==0||data.audit_status==1?fileList.length:9}}' multiple bind:delete='delete' bind:after-read='afterRead' preview-full-image='{{false}}' preview-size='185rpx' deletable='{{data.audit_status!=0&&data.audit_status!=1}}' />
+</view>
+<view class="box" wx:if='{{show&&data.audit_status!==3}}'>
+	<view class="doing">
+		<block wx:if='{{data.audit_status==0}}'>
+			<image src="/imgs/review.png"></image>
+			<view>已提交，审核中</view>
+		</block>
+		<block wx:if='{{data.audit_status==1}}'>
+			<!-- <image src="/imgs/Card_success.png"></image> -->
+			<!-- <view>您的申请已通过</view>
+			<view>返现已转入您的微信零钱</view> -->
+			<view class="Txt">感谢您的评论;7天内，您可以删除该评论，但删除后不允许重新评论。</view>
+		</block>
+
+		<block wx:if='{{data.audit_status==2}}'>
+			<!-- <image src="/imgs/Card_stop.png"></image> -->
+			<view class="Txt">您的评论未能发布，原因如下：</view>
+			<text space='emsp' decode style="text-align: left;">{{data.reason}}</text>
+			<view class="txt">您可以重新上传并发布。</view>
+		</block>
+	</view>
+</view>
+
+<view class="fixed {{disable?'':'disable'}}" wx:if='{{data.audit_status!==0&&data.audit_status!==1&&data.audit_status!=2}}'>
+	<view class="lf" hover-class="hover" bindtap="save">保存</view>
+	<view class="rt" hover-class="hover" bindtap="submit">提交</view>
+</view>
+<view class="fixed {{disable?'':'disable'}}" wx:if='{{data.audit_status==2}}'>
+	<view class="lf" hover-class="hover" bindtap="save">保存</view>
+	<view class="rt" hover-class="hover" bindtap="submit">重新发布</view>
+	<!-- <view class="bg_btn" hover-class="hover" bindtap="submit">重新提交</view> -->
+</view>
+
+<view class="fixed {{disable?'':'disable'}}" wx:if='{{data.audit_status==1}}'>
+	<view class="bg_btn" hover-class="hover" bindtap="delect" wx:if='{{data.status==3}}'>已删除</view>
+	<view class="bg_btn" hover-class="hover" bindtap="delect" wx:else>删除</view>
+</view>

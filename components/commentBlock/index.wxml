@@ -1,6 +1,6 @@
 	<wxs module="filter" src="../../utils/filter.wxs"></wxs>
 	<block wx:if='{{list.length}}'>
-		<view class="list" wx:for='{{list}}'>
+		<view class="list" wx:for='{{list}}' wx:key='index'>
 			<view class="block">
 				<view class="li between">
 					<view class="lf flex">
@@ -40,7 +40,7 @@
 				</view>
 				<view class="txt">{{item.content}}</view>
 				<view class="imgs between">
-					<view wx:for='{{item.pics}}' wx:for-item="it" bindtap="lookImg" data-i="{{index}}" wx:for-index="idx" data-current="{{idx}}">
+					<view wx:for='{{item.pics}}' wx:for-item="it" bindtap="lookImg" data-i="{{index}}" wx:for-index="idx" data-current="{{idx}}" wx:key='idx'>
 						<block wx:if='{{it.type==0}}'>
 							<van-image custom-class='img' width="100%" src="{{url+it.path}}" radius='5rpx' use-loading-slot lazy-load fit="aspectFill">
 								<van-loading slot="loading" type="spinner" size="20" vertical />
