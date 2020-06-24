@@ -183,6 +183,7 @@ Page({
       medias,
       fileList
     })
+    this.verify();
   },
   call() {
     wx.makePhoneCall({

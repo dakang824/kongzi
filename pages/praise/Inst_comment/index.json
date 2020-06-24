@@ -4,5 +4,6 @@
     "course-top": "../../components/courseTop/index",
     "van-sticky": "../../dist/sticky/index"
   },
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "口碑详情"
 }

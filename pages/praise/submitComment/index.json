@@ -3,5 +3,6 @@
     "van-uploader": "../../dist/uploader-new/index",
     "imageViewer": "../../components/imageViewer/index"
   },
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "评论有奖"
 }

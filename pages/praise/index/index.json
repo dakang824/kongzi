@@ -2,8 +2,9 @@
   "usingComponents": {
     "search": "../../dist/search/index",
     "van-tab": "../../dist/tab/index",
-    "van-tabs": "../../dist/tabs/index"
+    "van-tabs": "../../dist/tabs/index",
+    "w_loadingData": "../../components/w_loadingData/w_loadingData"
   },
-  "navigationBarTitleText": "口碑",
+  "navigationBarTitleText": "教育口碑",
   "enablePullDownRefresh": true
 }

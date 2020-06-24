@@ -19,11 +19,12 @@ Page({
   changAppends(e) {
     let pages = getCurrentPages(),prepage = pages[pages.length - 2];
     let {active,list}=prepage.data,{ind}=this.data;
+    list[active].data[ind].appends.unshift(e.detail);
     prepage.setData({
-      [`list[${active}].data[${ind}].appends`]:list[active].data[ind].appends.concat(e.detail)
+      [`list[${active}].data[${ind}].appends`]:list[active].data[ind].appends
     });
     this.setData({
-      [`list[0].appends`]: this.data.list[0].appends.concat(e.detail)
+      [`list[0].appends`]: list[active].data[ind].appends
     })
   },
   changeLike(e) {

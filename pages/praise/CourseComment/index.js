@@ -11,7 +11,7 @@ Page({
     tags: [{
       name: '有图',
       value: '0',
-      active:true,
+      active:false,
     }, {
       name: '有视频',
       value: '0',
@@ -76,6 +76,12 @@ Page({
     let {i}=e.currentTarget.dataset,t=i.split('_');
     
     list[t[0]].tags[t[1]].active=!list[t[0]].tags[t[1]].active;
+
+    // for(let [key, value] of list[t[0]].tags.entries()){
+    //   if(t[1]!=key){
+    //     list[t[0]].tags[key].active=false;
+    //   }
+    // }
     this.setData({
       list,
     })
@@ -114,7 +120,8 @@ Page({
       list,
       course_id,
       page_size,
-      active
+      active,
+      url
     } = this.data;
     http.postReq("/community/industry/", {
       cmd: 'getCardCourseReview',
@@ -128,6 +135,7 @@ Page({
         courseInfo,
         reviews
       } = res;
+      courseInfo.logo_path=url+courseInfo.cover_image;
       this.setData({
         courseInfo,
         [`list[0].value`]: courseInfo.review_count,

@@ -67,22 +67,26 @@ Page({
     card: [{
         img: 'middle_card.png',
         url: '/pages/selCourseCard/selCourseCard',
-        name: '选课卡'
+        name: '选课卡',
+        show:true,
       },
       {
         img: 'middle_video.png',
         url: '/pages/tabBar/smallVideo/index',
-        name: '小视频'
+        name: '小视频',
+        show:false,
       },
       {
         img: 'middle_childUse.png',
         url: '/pages/shopMall/mother/baby',
-        name: '儿童用品'
+        name: '儿童用品',
+        show:true,
       },
       {
         img: 'middle_praise.png',
         url: '/pages/praise/index/index',
-        name: '教育口碑'
+        name: '教育口碑',
+        show:true,
       },
 
       
@@ -381,6 +385,10 @@ Page({
           province: wx.getStorageSync('address').ad_info.province,
         })
       })
+
+      this.setData({
+        [`card[1].show`]:getApp().globalData.setting.showVideo2
+      }) 
     })
   },
   getChildData() {

@@ -69,13 +69,13 @@
         <text class='red'>{{dataList.award_info.lefts==""?"0":dataList.award_info.lefts}}件</text>
       </view>
       <view wx:if="{{dataList.award_info.draw_type==1&&dataList.award_info.draw_now==0}}">
-        <text class='t'>开奖时间：</text>19:00前集齐，当天19:30开奖；之后集齐，第二天开奖
+        <text class='t'>开奖时间：</text>20:00前集齐，当天20:30开奖；之后集齐，第二天开奖
       </view>
       <view wx:if="{{dataList.award_info.draw_type==1&&dataList.award_info.draw_now==1}}">
         <text class='t'>开奖时间：</text>集齐立即开奖
       </view>
       <view wx:if="{{dataList.award_info.draw_type==2&&dataList.award_info.draw_now==0}}">
-        <text class='t'>开奖时间：</text>每周六19:00前集齐，周六19:30开奖；之后集齐，第二周周六19:30开奖
+        <text class='t'>开奖时间：</text>每周六20:00前集齐，周六20:30开奖；之后集齐，第二周周六20:30开奖
       </view>
       <view wx:if="{{dataList.award_info.draw_type==2&&dataList.award_info.draw_now==1}}">
         <text class='t'>开奖时间：</text>集齐立即开奖

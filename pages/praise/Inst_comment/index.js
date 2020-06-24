@@ -25,7 +25,7 @@ Page({
     tags: [{
       name: '有图',
       value: '0',
-      active: true,
+      active: false,
     }, {
       name: '有视频',
       value: '0',
@@ -117,6 +117,12 @@ Page({
     } = e.currentTarget.dataset, t = i.split('_');
 
     list[t[0]].tags[t[1]].active = !list[t[0]].tags[t[1]].active;
+
+    // for(let [key, value] of list[t[0]].tags.entries()){
+    //   if(t[1]!=key){
+    //     list[t[0]].tags[key].active=false;
+    //   }
+    // }
     this.setData({
       list,
     })
@@ -195,6 +201,11 @@ Page({
     list[active].tags[2].value=review_counts.append_count,
     list[active].tags[3].value=review_counts.like_count,
     list[active].tags[4].value=review_counts.dislike_count,
+
+    list[0].value=review_counts.good_count+review_counts.medium_count+review_counts.bad_count,
+    list[1].value=review_counts.good_count,
+    list[2].value=review_counts.medium_count,
+    list[3].value=review_counts.bad_count
     this.setData({
       list
     });
@@ -207,7 +218,8 @@ Page({
       active,
       tagsActive,
       page_size,
-      stars
+      stars,
+      url
     } = this.data, d = {
       cmd: 'getCardInstDetail',
       id,
@@ -236,7 +248,7 @@ Page({
       stars[3].value=inst_info.ser_score;
 
       inst_info.online=inst_info.type;
-      
+      inst_info.logo_path=url+inst_info.logo_path;
       this.setData({
         courseInfo: inst_info,
         'stars[2].name':inst_info.online==0?'上课体验':'上课环境',

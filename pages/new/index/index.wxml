@@ -80,7 +80,7 @@
 					</navigator>
 				</view>
 				<view class='between txt' style="{{showbox?'':'justify-content:flex-end;'}}display:flex;">
-					<text wx:if="{{showbox}}">天天抽奖、好运不断，每晚锁定七点半</text>
+					<text wx:if="{{showbox}}">天天抽奖、好运不断，每晚锁定八点半</text>
 					<navigator url='/pages/new/historyPrize/historyPrize' hover-class='hover'>历史中奖
 						<van-icon name="arrow" custom-class='arr_lf' />
 					</navigator>
@@ -168,14 +168,14 @@
 		<!-- <view class='tabs '> -->
 		<view class="middlebox marTop">
 			<view class="itembox flexbox">
-				<van-transition custom-class="block" name='{{index==0||index==1?"slide-left":index==2||index==3?"slide-right":"slide-down"}}' wx:for='{{card}}' wx:key='{{index}}' duration="{{ { enter: 800 } }}">
+				<block wx:if='{{item.show}}' wx:for='{{card}}' wx:key='{{index}}'>
 					<navigator class="item fromId" hover-class='none' url='{{item.url}}'>
 						<view class="img flexbox">
-							<image src='/imgs/{{item.img}}' style="width:76rpx;height:76rpx;" mode="widthFix"/>
+							<image src='/imgs/{{item.img}}' style="width:76rpx;height:76rpx;" mode="widthFix" />
 						</view>
 						<view class='title'>{{item.name}}</view>
 					</navigator>
-				</van-transition>
+				</block>
 			</view>
 		</view>
 	</block>
@@ -306,22 +306,23 @@
 	</view>
 </view>
 
-<view class="mask" wx:if="{{isNewUser}}" bindtap="closeNewUser"></view>
-<view class="newuser" wx:if="{{isNewUser}}">
-	<view class="img">
-		<image src="{{imgUrl}}newUser.png" style="width:298rpx;height:278rpx;" />
+<van-popup show="{{ isNewUser }}" custom-class="popup1" custom-style='border-radius: 20rpx;' bind:close='closeNewUser'>
+	<view class="newuser">
+		<view class="img">
+			<image src="{{imgUrl}}newUser.png" style="width:298rpx;height:278rpx;" />
+		</view>
+		<view class="row2">恭喜您获得
+			<text class="num">{{ticket_count}}</text>张抽奖券</view>
+		<view class="row3">每使用1张抽奖券，您会获得1个随机现金红包。分享给朋友，会获得更多抽奖券。</view>
+		<view class="row4">
+			<navigator url='/pages/new/waitPrizes/waitPrizes' class="left">去抽奖</navigator>
+			<navigator url='/pages/new/getTicket/getTicket?type=9&name=分享获券任务&intro_path=data/plat/ticketTasks/8.png' class="right">去分享</navigator>
+		</view>
+		<view class="close" bindtap="closeNewUser">
+			<image src="/imgs/close.png" style="width:30rpx;height:30rpx;margin:30rpx -30rpx 0 0;" />
+		</view>
 	</view>
-	<view class="row2">恭喜您获得
-		<text class="num">{{ticket_count}}</text>张抽奖券</view>
-	<view class="row3">每使用1张抽奖券，您会获得1个随机现金红包。分享给朋友，会获得更多抽奖券。</view>
-	<view class="row4">
-		<navigator url='/pages/new/waitPrizes/waitPrizes' class="left">去抽奖</navigator>
-		<navigator url='/pages/new/getTicket/getTicket?type=9&name=分享获券任务&intro_path=data/plat/ticketTasks/8.png' class="right">去分享</navigator>
-	</view>
-	<view class="close" bindtap="closeNewUser">
-		<image src="/imgs/close.png" style="width:30rpx;height:30rpx;margin:30rpx -30rpx 0 0;" />
-	</view>
-</view>
+</van-popup>
 
 <van-popup show="{{ authoaddress }}" custom-class="popup1">
 	<view class='layer'>

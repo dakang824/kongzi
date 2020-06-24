@@ -167,5 +167,8 @@ page {
   background-color: transparent!important;
 }
 .min-height{
-  min-height: calc(100vh - 250rpx);
+  min-height: calc(100vh - 150rpx);
 }
+/* .van-tabs__content {
+  min-height: calc(100vh - 176rpx);
+} */

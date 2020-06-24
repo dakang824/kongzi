@@ -187,6 +187,7 @@
     }
   },
   "usingComponents": {
+    "van-sticky": "dist/sticky/index",
     "van-rate": "dist/rate/index",
     "van-picker": "dist/picker/index",
     "van-icon": "dist/icon/index",

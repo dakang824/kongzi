@@ -25,7 +25,7 @@ Component({
     imgs: [],
     current: 0,
     content:'',
-    keyBoardHeight: ''
+    keyBoardHeight:''
   },
   methods: {
     focus(e){

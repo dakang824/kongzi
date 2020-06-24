@@ -13,7 +13,7 @@ Component({
     showShare:{
       type:Boolean,
       value:false
-    }
+    },
   },
   data: {
     url: getApp().globalData.serverUrl,

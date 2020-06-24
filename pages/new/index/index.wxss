@@ -519,7 +519,7 @@ swiper {
   background: rgba(255, 255, 255, 1);
   border-radius: 20px;
   position: fixed;
-  z-index: 20;
+  z-index: 100;
   left: 50%;
   top: 200rpx;
   transform: translate(-50%);
@@ -704,7 +704,7 @@ swiper {
   background: rgba(255, 255, 255, 1);
   border-radius: 20rpx;
   position: fixed;
-  z-index: 20;
+  z-index: 100;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -806,14 +806,9 @@ swiper {
 
 .newuser {
   width: 650rpx;
-  height: 580rpx;
   background: rgba(255, 255, 255, 1);
-  position: fixed;
-  z-index: 100;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   border-radius: 20rpx;
+  padding: 150rpx 0rpx 60rpx;
 }
 
 .newuser .img {

@@ -1,4 +1,8 @@
 {
-  "usingComponents": {},
-  "enablePullDownRefresh": true
+  "usingComponents": {
+    "w_childList": "../../../components/w_childList/w_childList",
+    "w_loadingData": "../../../components/w_loadingData/w_loadingData"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "儿童用品"
 }

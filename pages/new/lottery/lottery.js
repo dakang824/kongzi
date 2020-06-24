@@ -69,7 +69,7 @@ Page({
     return (year + "-" + month + "-" + date)
   },
   onLoad(options) {
-    this.countDown(this.getNowTime().replace(/-/g, "/") + ' 19:30:00');
+    this.countDown(this.getNowTime().replace(/-/g, "/") + ' 20:30:00');
     this.getTodayDate();
     this.getDrawTypes();
     Util.getElementTopHeight({
@@ -120,7 +120,7 @@ Page({
         seconds: s < 10 ? '0' + s : s
       }
     });
-    (h == 0 && m == 0 && s == 0) ? this.countDown(this.getNowTime(t).replace(/-/g, "/") + ' 19:30:00'): '';
+    (h == 0 && m == 0 && s == 0) ? this.countDown(this.getNowTime(t).replace(/-/g, "/") + ' 20:30:00'): '';
   },
   getTodayDate() {
     let that = this;

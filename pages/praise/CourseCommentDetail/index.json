@@ -2,5 +2,6 @@
   "usingComponents": {
     "comment-block": "../../components/commentBlock/index",
     "course-top": "../../components/courseTop/index"
-  }
+  },
+  "navigationBarTitleText": "评论详情"
 }

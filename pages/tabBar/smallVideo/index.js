@@ -223,7 +223,8 @@ Page({
         isShare: 'b' in o,
       });
     }
-    this.setData({showPage:app.globalData.setting.showVideo2})
+    console.log(app.globalData.setting.showVideo2);
+    this.setData({showPage:true||app.globalData.setting.showVideo2})
     let first = true;
     this.loadData(first);
   },

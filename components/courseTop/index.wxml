@@ -1,7 +1,7 @@
 <view class="box">
 	<view class="head between van-hairline--bottom">
 		<view class="lf">
-			<van-image custom-class='shop_img' width="100%" src="{{url+(courseInfo.cover_image||courseInfo.logo_path)}}" radius='5rpx' use-loading-slot fit="aspectFit">
+			<van-image custom-class='shop_img' width="100%" src="{{courseInfo.logo_path}}" radius='5rpx' use-loading-slot fit="aspectFit">
 				<van-loading slot="loading" type="spinner" size="20" vertical />
 			</van-image>
 		</view>

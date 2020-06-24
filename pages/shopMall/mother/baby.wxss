@@ -1,1 +1,8 @@
 @import "/pages/shopMall/local/local.wxss";
+
+.box {
+  margin: 0 30rpx;
+}
+.serachbox,.itembox{
+  position: inherit;
+}

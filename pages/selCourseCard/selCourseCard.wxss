@@ -23,6 +23,9 @@ page {
   font-size: 32rpx;
   border-radius: 15rpx;
 }
+.footer button{
+  padding: 0 20rpx;
+}
 
 .card .title {
   background: #FF2D58;

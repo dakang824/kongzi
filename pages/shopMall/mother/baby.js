@@ -14,7 +14,8 @@ Page({
     postData: {
       page_no: 1,
       condition: '', //搜索内容
-      orderby: '1' //1:综合  2：热度升  3：热度降  4：最新升  5：最新降 6：价格升  7：价格降
+      orderby: '1', //1:综合  2：热度升  3：热度降  4：最新升  5：最新降 6：价格升  7：价格降
+      noData:true,
     }
   },
   onLoad() {
@@ -88,7 +89,8 @@ Page({
         // }
         this.setData({
           dataList: this.data.dataList.concat(res.data.records),
-          'postData.page_no': this.data.postData.page_no + 1
+          'postData.page_no': this.data.postData.page_no + 1,
+          'postData.noData': res.data.records.length==10
         });
       } else {
         wx.showToast({

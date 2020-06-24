@@ -8,7 +8,7 @@
 							<van-loading slot="loading" type="spinner" size="20" vertical />
 						</van-image>
 						<view class="info">
-							<view class="nickname">{{item.nickname||'匿名'}}</view>
+							<text class="nickname" decode space='ensp'>{{filter.decode(item.nickname)||'匿名'}}</text>
 							<text class="time">{{filter.sliceMunite(item.create_time)}}</text>
 						</view>
 					</view>
@@ -38,11 +38,11 @@
 					<text>环境：{{item.env_score}}分</text>
 					<text>服务：{{item.ser_score}}分</text>
 				</view>
-				<view class="txt">{{item.content}}</view>
+				<text class="txt" decode space='ensp'>{{item.content}}</text>
 				<view class="imgs between">
 					<view wx:for='{{item.pics}}' wx:for-item="it" bindtap="lookImg" data-i="{{index}}" wx:for-index="idx" data-current="{{idx}}" wx:key='idx'>
 						<block wx:if='{{it.type==0}}'>
-							<van-image custom-class='img' width="100%" src="{{url+it.path}}" radius='5rpx' use-loading-slot lazy-load fit="aspectFill">
+							<van-image custom-class='img' width="100%" src="{{url+it.path}}" radius='5rpx' use-loading-slot lazy-load fit="cover">
 								<van-loading slot="loading" type="spinner" size="20" vertical />
 							</van-image>
 						</block>
@@ -69,9 +69,9 @@
 									<van-loading slot="loading" type="spinner" size="20" vertical />
 								</van-image>
 								<view class="info">
-									<view class="nickname">{{it.nickname||'匿名'}}</view>
+									<view class="nickname">{{filter.decode(it.nickname)||'匿名'}}</view>
 									<text class="time">{{it.timeFrom}}</text>
-									<view class="txt">{{it.content}}</view>
+									<text class="txt" decode space='ensp'>{{it.content}}</text>
 								</view>
 							</view>
 						</view>
@@ -93,15 +93,17 @@
 	<imageViewer show="{{show}}" imgs="{{imgs}}" current='{{current}}'></imageViewer>
 
 	<view class="fixed between" wx:if='{{isDetail}}'>
-		<input class="van-field__input" bindfocus="focus" bindblur="blur" value='{{content}}' placeholder="我说两句.." bindconfirm='confirm' bindinput="onChange" placeholder-class='placeholder' confirm-type='done' style="width:{{keyBoardHeight?'100%':'300rpx'}};"></input>
-		<!-- <van-field value="{{ content }}" placeholder="" border="{{ false }}" bind:change="" bind:confirm=' /> -->
-		<view class="flex" wx:if='{{!keyBoardHeight}}' style="flex:1;margin-left:15rpx">
+		<view class="position" style="width:{{keyBoardHeight?'90%':'300rpx'}};">
+			<textarea fixed auto-height class="van-field__input" bindfocus="focus" bindblur="blur" value='{{content}}' placeholder="我说两句.." bindinput="onChange" show-confirm-bar='{{false}}' placeholder-class='placeholder' confirm-type='done'></textarea>
+		</view>
+
+		<view class="flex" wx:if='{{!keyBoardHeight}}' style="margin-left:15rpx">
 			<van-icon name="good-job" color="{{list[0].my_like_count>0?'#FB2133':'#DBDBDB'}}" size="20px" bind:click='like' data-i='{{list[0]}}' data-ind='0' />
 			<van-icon name="good-job" color="{{list[0].my_dislike_count>0?'#FB2133':'#DBDBDB'}}" custom-class='rotate' size="20px" bind:click='dislike' data-i='{{list[0]}}' data-ind='0' />
 			<button class="shareBtn between" open-type="share">
 				<image src="/imgs/share1.png" class="share" mode="widthFix" /> 分享好友</button>
 		</view>
-		<view wx:else class="btn_submit"  bindtap="confirm">
+		<view wx:else class="btn_submit" bindtap="confirm">
 			提交
 		</view>
 	</view>

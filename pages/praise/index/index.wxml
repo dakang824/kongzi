@@ -58,6 +58,7 @@
  					<view>差评({{item.bad_count}})</view>
  				</view>
  			</navigator>
+			 <w_loadingData noData='{{!item.noData}}' />
  		</block>
  		<block wx:else>
  			<yk-empty isShow text='暂无数据' />

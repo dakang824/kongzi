@@ -201,7 +201,7 @@ Page({
       sc_active: i,
       ['postData.order_type']: postData.order_type == screenData[i].value[0] ? screenData[i].value[1] : screenData[i].value[0]
     });
-    this.getData();
+    this.onSearch();
   },
   showLayer() {
     this.setData({
@@ -240,7 +240,7 @@ Page({
     this.setData({
       show: false
     })
-    this.getData();
+    this.onSearch();
   },
   getData() {
     Loading.start();
@@ -283,6 +283,9 @@ Page({
       [`list[${active}].show`]:false,
     })
     this.getData();
+  },
+  onReachBottom(){
+    this.data.list[this.data.active].noData ? this.getData() : '';
   },
   onShareAppMessage() {
 

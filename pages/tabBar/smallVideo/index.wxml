@@ -3,7 +3,7 @@
 <van-dialog id="van-dialog" />
 <view style="top:{{globalData.Custom.top+(globalData.Custom.height/5)}}px" class="box_view">
 	<van-icon name="arrow-left" color='#fff' size="34rpx" bind:click='back' />
-	<view class="title">孔紫小视频</view>
+	<view class="title">小视频</view>
 	<view class="between">
 		<view class="li {{typeInd==index?'active':''}}" wx:for='{{type}}' wx:key="index" bindtap="typeActive" data-i="{{index}}">{{item}}</view>
 	</view>

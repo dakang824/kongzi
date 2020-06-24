@@ -11,7 +11,7 @@ page {
   font-size: 36rpx;
   color: #151515;
   font-weight: bold;
-  width: 560rpx;
+  width: 440rpx;
 }
 .header>.between{
   align-items: flex-start;
@@ -36,18 +36,23 @@ page {
   background: #fff;
   margin: 0 30rpx;
   border-radius: 20rpx;
-  padding: 40rpx 40rpx;
+  padding: 40rpx 30rpx;
   margin-bottom: 28rpx;
 }
 .box .flex .rt{
   font-size: 26rpx;
   margin-left: 16rpx;
   margin-right: 16rpx;
+  min-width: 44rpx;
+}
+.van-tag{
+  min-width: 42rpx;
 }
 .box .flex text {
-  padding-right: 60rpx;
+  padding-right: 35rpx;
   font-weight: bold;
   font-size: 30rpx;
+  min-width: 100rpx;
 }
 
 .box .between {
