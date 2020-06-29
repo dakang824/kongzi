@@ -90,10 +90,10 @@ Page({
       value: ''
     }, {
       name: '线上',
-      value: 1
+      value: 0
     }, {
       name: '线下',
-      value: 0
+      value: 1
     }, {
       name: '线上+线下',
       value: 2
@@ -134,10 +134,10 @@ Page({
       order_type: 1, //1:综合升  2：综合降  3：评分升  4：评分降  5：好评升  6：好评降  7：价格升  8：价格降
       online: "", //0 线下，1 线上,2 线下 + 线上
       age: "",
-      review_has_pic: "", //1 有图  未选中时传递‘’
-      revoew_has_video: "", //1 有视频  未选中时传递‘’
-      review_no_dislike: "", //1无差评 未选中时传递‘’
-      try_count: "", //1 体验课  未选中时传递‘’
+      review_has_pic: '', //1 有图  未选中时传递‘’
+      revoew_has_video: '', //1 有视频  未选中时传递‘’
+      review_no_dislike: '', //1无差评 未选中时传递‘’
+      try_count: '', //1 体验课  未选中时传递‘’
       formal_count: '', //1正式课  未选中时传递‘’
       page_size: 10
     }
@@ -169,11 +169,11 @@ Page({
     comment_attr[i].active = a;
     this.setData({
       comment_attr,
-      'postData.review_has_pic': comment_attr[0].active ? 1 : 0,
-      'postData.revoew_has_video': comment_attr[1].active ? 1 : 0,
-      'postData.review_no_dislike': comment_attr[2].active ? 1 : 0,
-      'postData.try_count': comment_attr[3].active ? 1 : 0,
-      'postData.formal_count': comment_attr[4].active ? 1 : 0,
+      'postData.review_has_pic': comment_attr[0].active ? 1 : '',
+      'postData.revoew_has_video': comment_attr[1].active ? 1 : '',
+      'postData.review_no_dislike': comment_attr[2].active ? 1 : '',
+      'postData.try_count': comment_attr[3].active ? 1 : '',
+      'postData.formal_count': comment_attr[4].active ? 1 : '',
     })
   },
   ageChange(e) {
@@ -205,7 +205,7 @@ Page({
   },
   showLayer() {
     this.setData({
-      show: true
+      show: !this.data.show
     })
   },
   TabChange(e) {
@@ -257,7 +257,11 @@ Page({
       let data = res.data.records;
       if (data.length) {
         this.setData({
-          [`list[${active}].data`]: list[active].data.concat(data),
+          [`list[${active}].data`]:[...list[active].data,...data.map(item=>{
+            item.min_fee=parseInt(item.min_fee).toFixed(1)+'k';
+            item.max_fee=parseInt(item.max_fee).toFixed(1)+'k';
+            return item;
+          })],
           [`list[${active}].page_no`]: list[active].page_no + 1,
         })
       }

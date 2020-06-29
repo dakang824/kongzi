@@ -1,9 +1,11 @@
  <loading-top id="loading" />
+ <wxs module="filter" src="../../../utils/filter.wxs"></wxs>
  <view class='headTop' catchtouchmove="true">
  	<van-search value="{{ postData.condition }}" background='#FA2335' placeholder="搜索机构名称" use-action-slot bind:change="onChange" bind:search='onSearch'>
  		<view slot="action" bind:tap="onClick" class="right between" bindtap="showLayer">
  			<image src='/imgs/screen.png' class="img" />筛选</view>
  	</van-search>
+ 	<van-icon name="play" color="#fff" custom-class='transform-270 vanIcon' size='25rpx' wx:if='{{show}}'/>
  </view>
  <van-tabs active="{{ active }}" bind:change="TabChange" color='#FA2335' z-index='9999' sticky swipeable>
  	<van-tab title='{{item.name}}' wx:for='{{list}}' wx:key='*this'>
@@ -46,7 +48,7 @@
  								<text>{{item.score}}分</text>
  							</view>
  							<view class="money">
- 								{{item.min_fee}}-{{item.max_fee}}元/年
+ 								{{item.min_fee!=="NaNk"?item.min_fee:''}}-{{item.max_fee!=="NaNk"?item.max_fee:''}}元/年
  							</view>
  						</view>
  					</view>
@@ -58,7 +60,7 @@
  					<view>差评({{item.bad_count}})</view>
  				</view>
  			</navigator>
-			 <w_loadingData noData='{{!item.noData}}' />
+ 			<w_loadingData noData='{{!item.noData}}' />
  		</block>
  		<block wx:else>
  			<yk-empty isShow text='暂无数据' />
@@ -66,7 +68,7 @@
  	</view>
  </template>
  <view catchtouchmove="true">
- 	<van-popup show="{{ show }}" bind:close="onClose" position='bottom' z-index='99999' overlay-style='top:44px;z-index:99999' custom-style='top:44px'>
+ 	<van-popup show="{{ show }}" bind:close="onClose" position='top' z-index='99999' overlay-style='top:44px;z-index:99999' custom-style='top:44px' bind:close="showLayer">
  		<view class="layer">
  			<view class="title">学龄范围</view>
  			<view class="btns between">

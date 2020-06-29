@@ -31,6 +31,7 @@ Component({
   methods: {
     onClose(e) {
       this.setData({show:false})
+      this.triggerEvent('closeView');
     },
     onChange(e){
       this.setData({cur:e.detail.current})

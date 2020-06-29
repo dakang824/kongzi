@@ -1,7 +1,7 @@
 	<loading-top id="loading" />
 	<view class="box">
 		<view class="van-hairline--bottom">
-			<course-top courseInfo='{{courseInfo}}' imgUrl='{{imgUrl}}' />
+			<course-top courseInfo='{{courseInfo}}' imgUrl='{{imgUrl}}' showShare></course-top>
 		</view>
 		<van-sticky>
 			<view class="between tab van-hairline--bottom">
@@ -12,7 +12,7 @@
 			</view>
 
 			<block wx:for='{{list}}'>
-				<view class="tags"  wx:if='{{active==index}}'>
+				<view class="tags" wx:if='{{active==index}}'>
 					<view wx:for='{{item.tags}}' catchtap="tagsClick" data-i="{{index+'_'+idx}}" wx:for-item="it" wx:for-index="idx">
 						<van-tag type="primary" color='{{it.active?"#FFE9EE":"#F3F3F3"}}' text-color='{{it.active?"#FF2E58":"#838383"}}'>{{it.name}}({{it.value}})</van-tag>
 					</view>

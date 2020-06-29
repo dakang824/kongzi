@@ -1,4 +1,4 @@
-<imageViewer show="{{showImg}}" imgs="{{imgs}}" current='{{current}}'></imageViewer>
+<imageViewer show="{{showImg}}" imgs="{{imgs}}" current='{{current}}' bind:closeView='closeView'></imageViewer>
 <van-dialog id="van-dialog" />
 <view class="header">
 	<view class="between">
@@ -18,8 +18,8 @@
 			<van-tag round type="primary" color='{{postData[item.value]>6?"#FF2C56":postData[item.value]>=5&&postData[item.value]<=6?"#9A36FC":"#959595"}}'>{{postData[item.value]>6?'好评':postData[item.value]>=5&&postData[item.value]<=6?'中评':'差评'}}</van-tag>
 		</view>
 	</view>
-	<view class="van-hairline--top">
-		<van-field bind:input='input' type='text' value="{{ postData.content }}" placeholder="请在此填写您的体验评论(最少20个字，最多200个字)" placeholder-style='font-size:26rpx' border="{{ false }}" readonly='{{data.audit_status==0||data.audit_status==1}}' />
+	<view class="van-hairline--top" wx:if='{{!showImg}}'>
+		<van-field bind:input='input' autosize type='textarea' value="{{ postData.content }}" placeholder="请在此填写您的体验评论(最少20个字，最多200个字)" placeholder-style='font-size:26rpx' border="{{ false }}" readonly='{{data.audit_status==0||data.audit_status==1}}' />
 	</view>
 </view>
 <view class="box padBottom">

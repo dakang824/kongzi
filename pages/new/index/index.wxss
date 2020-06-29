@@ -1035,7 +1035,8 @@ swiper {
   font-size: 32rpx;
   text-align: center;
   box-sizing: border-box;
-  flex: .2;
+  margin-right: 50rpx;
+  /* flex: .2; */
 }
 
 .tabs .tab .active {
@@ -1043,7 +1044,7 @@ swiper {
   font-size: 31rpx;
   color: #333;
   margin-top: -2rpx;
-  text-align: left;
+  text-align: center;
 }
 
 .tabs .box {
@@ -1063,7 +1064,6 @@ swiper {
   margin-top: 10rpx;
   bottom: -1rpx;
   border-radius: 25rpx;
-  margin-left: 30rpx;
 }
 
 .tabs .nodatabox {

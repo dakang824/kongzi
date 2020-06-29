@@ -32,6 +32,9 @@ Page({
       value: 'ser_score',
     }]
   },
+  closeView(){
+    this.setData({showImg:false})
+  },
   preview(e){
     let imgs=[...this.data.postData.medias];
     for(let key of imgs){

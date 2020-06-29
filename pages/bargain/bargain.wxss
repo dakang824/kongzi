@@ -1062,6 +1062,7 @@ page {
   color: #68b2ff;
   width: 170rpx;
   font-weight: bold;
+  min-width: 74px;
 }
 
 .member_list .course_into {

@@ -33,6 +33,9 @@ Page({
       value: 'ser_score',
     }]
   },
+  closeView(){
+    this.setData({showImg:false})
+  },
   delect() {
     Dialog.confirm({
       title: '温馨提示',

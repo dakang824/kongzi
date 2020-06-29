@@ -43,7 +43,7 @@
 		</view>
 		<block wx:if='{{hasCard}}'>
 			<block wx:if='{{cards.select_course.length}}'>
-				<view class="block" wx:for='{{cards.select_course}}'>
+				<view class="block" wx:for='{{cards.select_course}}' wx:key='index'>
 					<image src="/imgs/have_gift.png" class="have_gift" wx:if='{{item.enable_gift}}' bindtap="showGift" data-img="{{item.gift_path}}" mode="widthFix"></image>
 					<view class="head between" style="margin-bottom: {{item.address?'35rpx':'0'}};">
 						<van-image width="93rpx" height='93rpx' src="{{url+item.cover_image}}" radius='7rpx' use-loading-slot lazy-load class="img" fit='contain'>

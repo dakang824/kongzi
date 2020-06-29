@@ -5,8 +5,15 @@ page {
 .headTop {
   background: #FA2335;
   z-index: 999999;
+  position: relative;
 }
 
+.headTop .vanIcon {
+  position: absolute;
+  bottom: -8rpx;
+  right: 50rpx;
+  top: inherit; 
+}
 .headTop .right {
   color: #fff;
 }
@@ -121,15 +128,18 @@ page {
   color: #333333;
   font-size: 28rpx;
   font-weight: bold;
-  margin:20rpx 0 30rpx;
+  margin: 20rpx 0 30rpx;
 }
-.layer .btns{
+
+.layer .btns {
   flex-wrap: wrap;
 }
+
 .layer .btns .btn.active {
   color: #FF2C56;
   border-color: #FF2C56;
 }
+
 .layer .btns .btn {
   min-width: 80rpx;
   height: 50rpx;
@@ -143,32 +153,39 @@ page {
   color: #333;
   padding: 0 20rpx;
 }
-.layer .btns .width_25{
+
+.layer .btns .width_25 {
   min-width: 100rpx;
 }
-.layer .footer{
+
+.layer .footer {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   font-size: 32rpx;
 }
-.layer .footer button{
-  flex:.5;
+
+.layer .footer button {
+  flex: .5;
   color: #CACACA;
   border-radius: 0;
   background: #F6F6F6;
 }
-.layer .footer button.bg{
-  background:linear-gradient(90deg,rgba(255,90,144,1),rgba(255,44,86,1));
+
+.layer .footer button.bg {
+  background: linear-gradient(90deg, rgba(255, 90, 144, 1), rgba(255, 44, 86, 1));
   color: #fff;
 }
-.van-popup{
-  background-color: transparent!important;
+
+.van-popup {
+  background-color: transparent !important;
 }
-.min-height{
+
+.min-height {
   min-height: calc(100vh - 150rpx);
 }
+
 /* .van-tabs__content {
   min-height: calc(100vh - 176rpx);
 } */

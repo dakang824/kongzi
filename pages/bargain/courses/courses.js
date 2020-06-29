@@ -97,7 +97,7 @@ Page({
   },
   sign() {
     let that = this,
-      data = that.data.postData,order_limit=this.data.order_limit;
+      data = that.data.postData,order_limit=this.data.data.order_limit;
       let act_members = that.data.data.act_members,
         arr = [];
       for (let item of that.data.school) {
@@ -198,9 +198,9 @@ Page({
     http.postReq("/community/award/", {
       cmd: 'getOrderTicketTasks',
     }, res => {
-      res.tasks[1].each_tickets != 0 ? Dialog.alert({
+      res.tasks[0].each_tickets != 0 ? Dialog.alert({
         title: '温馨提示',
-        message: `恭喜您，获得${res.tasks[1].each_tickets}张抽奖券。赶快去抽奖吧！`,
+        message: `恭喜您，获得${res.tasks[0].each_tickets}张抽奖券。赶快去抽奖吧！`,
         confirmButtonText: '我知道了',
       }).then(() => {
         that.tip();

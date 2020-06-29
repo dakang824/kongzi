@@ -44,11 +44,12 @@ Page({
     newUser: false,
     messageList: [],
     showbox: true,
+
     holiday: false,
     dayList: [{
-      msg: "天天抽奖、好运不断，每晚锁定七点半"
+      msg: "天天抽奖、好运不断，每晚锁定八点半"
     }, {
-      msg: "天天抽奖、好运不断，每晚锁定七点半"
+      msg: "天天抽奖、好运不断，每晚锁定八点半"
     }],
     boxNum: 1,
     getActsNearby: {
@@ -86,7 +87,7 @@ Page({
         img: 'middle_praise.png',
         url: '/pages/praise/index/index',
         name: '教育口碑',
-        show:true,
+        show:false,
       },
 
       
@@ -385,9 +386,10 @@ Page({
           province: wx.getStorageSync('address').ad_info.province,
         })
       })
-
+      let {setting}=getApp().globalData;
       this.setData({
-        [`card[1].show`]:getApp().globalData.setting.showVideo2
+        [`card[1].show`]:setting.showVideo2,
+        [`card[3].show`]:setting.show_review
       }) 
     })
   },
@@ -509,6 +511,20 @@ Page({
     let login = this.data.login;
     Object.keys(login).length && login.status != 5 ? this.homePageInit() : '';
     wx.getStorageSync('b') === '' ? '' : wx.removeStorageSync('b');
+    //设置定时器  请求顶部抽奖消息
+    this.data.timer3=setInterval(function(){
+      http.postReq("/community/award/", {
+        cmd: "getjoinDrawMessages",
+      }, res => {
+        this.setData({
+          messageList: res.data,
+          showbox:false
+        })
+      })
+    },50000);
+  },
+  changeMessage(res){
+    //console.log(res);
   },
   onPullDownRefresh() {
     this.data.login.status == 5 ? '' : this.homePageInit();
@@ -550,6 +566,7 @@ Page({
   onHide() {
     clearInterval(this.data.timer1);
     clearTimeout(this.data.timer2);
+    clearInterval(this.data.timer3);
   },
   onUnload() {
     clearInterval(this.data.timer1);

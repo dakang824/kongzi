@@ -1,4 +1,7 @@
 Component({
+  options: {
+    multipleSlots: true 
+  },
   properties: {
     courseInfo:{
       type:Object

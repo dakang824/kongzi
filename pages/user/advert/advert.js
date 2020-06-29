@@ -7,7 +7,7 @@ Page({
     show: false,
     dataList: [],
     url: APP.globalData.serverUrl,
-    videoList: [],
+    // videoList: [],
     seconds: 3,
     timer: null,
     timer1: null, //3秒的倒计时
@@ -17,7 +17,6 @@ Page({
     left: null,
     top: null,
     noData: true,
-    indexCurrent: null,
     daojishi: 15,
     showFull: false,
     isFull: false, //是否是全屏模式
@@ -35,7 +34,6 @@ Page({
         this.setData({
           dataList: res.data,
           noData: !(res.data.length == 0),
-          videoList: this.data.videoList.concat(arr)
         })
         resolve(res.data);
       })
@@ -97,7 +95,7 @@ Page({
   },
   clickPlay(e) {
     let that = this;
-    videoContext = wx.createVideoContext('video' + that.data.currentIndex, this) //这里对应的视频id
+    videoContext = wx.createVideoContext('video' + this.data.currentIndex) //这里对应的视频id
     videoContext.requestFullScreen({
       direction: 0
     });
@@ -173,9 +171,8 @@ Page({
           show: false,
         })
       } else {
-        --that.data.daojishi;
         that.setData({
-          daojishi: that.data.daojishi
+          daojishi: that.data.daojishi-1
         })
       }
     }, 1000)
@@ -184,7 +181,7 @@ Page({
     })
   },
   Countdown() {
-    let that = this;
+    let that = this,{seconds}=this.data;
     let timer = setTimeout(function () {
       that.setData({
         num: that.data.num + 1
@@ -192,19 +189,18 @@ Page({
       if (that.data.num == that.data.randomNum) {
         that.setData({
           show: true,
-          left: that.randomX(0, 210),
-          top: that.randomY(0, 820)
+          left: that.randomNum(0, 210),
+          top: that.randomNum(0, 820)
         })
         let timer1 = setInterval(() => {
-          if (that.data.seconds == 0) {
+          if (seconds == 0) {
             clearInterval(that.data.timer);
             that.setData({
               show: false,
             })
           } else {
-            console.log(--that.data.seconds);
             that.setData({
-              seconds: that.data.seconds
+              seconds: seconds-1
             })
           }
         }, 1000)
@@ -248,7 +244,6 @@ Page({
           that.setData({
             dataList: that.data.dataList
           })
-
         }
       }
     })

@@ -88,8 +88,16 @@ Page({
     this.verify();
   },
   next() {
+    let {postData}=this.data;
+    if(postData.mobile.length!=11){
+      wx.showToast({
+        title: '请输入正确的手机号',
+        icon:'none'
+      })
+      return;
+    }
     wx.navigateTo({
-      url: `/pages/selCourseCard/CourseList/CourseList?d=${JSON.stringify(this.data.postData)}&code=${this.data.cards.code}`,
+      url: `/pages/selCourseCard/CourseList/CourseList?d=${JSON.stringify(postData)}&code=${this.data.cards.code}`,
     })
   },
   onChange(e) {

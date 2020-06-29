@@ -577,7 +577,10 @@ Page({
       that = this,
       {
         union_type,
-        pb_code
+        pb_code,
+        range,
+        distance,
+        showMsg
       } = this.data.data.act_info;
     if (pb_code == 1) {
       this.setData({
@@ -591,6 +594,15 @@ Page({
       })
       return;
     }
+    if(range<distance){
+      Dialog.alert({
+        title: '温馨提示',
+        message: showMsg,
+        zIndex: '999999'
+      }).then(() => {});
+      return;
+    }
+
     if (status == 0) {
       that.setData({
         'baoming.discount': that.data.data.act_info.shared_discount

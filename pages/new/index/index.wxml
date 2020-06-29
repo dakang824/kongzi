@@ -67,7 +67,7 @@
 					</van-transition> -->
 					<view class="model" wx:if="{{!showbox}}" style="{{messageList.length==0?'left:0rpx':''}}">
 						<swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="3000" bindchange="changeMessage">
-							<block wx:for="{{messageList.length==0?dayList:messageList}}">
+							<block wx:for="{{messageList.length==0?dayList:messageList}}" wx:key="index">
 								<swiper-item>
 									<view>{{item.msg}}</view>
 								</swiper-item>
@@ -106,8 +106,8 @@
 		<view class='swiper'>
 			<view hidden='{{!(btnActive==1)}}' class='swiper_box leftRadius'>
 				<swiper autoplay="{{true}}" duration="{{1000}}" circular bindchange='swiperChange'>
-					<swiper-item wx:for='{{awards_unDraw}}' wx:key="{{index}}" data-i='{{index}}'>
-						<view wx:for='{{item}}' wx:key="{{index}}">
+					<swiper-item wx:for='{{awards_unDraw}}' wx:key="index" data-i='{{index}}'>
+						<view wx:for='{{item}}' wx:key="index">
 							<navigator url='/pages/new/luckyDetail/luckyDetail?award_id={{item.award_id}}&tickets={{item.tickets}}&draw_id={{item.draw_id}}' class="box">
 								<view class='img big_img'>
 									<image src="{{serverUrl+item.icon_path}}" class="slide-image" mode="widthFix" />
@@ -122,14 +122,14 @@
 					</swiper-item>
 				</swiper>
 				<view class='dots dots_bottom'>
-					<view class='{{current==index?"active":""}}' wx:for='{{awards_unDraw}}' wx:key="{{index}}"></view>
+					<view class='{{current==index?"active":""}}' wx:for='{{awards_unDraw}}' wx:key="index"></view>
 				</view>
 			</view>
 			<view hidden='{{!(btnActive==2)}}'>
 				<block wx:if="{{awards_today.length}}">
 					<view class='swiper_box1'>
 						<swiper indicator-dots="{{true}}" display-multiple-items="1" autoplay="{{true}}" interval="{{5000}}" duration="{{1000}}" indicator-active-color='#FF2C56' indicator-color='rgba(255,44,86,.3)' circular easing-function='easeOutCubic'>
-							<swiper-item class='box_pos' wx:for='{{awards_today}}' wx:key="{{index}}">
+							<swiper-item class='box_pos' wx:for='{{awards_today}}' wx:key="index">
 								<navigator url='/pages/new/luckyDetail/luckyDetail?award_id={{item.award_id}}&tickets={{item.tickets}}&draw_id={{item.draw_id}}' class='box1'>
 									<view class='tit vCenter' wx:if="{{item.status!=2}}">
 										<view style='padding-right:10rpx;'>距离开奖: </view>
@@ -168,7 +168,7 @@
 		<!-- <view class='tabs '> -->
 		<view class="middlebox marTop">
 			<view class="itembox flexbox">
-				<block wx:if='{{item.show}}' wx:for='{{card}}' wx:key='{{index}}'>
+				<block wx:if='{{item.show}}' wx:for='{{card}}' wx:key='index'>
 					<navigator class="item fromId" hover-class='none' url='{{item.url}}'>
 						<view class="img flexbox">
 							<image src='/imgs/{{item.img}}' style="width:76rpx;height:76rpx;" mode="widthFix" />
@@ -194,12 +194,12 @@
 				<view bindtap='tabsClick' data-index='3' class='{{tabs==3?"active":""}}'>
 					超级补贴
 					<view class='line' wx:if='{{tabs==3}}'></view>
-				</view>
+				</view> -->
 				<view bindtap='tabsClick' data-index='4' class='{{tabs==4?"active":""}}' wx:if='{{show_courseOnline}}'>
 					线上课程
 					<view class='line' wx:if='{{tabs==4}}'></view>
 				</view>
-				<view bindtap='tabsClick' data-index='5' class='{{tabs==5?"active":""}}'>
+				<!-- <view bindtap='tabsClick' data-index='5' class='{{tabs==5?"active":""}}'>
 					线下课程
 					<view class='line' wx:if='{{tabs==5}}'></view>
 				</view>

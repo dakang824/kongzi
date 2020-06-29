@@ -29,6 +29,7 @@ function sliceMunite(txt){
   return txt.slice(0,16);
 }
 function fixed(num, length) {
+  console.log(num);
   return num.toFixed(length);
 }
 function spot(txt) {

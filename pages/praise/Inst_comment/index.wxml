@@ -33,7 +33,7 @@
 				<view class="rt">{{filter.fixed(courseInfo.mindis/1000,1)}}-{{filter.fixed(courseInfo.maxdis/1000,1)}}km</view>
 			</view>
 			<view class="{{collapsed?'hideHeight':''}}">
-				<view class="van-hairline--bottom box_branches" wx:for='{{branches}}' wx:key='{{index}}'>
+				<view class="van-hairline--bottom box_branches" wx:for='{{branches}}' wx:key="index">
 					<view class="title">{{item.name}}</view>
 					<view class="between">
 						<view class="address">{{item.address}}</view>
@@ -49,15 +49,15 @@
 
 		<van-sticky>
 			<view class="between tab van-hairline--bottom">
-				<view wx:for='{{list}}' class="block {{active==index?'active':''}}" bindtap="tabSwitch" data-i="{{index}}" wx:key='{{index}}'>
+				<view wx:for='{{list}}' class="block {{active==index?'active':''}}" bindtap="tabSwitch" data-i="{{index}}" wx:key="index">
 					<view class="flex">{{item.name}} <text>({{item.value}})</text></view>
 					<view class="line"></view>
 				</view>
 			</view>
 
-			<block wx:for='{{list}}' wx:key='{{index}}'>
+			<block wx:for='{{list}}' wx:key="index">
 				<view class="tags" wx:if='{{active==index}}'>
-					<view wx:for='{{item.tags}}' catchtap="tagsClick" data-i="{{index+'_'+idx}}" wx:for-item="it" wx:for-index="idx" wx:key='{{index}}'>
+					<view wx:for='{{item.tags}}' catchtap="tagsClick" data-i="{{index+'_'+idx}}" wx:for-item="it" wx:for-index="idx" wx:key="index">
 						<van-tag type="primary" color='{{it.active?"#FFE9EE":"#F3F3F3"}}' text-color='{{it.active?"#FF2E58":"#838383"}}'>{{it.name}}({{it.value}})</van-tag>
 					</view>
 				</view>

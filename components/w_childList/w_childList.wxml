@@ -1,6 +1,6 @@
  <wxs module="filter" src="../../utils/filter.wxs"></wxs>
  <view class="itembox flex">
- 	<navigator class="item" wx:for="{{list}}" wx:key="{{index}}" url="/pages/shopMall/detail/detail?id={{item.id}}">
+ 	<navigator class="item" wx:for="{{list}}" wx:key='index' url="/pages/shopMall/detail/detail?id={{item.id}}">
  		<view class="img">
  			<van-image width="330rpx" height='330rpx' src="{{serverUrl+item.list_pic}}" radius='5rpx' use-loading-slot lazy-load custom-class='{{item.lefts<=0?"opacity":""}}'>
  				<van-loading slot="loading" type="spinner" size="20" vertical />
