@@ -116,8 +116,8 @@ App({
     setting: {},
     userInfo: null, //后台返回的用户信息
     systemInfo: '', //手机设备信息
-    serverUrl: "https://dev.kongzikeji.com/",
-    imageurl: "https://dev.kongzikeji.com/data/instManageImg/",
+    serverUrl: "https://weixin.kongzikeji.com/",
+    imageurl: "https://weixin.kongzikeji.com/data/instManageImg/",
     servPhone: '400 859 0900',
     isNewUser: false, //这三个变量只针对新用户，只用一次
     ticket_count: 0,

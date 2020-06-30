@@ -3,6 +3,7 @@ let http = require('../../../common/request.js'),
 import Dialog from '../../../dist/dialog/dialog';
 Page({
   data: {
+    del:false,
     showImg: false,
     show: false,
     disable: false,
@@ -34,9 +35,10 @@ Page({
     }]
   },
   closeView(){
-    this.setData({showImg:false})
+    this.setData({showImg:false,del:false})
   },
   delect() {
+    this.setData({del:true})
     Dialog.confirm({
       title: '温馨提示',
       message: '是否确定删除！',
@@ -49,8 +51,9 @@ Page({
           'data.status':3
         })
       })
+      this.setData({del:false})
     }).catch(() => {
-      // on cancel
+      this.setData({del:false})
     });
   },
   preview(e) {
@@ -61,6 +64,7 @@ Page({
     }
     this.setData({
       showImg: true,
+      del:true,
       current: e.detail.index,
       imgs
     })

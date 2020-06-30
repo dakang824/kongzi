@@ -18,7 +18,7 @@
 			<van-tag round type="primary" color='{{postData[item.value]>6?"#FF2C56":postData[item.value]>=5&&postData[item.value]<=6?"#9A36FC":"#959595"}}'>{{postData[item.value]>6?'好评':postData[item.value]>=5&&postData[item.value]<=6?'中评':'差评'}}</van-tag>
 		</view>
 	</view>
-	<view class="van-hairline--top" wx:if='{{!showImg}}'>
+	<view class="van-hairline--top" wx:if='{{!del}}'>
 		<van-field bind:input='input' autosize type='textarea' value="{{ postData.content }}" placeholder="请在此填写您的体验评论(最少20个字，最多200个字)" placeholder-style='font-size:26rpx' border="{{ false }}" readonly='{{data.audit_status==0||data.audit_status==1}}' />
 	</view>
 </view>
@@ -58,6 +58,6 @@
 </view>
 
 <view class="fixed {{disable?'':'disable'}}" wx:if='{{data.audit_status==1}}'>
-	<view class="bg_btn" hover-class="hover" bindtap="delect" wx:if='{{data.status==3}}'>已删除</view>
+	<view class="bg_btn" hover-class="hover" wx:if='{{data.status==3}}'>已删除</view>
 	<view class="bg_btn" hover-class="hover" bindtap="delect" wx:else>删除</view>
 </view>
