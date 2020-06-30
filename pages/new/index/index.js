@@ -389,7 +389,7 @@ Page({
       let {setting}=getApp().globalData;
       this.setData({
         [`card[1].show`]:setting.showVideo2,
-        [`card[3].show`]:setting.show_review
+        [`card[3].show`]:setting.show_inst_review
       }) 
     })
   },
@@ -512,7 +512,7 @@ Page({
     Object.keys(login).length && login.status != 5 ? this.homePageInit() : '';
     wx.getStorageSync('b') === '' ? '' : wx.removeStorageSync('b');
     //设置定时器  请求顶部抽奖消息
-    this.data.timer3=setInterval(function(){
+    this.data.timer3=setInterval(()=>{
       http.postReq("/community/award/", {
         cmd: "getjoinDrawMessages",
       }, res => {

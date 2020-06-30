@@ -22,7 +22,7 @@
 			<view class="rate between">
 				<view class="lf between">
 					<van-rate void-icon='{{imgUrl+"shop_stars.png"}}' icon='{{imgUrl+"shop_stars_a.png"}}' value="{{ courseInfo.score/2 }}" size="{{ 22 }}" allow-half color="#FFBF00" void-color="#EDEDED" readonly />
-					<text>{{courseInfo.score}}分</text>
+					<text style="color:#FA2335">{{courseInfo.score}}分</text>
 				</view>
 			</view>
 		</view>

@@ -221,18 +221,21 @@ Page({
   onReset() {
     let {
       copyPostData,
-      list
+      list,
+      comment_attr
     } = this.data;
-    for (let key of list) {
-      key.data = [];
-      key.page_no = 1;
-      key.noData = false;
-      key.show = false;
-    }
+    list.forEach(item=>{
+      item.data = [];
+      item.page_no = 1;
+      item.noData = false;
+      item.show = false;
+    })
+    comment_attr.forEach(item=>item.active=false);
     this.setData({
       show: false,
-      postData: copyPostData,
-      list
+      postData: {...copyPostData},
+      list,
+      comment_attr
     })
     this.getData();
   },
@@ -258,8 +261,8 @@ Page({
       if (data.length) {
         this.setData({
           [`list[${active}].data`]:[...list[active].data,...data.map(item=>{
-            item.min_fee=parseInt(item.min_fee).toFixed(1)+'k';
-            item.max_fee=parseInt(item.max_fee).toFixed(1)+'k';
+            item.min_fee=parseInt(item.min_fee);
+            item.max_fee=parseInt(item.max_fee);
             return item;
           })],
           [`list[${active}].page_no`]: list[active].page_no + 1,

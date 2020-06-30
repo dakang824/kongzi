@@ -255,7 +255,7 @@ Page({
     clearInterval(timeS);
     let that = this,
       e = this.data.loadingData;
-    http.postReq("/community/user/", that.data.loadingData, function (res) {
+    http.postReq("/community/user/", {...e,...wx.getStorageSync('position')}, function (res) {
       wx.setStorageSync('b', res.data.act_info);
       let act_info = res.data.act_info,
         id = act_info.type - 1;

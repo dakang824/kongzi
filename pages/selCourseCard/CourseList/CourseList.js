@@ -447,13 +447,13 @@ Page({
       }
     }
     submitData.courses = arr;
-
     let {address_component,ad_info,location}=wx.getStorageSync('address');
     let s=address_component||ad_info,p=location||{"lat":31.40527,"lng":121.48941};
     submitData.province=s.province;
     submitData.city=s.city;
     submitData.latitude=p.lat;
     submitData.longitude=p.lng;
+
     console.log(submitData);
     http.postReq("/community/industry/", submitData, res => {
       wx.showToast({

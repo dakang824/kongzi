@@ -45,10 +45,10 @@
  						<view class="rate between">
  							<view class="lf between">
  								<van-rate size='35rpx' value="{{ item.score/2 }}" size="{{ 22 }}" allow-half color="#FFBF00" void-color="#EDEDED" void-icon="star" readonly />
- 								<text>{{item.score}}分</text>
+ 								<text style="color:#FA2335">{{item.score}}分</text>
  							</view>
  							<view class="money">
- 								{{item.min_fee!=="NaNk"?item.min_fee:''}}-{{item.max_fee!=="NaNk"?item.max_fee:''}}元/年
+ 								{{filter.fixed(item.min_fee,1)}}-{{filter.fixed(item.max_fee,1)}}k元/年
  							</view>
  						</view>
  					</view>
