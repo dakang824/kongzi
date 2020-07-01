@@ -11,23 +11,23 @@ Page({
     tags: [{
       name: '有图',
       value: '0',
-      active:false,
+      active: false,
     }, {
       name: '有视频',
       value: '0',
-      active:false,
+      active: false,
     }, {
       name: '有追评',
       value: '0',
-      active:false,
+      active: false,
     }, {
       name: '有点赞',
       value: '0',
-      active:false,
+      active: false,
     }, {
       name: '有点怼',
       value: '0',
-      active:false,
+      active: false,
     }],
     list: [{
       name: '全部',
@@ -66,16 +66,19 @@ Page({
   },
   tagsClick(e) {
     let {
-      list,active
+      list,
+      active
     } = this.data;
     for (let key of list) {
       key.data = [];
       key.page_no = 1;
       key.noData = true;
     }
-    let {i}=e.currentTarget.dataset,t=i.split('_');
-    
-    list[t[0]].tags[t[1]].active=!list[t[0]].tags[t[1]].active;
+    let {
+      i
+    } = e.currentTarget.dataset, t = i.split('_');
+
+    list[t[0]].tags[t[1]].active = !list[t[0]].tags[t[1]].active;
 
     // for(let [key, value] of list[t[0]].tags.entries()){
     //   if(t[1]!=key){
@@ -106,7 +109,7 @@ Page({
       list
     } = this.data;
     for (let key of list) {
-      key.tags = JSON.parse(JSON.stringify(tags)) 
+      key.tags = JSON.parse(JSON.stringify(tags))
     }
     this.setData({
       list,
@@ -130,18 +133,17 @@ Page({
       page_size,
     }, res => {
       wx.stopPullDownRefresh();
-      console.log(res);
       let {
         courseInfo,
         reviews
       } = res;
-      courseInfo.logo_path=url+courseInfo.cover_image;
+      courseInfo.logo_path = url + courseInfo.cover_image;
       this.setData({
         courseInfo,
-        [`list[0].value`]: courseInfo.review_count,
-        [`list[1].value`]: courseInfo.good_count,
-        [`list[2].value`]: courseInfo.med_count,
-        [`list[3].value`]: courseInfo.bad_count,
+        // [`list[0].value`]: courseInfo.review_count,
+        // [`list[1].value`]: courseInfo.good_count,
+        // [`list[2].value`]: courseInfo.med_count,
+        // [`list[3].value`]: courseInfo.bad_count,
       });
       this.sData(courseInfo, reviews);
       Loading.close();
@@ -153,16 +155,24 @@ Page({
       list,
       page_size
     } = this.data;
-    this.setData({
-      [`list[${active}].page_no`]: list[0].page_no + 1,
-      [`list[${active}].data`]: list[active].data.concat(reviews),
-      [`list[${active}].noData`]: reviews.length == page_size,
 
-      [`list[${active}].tags[0].value`]: review_counts.pic_count,
-      [`list[${active}].tags[1].value`]: review_counts.video_count,
-      [`list[${active}].tags[2].value`]: review_counts.append_count,
-      [`list[${active}].tags[3].value`]: review_counts.like_count,
-      [`list[${active}].tags[4].value`]: review_counts.dislike_count,
+    list[0].value=review_counts.review_count;
+    list[1].value=review_counts.good_count;
+    list[2].value=review_counts.med_count;
+    list[3].value=review_counts.bad_count;
+
+    let d=list[active];
+    d.page_no=list[active].page_no + 1;
+    d.data=list[active].data.concat(reviews);
+    d.noData=reviews.length == page_size;
+    d.tags[0].value=review_counts.pic_count;
+    d.tags[1].value=review_counts.video_count;
+    d.tags[2].value=review_counts.append_count;
+    d.tags[3].value=review_counts.like_count;
+    d.tags[4].value=review_counts.dislike_count;
+
+    this.setData({
+      list
     });
   },
   getData() {
@@ -179,11 +189,11 @@ Page({
       page_no: list[active].page_no,
       type: active,
       page_size,
-      has_image: list[active].tags[0].active? 1 : '',
-      has_video: list[active].tags[1].active? 1 : '',
-      has_append:list[active].tags[2].active? 1 : '',
-      has_like:list[active].tags[3].active? 1 : '',
-      has_dislike:list[active].tags[4].active? 1 : '',
+      has_image: list[active].tags[0].active ? 1 : '',
+      has_video: list[active].tags[1].active ? 1 : '',
+      has_append: list[active].tags[2].active ? 1 : '',
+      has_like: list[active].tags[3].active ? 1 : '',
+      has_dislike: list[active].tags[4].active ? 1 : '',
     };
     active == 0 ? delete d['type'] : '';
     http.postReq("/community/industry/", d, res => {

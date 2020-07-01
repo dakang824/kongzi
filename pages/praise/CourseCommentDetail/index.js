@@ -6,14 +6,14 @@ Page({
     imgUrl: app.globalData.imageurl,
   },
   onLoad(options) {
-    let list = [JSON.parse(decodeURI(options.d))];
-    for (let key of list[0].appends) {
-      key.timeFrom = $.timeFrom(new Date(key.create_time.slice(0, 19).replace(/-/g, "/")).getTime());
-    }
+    let {i,courseInfo}=wx.getStorageSync('comment'),list = i;
+    list.appends.forEach(item=>{
+      item.timeFrom = $.timeFrom(new Date(item.create_time.slice(0, 19).replace(/-/g, "/")).getTime());
+    })
     this.setData({
-      list,
+      list:[list],
       ind: options.ind,
-      courseInfo: JSON.parse(decodeURI(options.courseInfo)),
+      courseInfo,
     })
   },
   changAppends(e) {

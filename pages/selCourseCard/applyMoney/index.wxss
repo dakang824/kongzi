@@ -2,9 +2,10 @@ page{
   min-height:100vh;
 }
 .page{
-  padding-bottom: 120rpx;
+  /* padding-bottom: 120rpx; */
   display: flex;
   flex-flow: wrap-reverse;
+  min-height: 100vh;
 }
 .cash .head {
   padding: 50rpx 30rpx;

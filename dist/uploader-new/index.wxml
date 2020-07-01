@@ -24,7 +24,17 @@
       <view
         wx:elif='{{item.type=="video"}}'
       >
-        <view class="position" style="width: {{ utils.addUnit(previewSize) }}; height: {{ utils.addUnit(previewSize) }};">
+      <image
+        wx:if="{{ item.cover }}"
+        mode="{{ imageFit }}"
+        src="{{ item.url || item.path }}"
+        alt="{{ item.name || ('图片' + index) }}"
+        class="van-uploader__preview-image"
+        style="width: {{ utils.addUnit(previewSize) }}; height: {{ utils.addUnit(previewSize) }};"
+        data-index="{{ index }}"
+        bind:tap="onPreviewImage"
+      />
+        <view class="position" style="width: {{ utils.addUnit(previewSize) }}; height: {{ utils.addUnit(previewSize) }};" wx:else>
           <van-icon name="play" custom-class='play' color="#fff" size="24px"/>
           <video class="widthFix" src='{{item.url || item.path}}' show-center-play-btn='{{false}}' show-fullscreen-btn='{{false}}' show-play-btn='{{false}}'></video>
         </view>

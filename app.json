@@ -187,6 +187,7 @@
     }
   },
   "usingComponents": {
+    "van-notify": "dist/notify/index",
     "van-sticky": "dist/sticky/index",
     "van-rate": "dist/rate/index",
     "van-picker": "dist/picker/index",
@@ -218,7 +219,7 @@
     "van-count-down": "dist/count-down/index",
     "van-panel": "dist/panel/index",
     "van-overlay": "dist/overlay/index",
-    "van-search": "/dist/search/index",
+    "van-search": "dist/search/index",
     "van-transition": "dist/transition/index",
     "van-collapse": "dist/collapse/index",
     "van-collapse-item": "dist/collapse-item/index",

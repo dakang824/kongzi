@@ -1,6 +1,7 @@
 let http = require('../../../common/request.js'),
   app = getApp();
 import Dialog from '../../../dist/dialog/dialog';
+import Notify from '../../../dist/notify/notify';
 Page({
   data: {
     del:false,
@@ -235,7 +236,12 @@ Page({
     let {
       postData,
       data
-    } = this.data;
+    } = this.data,contentLen=postData.content.replace(/\s+/g,"").length;
+    if(contentLen<20){
+      Notify(`评论字数至少20个字,您当前字数${contentLen}`);
+      return;
+    }
+
     if ('id' in data) {
       if (data.audit_status == 2) {
         postData.reset_submit = 1;
@@ -245,18 +251,26 @@ Page({
     } else {
       postData.submit = 1;
     }
-
-    http.postReq("/review/front/", postData, res => {
-      wx.showToast({
-        title: '提交成功',
-        icon: 'success',
-        duration: 2000
-      })
-      setTimeout(() => {
-        wx.navigateBack({
-          delta: 1
-        })
-      }, 2000)
+    
+    wx.showModal({
+      title: '温馨提示',
+      content: '是否确认提交?',
+      success:res=>{
+        if(res.confirm){
+          http.postReq("/review/front/", postData, res => {
+            wx.showToast({
+              title: '提交成功',
+              icon: 'success',
+              duration: 2000
+            })
+            setTimeout(() => {
+              wx.navigateBack({
+                delta: 1
+              })
+            }, 2000)
+          })
+        }
+      }
     })
   },
   onShareAppMessage() {

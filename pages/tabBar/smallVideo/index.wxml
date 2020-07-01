@@ -2,8 +2,15 @@
 <!-- <dk-tabbar tabBar="{{tabBar}}" transparent></dk-tabbar> -->
 <van-dialog id="van-dialog" />
 <view style="top:{{globalData.Custom.top+(globalData.Custom.height/5)}}px" class="box_view">
-	<van-icon name="arrow-left" color='#fff' size="34rpx" bind:click='back' />
-	<view class="title">小视频</view>
+	<view class="vCenter">
+		<navigator wx:if='{{isShare}}' class="circle" open-type='switchTab' hover-class="none" url="/pages/new/index/index">
+			<van-icon name="home-o" color='#fff' size="34rpx"/>
+		</navigator>
+		<block wx:else>
+			<van-icon name="arrow-left" color='#fff' size="34rpx" bind:click='back' />
+		</block>
+		<view class="title">小视频</view>
+	</view>
 	<view class="between">
 		<view class="li {{typeInd==index?'active':''}}" wx:for='{{type}}' wx:key="index" bindtap="typeActive" data-i="{{index}}">{{item}}</view>
 	</view>

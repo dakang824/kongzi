@@ -223,7 +223,6 @@ Page({
         isShare: 'b' in o,
       });
     }
-    console.log(app.globalData.setting.showVideo2);
     this.setData({showPage:true||app.globalData.setting.showVideo2})
     let first = true;
     this.loadData(first);
@@ -443,7 +442,8 @@ Page({
       cmd: "getVideo2s",
       page_no,
       type: typeInd,
-      page_size: 20
+      page_size: 20,
+      video_id:isShare?data[0].video_id:'',
     }, res => {
       let records = res.data.records;
       if(page_no==1){
@@ -516,10 +516,10 @@ Page({
       ...data[indcurrent]
     };
     b.video_url = encodeURIComponent(b.video_url);
-
+    
     return {
       title: btnShare ? user.nickname + '分享给你一个小视频' : '孔紫小视频',
-      path: `/pages/video/video?from_id=${user.id}&b=${JSON.stringify(b)}`
+      path: `/pages/tabBar/smallVideo/index?from_id=${user.id}&b=${JSON.stringify(b)}`
     }
   }
 })

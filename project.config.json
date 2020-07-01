@@ -31,7 +31,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.11.2",
-	"appid": "wxe5236886ca6a4905",
+	"appid": "wxe9a115181036f5b7",
 	"projectname": "%E5%AD%94%E7%B4%AB%E5%AE%B6%E9%95%BF%E7%A4%BE%E5%8C%BA2.0-%E5%BC%80%E5%8F%91%E7%89%88",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -91,10 +91,10 @@
 					"scene": null
 				},
 				{
-					"id": 24,
+					"id": 4,
 					"name": "意见反馈",
-					"pathName": "pages/taskPage/taskPage",
-					"query": "award_id=83&tickets=1&draw_id=145",
+					"pathName": "pages/tabBar/smallVideo/index",
+					"query": "from_id=54949&b={\"video_id\":5063,\"name\":\"爹呢-萌娃走失街头,警花抱着帮找家_梨重庆-梨视频官网-Pear Video\",\"video_url\":\"http%3A%2F%2Fkongzivideo2.oss-cn-shanghai.aliyuncs.com%2Fvideo2%2F1582792557671.mp4%3FExpires%3D1583340958%26OSSAccessKeyId%3DLTAIN4tg4L9HltkI%26Signature%3D6eIOIxvb49IKciOcVxZYo%252FF4Ctk%253D\",\"list_pic\":\"data/plat/video2/cover1582792557671.jpg\",\"source_no\":8,\"size\":13616128,\"length\":61,\"view_count\":4,\"like_count\":0,\"dislike_count\":0,\"share_count\":0,\"comment_count\":0,\"collect_count\":0,\"source_name\":\"梨视频\",\"logo_path\":\"data/plat/video2/videoSources/1582712224982.png\",\"collected\":0,\"liked\":0,\"disliked\":0,\"my_view_count\":\"\"}",
 					"scene": null
 				},
 				{

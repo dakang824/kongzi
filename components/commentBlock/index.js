@@ -1,4 +1,5 @@
-let http = require('../../common/request.js'),utils = require('../../utils/util.js');
+let http = require('../../common/request.js'),
+  utils = require('../../utils/util.js');
 import $ from '../../utils/timeFrom.js';
 Component({
   properties: {
@@ -6,16 +7,16 @@ Component({
       type: Array,
       value: []
     },
-    isDetail:{
-      type:Boolean,
-      value:false
+    isDetail: {
+      type: Boolean,
+      value: false
     },
-    courseInfo:{
-      type:Object
+    courseInfo: {
+      type: Object
     },
-    noData:{
-      type:Boolean,
-      value:false
+    noData: {
+      type: Boolean,
+      value: false
     }
   },
   data: {
@@ -24,24 +25,30 @@ Component({
     show: false,
     imgs: [],
     current: 0,
-    content:'',
-    keyBoardHeight:''
+    content: '',
+    keyBoardHeight: ''
   },
   methods: {
-    focus(e){
+    focus(e) {
       this.setData({
         keyBoardHeight: e.detail.height
       })
-    }, 
-    blur(){
+    },
+    blur() {
       this.setData({
         keyBoardHeight: ''
       })
     },
-    goReview(e){
-      let {i,ind}=e.currentTarget.dataset,{courseInfo}=this.data;
+    goReview(e) {
+      let {
+        i,
+        ind
+      } = e.currentTarget.dataset, {
+        courseInfo
+      } = this.data;
+      wx.setStorageSync('comment', {i,courseInfo});
       wx.navigateTo({
-        url: `/pages/praise/CourseCommentDetail/index?ind=${ind}&d=${encodeURI(JSON.stringify(i))}&courseInfo=${encodeURI(JSON.stringify(courseInfo))}`,
+        url: `/pages/praise/CourseCommentDetail/index?ind=${ind}`,
       })
     },
     lookImg(e) {
@@ -62,7 +69,7 @@ Component({
       let {
         user_id,
         review_id
-      } = e.currentTarget.dataset.i,index=e.currentTarget.dataset.ind;
+      } = e.currentTarget.dataset.i, index = e.currentTarget.dataset.ind;
       this.postLike({
         user_id,
         review_id,
@@ -82,14 +89,17 @@ Component({
         user_id,
         type
       }, res => {
-        this.triggerEvent('changeLike',{type,index});
+        this.triggerEvent('changeLike', {
+          type,
+          index
+        });
       })
     },
     like(e) {
       let {
         user_id,
         review_id
-      } = e.currentTarget.dataset.i,index=e.currentTarget.dataset.ind;;
+      } = e.currentTarget.dataset.i, index = e.currentTarget.dataset.ind;;
       this.postLike({
         user_id,
         review_id,
@@ -97,18 +107,22 @@ Component({
         index
       });
     },
-    onChange(e){
-      this.setData({content:e.detail.value})
+    onChange(e) {
+      this.setData({
+        content: e.detail.value
+      })
     },
-    confirm(){
+    confirm() {
       let {
         user_id,
         review_id
-      } = this.data.list[0],{content}=this.data;
-      if(content===''){
+      } = this.data.list[0], {
+        content
+      } = this.data;
+      if (content === '') {
         wx.showToast({
           title: '请填写评论内容',
-          icon:'none'
+          icon: 'none'
         })
         return;
       }
@@ -118,9 +132,20 @@ Component({
         user_id,
         content
       }, res => {
-        let {pic_path,nickname}=wx.getStorageSync('userInfo'),t=utils.getTime(new Date().getTime());
-        this.triggerEvent('changAppends',{timeFrom:$.timeFrom(new Date(t.replace(/-/g, "/")).getTime()),content,nickname,pic_path,create_time:t});
-        this.setData({content:''})
+        let {
+          pic_path,
+          nickname
+        } = wx.getStorageSync('userInfo'), t = utils.getTime(new Date().getTime());
+        this.triggerEvent('changAppends', {
+          timeFrom: $.timeFrom(new Date(t.replace(/-/g, "/")).getTime()),
+          content,
+          nickname,
+          pic_path,
+          create_time: t
+        });
+        this.setData({
+          content: ''
+        })
       })
     },
   }

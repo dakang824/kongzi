@@ -1,12 +1,13 @@
 let http = require('../../../common/request.js'),
   app = getApp();
+import Notify from '../../../dist/notify/notify';
 Page({
   data: {
-    showImg:false,
+    showImg: false,
     show: false,
     disable: false,
-    data:{},
-    medias:[],
+    data: {},
+    medias: [],
     imgUrl: app.globalData.imageurl,
     postData: {
       cmd: 'addCourseReview',
@@ -32,16 +33,22 @@ Page({
       value: 'ser_score',
     }]
   },
-  closeView(){
-    this.setData({showImg:false})
+  closeView() {
+    this.setData({
+      showImg: false
+    })
   },
-  preview(e){
-    let imgs=[...this.data.postData.medias];
-    for(let key of imgs){
-      key.type=key.media_type;
-      key.path=key.url;
+  preview(e) {
+    let imgs = [...this.data.postData.medias];
+    for (let key of imgs) {
+      key.type = key.media_type;
+      key.path = key.url;
     }
-    this.setData({showImg:true,current:e.detail.index,imgs})
+    this.setData({
+      showImg: true,
+      current: e.detail.index,
+      imgs
+    })
   },
   afterRead(event) {
     const {
@@ -52,14 +59,16 @@ Page({
     }
   },
   uploadFile(file) {
+    let formData = {
+      cmd: 'uploadReviewMedia',
+      media_type: ('thumbTempFilePath' in file) ? 1 : 0,
+    };
+    // ('thumbTempFilePath' in file)?formData.cover=file.thumbTempFilePath:'';
     wx.uploadFile({
       url: app.globalData.serverUrl + 'community/industry/',
       filePath: file.tempFilePath,
       name: 'file',
-      formData: {
-        cmd: 'uploadReviewMedia',
-        media_type: ('thumbTempFilePath' in file) ? 1 : 0
-      },
+      formData,
       success: res => {
         let {
           postData,
@@ -68,8 +77,9 @@ Page({
         medias.push(d);
         fileList.push({
           ...file,
-          // url: app.globalData.serverUrl+d.url,
-          url: ('thumbTempFilePath' in file) ? file.thumbTempFilePath : file.tempFilePath
+          url: app.globalData.serverUrl + d.url,
+          type: ('thumbTempFilePath' in file) ? 'video' : 'image',
+          // url: ('thumbTempFilePath' in file) ? file.thumbTempFilePath : file.tempFilePath,
         });
         this.setData({
           fileList,
@@ -84,9 +94,9 @@ Page({
       postData
     } = this.data, d = JSON.parse(decodeURI(options.d));
     Object.assign(postData, d)
-    postData.id=d.id;
+    postData.id = d.id;
     this.setData({
-      'd[2].name':d.online==0?'上课体验':'上课环境',
+      'd[2].name': d.online == 0 ? '上课体验' : '上课环境',
     })
     http.postReq("/community/industry/", {
       cmd: 'getMyCourseReview',
@@ -116,12 +126,12 @@ Page({
             url: key.path
           });
           key.url = app.globalData.serverUrl + key.path;
-          key.type=key.type==0?'image':'video';
+          key.type = key.type == 0 ? 'image' : 'video';
         }
         postData.medias = arr;
         this.setData({
           fileList,
-          medias:fileList,
+          medias: fileList,
           data: res.data,
           show: 'audit_status' in res.data
         })
@@ -130,7 +140,6 @@ Page({
         postData,
         options
       })
-
       this.verify();
     })
   },
@@ -175,8 +184,10 @@ Page({
       postData,
       data,
     } = this.data;
-    'id' in data?postData.review_id = data.id:'';
-    let d={...postData};
+    'id' in data ? postData.review_id = data.id : '';
+    let d = {
+      ...postData
+    };
 
     http.postReq("/community/industry/", d, res => {
       wx.showToast({
@@ -199,7 +210,7 @@ Page({
     })
     return disable;
   },
-  onPullDownRefresh(){
+  onPullDownRefresh() {
     this.onLoad(this.data.options);
   },
   submit() {
@@ -207,29 +218,58 @@ Page({
       postData,
       data
     } = this.data;
+    if (postData.content.replace(/\s+/g, "").length < 20) {
+      Notify(`评论字数至少20个字,您当前字数${postData.content.replace(/\s+/g,"").length}`);
+      return;
+    }
+    if (postData.medias.length < 3) {
+      Notify('至少上传2张图片和1个上课小视频');
+      return;
+    }
+    if (!postData.medias.some(item => item.media_type == 0) || postData.medias.filter(item => item.media_type == 0).length < 2) {
+      Notify('至少上传2张图片');
+      return
+    }
+    if (!postData.medias.some(item => item.media_type == 1)) {
+      Notify('上传一个上课小视频')
+      return
+    }
     if ('id' in data) {
-      if(data.audit_status==2){
+      /**if(data.audit_status==2){
         postData.cmd ='addCourseReview';
         postData.reset_submit=1;
       }else{
         postData.cmd ='commitMyCourseReview';
+        postData.cmd ='addCourseReview';
+        postData.reset_submit=1;
       }
+      */
+      postData.cmd = 'addCourseReview';
+      postData.reset_submit = 1;
       postData.review_id = data.id;
     } else {
       postData.submit = 1;
     }
-
-    http.postReq("/community/industry/", postData, res => {
-      wx.showToast({
-        title: '提交成功',
-        icon: 'success',
-        duration: 2000
-      })
-      setTimeout(() => {
-        wx.navigateBack({
-          delta: 1
-        })
-      }, 2000)
+    
+    wx.showModal({
+      title: '温馨提示',
+      content: '是否确认提交?',
+      success:res=>{
+        if(res.confirm){
+          http.postReq("/community/industry/", postData, res => {
+            wx.showToast({
+              title: '提交成功',
+              icon: 'success',
+              duration: 2000
+            })
+            setTimeout(() => {
+              wx.navigateBack({
+                delta: 1
+              })
+            }, 2000)
+          })
+        }
+      }
     })
   },
   onShareAppMessage() {

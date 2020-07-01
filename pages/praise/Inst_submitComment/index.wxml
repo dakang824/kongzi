@@ -1,4 +1,5 @@
 <imageViewer show="{{showImg}}" imgs="{{imgs}}" current='{{current}}' bind:closeView='closeView'></imageViewer>
+<van-notify id="van-notify" backgroundColor='#FF976A'/>
 <van-dialog id="van-dialog" />
 <view class="header">
 	<view class="between">
@@ -23,7 +24,7 @@
 	</view>
 </view>
 <view class="box padBottom">
-	<van-uploader bind:click-preview='preview' file-list="{{ fileList }}" accept='media' max-count='{{data.audit_status==0||data.audit_status==1?fileList.length:9}}' multiple bind:delete='delete' bind:after-read='afterRead' preview-full-image='{{false}}' preview-size='185rpx' deletable='{{data.audit_status!=0&&data.audit_status!=1}}' />
+	<van-uploader image-fit='aspectFill' bind:click-preview='preview' file-list="{{ fileList }}" accept='media' max-count='{{data.audit_status==0||data.audit_status==1?fileList.length:9}}' multiple bind:delete='delete' bind:after-read='afterRead' preview-full-image='{{false}}' preview-size='185rpx' deletable='{{data.audit_status!=0&&data.audit_status!=1}}' />
 </view>
 <view class="box" wx:if='{{show&&data.audit_status!==3}}'>
 	<view class="doing">

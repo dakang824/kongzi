@@ -59,7 +59,7 @@ page {
 
 .bottom {
   height: 108rpx;
-  background: rgba(0, 0, 0, 0.6);
+  /* background: rgba(0, 0, 0, 0.6); */
   bottom: -1px;
   position: absolute;
   left: 0;
@@ -395,6 +395,24 @@ button.margin-left {
   font-size: 28rpx;
   padding-top: 25rpx;
   min-height: 77rpx;
+}
+
+.circle {
+  border: 1rpx solid #fff;
+  border-radius: 50px;
+  width: 50rpx;
+  height: 50rox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5rpx;
+  margin-left: 30rpx;
+}
+
+.circle .van-icon-home-o {
+  float: left;
+  
+  font-size: 45rpx !important;
 }
 
 /* .buy-shadow,.comment-shadow{
