@@ -234,28 +234,28 @@ Page({
       Notify('上传一个上课小视频')
       return
     }
-    if ('id' in data) {
-      /**if(data.audit_status==2){
-        postData.cmd ='addCourseReview';
-        postData.reset_submit=1;
-      }else{
-        postData.cmd ='commitMyCourseReview';
-        postData.cmd ='addCourseReview';
-        postData.reset_submit=1;
-      }
-      */
-      postData.cmd = 'addCourseReview';
-      postData.reset_submit = 1;
-      postData.review_id = data.id;
-    } else {
-      postData.submit = 1;
-    }
-    
     wx.showModal({
       title: '温馨提示',
       content: '是否确认提交?',
       success:res=>{
         if(res.confirm){
+          if ('id' in data) {
+            /**if(data.audit_status==2){
+              postData.cmd ='addCourseReview';
+              postData.reset_submit=1;
+            }else{
+              postData.cmd ='commitMyCourseReview';
+              postData.cmd ='addCourseReview';
+              postData.reset_submit=1;
+            }
+            */
+            postData.cmd = 'addCourseReview';
+            postData.reset_submit = 1;
+            postData.review_id = data.id;
+          } else {
+            postData.submit = 1;
+          }
+          
           http.postReq("/community/industry/", postData, res => {
             wx.showToast({
               title: '提交成功',

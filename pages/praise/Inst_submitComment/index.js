@@ -241,22 +241,22 @@ Page({
       Notify(`评论字数至少20个字,您当前字数${contentLen}`);
       return;
     }
-
-    if ('id' in data) {
-      if (data.audit_status == 2) {
-        postData.reset_submit = 1;
-      }
-      postData.review_id = data.id;
-      postData.submit = 1;
-    } else {
-      postData.submit = 1;
-    }
     
     wx.showModal({
       title: '温馨提示',
       content: '是否确认提交?',
       success:res=>{
         if(res.confirm){
+          if ('id' in data) {
+            if (data.audit_status == 2) {
+              postData.reset_submit = 1;
+            }
+            postData.review_id = data.id;
+            postData.submit = 1;
+          } else {
+            postData.submit = 1;
+          }
+
           http.postReq("/review/front/", postData, res => {
             wx.showToast({
               title: '提交成功',
