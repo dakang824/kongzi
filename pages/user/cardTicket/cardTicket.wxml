@@ -1,56 +1,58 @@
-<pagePublic noFixed/>
+<pagePublic noFixed />
 <wxs module="filter" src="../../../utils/filter.wxs"></wxs>
 <van-tabs active="{{ active }}" bind:change="onChange" swipe-threshold="6" sticky>
-  <van-tab title="全部">
-    <template is="list" data="{{dataList,serverUrl}}"></template>
-  </van-tab>
-  <van-tab title="未使用">
-    <template is="list" data="{{dataList,serverUrl}}"></template>
-  </van-tab>
-  <van-tab title="使用中">
-    <template is="list" data="{{dataList,serverUrl}}"></template>
-  </van-tab>
-  <van-tab title="已用完">
-    <template is="list" data="{{dataList,serverUrl}}"></template>
-  </van-tab>
-  <van-tab title="已过期">
-    <template is="list" data="{{dataList,serverUrl}}"></template>
-  </van-tab>
+	<van-tab title="全部">
+		<template is="list" data="{{dataList,serverUrl}}"></template>
+	</van-tab>
+	<van-tab title="未使用">
+		<template is="list" data="{{dataList,serverUrl}}"></template>
+	</van-tab>
+	<van-tab title="使用中">
+		<template is="list" data="{{dataList,serverUrl}}"></template>
+	</van-tab>
+	<van-tab title="已用完">
+		<template is="list" data="{{dataList,serverUrl}}"></template>
+	</van-tab>
+	<van-tab title="已过期">
+		<template is="list" data="{{dataList,serverUrl}}"></template>
+	</van-tab>
 </van-tabs>
 
 <template name="list">
-  <view class="itembox" wx:if="{{dataList.length}}">
-    <view class="item" wx:for="{{dataList}}" wx:key="{{index}}" bindtap="goDetail" data-id="{{item.coupon_id}}">
-      <view class="img">
-        <image src="{{serverUrl+item.top_pic}}" style="width:690rpx;height:300rpx;border-radius:20rpx 20rpx 0 0;{{(item.status==2||item.status==3||item.status==4)?'opacity:0.5':''}}" />
-        <block wx:if='{{item.use_type==2||item.use_type==1}}'>
-          <image class="lineup" src="/imgs/new/{{item.use_type==2?'linedown':item.use_type==1?'lineup':''}}.png" />
-        </block>
+	<view class="itembox" wx:if="{{dataList.length}}">
+		<view class="item" wx:for="{{dataList}}" wx:key="{{index}}" bindtap="goDetail" data-id="{{item.coupon_id}}">
+			<view class="img">
+				<image src="{{serverUrl+item.top_pic}}" style="width:690rpx;height:300rpx;border-radius:20rpx 20rpx 0 0;{{(item.status==2||item.status==3||item.status==4)?'opacity:0.5':''}}" />
+				<block wx:if='{{item.use_type==2||item.use_type==1}}'>
+					<image class="lineup" src="/imgs/new/{{item.use_type==2?'linedown':item.use_type==1?'lineup':''}}.png" />
+				</block>
 
-        <block wx:if='{{item.status==2||item.status==3||item.status==4}}'>
-          <image class="use" src="/imgs/new/{{item.status==3?'use':item.status==2?'send':item.status==4?'typeover':''}}.png" />
-        </block>
-      </view>
-      <view class="title">{{item.name}}</view>
-      <view class="time">有效期限：{{filter.spot(filter.sliceTime(item.valid_from))}}-{{filter.spot(filter.sliceTime(item.valid_to))}}</view>
-      <view class="sendbox flex">
-        <view class="left">{{item.use_type==2?'核销码：'+item.coupon_no:item.type==4?'余额：'+item.balance+'元':''}}</view>
-        <view class="" style="height:1rpx;width:1rpx" wx:if="{{item.status==0||item.status==1||item.status==2}}"></view>
-        <view class="right flex" wx:if="{{item.status==0||item.status==1||item.status==2}}">
-          <button class="send" catchtap wx:if="{{item.status==0||item.status==1}}" open-type="share" data-i='{{item}}' data-index="{{index}}" data-id="{{item.id}}" data-toppic="{{item.top_pic}}" data-cardname="{{item.name}}" data-item="{{item}}">转赠</button>
-          <view class="send" catchtap="cancelSend" style="background:#eee" wx:if="{{item.status==2}}" data-id="{{item.id}}">取消转赠</view>
-          <!-- <view class="ercode">二维码</view> -->
-        </view>
-      </view>
-    </view>
-  </view>
+				<block wx:if='{{item.status==2||item.status==3||item.status==4}}'>
+					<image class="use" src="/imgs/new/{{item.status==3?'use':item.status==2?'send':item.status==4?'typeover':''}}.png" />
+				</block>
+			</view>
+			<view class="title">{{item.name}}</view>
+			<view class="time">有效期限：{{filter.spot(filter.sliceTime(item.valid_from))}}-{{filter.spot(filter.sliceTime(item.valid_to))}}</view>
+			<view class="sendbox flex">
+
+				<view class="left">{{item.use_type==2?'核销码：'+item.coupon_no:item.type==4?'余额：'+item.balance+'元':''}}</view>
+				<view class="" style="height:1rpx;width:1rpx" wx:if="{{item.status==0||item.status==1||item.status==2}}"></view>
+				<view class="right flex" wx:if="{{item.status==0||item.status==1||item.status==2}}">
+					<button class="send" catchtap="courseCard" wx:if="{{item.type==5&&item.status==0}}" data-id="{{item.id}}" data-ind='{{index}}'>兑换</button>
+					<button class="send" catchtap wx:if="{{item.status==0||item.status==1}}" open-type="share" data-i='{{item}}' data-index="{{index}}" data-id="{{item.id}}" data-toppic="{{item.top_pic}}" data-cardname="{{item.name}}" data-item="{{item}}">转赠</button>
+					<view class="send" catchtap="cancelSend" style="background:#eee" wx:if="{{item.status==2}}" data-id="{{item.id}}">取消转赠</view>
+					<!-- <view class="ercode">二维码</view> -->
+				</view>
+			</view>
+		</view>
+	</view>
 </template>
 
 <block wx:if="{{!dataList.length}}">
-  <view class="nodatabox">
-    <view class="img">
-      <image src="/imgs/new/nodata.png" style="width:300rpx;height:300rpx;" />
-    </view>
-    <view class="tip">~没有更多数据~</view>
-  </view>
+	<view class="nodatabox">
+		<view class="img">
+			<image src="/imgs/new/nodata.png" style="width:300rpx;height:300rpx;" />
+		</view>
+		<view class="tip">~没有更多数据~</view>
+	</view>
 </block>

@@ -49,6 +49,7 @@
 .box .rate text {
   margin-left: 20rpx;
   display: block;
+  font-size: 27rpx;
 }
 
 van-tag {

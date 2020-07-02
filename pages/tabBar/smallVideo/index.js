@@ -509,7 +509,7 @@ Page({
     }
 
     if (globalData.systemInfo.platform == "android") {
-      this.setData({ hideIndex: current, hidePage: false});
+      this.setData({ hideIndex: indcurrent, hidePage: false});
       this.videoCtx.pause();
     }
     let b = {

@@ -106,6 +106,7 @@ page {
 
 .box .rate text {
   margin-left: 20rpx;
+  font-size: 25rpx;
 }
 
 .box .middle {

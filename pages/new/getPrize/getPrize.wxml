@@ -7,7 +7,7 @@
   </view>
   <view class='form'>
     <view class='row vCenter'>
-      <view class='tit'>领取方式：<text style="margin-left:42rpx;">线上邮寄</text></view>
+      <view class='tit'>领取方式：<text style="margin-left:42rpx;">线下邮寄</text></view>
       <!-- <view class='switch'>
         <view class='{{active==1&&"active"}}' bindtap='onSwitch' data-i='1'>线下领取</view>
         <view class='{{active==2&&"active"}}' bindtap='onSwitch' data-i='2'>线上邮寄</view>

@@ -1,6 +1,6 @@
 
 <imageViewer show="{{showImg}}" imgs="{{imgs}}" current='{{current}}' bind:closeView='closeView'></imageViewer>
-<van-notify id="van-notify" backgroundColor='#FF976A'/>
+<van-notify id="van-notify"/>
 <view class="header">
 	<view class="between">
 		<view class="lf">{{postData.course_name}}</view>

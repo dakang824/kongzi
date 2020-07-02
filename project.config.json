@@ -64,8 +64,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/new/index/index",
-					"pathName": "pages/new/index/index",
+					"name": "pages/selCourseCard/exchangeCard/exchangeCard",
+					"pathName": "pages/selCourseCard/exchangeCard/exchangeCard",
 					"query": "from_id=54949",
 					"scene": null
 				},

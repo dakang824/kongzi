@@ -48,7 +48,7 @@
  								<text style="color:#FA2335">{{item.score}}分</text>
  							</view>
  							<view class="money">
- 								{{filter.fixed(item.min_fee,1)}}-{{filter.fixed(item.max_fee,1)}}k元/年
+ 								{{filter.fixed(item.min_fee,1)}}-{{filter.fixed(item.max_fee,1)}}千元/年
  							</view>
  						</view>
  					</view>

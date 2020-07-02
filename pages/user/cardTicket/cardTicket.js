@@ -11,8 +11,19 @@ Page({
     dataList:[],
     type:""
   },
-  onLoad: function (options) {
-    let that = this;
+  courseCard(e){
+    let {id,ind}=e.currentTarget.dataset;
+    http.postReq("/community/coupon/", {
+      cmd: 'convertCourseCardCoupon',
+      id,
+    }, res=> {
+      this.setData({
+        [`dataList[${ind}].status`]:3
+      })
+      wx.navigateTo({
+        url: '/pages/selCourseCard/selCourseCard',
+      })
+    })
   },
   getData(){
     http.postReq("/community/coupon/", {

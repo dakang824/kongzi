@@ -195,11 +195,6 @@ Page({
         icon: 'success',
         duration: 2000
       })
-      setTimeout(() => {
-        wx.navigateBack({
-          delta: 1
-        })
-      }, 2000)
     })
   },
   verify() {
@@ -227,11 +222,13 @@ Page({
       return;
     }
     if (!postData.medias.some(item => item.media_type == 0) || postData.medias.filter(item => item.media_type == 0).length < 2) {
-      Notify('至少上传2张图片');
+      // Notify('至少上传2张图片');
+      Notify('至少上传2张图片和1个上课小视频');
       return
     }
     if (!postData.medias.some(item => item.media_type == 1)) {
-      Notify('上传一个上课小视频')
+      // Notify('上传一个上课小视频')
+      Notify('至少上传2张图片和1个上课小视频');
       return
     }
     wx.showModal({
