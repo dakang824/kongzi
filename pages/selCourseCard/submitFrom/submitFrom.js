@@ -89,7 +89,7 @@ Page({
   },
   next() {
     let {postData}=this.data;
-    if(postData.mobile.length!=11){
+    if(postData.mobile.length<11){
       wx.showToast({
         title: '请输入正确的手机号',
         icon:'none'

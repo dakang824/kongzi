@@ -13,11 +13,7 @@ import http from '../../../common/request.js';
 Page({
   data: {
     show_courseOnline: 0,
-    childNoData: false,
-    childData: [],
-    page_no: 1,
     getLoginMoney: false,
-    show_virus: false,
     tabBar,
     login: {},
     isNeed: true,
@@ -69,28 +65,28 @@ Page({
         img: 'middle_card.png',
         url: '/pages/selCourseCard/selCourseCard',
         name: '选课卡',
-        show:true,
+        show: true,
       },
       {
         img: 'middle_video.png',
         url: '/pages/tabBar/smallVideo/index',
         name: '小视频',
-        show:false,
+        show: false,
       },
       {
         img: 'middle_childUse.png',
         url: '/pages/shopMall/mother/baby',
         name: '儿童用品',
-        show:true,
+        show: true,
       },
       {
         img: 'middle_praise.png',
         url: '/pages/praise/index/index',
         name: '教育口碑',
-        show:false,
+        show: false,
       },
 
-      
+
       // {
       //   img: 'home_icon1.png',
       //   url: '/pages/nearby/nearby?tabInd=0',
@@ -199,7 +195,6 @@ Page({
     })
   },
   onLoad(options) {
-    Util.editTabbar();
     wx.getStorage({
       key: 'homeInit',
       success: res => {
@@ -209,7 +204,8 @@ Page({
         });
       }
     })
-    Util.getElementTopHeight({
+    Util.editTabbar();
+    options && 'tabs' in options ? Util.getElementTopHeight({
       that: this,
       id: "#tabs",
       success: res => {
@@ -219,12 +215,12 @@ Page({
         this.setData({
           top
         })
-        options && 'tabs' in options ? wx.pageScrollTo({
+        wx.pageScrollTo({
           scrollTop: top,
           duration: 300
-        }) : '';
+        })
       }
-    })
+    }) : '';
     this.homePageInit();
     // 验证是否授权地理位置，在初始化首页数据
     wx.getLocation({
@@ -247,14 +243,13 @@ Page({
     })
   },
   agreeAddress() {
-    let that = this;
     wx.getSetting({
-      success(res) {
+      success: res => {
         let d = res.authSetting['scope.userLocation'];
-        that.setData({
+        this.setData({
           authoaddress: !d
         })
-        d ? that.onLoad() : '';
+        d ? this.onLoad() : '';
       }
     })
   },
@@ -294,6 +289,7 @@ Page({
           for (let i = 0; i < lineNum; i++) {
             arr.push(res.awards_unDraw.slice(i * n, i * n + n));
           }
+
           for (let key of res.awards_today) {
             key.draw_time ? key.draw_second = parseInt(new Date(key.draw_time.slice(0, 19).replace(/-/g, "/")).getTime() - new Date().getTime()) : '';
           }
@@ -308,9 +304,7 @@ Page({
             ad1,
             show_courseOnline,
             awards_unDraw: arr,
-            show_virus: res.show_virus
           })
-          console.log(wx.getStorageSync('position') === '');
           wx.getStorageSync('position') === '' ? APP.getAddress(() => {
             that.setData({
               province: wx.getStorageSync('address').ad_info.province
@@ -324,7 +318,7 @@ Page({
     }).then(() => {
       if ('loginMsg' in wx.env) {
         let d = wx.env.loginMsg;
-        that.setData({
+        this.setData({
           login: d,
           ticket_count: d.ticket_count,
           my_count: d.my_count,
@@ -333,87 +327,65 @@ Page({
           getLoginMoney: false,
           // d.get_bonus.get_bonus == 0
         })
-        if (d.status == 5) {
-          APP.globalData.disableTab = false;
-        }
+
+        APP.globalData.disableTab = !(d.status == 5);
         //是新用户
         if (APP.globalData.isNewUser) {
-          that.setData({
+          this.setData({
             newUser: true,
           });
           APP.globalData.isNewUser = false
         };
-
-        APP.globalData.isNewUser
       }
     }).then(() => {
+      let {
+        setting
+      } = getApp().globalData;
       http.postReq("/community/user/", {
         cmd: "getHomeRecommend1",
       }, res => {
-        that.setData({
+        this.setData({
           recom1: res.recom1,
+          [`card[1].show`]: setting.showVideo2,
+          [`card[3].show`]: setting.show_inst_review,
           ope_id: wx.getStorageSync('userInfo').id,
         })
+      })
+      // http.postReq("/community/user/", {
+      //   cmd: "getHomeRecommend2",
+      // }, res => {
+      //   that.setData({
+      //     recom2: res.recom2
+      //   })
+      // })
+      // http.postReq("/community/user/", {
+      //   cmd: "getHomeRecommend3",
+      // }, res => {
+      //   that.setData({
+      //     recom3: res.recom3,
+      //   })
+      // })
+    }).then(() => { //缓存数据
+      let {
+        awards_today,
+        awards_unDraw,
+        recom1,
+        ad1
+      } = this.data;
 
-        let {
+      wx.setStorage({
+        key: 'homeInit',
+        data: {
+          recom1,
+          ad1,
           awards_today,
           awards_unDraw,
-          recom1,
-          ad1
-        } = this.data;
-
-        wx.setStorage({
-          key: 'homeInit',
-          data: {
-            recom1,
-            ad1
-          },
-        })
+        },
       })
-
-      http.postReq("/community/user/", {
-        cmd: "getHomeRecommend2",
-      }, res => {
-        that.setData({
-          recom2: res.recom2
-        })
-      })
-      http.postReq("/community/user/", {
-        cmd: "getHomeRecommend3",
-      }, res => {
-        that.setData({
-          recom3: res.recom3,
-          province: wx.getStorageSync('address').ad_info.province,
-        })
-      })
-      let {setting}=getApp().globalData;
       this.setData({
-        [`card[1].show`]:setting.showVideo2,
-        [`card[3].show`]:setting.show_inst_review
-      }) 
+        province: wx.getStorageSync('address').ad_info.province
+      })
     })
-  },
-  getChildData() {
-    let {
-      page_no,
-      childData
-    } = this.data;
-    http.postReq("/community/product/", {
-      cmd: 'queryProductsWithType',
-      condition: '',
-      type: 1,
-      page_no,
-      page_size: 10,
-    }, res => {
-      page_no == 1 ? childData = [] : '';
-      this.setData({
-        childData: childData.concat(res.data.records),
-        childNoData: res.data.records.length != 10
-      });
-    })
-  },
-  onReady() {
-    this.getChildData();
   },
   getCourseData(d) {
     let {
@@ -512,18 +484,18 @@ Page({
     Object.keys(login).length && login.status != 5 ? this.homePageInit() : '';
     wx.getStorageSync('b') === '' ? '' : wx.removeStorageSync('b');
     //设置定时器  请求顶部抽奖消息
-    this.data.timer3=setInterval(()=>{
+    this.data.timer3 = setInterval(() => {
       http.postReq("/community/award/", {
         cmd: "getjoinDrawMessages",
       }, res => {
         this.setData({
           messageList: res.data,
-          showbox:false
+          showbox: false
         })
       })
-    },50000);
+    }, 50000);
   },
-  changeMessage(res){
+  changeMessage(res) {
     //console.log(res);
   },
   onPullDownRefresh() {
@@ -533,25 +505,15 @@ Page({
       ['list[1].data']: [],
       ['list[0].page_no']: 1,
       ['list[1].page_no']: 1,
-      childNoData: false,
-      childData: [],
-      page_no: 1,
     });
-    this.getChildData();
     this.onReachBottom();
   },
   onReachBottom() {
     let {
       tabs,
-      page_no,
       getActsNearby
     } = this.data;
-    if (tabs == 6) {
-      this.setData({
-        page_no: page_no + 1
-      })
-      this.getChildData();
-    } else if (tabs == 4 || tabs == 5) {
+    if (tabs == 4 || tabs == 5) {
       this.getCourseData(getActsNearby)
       // this.data.list[(tabs == 4?0:1)].noData ? '': ;
       ;
@@ -564,13 +526,7 @@ Page({
     }
   },
   onHide() {
-    clearInterval(this.data.timer1);
-    clearTimeout(this.data.timer2);
     clearInterval(this.data.timer3);
-  },
-  onUnload() {
-    clearInterval(this.data.timer1);
-    clearTimeout(this.data.timer2);
   },
   scroll(e) {
     this.setData({

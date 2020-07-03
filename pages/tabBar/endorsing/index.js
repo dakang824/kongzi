@@ -46,7 +46,7 @@ Page({
       i,
       url
     } = e.currentTarget.dataset;
-    let [d, s] = [JSON.stringify(this.data.data), JSON.stringify(this.data.setting)];
+    let [d, s] = [encodeURIComponent(JSON.stringify(this.data.data)), encodeURIComponent(JSON.stringify(this.data.setting))];
     wx.navigateTo({
       url: `${url}?d=${d}&s=${s}`,
     })

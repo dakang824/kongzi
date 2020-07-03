@@ -39,7 +39,7 @@
   <view class="numbox flex">
     <view class="left flex">
       <view class="yuan"><text>￥</text>{{dataList.price}}</view>
-      <view class="sale"><text>￥</text>{{dataList.ori_price}}</view>
+      <view class="sale" wx:if='{{dataList.price!==dataList.ori_price}}'><text>￥</text>{{dataList.ori_price}}</view>
       <view class="you">运费：{{dataList.postage==0?'免运费':'￥'+dataList.postage}}</view>
     </view>
     <view class="right" wx:if="{{dataList.limit!=0}}">每人限购{{dataList.limit}}件</view>

@@ -8,7 +8,7 @@
       </view>
       <view class="right flex">
         <view class="allbox flex" bindtap="choose">
-          <image src="../../../imgs/new/chooseicon2.png" style="width:22rpx;height:20rpx;" />
+          <image src="../../../imgs/new/chooseicon2.png" style="width:22rpx;height:20rpx;"/>
           <view class="all" style="{{showChooseBox?'color:#FF2C56':''}}">筛选</view>
         </view>
       </view>
@@ -81,7 +81,7 @@
       <view class='top'>
         <image class="bigprize" src="/imgs/new/big_prize.png" style="width:124rpx;height:119rpx;" wx:if="{{item.draw_type==2}}" />
         <view class='img'>
-          <image src='{{serverUrl}}{{item.pic_path}}'></image>
+          <image src='{{serverUrl+item.pic_path}}'  mode='aspectFill' lazy-load></image>
         </view>
         <view class='lf'>已集
           <text class='red'>{{item.ticket_count==""?"0":item.ticket_count}}张</text>抽奖券</view>

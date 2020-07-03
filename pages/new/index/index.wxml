@@ -47,10 +47,6 @@
 				</swiper-item>
 			</swiper>
 		</view>
-		<!-- 疫情动态 -->
-		<block wx:if='{{show_virus}}'>
-			<virus box-shadow='boxShadow' class='virus' />
-		</block>
 	</block>
 
 	<block wx:else>
@@ -76,7 +72,7 @@
 					</view>
 					<navigator url='/pages/address/address' class='lf address' hover-class='hover'>
 						<text>{{province}}</text>
-						<image src='/imgs/address_img.png' class='address_img' mode='widthFix'></image>
+						<image src='/imgs/address_img.png' class='address_img' mode='widthFix' style="height:0"></image>
 					</navigator>
 				</view>
 				<view class='between txt' style="{{showbox?'':'justify-content:flex-end;'}}display:flex;">
@@ -105,12 +101,14 @@
 		</view>
 		<view class='swiper'>
 			<view hidden='{{!(btnActive==1)}}' class='swiper_box leftRadius'>
-				<swiper autoplay="{{true}}" duration="{{1000}}" circular bindchange='swiperChange'>
+				<swiper autoplay duration="{{1000}}" circular bindchange='swiperChange'>
 					<swiper-item wx:for='{{awards_unDraw}}' wx:key="index" data-i='{{index}}'>
 						<view wx:for='{{item}}' wx:key="index">
 							<navigator url='/pages/new/luckyDetail/luckyDetail?award_id={{item.award_id}}&tickets={{item.tickets}}&draw_id={{item.draw_id}}' class="box">
 								<view class='img big_img'>
-									<image src="{{serverUrl+item.icon_path}}" class="slide-image" mode="widthFix" />
+									<van-image width="100%" height='210rpx' src="{{serverUrl+item.icon_path}}" radius='5rpx 5rpx 0 0' lazy-load use-loading-slot fit="widthFix">
+										<van-loading slot="loading" type="spinner" size="20" vertical />
+									</van-image>
 									<image class="big" wx:if="{{item.draw_type==2}}" src="/imgs/new/big_prize.png" style="width:62rpx;height:59rpx;" />
 								</view>
 								<view class='foot'>
@@ -128,17 +126,19 @@
 			<view hidden='{{!(btnActive==2)}}'>
 				<block wx:if="{{awards_today.length}}">
 					<view class='swiper_box1'>
-						<swiper indicator-dots="{{true}}" display-multiple-items="1" autoplay="{{true}}" interval="{{5000}}" duration="{{1000}}" indicator-active-color='#FF2C56' indicator-color='rgba(255,44,86,.3)' circular easing-function='easeOutCubic'>
+						<swiper indicator-dots display-multiple-items="1" autoplay interval="{{5000}}" duration="{{1000}}" indicator-active-color='#FF2C56' indicator-color='rgba(255,44,86,.3)' circular easing-function='easeOutCubic'>
 							<swiper-item class='box_pos' wx:for='{{awards_today}}' wx:key="index">
 								<navigator url='/pages/new/luckyDetail/luckyDetail?award_id={{item.award_id}}&tickets={{item.tickets}}&draw_id={{item.draw_id}}' class='box1'>
 									<view class='tit vCenter' wx:if="{{item.status!=2}}">
 										<view style='padding-right:10rpx;'>距离开奖: </view>
-										<van-count-down time="{{ item.draw_second }}" zdy="{{true}}" />
+										<van-count-down time="{{ item.draw_second }}" zdy />
 									</view>
 
 									<view class='flex'>
 										<view class='img big_img'>
-											<image src="{{serverUrl}}{{item.icon_path}}" class="slide-image" mode="widthFix" />
+											<van-image width="100%" src="{{serverUrl+item.icon_path}}" radius='5rpx' lazy-load use-loading-slot fit="widthFix">
+												<van-loading slot="loading" type="spinner" size="20" vertical />
+											</van-image>
 											<image class="big" wx:if="{{item.draw_type==2}}" src="/imgs/new/big_prize.png" style="width:62rpx;height:59rpx;" />
 										</view>
 										<view class='text'>
@@ -165,7 +165,7 @@
 				</block>
 			</view>
 		</view>
-		<!-- <view class='tabs '> -->
+
 		<view class="middlebox marTop">
 			<view class="itembox flexbox">
 				<block wx:if='{{item.show}}' wx:for='{{card}}' wx:key='index'>
@@ -202,11 +202,7 @@
 				<!-- <view bindtap='tabsClick' data-index='5' class='{{tabs==5?"active":""}}'>
 					线下课程
 					<view class='line' wx:if='{{tabs==5}}'></view>
-				</view>
-				<view class='{{tabs==6?"active":""}}' bindtap='tabsClick' data-index='6'>
-					儿童用品
-					<view class='line' wx:if='{{tabs==6}}'></view>
-				</view> -->
+				</view>-->
 			</view>
 		</van-sticky>
 
@@ -231,12 +227,6 @@
 				<template is="li" data="{{data:list[1].data,ope_id:ope_id}}"></template>
 				<block wx:if='{{list[1].data.length}}'>
 					<w_loadingData noData='{{!list[1].noData}}' />
-				</block>
-			</view>
-			<view hidden='{{!(tabs==6)}}'>
-				<w_childList list='{{childData}}' />
-				<block wx:if='{{childData.length}}'>
-					<w_loadingData noData='{{childNoData}}' />
 				</block>
 			</view>
 		</view>

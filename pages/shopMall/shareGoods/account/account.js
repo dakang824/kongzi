@@ -106,7 +106,7 @@ Page({
       fixed: e.detail.isFixed
     })
   },
-  onLoad: function(e) {
+  onLoad(e) {
     wx.hideShareMenu();
     let s, d;
     try {

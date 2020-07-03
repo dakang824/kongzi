@@ -84,12 +84,7 @@
         "tempfile/previewImage/previewImage"
       ]
     },
-    {
-      "root": "pages/other",
-      "pages": [
-        "virusDetail/index"
-      ]
-    }, {
+     {
       "root": "pages/praise",
       "pages": [
         "index/index",

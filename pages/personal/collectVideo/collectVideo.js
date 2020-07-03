@@ -567,7 +567,7 @@ Page({
 
     if (globalData.systemInfo.platform == "android") {
       this.setData({
-        hideIndex: current,
+        hideIndex: indcurrent,
         hidePage: false
       });
       this.videoCtx.pause();
@@ -579,7 +579,7 @@ Page({
 
     return {
       title: btnShare ? user.nickname + '分享给你一个小视频' : '孔紫小视频',
-      path: `/pages/personal/collectVideo/collectVideo?from_id=${user.id}&b=${JSON.stringify(b)}`
+      path: `/pages/tabBar/smallVideo/index?from_id=${user.id}&b=${JSON.stringify(b)}`
     }
   }
 })
