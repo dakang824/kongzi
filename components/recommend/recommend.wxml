@@ -10,8 +10,8 @@
 					<view class="prize">{{item.is_deposit==1?'定金':''}}￥{{item.type==2?item.price/100:item.price}}</view>
 					<view class="ori_prize">
 						<block wx:if='{{item.type==5}}'>
-							<text wx:if='{{item.jd_price}}'>京东价￥{{item.jd_price}}</text>
-							<text class='marleft' wx:if='{{item.tm_price}}'>天猫价￥{{item.tm_price}}</text>
+							<text wx:if='{{item.jd_price!==item.price}}'>京东价￥{{item.jd_price}}</text>
+							<text class='marleft' wx:if='{{item.tm_price!==item.price}}'>天猫价￥{{item.tm_price}}</text>
 						</block>
 						<block wx:else>
 							<text wx:if='{{item.price!=item.ori_price&&item.ori_price!=0}}'>{{item.type==3||item.type==4?'市场价':''}}￥{{item.type==2?item.ori_price/100:item.ori_price}}</text>
